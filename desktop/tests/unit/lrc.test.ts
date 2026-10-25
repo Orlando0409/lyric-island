@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildDocument, estimateLastLineMs, estimatePlainLines, fractionToMs, parseLrc } from '../../src/core/lrc';
-import { simulateWords, tokenize, wordWeight } from '../../src/core/words';
+import { simulateWords, singEstimateMs, tokenize, wordWeight } from '../../src/core/words';
 
 const FIX = join(__dirname, '..', '..', '..', 'shared', 'fixtures', 'lrc');
 const lrc = (name: string) => readFileSync(join(FIX, name), 'utf8');
@@ -173,6 +173,19 @@ describe('karaoke simulado', () => {
   it('huecos largos no estiran las palabras', () => {
     const words = simulateWords('Hola mundo', 0, 12000);
     expect(words.at(-1)!.endMs).toBe(990); // 9 caracteres × 110 ms
+  });
+  it('japonés y coreano: duración de canto por sílaba, no por letra latina (regresión)', () => {
+    // 12 caracteres kana/kanji × 260 ms = 3 120 ms (antes 12 × 110 = 1 320: el relleno terminaba al 33 %).
+    const ja = simulateWords('その一言で全てが分かった', 0, 4000);
+    expect(ja).toHaveLength(12);
+    expect(ja.at(-1)!.endMs).toBe(3120);
+    // 8 sílabas hangul × 290 ms = 2 320 ms.
+    expect(simulateWords('밤하늘 위의 작은 섬', 0, 4000).at(-1)!.endMs).toBe(2320);
+    // Mezcla: la palabra coreana pesa por sus sílabas reales frente a la inglesa.
+    const [en, ko] = simulateWords('World 거듭해서', 0, 10_000);
+    expect(ko.endMs - ko.startMs).toBeGreaterThan(en.endMs - en.startMs);
+    expect(singEstimateMs('Hola mundo')).toBe(990);
+    expect(estimateLastLineMs('その一言で全てが分かった')).toBe(2553);
   });
   it('mínimo de 800 ms para líneas cortas', () => {
     expect(simulateWords('Sí', 0, 5000).at(-1)!.endMs).toBe(800);

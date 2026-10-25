@@ -243,6 +243,9 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
 
     Header(R.string.s_lyrics)
     SwitchRow(R.string.experimental_plain, s.experimentalPlain) { v -> set { it.copy(experimentalPlain = v) } }
+    Text("${stringResource(R.string.lead_ms)}: ${s.leadMs} ms")
+    Slider(s.leadMs.toFloat(), { v -> set { it.copy(leadMs = (v / 25).toLong() * 25) } }, valueRange = 0f..600f)
+    Text(stringResource(R.string.lead_hint), style = MaterialTheme.typography.bodySmall)
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         OutlinedButton(onClick = { scope.launch { g.db.dao().clear(); note = doneText } }) { Text(stringResource(R.string.clear_cache)) }
         OutlinedButton(onClick = { scope.launch { g.db.dao().clearOffsets(); note = doneText } }) { Text(stringResource(R.string.clear_offsets)) }

@@ -204,6 +204,10 @@ export function Settings() {
       </Section>
 
       <Section title={L('lyrics')}>
+        <Row label={`${L('leadMs')}: ${s.lyrics.leadMs} ms`}>
+          <input type="range" min={0} max={600} step={25} value={s.lyrics.leadMs} onChange={(e) => update({ lyrics: { leadMs: Number(e.target.value) } })} />
+        </Row>
+        <p className="hint">{L('leadHint')}</p>
         <Row label={L('experimentalPlain')}>
           <Toggle value={s.lyrics.experimentalPlain} onChange={(v) => update({ lyrics: { experimentalPlain: v } })} />
         </Row>

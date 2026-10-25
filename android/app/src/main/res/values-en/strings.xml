@@ -49,6 +49,8 @@
     <string name="players_block">Blocked apps (one per line)</string>
     <string name="detected">Detected</string>
     <string name="experimental_plain">Spread plain lyrics (experimental, ≈)</string>
+    <string name="lead_ms">Lyrics lead</string>
+    <string name="lead_hint">Shows each line slightly earlier. For a single song, swipe the island left or right (saved per song).</string>
     <string name="clear_cache">Clear lyrics cache</string>
     <string name="clear_offsets">Clear saved offsets</string>
     <string name="credits">Lyrics from LRCLIB (lrclib.net), an open community database.</string>

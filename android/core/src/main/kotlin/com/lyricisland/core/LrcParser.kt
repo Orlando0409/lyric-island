@@ -29,7 +29,8 @@ object LrcParser {
         return min.toLong() * 60_000 + s * 1000 + fractionToMs(frac)
     }
 
-    fun estimateLastLineMs(text: String): Long = minOf(6000, maxOf(2000, Words.nonSpaceCount(text) * 90L))
+    /** clamp(canto estimado × 9/11, 2 s, 6 s): 90 ms por letra latina. */
+    fun estimateLastLineMs(text: String): Long = minOf(6000, maxOf(2000, jsRound(Words.singEstimateMs(text) * 9.0 / 11)))
 
     private data class RawWord(val text: String, val startMs: Long)
     private data class RawLine(val startMs: Long, val text: String, val words: List<RawWord>?, val endTag: Long?, val order: Int)

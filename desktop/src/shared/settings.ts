@@ -53,6 +53,8 @@ export const SettingsSchema = z.object({
   lyrics: z
     .object({
       experimentalPlain: z.boolean().default(false),
+      // Adelanto global (ms): compensa la animación de entrada de cada línea.
+      leadMs: z.number().min(0).max(600).default(150),
     })
     .prefault({}),
   shortcuts: ShortcutsSchema.prefault({}),

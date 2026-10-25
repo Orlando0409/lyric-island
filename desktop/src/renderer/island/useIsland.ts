@@ -83,6 +83,7 @@ export function useIsland(): IslandView {
       hideOnFullscreen: !settings.general.showInFullscreen,
       playerFilter: { mode: settings.players.mode, apps: settings.players.apps },
       experimentalPlain: settings.lyrics.experimentalPlain,
+      lyricsLeadMs: settings.lyrics.leadMs,
     });
   }, [controller, settings]);
 

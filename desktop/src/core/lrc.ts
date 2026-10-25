@@ -1,6 +1,6 @@
 // Parser LRC (sección 8.3). Nunca lanza excepciones: ante basura devuelve kind 'none'.
 import type { LyricLine, LyricWord, LyricsDocument } from './types';
-import { nonSpaceCount, simulateWords } from './words';
+import { simulateWords, singEstimateMs } from './words';
 
 export interface ParsedLrc {
   lines: LyricLine[];
@@ -28,9 +28,9 @@ function tagToMs(min: string, sec: string, frac: string | undefined): number | n
   return Number(min) * 60_000 + s * 1000 + fractionToMs(frac);
 }
 
-/** Duración estimada de la última línea: clamp(caracteres × 90 ms, 2 s, 6 s). */
+/** Duración estimada de la última línea: clamp(canto estimado × 9/11, 2 s, 6 s) (90 ms por letra latina). */
 export function estimateLastLineMs(text: string): number {
-  return Math.min(6000, Math.max(2000, nonSpaceCount(text) * 90));
+  return Math.min(6000, Math.max(2000, Math.round((singEstimateMs(text) * 9) / 11)));
 }
 
 interface RawWord {

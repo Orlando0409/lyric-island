@@ -20,6 +20,8 @@ data class IslandBehavior(
     val hideOnFullscreen: Boolean = true,
     val playerFilter: PlayerFilter = PlayerFilter(false, emptyList()),
     val experimentalPlain: Boolean = false,
+    /** Adelanto global de la letra en ms (lo aplica el SyncEngine). */
+    val lyricsLeadMs: Long = 0,
 )
 
 /** null = sin pista; LOADING = buscando la letra. */

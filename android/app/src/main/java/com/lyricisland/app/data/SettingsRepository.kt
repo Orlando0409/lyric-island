@@ -38,6 +38,8 @@ data class AppSettings(
     val blockedApps: List<String> = DEFAULT_BLOCKED,
     val detectedApps: List<String> = emptyList(),
     val experimentalPlain: Boolean = false,
+    /** Adelanto global (ms): compensa la animación de entrada de cada línea. */
+    val leadMs: Long = 150,
     val pausedUntilMs: Long = 0, // "Pausar 1 h" desde la notificación (reloj de pared)
 ) {
     fun behavior() = IslandBehavior(
@@ -47,6 +49,7 @@ data class AppSettings(
         hideOnFullscreen = false,
         playerFilter = PlayerFilter(allowMode = false, apps = blockedApps),
         experimentalPlain = experimentalPlain,
+        lyricsLeadMs = leadMs,
     )
 
     companion object {
@@ -74,6 +77,7 @@ class SettingsRepository(private val context: Context) {
         val detected = stringPreferencesKey("detectedApps")
         val experimentalPlain = booleanPreferencesKey("experimentalPlain")
         val pausedUntil = longPreferencesKey("pausedUntil")
+        val leadMs = longPreferencesKey("leadMs")
     }
 
     private inline fun <reified E : Enum<E>> enumOr(v: String?, d: E): E = v?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: d
@@ -99,6 +103,7 @@ class SettingsRepository(private val context: Context) {
             detectedApps = list(p[K.detected], emptyList()),
             experimentalPlain = p[K.experimentalPlain] ?: d.experimentalPlain,
             pausedUntilMs = p[K.pausedUntil] ?: 0,
+            leadMs = p[K.leadMs] ?: d.leadMs,
         )
     }
 
@@ -123,6 +128,7 @@ class SettingsRepository(private val context: Context) {
             p[K.detected] = n.detectedApps.joinToString("\n")
             p[K.experimentalPlain] = n.experimentalPlain
             p[K.pausedUntil] = n.pausedUntilMs
+            p[K.leadMs] = n.leadMs
         }
     }
 

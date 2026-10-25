@@ -162,6 +162,15 @@ describe('SyncEngine', () => {
     c.advance(60_000);
     expect(s.position()).toBe(40_000);
   });
+  it('el adelanto global se suma a los offsets', () => {
+    const c = new FakeClock();
+    const s = new SyncEngine(c);
+    s.setLyrics(lines, 0);
+    s.leadMs = 150;
+    s.update(tl(4900, c.t));
+    expect(s.position()).toBe(5050);
+    expect(s.frame().activeLineIndex).toBe(0); // la línea de 00:05 ya está activa 100 ms antes
+  });
   it('no baja de 0 con offset negativo', () => {
     const c = new FakeClock();
     const s = new SyncEngine(c);

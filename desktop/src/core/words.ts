@@ -54,23 +54,49 @@ export function tokenize(text: string): string[] {
   return tokens;
 }
 
-/** Letras y dígitos (por punto de código). */
-export function letterCount(word: string): number {
-  let n = 0;
-  for (const ch of word) if (/[\p{L}\p{N}]/u.test(ch)) n++;
-  return n;
+// Duración de canto por unidad, medida sobre 2 031 líneas reales de LRCLIB (mediana):
+// letra latina 116 ms, carácter japonés/chino 262 ms, sílaba hangul 293 ms. Con 110 ms para todo,
+// el relleno en japonés y coreano terminaba al ~40 % de la línea.
+export const UNIT_MS_LATIN = 110;
+export const UNIT_MS_CJK = 260;
+export const UNIT_MS_HANGUL = 290;
+
+/** Kana y Han (cada carácter ≈ una sílaba). Sin la puntuación CJK ni los caracteres de ancho completo. */
+export function isKanaOrHan(cp: number): boolean {
+  return (
+    (cp >= 0x3040 && cp <= 0x30ff) ||
+    (cp >= 0x3400 && cp <= 0x4dbf) ||
+    (cp >= 0x4e00 && cp <= 0x9fff) ||
+    (cp >= 0xf900 && cp <= 0xfaff) ||
+    (cp >= 0x20000 && cp <= 0x2ffff)
+  );
 }
 
-export function nonSpaceCount(text: string): number {
-  let n = 0;
-  for (const ch of text) if (!/\s/u.test(ch)) n++;
-  return n;
+export function isHangul(cp: number): boolean {
+  return (cp >= 0xac00 && cp <= 0xd7af) || (cp >= 0x1100 && cp <= 0x11ff) || (cp >= 0x3130 && cp <= 0x318f);
 }
 
+function unitMs(ch: string): number {
+  const cp = ch.codePointAt(0)!;
+  if (isHangul(cp)) return UNIT_MS_HANGUL;
+  if (isKanaOrHan(cp)) return UNIT_MS_CJK;
+  return UNIT_MS_LATIN;
+}
+
+/** Tiempo de canto estimado de un texto (ms): cada carácter no blanco según su escritura. */
+export function singEstimateMs(text: string): number {
+  let ms = 0;
+  for (const ch of text) if (!/\s/u.test(ch)) ms += unitMs(ch);
+  return ms;
+}
+
+/** Peso de una palabra = sus letras/dígitos en "letras latinas equivalentes" (+ pausa si termina en coma o punto). */
 export function wordWeight(word: string): number {
   const trimmed = word.trimEnd();
   const last = trimmed.slice(-1);
-  return Math.max(2, letterCount(trimmed)) + (PUNCT_PAUSE.has(last) ? 1.5 : 0);
+  let units = 0;
+  for (const ch of trimmed) if (/[\p{L}\p{N}]/u.test(ch)) units += unitMs(ch) / UNIT_MS_LATIN;
+  return Math.max(2, units) + (PUNCT_PAUSE.has(last) ? 1.5 : 0);
 }
 
 /** Karaoke simulado: reparte la duración de canto entre las palabras según su peso. */
@@ -78,7 +104,7 @@ export function simulateWords(text: string, t0: number, t1: number): LyricWord[]
   const tokens = tokenize(text);
   if (tokens.length === 0) return [];
   const lineDur = Math.max(0, t1 - t0);
-  const singDur = Math.min(lineDur, Math.max(800, nonSpaceCount(text) * 110));
+  const singDur = Math.min(lineDur, Math.max(800, singEstimateMs(text)));
   const weights = tokens.map(wordWeight);
   const total = weights.reduce((a, b) => a + b, 0);
   const words: LyricWord[] = [];

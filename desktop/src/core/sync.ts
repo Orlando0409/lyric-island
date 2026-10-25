@@ -154,6 +154,8 @@ export class SyncEngine {
   lines: LyricLine[] = [];
   lrcOffsetMs = 0;
   userOffsetMs = 0;
+  /** Adelanto global: la línea nueva tarda ~200 ms en leerse (animación de entrada), así que se muestra un poco antes. */
+  leadMs = 0;
   durationMs: number | null = null;
 
   constructor(private readonly clock: Clock) {
@@ -182,7 +184,7 @@ export class SyncEngine {
   }
 
   position(now = this.clock.now()): number {
-    const pos = this.tracker.rawPosition(now) + this.lrcOffsetMs + this.userOffsetMs;
+    const pos = this.tracker.rawPosition(now) + this.lrcOffsetMs + this.userOffsetMs + this.leadMs;
     const max = this.durationMs ?? Number.POSITIVE_INFINITY;
     return clamp(pos, 0, max);
   }

@@ -16,6 +16,8 @@ export interface IslandBehavior {
   hideOnFullscreen: boolean;
   playerFilter: PlayerFilter;
   experimentalPlain: boolean;
+  /** Adelanto global de la letra en ms (lo aplica el SyncEngine). */
+  lyricsLeadMs: number;
 }
 
 export const DEFAULT_BEHAVIOR: IslandBehavior = {
@@ -25,6 +27,7 @@ export const DEFAULT_BEHAVIOR: IslandBehavior = {
   hideOnFullscreen: true,
   playerFilter: { mode: 'deny', apps: [] },
   experimentalPlain: false,
+  lyricsLeadMs: 0,
 };
 
 export type LyricsStatus = LyricsKind | 'loading';

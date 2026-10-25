@@ -69,6 +69,7 @@ export class IslandController {
   constructor(private readonly deps: ControllerDeps) {
     this.behavior = deps.behavior ?? DEFAULT_BEHAVIOR;
     this.sync = new SyncEngine(deps.clock);
+    this.sync.leadMs = this.behavior.lyricsLeadMs;
   }
 
   subscribe(fn: () => void): () => void {
@@ -96,6 +97,7 @@ export class IslandController {
 
   setBehavior(b: IslandBehavior): void {
     this.behavior = b;
+    this.sync.leadMs = b.lyricsLeadMs;
     this.rebuildLines();
     this.emit();
   }

@@ -139,6 +139,8 @@ class SyncEngine(private val clock: Clock) {
         private set
     var lrcOffsetMs = 0L
     var userOffsetMs = 0L
+    /** Adelanto global: la línea nueva tarda ~200 ms en leerse (animación de entrada), así que se muestra un poco antes. */
+    var leadMs = 0L
     var durationMs: Long? = null
 
     fun setLyrics(lines: List<LyricLine>, lrcOffsetMs: Long) {
@@ -162,7 +164,7 @@ class SyncEngine(private val clock: Clock) {
     }
 
     fun position(now: Long = clock.now()): Double {
-        val pos = tracker.rawPosition(now) + lrcOffsetMs + userOffsetMs
+        val pos = tracker.rawPosition(now) + lrcOffsetMs + userOffsetMs + leadMs
         return clamp(pos, 0.0, durationMs?.toDouble() ?: Double.POSITIVE_INFINITY)
     }
 

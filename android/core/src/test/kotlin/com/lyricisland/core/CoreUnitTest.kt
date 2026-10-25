@@ -116,6 +116,18 @@ class CoreUnitTest {
     }
 
     @Test
+    fun karaokeJaponesYCoreanoPorSilaba() {
+        // Regresión: con 110 ms por carácter el relleno CJK terminaba al ~40 % de la línea.
+        val ja = Words.simulateWords("その一言で全てが分かった", 0, 4000)
+        assertEquals(12, ja.size)
+        assertEquals(3120L, ja.last().endMs)
+        assertEquals(2320L, Words.simulateWords("밤하늘 위의 작은 섬", 0, 4000).last().endMs)
+        val (en, ko) = Words.simulateWords("World 거듭해서", 0, 10_000)
+        assertTrue(ko.endMs - ko.startMs > en.endMs - en.startMs)
+        assertEquals(2553L, LrcParser.estimateLastLineMs("その一言で全てが分かった"))
+    }
+
+    @Test
     fun sincronia() {
         var now = 0L
         val s = SyncEngine { now }

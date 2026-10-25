@@ -56,23 +56,47 @@ object Words {
         else -> false
     }
 
-    /** Letras y dígitos (\p{L}\p{N}) por punto de código. */
-    fun letterCount(word: String): Int = word.codePoints().filter(::isLetterOrNumber).count().toInt()
+    // Duración de canto por unidad, medida sobre 2 031 líneas reales de LRCLIB (mediana):
+    // letra latina 116 ms, carácter japonés/chino 262 ms, sílaba hangul 293 ms (ver words.ts).
+    const val UNIT_MS_LATIN = 110
+    const val UNIT_MS_CJK = 260
+    const val UNIT_MS_HANGUL = 290
 
-    fun nonSpaceCount(text: String): Int =
-        text.codePoints().filter { cp -> !(Character.charCount(cp) == 1 && isJsSpace(cp.toChar())) }.count().toInt()
+    /** Kana y Han (cada carácter ≈ una sílaba). Sin la puntuación CJK ni los caracteres de ancho completo. */
+    fun isKanaOrHan(cp: Int): Boolean =
+        cp in 0x3040..0x30ff || cp in 0x3400..0x4dbf || cp in 0x4e00..0x9fff || cp in 0xf900..0xfaff || cp in 0x20000..0x2ffff
 
+    fun isHangul(cp: Int): Boolean = cp in 0xac00..0xd7af || cp in 0x1100..0x11ff || cp in 0x3130..0x318f
+
+    private fun unitMs(cp: Int): Int = when {
+        isHangul(cp) -> UNIT_MS_HANGUL
+        isKanaOrHan(cp) -> UNIT_MS_CJK
+        else -> UNIT_MS_LATIN
+    }
+
+    private fun isSpaceCodePoint(cp: Int) = Character.charCount(cp) == 1 && isJsSpace(cp.toChar())
+
+    /** Tiempo de canto estimado de un texto (ms): cada carácter no blanco según su escritura. */
+    fun singEstimateMs(text: String): Int {
+        var ms = 0
+        text.codePoints().forEach { cp -> if (!isSpaceCodePoint(cp)) ms += unitMs(cp) }
+        return ms
+    }
+
+    /** Peso de una palabra = sus letras/dígitos en "letras latinas equivalentes" (+ pausa si termina en coma o punto). */
     fun wordWeight(word: String): Double {
         val trimmed = word.jsTrimEnd()
         val last = if (trimmed.isEmpty()) "" else trimmed.substring(trimmed.length - 1)
-        return maxOf(2, letterCount(trimmed)).toDouble() + if (last in PUNCT_PAUSE) 1.5 else 0.0
+        var units = 0.0
+        trimmed.codePoints().forEach { cp -> if (isLetterOrNumber(cp)) units += unitMs(cp).toDouble() / UNIT_MS_LATIN }
+        return maxOf(2.0, units) + if (last in PUNCT_PAUSE) 1.5 else 0.0
     }
 
     fun simulateWords(text: String, t0: Long, t1: Long): List<LyricWord> {
         val tokens = tokenize(text)
         if (tokens.isEmpty()) return emptyList()
         val lineDur = maxOf(0L, t1 - t0).toDouble()
-        val singDur = minOf(lineDur, maxOf(800.0, nonSpaceCount(text) * 110.0))
+        val singDur = minOf(lineDur, maxOf(800.0, singEstimateMs(text).toDouble()))
         val weights = tokens.map(::wordWeight)
         val total = weights.sum()
         var cum = 0.0

@@ -66,7 +66,7 @@ class IslandController(
     private var recheck: Any? = null
     private var generation = 0
     private val listeners = LinkedHashSet<() -> Unit>()
-    val sync = SyncEngine(clock)
+    val sync = SyncEngine(clock).also { it.leadMs = behavior.lyricsLeadMs }
 
     fun subscribe(fn: () -> Unit): () -> Unit {
         listeners.add(fn)
@@ -90,6 +90,7 @@ class IslandController(
 
     fun setBehavior(b: IslandBehavior) {
         behavior = b
+        sync.leadMs = b.lyricsLeadMs
         rebuildLines()
         emit()
     }
