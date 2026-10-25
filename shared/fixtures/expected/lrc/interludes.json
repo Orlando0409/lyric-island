@@ -1,0 +1,312 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 8000,
+   "endMs": 11000,
+   "text": "Empieza tarde, hay intro",
+   "isInterlude": false,
+   "words": [
+    [
+     "Empieza ",
+     8000,
+     8752,
+     true
+    ],
+    [
+     "tarde, ",
+     8752,
+     9450,
+     true
+    ],
+    [
+     "hay ",
+     9450,
+     9773,
+     true
+    ],
+    [
+     "intro",
+     9773,
+     10310,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 11000,
+   "endMs": 25000,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  },
+  {
+   "startMs": 25000,
+   "endMs": 28000,
+   "text": "Vuelve la voz tras el solo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Vuelve ",
+     25000,
+     25660,
+     true
+    ],
+    [
+     "la ",
+     25660,
+     25880,
+     true
+    ],
+    [
+     "voz ",
+     25880,
+     26210,
+     true
+    ],
+    [
+     "tras ",
+     26210,
+     26650,
+     true
+    ],
+    [
+     "el ",
+     26650,
+     26870,
+     true
+    ],
+    [
+     "solo",
+     26870,
+     27310,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 28000,
+   "endMs": 45000,
+   "text": "Un verso corto",
+   "isInterlude": false,
+   "words": [
+    [
+     "Un ",
+     28000,
+     28220,
+     true
+    ],
+    [
+     "verso ",
+     28220,
+     28770,
+     true
+    ],
+    [
+     "corto",
+     28770,
+     29320,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 45000,
+   "endMs": 47070,
+   "text": "Hueco largo sin línea vacía",
+   "isInterlude": false,
+   "words": [
+    [
+     "Hueco ",
+     45000,
+     45450,
+     true
+    ],
+    [
+     "largo ",
+     45450,
+     45900,
+     true
+    ],
+    [
+     "sin ",
+     45900,
+     46170,
+     true
+    ],
+    [
+     "línea ",
+     46170,
+     46620,
+     true
+    ],
+    [
+     "vacía",
+     46620,
+     47070,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 7999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 8000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 9500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1548,
+   "interlude": null
+  },
+  {
+   "pos": 10999,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 11000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 18000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.5,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 24999,
+   "line": 1,
+   "lineProgress": 0.9999,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 25000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 26500,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.6591,
+   "interlude": null
+  },
+  {
+   "pos": 27999,
+   "line": 2,
+   "lineProgress": 0.9997,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 28000,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 36500,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4579,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 44999,
+   "line": 3,
+   "lineProgress": 0.9999,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 45000,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 46035,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.5,
+   "interlude": null
+  },
+  {
+   "pos": 48070,
+   "line": 4,
+   "lineProgress": 1,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

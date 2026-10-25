@@ -1,0 +1,53 @@
+name: desktop
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+
+jobs:
+  helper:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet test desktop-helper --nologo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: protocol-from-csharp
+          path: shared/fixtures/expected/protocol-from-csharp.ndjson
+
+  desktop:
+    runs-on: windows-latest
+    needs: helper
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/download-artifact@v4
+        with:
+          name: protocol-from-csharp
+          path: shared/fixtures/expected
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -C desktop exec install-electron
+      - run: pnpm -C desktop typecheck
+      - run: pnpm -C desktop coverage
+      - run: pnpm -C desktop build
+      - run: pnpm -C desktop exec playwright test
+      - run: pnpm -C desktop helper:build
+      - run: pnpm -C desktop exec electron-builder --win nsis --publish never
+      # MSIX (Microsoft Store): requiere el Windows SDK, que el runner windows-latest ya trae.
+      - run: pnpm -C desktop exec electron-builder --win appx --publish never --prepackaged dist/win-unpacked
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: |
+            desktop/dist/*.exe
+            desktop/dist/*.appx

@@ -1,0 +1,20 @@
+{
+  "file": "get-remastered-normalized.json",
+  "route": "get",
+  "match": {
+    "track_name": "Canción Vieja",
+    "artist_name": "Banda Mock"
+  },
+  "status": 200,
+  "body": {
+    "id": 1005,
+    "name": "Canción Vieja",
+    "trackName": "Canción Vieja",
+    "artistName": "Banda Mock",
+    "albumName": "Archivo",
+    "duration": 199,
+    "instrumental": false,
+    "plainLyrics": "Canción Vieja: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+    "syncedLyrics": "[00:04.00]Canción Vieja: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+  }
+}

@@ -1,0 +1,228 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 10000,
+   "endMs": 4510000,
+   "text": "Inicio de una pista larga",
+   "isInterlude": false,
+   "words": [
+    [
+     "Inicio ",
+     10000,
+     10660,
+     true
+    ],
+    [
+     "de ",
+     10660,
+     10880,
+     true
+    ],
+    [
+     "una ",
+     10880,
+     11210,
+     true
+    ],
+    [
+     "pista ",
+     11210,
+     11760,
+     true
+    ],
+    [
+     "larga",
+     11760,
+     12310,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 4510000,
+   "endMs": 4520500,
+   "text": "Más de setenta y cinco minutos",
+   "isInterlude": false,
+   "words": [
+    [
+     "Más ",
+     4510000,
+     4510317,
+     true
+    ],
+    [
+     "de ",
+     4510317,
+     4510529,
+     true
+    ],
+    [
+     "setenta ",
+     4510529,
+     4511269,
+     true
+    ],
+    [
+     "y ",
+     4511269,
+     4511481,
+     true
+    ],
+    [
+     "cinco ",
+     4511481,
+     4512010,
+     true
+    ],
+    [
+     "minutos",
+     4512010,
+     4512750,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 4520500,
+   "endMs": 4522500,
+   "text": "Final de la sesión",
+   "isInterlude": false,
+   "words": [
+    [
+     "Final ",
+     4520500,
+     4521050,
+     true
+    ],
+    [
+     "de ",
+     4521050,
+     4521270,
+     true
+    ],
+    [
+     "la ",
+     4521270,
+     4521490,
+     true
+    ],
+    [
+     "sesión",
+     4521490,
+     4522150,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 9999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 10000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2260000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4997,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 4509999,
+   "line": 0,
+   "lineProgress": 1,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 1,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 4510000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4515250,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.3226,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 4520499,
+   "line": 1,
+   "lineProgress": 0.9999,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 4520500,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4521500,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.0152,
+   "interlude": null
+  },
+  {
+   "pos": 4523500,
+   "line": 2,
+   "lineProgress": 1,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+  "file": "search-empty.json",
+  "route": "search",
+  "match": {
+    "track_name": "No Existe"
+  },
+  "status": 200,
+  "body": []
+}

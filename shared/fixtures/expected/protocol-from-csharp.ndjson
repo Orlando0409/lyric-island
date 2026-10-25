@@ -1,0 +1,8 @@
+{"v":1,"type":"hello","helperVersion":"0.1.0","os":"10.0.22631"}
+{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Bohemian Rhapsody","artist":"Queen","album":"A Night at the Opera","durationMs":354000,"artworkHash":"9f2c","artworkPngBase64":"iVBORw0KGgo="}
+{"v":1,"type":"track","sourceAppId":"chrome.exe","title":"Canción “rara” ñ 日本","artist":"Artista","album":null,"durationMs":null,"artworkHash":null}
+{"v":1,"type":"timeline","positionMs":83120,"updatedAtMs":1761340000123,"rate":1,"status":"playing"}
+{"v":1,"type":"timeline","positionMs":0,"updatedAtMs":1761340000123,"rate":0,"status":"paused"}
+{"v":1,"type":"cleared"}
+{"v":1,"type":"fullscreen","active":true}
+{"v":1,"type":"log","level":"warn","msg":"Thumbnail read failed: ..."}

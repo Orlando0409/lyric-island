@@ -1,0 +1,118 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 5000,
+   "endMs": 8000,
+   "text": "Línea válida",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     5000,
+     5550,
+     true
+    ],
+    [
+     "válida",
+     5550,
+     6210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 8000,
+   "endMs": 10000,
+   "text": "Otra válida",
+   "isInterlude": false,
+   "words": [
+    [
+     "Otra ",
+     8000,
+     8440,
+     true
+    ],
+    [
+     "válida",
+     8440,
+     9100,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 4999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9998,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 5000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 7999,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.8485,
+   "interlude": null
+  },
+  {
+   "pos": 11000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

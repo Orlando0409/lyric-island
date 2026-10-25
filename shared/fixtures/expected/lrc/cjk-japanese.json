@@ -1,0 +1,264 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 2000,
+   "endMs": 6000,
+   "text": "夜空に光る島",
+   "isInterlude": false,
+   "words": [
+    [
+     "夜",
+     2000,
+     2133,
+     true
+    ],
+    [
+     "空",
+     2133,
+     2267,
+     true
+    ],
+    [
+     "に",
+     2267,
+     2400,
+     true
+    ],
+    [
+     "光",
+     2400,
+     2533,
+     true
+    ],
+    [
+     "る",
+     2533,
+     2667,
+     true
+    ],
+    [
+     "島",
+     2667,
+     2800,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 6000,
+   "endMs": 10000,
+   "text": "言葉が流れていく",
+   "isInterlude": false,
+   "words": [
+    [
+     "言",
+     6000,
+     6110,
+     true
+    ],
+    [
+     "葉",
+     6110,
+     6220,
+     true
+    ],
+    [
+     "が",
+     6220,
+     6330,
+     true
+    ],
+    [
+     "流",
+     6330,
+     6440,
+     true
+    ],
+    [
+     "れ",
+     6440,
+     6550,
+     true
+    ],
+    [
+     "て",
+     6550,
+     6660,
+     true
+    ],
+    [
+     "い",
+     6660,
+     6770,
+     true
+    ],
+    [
+     "く",
+     6770,
+     6880,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 10000,
+   "endMs": 12000,
+   "text": "ひとつずつ、歌おう。",
+   "isInterlude": false,
+   "words": [
+    [
+     "ひ",
+     10000,
+     10102,
+     true
+    ],
+    [
+     "と",
+     10102,
+     10205,
+     true
+    ],
+    [
+     "つ",
+     10205,
+     10307,
+     true
+    ],
+    [
+     "ず",
+     10307,
+     10409,
+     true
+    ],
+    [
+     "つ",
+     10409,
+     10512,
+     true
+    ],
+    [
+     "、",
+     10512,
+     10614,
+     true
+    ],
+    [
+     "歌",
+     10614,
+     10716,
+     true
+    ],
+    [
+     "お",
+     10716,
+     10819,
+     true
+    ],
+    [
+     "う",
+     10819,
+     10921,
+     true
+    ],
+    [
+     "。",
+     10921,
+     11100,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9999,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 10000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 11000,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 9,
+   "wordProgress": 0.4413,
+   "interlude": null
+  },
+  {
+   "pos": 13000,
+   "line": 2,
+   "lineProgress": 1,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

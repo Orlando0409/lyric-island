@@ -1,0 +1,154 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 4000,
+   "text": "La isla brilla ✨ y suena 🎵",
+   "isInterlude": false,
+   "words": [
+    [
+     "La ",
+     1000,
+     1191,
+     true
+    ],
+    [
+     "isla ",
+     1191,
+     1574,
+     true
+    ],
+    [
+     "brilla ",
+     1574,
+     2148,
+     true
+    ],
+    [
+     "✨ ",
+     2148,
+     2339,
+     true
+    ],
+    [
+     "y ",
+     2339,
+     2530,
+     true
+    ],
+    [
+     "suena ",
+     2530,
+     3009,
+     true
+    ],
+    [
+     "🎵",
+     3009,
+     3200,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 4000,
+   "endMs": 6000,
+   "text": "👨‍👩‍👧 familia de emojis",
+   "isInterlude": false,
+   "words": [
+    [
+     "👨‍👩‍👧 ",
+     4000,
+     4235,
+     true
+    ],
+    [
+     "familia ",
+     4235,
+     5059,
+     true
+    ],
+    [
+     "de ",
+     5059,
+     5294,
+     true
+    ],
+    [
+     "emojis",
+     5294,
+     6000,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.8429,
+   "interlude": null
+  },
+  {
+   "pos": 3999,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.9284,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

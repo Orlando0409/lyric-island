@@ -1,0 +1,22 @@
+node_modules/
+out/
+dist/
+coverage/
+resources/helper/
+bin/
+obj/
+*.user
+.vs/
+.idea/
+.gradle/
+android/build/
+android/**/build/
+local.properties
+*.apk
+test-results/
+playwright-report/
+.DS_Store
+
+# Listas de canciones exportadas (datos personales)
+playlist.csv
+*.playlist.csv

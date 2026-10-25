@@ -1,0 +1,74 @@
+{
+ "offsetMs": 0,
+ "meta": {
+  "re": "Editor X",
+  "ve": "1.0",
+  "by": "Alguien",
+  "au": "Autor",
+  "#": "comentario"
+ },
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 3000,
+   "text": "Una línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Una ",
+     1000,
+     1330,
+     true
+    ],
+    [
+     "línea",
+     1330,
+     1880,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4000,
+   "line": 0,
+   "lineProgress": 1,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

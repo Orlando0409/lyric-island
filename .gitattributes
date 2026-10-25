@@ -1,0 +1,7 @@
+* text=auto
+# Fixtures compartidos TS ↔ Kotlin: byte a byte (bom-crlf.lrc tiene CRLF a propósito).
+shared/fixtures/** -text
+gradlew text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jar binary

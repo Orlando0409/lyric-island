@@ -1,0 +1,130 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "밤하늘 위의 작은 섬",
+   "isInterlude": false,
+   "words": [
+    [
+     "밤하늘 ",
+     1000,
+     1293,
+     true
+    ],
+    [
+     "위의 ",
+     1293,
+     1489,
+     true
+    ],
+    [
+     "작은 ",
+     1489,
+     1684,
+     true
+    ],
+    [
+     "섬",
+     1684,
+     1880,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 7000,
+   "text": "노래가 계속 흐른다",
+   "isInterlude": false,
+   "words": [
+    [
+     "노래가 ",
+     5000,
+     5330,
+     true
+    ],
+    [
+     "계속 ",
+     5330,
+     5550,
+     true
+    ],
+    [
+     "흐른다",
+     5550,
+     5880,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

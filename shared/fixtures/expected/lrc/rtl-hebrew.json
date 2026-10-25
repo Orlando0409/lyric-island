@@ -1,0 +1,124 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "אי קטן בלילה",
+   "isInterlude": false,
+   "words": [
+    [
+     "אי ",
+     1000,
+     1220,
+     true
+    ],
+    [
+     "קטן ",
+     1220,
+     1550,
+     true
+    ],
+    [
+     "בלילה",
+     1550,
+     2100,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 7000,
+   "text": "המילים זורחות לאט",
+   "isInterlude": false,
+   "words": [
+    [
+     "המילים ",
+     5000,
+     5660,
+     true
+    ],
+    [
+     "זורחות ",
+     5660,
+     6320,
+     true
+    ],
+    [
+     "לאט",
+     6320,
+     6650,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.5152,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

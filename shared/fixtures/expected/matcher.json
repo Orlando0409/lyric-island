@@ -1,0 +1,311 @@
+{
+ "keys": [
+  {
+   "title": "Bohemian Rhapsody",
+   "artist": "Queen",
+   "cacheKeySource": "queen|bohemian rhapsody|90"
+  },
+  {
+   "title": "Bohemian Rhapsody",
+   "artist": "Queen",
+   "cacheKeySource": "queen|bohemian rhapsody|91"
+  },
+  {
+   "title": "Hotel California",
+   "artist": "Eagles",
+   "cacheKeySource": "eagles|hotel california|91"
+  },
+  {
+   "title": "Let It Be",
+   "artist": "The Beatles",
+   "cacheKeySource": "the beatles|let it be|92"
+  },
+  {
+   "title": "Come Together",
+   "artist": "The Beatles",
+   "cacheKeySource": "the beatles|come together|92"
+  },
+  {
+   "title": "Smells Like Teen Spirit",
+   "artist": "Nirvana",
+   "cacheKeySource": "nirvana|smells like teen spirit|93"
+  },
+  {
+   "title": "Stay",
+   "artist": "The Kid LAROI",
+   "cacheKeySource": "the kid laroi|stay|93"
+  },
+  {
+   "title": "Peaches",
+   "artist": "Justin Bieber",
+   "cacheKeySource": "justin bieber|peaches|94"
+  },
+  {
+   "title": "Despacito",
+   "artist": "Luis Fonsi",
+   "cacheKeySource": "luis fonsi|despacito|94"
+  },
+  {
+   "title": "Taki Taki",
+   "artist": "DJ Snake",
+   "cacheKeySource": "dj snake|taki taki|95"
+  },
+  {
+   "title": "Mi Gente",
+   "artist": "J Balvin",
+   "cacheKeySource": "j balvin|mi gente|95"
+  },
+  {
+   "title": "Tusa",
+   "artist": "KAROL G",
+   "cacheKeySource": "karol g|tusa|96"
+  },
+  {
+   "title": "Pepas",
+   "artist": "Farruko",
+   "cacheKeySource": "farruko|pepas|96"
+  },
+  {
+   "title": "Blinding Lights",
+   "artist": "The Weeknd",
+   "cacheKeySource": "the weeknd|blinding lights|97"
+  },
+  {
+   "title": "Starboy",
+   "artist": "The Weeknd",
+   "cacheKeySource": "the weeknd|starboy|97"
+  },
+  {
+   "title": "Starboy",
+   "artist": "The Weeknd",
+   "cacheKeySource": "the weeknd|starboy|98"
+  },
+  {
+   "title": "Yesterday",
+   "artist": "The Beatles",
+   "cacheKeySource": "the beatles|yesterday|98"
+  },
+  {
+   "title": "Wonderwall",
+   "artist": "Oasis",
+   "cacheKeySource": "oasis|wonderwall|99"
+  },
+  {
+   "title": "Pet Sounds",
+   "artist": "The Beach Boys",
+   "cacheKeySource": "the beach boys|pet sounds|99"
+  },
+  {
+   "title": "Paint It Black",
+   "artist": "The Rolling Stones",
+   "cacheKeySource": "the rolling stones|paint it black|100"
+  },
+  {
+   "title": "Hey Jude",
+   "artist": "The Beatles",
+   "cacheKeySource": "the beatles|hey jude|100"
+  },
+  {
+   "title": "Creep - Live",
+   "artist": "Radiohead",
+   "cacheKeySource": "radiohead|creep - live|101"
+  },
+  {
+   "title": "Layla - Acoustic",
+   "artist": "Eric Clapton",
+   "cacheKeySource": "eric clapton|layla - acoustic|101"
+  },
+  {
+   "title": "Titanium - Remix",
+   "artist": "David Guetta",
+   "cacheKeySource": "david guetta|titanium - remix|102"
+  },
+  {
+   "title": "Hurt (Johnny Cash Version)",
+   "artist": "Johnny Cash",
+   "cacheKeySource": "johnny cash|hurt (johnny cash version)|102"
+  },
+  {
+   "title": "Unplugged (Live)",
+   "artist": "Nirvana",
+   "cacheKeySource": "nirvana|unplugged (live)|103"
+  },
+  {
+   "title": "Bohemian Rhapsody",
+   "artist": "Queen",
+   "cacheKeySource": "queen|bohemian rhapsody|103"
+  },
+  {
+   "title": "Calma - Remix",
+   "artist": "Pedro Capó",
+   "cacheKeySource": "pedro capo|calma - remix|104"
+  },
+  {
+   "title": "La Bachata",
+   "artist": "Manuel Turizo",
+   "cacheKeySource": "manuel turizo|la bachata|104"
+  },
+  {
+   "title": "Quevedo: Bzrp Music Sessions, Vol. 52",
+   "artist": "Bizarrap",
+   "cacheKeySource": "bizarrap|quevedo: bzrp music sessions, vol. 52|105"
+  },
+  {
+   "title": "Ella Baila Sola",
+   "artist": "Eslabon Armado",
+   "cacheKeySource": "eslabon armado|ella baila sola|105"
+  },
+  {
+   "title": "Corazón Partío",
+   "artist": "Alejandro Sanz",
+   "cacheKeySource": "alejandro sanz|corazon partio|106"
+  },
+  {
+   "title": "Me Porto Bonito",
+   "artist": "Bad Bunny",
+   "cacheKeySource": "bad bunny|me porto bonito|106"
+  },
+  {
+   "title": "De Música Ligera",
+   "artist": "Soda Stereo",
+   "cacheKeySource": "soda stereo|de musica ligera|107"
+  },
+  {
+   "title": "Lamento Boliviano",
+   "artist": "Enanitos Verdes",
+   "cacheKeySource": "enanitos verdes|lamento boliviano|107"
+  },
+  {
+   "title": "Dynamite",
+   "artist": "BTS",
+   "cacheKeySource": "bts|dynamite|108"
+  },
+  {
+   "title": "夜に駆ける",
+   "artist": "YOASOBI",
+   "cacheKeySource": "yoasobi|夜に駆ける|108"
+  },
+  {
+   "title": "Lemon",
+   "artist": "米津玄師",
+   "cacheKeySource": "米津玄師|lemon|109"
+  },
+  {
+   "title": "Gangnam Style (강남스타일)",
+   "artist": "PSY",
+   "cacheKeySource": "psy|gangnam style (강남스타일)|109"
+  },
+  {
+   "title": "Bohemian Rhapsody",
+   "artist": "Queen",
+   "cacheKeySource": "queen|bohemian rhapsody|110"
+  },
+  {
+   "title": "Bohemian Rhapsody",
+   "artist": "Queen",
+   "cacheKeySource": "queen|bohemian rhapsody|110"
+  },
+  {
+   "title": "Get Lucky",
+   "artist": "Daft Punk",
+   "cacheKeySource": "daft punk|get lucky|111"
+  },
+  {
+   "title": "Hips Don't Lie",
+   "artist": "shakira",
+   "cacheKeySource": "shakira|hips don't lie|111"
+  },
+  {
+   "title": "Billie Eilish - bad guy (Official Music Video)",
+   "artist": "BillieEilishVEVO",
+   "cacheKeySource": "billieeilishvevo|billie eilish - bad guy (official music video)|112"
+  },
+  {
+   "title": "Livin' On A Prayer",
+   "artist": "Bon Jovi",
+   "cacheKeySource": "bon jovi|livin' on a prayer|112"
+  },
+  {
+   "title": "Don’t Stop Me Now",
+   "artist": "Queen",
+   "cacheKeySource": "queen|don't stop me now|113"
+  },
+  {
+   "title": "Under Pressure",
+   "artist": "Queen",
+   "cacheKeySource": "queen|under pressure|113"
+  },
+  {
+   "title": "Señorita",
+   "artist": "Shawn Mendes",
+   "cacheKeySource": "shawn mendes|senorita|114"
+  },
+  {
+   "title": "Watermelon Sugar",
+   "artist": "Harry Styles",
+   "cacheKeySource": "harry styles|watermelon sugar|114"
+  },
+  {
+   "title": "Rolling in the Deep",
+   "artist": "Adele",
+   "cacheKeySource": "adele|rolling in the deep|115"
+  },
+  {
+   "title": "One More Time - Radio Edit",
+   "artist": "Daft Punk",
+   "cacheKeySource": "daft punk|one more time - radio edit|115"
+  },
+  {
+   "title": "Simon & Garfunkel Medley",
+   "artist": "Simon",
+   "cacheKeySource": "simon|simon & garfunkel medley|116"
+  }
+ ],
+ "scores": [
+  {
+   "file": "search-best-of-many.json",
+   "id": 2005,
+   "score": 0.3528
+  },
+  {
+   "file": "search-best-of-many.json",
+   "id": 2006,
+   "score": 0.95
+  },
+  {
+   "file": "search-best-of-many.json",
+   "id": 2007,
+   "score": 1
+  },
+  {
+   "file": "search-duration-penalty.json",
+   "id": 2004,
+   "score": 0.5
+  },
+  {
+   "file": "search-live-only.json",
+   "id": 2001,
+   "score": 0.3367
+  },
+  {
+   "file": "search-live-only.json",
+   "id": 2002,
+   "score": 0.7867
+  },
+  {
+   "file": "search-malformed-items.json",
+   "id": 2008,
+   "score": 0.5
+  },
+  {
+   "file": "search-wrong-artist.json",
+   "id": 2003,
+   "score": 0.3604
+  },
+  {
+   "file": "search-youtube.json",
+   "id": 2009,
+   "score": 0.3367
+  }
+ ]
+}

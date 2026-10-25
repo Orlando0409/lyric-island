@@ -1,0 +1,100 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 3000,
+   "endMs": 6000,
+   "text": "Hola",
+   "isInterlude": false,
+   "words": [
+    [
+     "Hola",
+     3000,
+     3800,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 6000,
+   "endMs": 8000,
+   "text": "Adiós",
+   "isInterlude": false,
+   "words": [
+    [
+     "Adiós",
+     6000,
+     6800,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5999,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

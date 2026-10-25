@@ -1,0 +1,12 @@
+{
+  "file": "get-remastered-404.json",
+  "route": "get",
+  "match": {
+    "track_name": "Canción Vieja - Remastered 2011",
+    "artist_name": "Banda Mock"
+  },
+  "status": 404,
+  "body": {
+    "code": 404
+  }
+}

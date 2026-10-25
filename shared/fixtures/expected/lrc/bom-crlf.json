@@ -1,0 +1,126 @@
+{
+ "offsetMs": 0,
+ "meta": {
+  "ti": "Con BOM"
+ },
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 3000,
+   "text": "Línea con BOM",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     1000,
+     1550,
+     true
+    ],
+    [
+     "con ",
+     1550,
+     1880,
+     true
+    ],
+    [
+     "BOM",
+     1880,
+     2210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 3000,
+   "endMs": 5000,
+   "text": "Y saltos CRLF",
+   "isInterlude": false,
+   "words": [
+    [
+     "Y ",
+     3000,
+     3202,
+     true
+    ],
+    [
+     "saltos ",
+     3202,
+     3807,
+     true
+    ],
+    [
+     "CRLF",
+     3807,
+     4210,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.3636,
+   "interlude": null
+  },
+  {
+   "pos": 2999,
+   "line": 0,
+   "lineProgress": 0.9995,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.4789,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

@@ -1,0 +1,184 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "海上的小岛在发光",
+   "isInterlude": false,
+   "words": [
+    [
+     "海",
+     1000,
+     1110,
+     true
+    ],
+    [
+     "上",
+     1110,
+     1220,
+     true
+    ],
+    [
+     "的",
+     1220,
+     1330,
+     true
+    ],
+    [
+     "小",
+     1330,
+     1440,
+     true
+    ],
+    [
+     "岛",
+     1440,
+     1550,
+     true
+    ],
+    [
+     "在",
+     1550,
+     1660,
+     true
+    ],
+    [
+     "发",
+     1660,
+     1770,
+     true
+    ],
+    [
+     "光",
+     1770,
+     1880,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 7000,
+   "text": "每一个字都在跳舞",
+   "isInterlude": false,
+   "words": [
+    [
+     "每",
+     5000,
+     5110,
+     true
+    ],
+    [
+     "一",
+     5110,
+     5220,
+     true
+    ],
+    [
+     "个",
+     5220,
+     5330,
+     true
+    ],
+    [
+     "字",
+     5330,
+     5440,
+     true
+    ],
+    [
+     "都",
+     5440,
+     5550,
+     true
+    ],
+    [
+     "在",
+     5550,
+     5660,
+     true
+    ],
+    [
+     "跳",
+     5660,
+     5770,
+     true
+    ],
+    [
+     "舞",
+     5770,
+     5880,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

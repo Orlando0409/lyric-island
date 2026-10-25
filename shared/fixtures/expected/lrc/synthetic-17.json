@@ -1,0 +1,965 @@
+{
+ "offsetMs": -270,
+ "meta": {
+  "ar": "Artista Sintético 17",
+  "ti": "Canción 17",
+  "length": "05:00",
+  "offset": "-270"
+ },
+ "lines": [
+  {
+   "startMs": 4822,
+   "endMs": 7468,
+   "text": "Golden along",
+   "isInterlude": false,
+   "words": [
+    [
+     "Golden ",
+     4822,
+     5482,
+     true
+    ],
+    [
+     "along",
+     5482,
+     6032,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 7468,
+   "endMs": 9107,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  },
+  {
+   "startMs": 9107,
+   "endMs": 14439,
+   "text": "Falling island rhythm sing falling.",
+   "isInterlude": false,
+   "words": [
+    [
+     "Falling ",
+     9107,
+     9865,
+     true
+    ],
+    [
+     "island ",
+     9865,
+     10514,
+     true
+    ],
+    [
+     "rhythm ",
+     10514,
+     11164,
+     true
+    ],
+    [
+     "sing ",
+     11164,
+     11597,
+     true
+    ],
+    [
+     "falling.",
+     11597,
+     12517,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 14439,
+   "endMs": 19952,
+   "text": "Glows rhythm sing forever lights again over sing forever.",
+   "isInterlude": false,
+   "words": [
+    [
+     "Glows ",
+     14439,
+     14983,
+     true
+    ],
+    [
+     "rhythm ",
+     14983,
+     15637,
+     true
+    ],
+    [
+     "sing ",
+     15637,
+     16072,
+     true
+    ],
+    [
+     "forever ",
+     16072,
+     16835,
+     true
+    ],
+    [
+     "lights ",
+     16835,
+     17488,
+     true
+    ],
+    [
+     "again ",
+     17488,
+     18032,
+     true
+    ],
+    [
+     "over ",
+     18032,
+     18468,
+     true
+    ],
+    [
+     "sing ",
+     18468,
+     18903,
+     true
+    ],
+    [
+     "forever.",
+     18903,
+     19829,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 19952,
+   "endMs": 22542,
+   "text": "Over sing glows island into golden hours",
+   "isInterlude": false,
+   "words": [
+    [
+     "Over ",
+     19952,
+     20257,
+     true
+    ],
+    [
+     "sing ",
+     20257,
+     20561,
+     true
+    ],
+    [
+     "glows ",
+     20561,
+     20942,
+     true
+    ],
+    [
+     "island ",
+     20942,
+     21399,
+     true
+    ],
+    [
+     "into ",
+     21399,
+     21704,
+     true
+    ],
+    [
+     "golden ",
+     21704,
+     22161,
+     true
+    ],
+    [
+     "hours",
+     22161,
+     22542,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 22542,
+   "endMs": 28270,
+   "text": "Lights again glows we we again",
+   "isInterlude": false,
+   "words": [
+    [
+     "Lights ",
+     22542,
+     23202,
+     true
+    ],
+    [
+     "again ",
+     23202,
+     23752,
+     true
+    ],
+    [
+     "glows ",
+     23752,
+     24302,
+     true
+    ],
+    [
+     "we ",
+     24302,
+     24522,
+     true
+    ],
+    [
+     "we ",
+     24522,
+     24742,
+     true
+    ],
+    [
+     "again",
+     24742,
+     25292,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 28270,
+   "endMs": 30782,
+   "text": "Glows over",
+   "isInterlude": false,
+   "words": [
+    [
+     "Glows ",
+     28270,
+     28820,
+     true
+    ],
+    [
+     "over",
+     28820,
+     29260,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 30782,
+   "endMs": 34387,
+   "text": "Along the we again falling lights island,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Along ",
+     30782,
+     31290,
+     true
+    ],
+    [
+     "the ",
+     31290,
+     31594,
+     true
+    ],
+    [
+     "we ",
+     31594,
+     31797,
+     true
+    ],
+    [
+     "again ",
+     31797,
+     32305,
+     true
+    ],
+    [
+     "falling ",
+     32305,
+     33016,
+     true
+    ],
+    [
+     "lights ",
+     33016,
+     33625,
+     true
+    ],
+    [
+     "island,",
+     33625,
+     34387,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 34387,
+   "endMs": 36175,
+   "text": "Echo echo river",
+   "isInterlude": false,
+   "words": [
+    [
+     "Echo ",
+     34387,
+     34827,
+     true
+    ],
+    [
+     "echo ",
+     34827,
+     35267,
+     true
+    ],
+    [
+     "river",
+     35267,
+     35817,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 36175,
+   "endMs": 48701,
+   "text": "City we the slowly the the falling",
+   "isInterlude": false,
+   "words": [
+    [
+     "City ",
+     36175,
+     36615,
+     true
+    ],
+    [
+     "we ",
+     36615,
+     36835,
+     true
+    ],
+    [
+     "the ",
+     36835,
+     37165,
+     true
+    ],
+    [
+     "slowly ",
+     37165,
+     37825,
+     true
+    ],
+    [
+     "the ",
+     37825,
+     38155,
+     true
+    ],
+    [
+     "the ",
+     38155,
+     38485,
+     true
+    ],
+    [
+     "falling",
+     38485,
+     39255,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 48701,
+   "endMs": 51171,
+   "text": "Golden we",
+   "isInterlude": false,
+   "words": [
+    [
+     "Golden ",
+     48701,
+     49361,
+     true
+    ],
+    [
+     "we",
+     49361,
+     49581,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 51171,
+   "endMs": 64015,
+   "text": "Rhythm slowly",
+   "isInterlude": false,
+   "words": [
+    [
+     "Rhythm ",
+     51171,
+     51831,
+     true
+    ],
+    [
+     "slowly",
+     51831,
+     52491,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 64015,
+   "endMs": 66917,
+   "text": "River along tonight into",
+   "isInterlude": false,
+   "words": [
+    [
+     "River ",
+     64015,
+     64565,
+     true
+    ],
+    [
+     "along ",
+     64565,
+     65115,
+     true
+    ],
+    [
+     "tonight ",
+     65115,
+     65885,
+     true
+    ],
+    [
+     "into",
+     65885,
+     66325,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 66917,
+   "endMs": 70704,
+   "text": "Falling island river along",
+   "isInterlude": false,
+   "words": [
+    [
+     "Falling ",
+     66917,
+     67687,
+     true
+    ],
+    [
+     "island ",
+     67687,
+     68347,
+     true
+    ],
+    [
+     "river ",
+     68347,
+     68897,
+     true
+    ],
+    [
+     "along",
+     68897,
+     69447,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 70704,
+   "endMs": 75120,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  },
+  {
+   "startMs": 75120,
+   "endMs": 78450,
+   "text": "Lights into echo hours echo slowly the along",
+   "isInterlude": false,
+   "words": [
+    [
+     "Lights ",
+     75120,
+     75660,
+     true
+    ],
+    [
+     "into ",
+     75660,
+     76020,
+     true
+    ],
+    [
+     "echo ",
+     76020,
+     76380,
+     true
+    ],
+    [
+     "hours ",
+     76380,
+     76830,
+     true
+    ],
+    [
+     "echo ",
+     76830,
+     77190,
+     true
+    ],
+    [
+     "slowly ",
+     77190,
+     77730,
+     true
+    ],
+    [
+     "the ",
+     77730,
+     78000,
+     true
+    ],
+    [
+     "along",
+     78000,
+     78450,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 4821,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9998,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 4822,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6145,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 7467,
+   "line": 0,
+   "lineProgress": 0.9996,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 7468,
+   "line": 1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 8287,
+   "line": 1,
+   "lineProgress": 0.4997,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 9106,
+   "line": 1,
+   "lineProgress": 0.9994,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 9107,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 11773,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.1913,
+   "interlude": null
+  },
+  {
+   "pos": 14438,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 14439,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 17195,
+   "line": 3,
+   "lineProgress": 0.4999,
+   "word": 4,
+   "wordProgress": 0.5513,
+   "interlude": null
+  },
+  {
+   "pos": 19951,
+   "line": 3,
+   "lineProgress": 0.9998,
+   "word": 8,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 19952,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 21247,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.6674,
+   "interlude": null
+  },
+  {
+   "pos": 22541,
+   "line": 4,
+   "lineProgress": 0.9996,
+   "word": 6,
+   "wordProgress": 0.9974,
+   "interlude": null
+  },
+  {
+   "pos": 22542,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 25406,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 28269,
+   "line": 5,
+   "lineProgress": 0.9998,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 28270,
+   "line": 6,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 29526,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 30781,
+   "line": 6,
+   "lineProgress": 0.9996,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 30782,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 32584,
+   "line": 7,
+   "lineProgress": 0.4999,
+   "word": 4,
+   "wordProgress": 0.3924,
+   "interlude": null
+  },
+  {
+   "pos": 34386,
+   "line": 7,
+   "lineProgress": 0.9997,
+   "word": 6,
+   "wordProgress": 0.9987,
+   "interlude": null
+  },
+  {
+   "pos": 34387,
+   "line": 8,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 35281,
+   "line": 8,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.0255,
+   "interlude": null
+  },
+  {
+   "pos": 36174,
+   "line": 8,
+   "lineProgress": 0.9994,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 36175,
+   "line": 9,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 42438,
+   "line": 9,
+   "lineProgress": 0.5,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.337,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 48700,
+   "line": 9,
+   "lineProgress": 0.9999,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 48701,
+   "line": 10,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 49936,
+   "line": 10,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 51170,
+   "line": 10,
+   "lineProgress": 0.9996,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 51171,
+   "line": 11,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 57593,
+   "line": 11,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4427,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 64014,
+   "line": 11,
+   "lineProgress": 0.9999,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 64015,
+   "line": 12,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 65466,
+   "line": 12,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.4558,
+   "interlude": null
+  },
+  {
+   "pos": 66916,
+   "line": 12,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 66917,
+   "line": 13,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 68810,
+   "line": 13,
+   "lineProgress": 0.4999,
+   "word": 2,
+   "wordProgress": 0.8418,
+   "interlude": null
+  },
+  {
+   "pos": 70703,
+   "line": 13,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 70704,
+   "line": 14,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 72912,
+   "line": 14,
+   "lineProgress": 0.5,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 75119,
+   "line": 14,
+   "lineProgress": 0.9998,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 75120,
+   "line": 15,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 76785,
+   "line": 15,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.9,
+   "interlude": null
+  },
+  {
+   "pos": 79450,
+   "line": 15,
+   "lineProgress": 1,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

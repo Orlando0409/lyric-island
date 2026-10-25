@@ -1,0 +1,144 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 5000,
+   "endMs": 5000,
+   "text": "Mismo instante A",
+   "isInterlude": false,
+   "words": [
+    [
+     "Mismo ",
+     5000,
+     5000,
+     true
+    ],
+    [
+     "instante ",
+     5000,
+     5000,
+     true
+    ],
+    [
+     "A",
+     5000,
+     5000,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 9000,
+   "text": "Mismo instante B",
+   "isInterlude": false,
+   "words": [
+    [
+     "Mismo ",
+     5000,
+     5513,
+     true
+    ],
+    [
+     "instante ",
+     5513,
+     6335,
+     true
+    ],
+    [
+     "B",
+     6335,
+     6540,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 11000,
+   "text": "Después",
+   "isInterlude": false,
+   "words": [
+    [
+     "Después",
+     9000,
+     9800,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 4999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9998,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8999,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 10000,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 12000,
+   "line": 2,
+   "lineProgress": 1,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

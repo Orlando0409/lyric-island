@@ -1,0 +1,132 @@
+{
+ "offsetMs": 500,
+ "meta": {
+  "offset": "+500"
+ },
+ "lines": [
+  {
+   "startMs": 5000,
+   "endMs": 9000,
+   "text": "Desfase positivo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Desfase ",
+     5000,
+     5770,
+     true
+    ],
+    [
+     "positivo",
+     5770,
+     6650,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 11000,
+   "text": "La letra llega antes",
+   "isInterlude": false,
+   "words": [
+    [
+     "La ",
+     9000,
+     9220,
+     true
+    ],
+    [
+     "letra ",
+     9220,
+     9770,
+     true
+    ],
+    [
+     "llega ",
+     9770,
+     10320,
+     true
+    ],
+    [
+     "antes",
+     10320,
+     10870,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 4999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9998,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 5000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 10000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.4182,
+   "interlude": null
+  },
+  {
+   "pos": 12000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

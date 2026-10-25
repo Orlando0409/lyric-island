@@ -1,0 +1,156 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 10000,
+   "endMs": 20000,
+   "text": "Primera",
+   "isInterlude": false,
+   "words": [
+    [
+     "Primera",
+     10000,
+     10800,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 20000,
+   "endMs": 30000,
+   "text": "Segunda",
+   "isInterlude": false,
+   "words": [
+    [
+     "Segunda",
+     20000,
+     20800,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 30000,
+   "endMs": 32000,
+   "text": "Tercera",
+   "isInterlude": false,
+   "words": [
+    [
+     "Tercera",
+     30000,
+     30800,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 9999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 10000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 15000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4565,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 19999,
+   "line": 0,
+   "lineProgress": 0.9999,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 20000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 25000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4565,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 29999,
+   "line": 1,
+   "lineProgress": 0.9999,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 30000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 31000,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 33000,
+   "line": 2,
+   "lineProgress": 1,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

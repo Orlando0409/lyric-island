@@ -1,0 +1,46 @@
+# Empaquetado (sección 11.4): MSIX para Microsoft Store y NSIS para GitHub Releases.
+appId: com.lyricisland.desktop
+productName: LyricIsland
+copyright: Copyright © 2026 OB Dev Studio
+# RNF-17: instalador < 120 MB → compresión máxima y solo los idiomas de la interfaz.
+compression: maximum
+electronLanguages:
+  - es
+  - es-419
+  - en-US
+# Herramientas modernas (Windows Kits 10.0.26100): el makeappx del juego legado no arranca en Windows 11 reciente.
+toolsets:
+  winCodeSign: 1.1.0
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**
+  - package.json
+extraResources:
+  - from: resources/helper
+    to: helper
+    filter: ['*.exe']
+  - from: resources/tray.png
+    to: tray.png
+win:
+  icon: build/icon.png
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: false
+  runAfterFinish: true
+appx:
+  # Completar con los datos de la cuenta de Partner Center antes de subir a la Store.
+  identityName: LyricIsland
+  applicationId: LyricIsland
+  displayName: LyricIsland
+  publisherDisplayName: OB Dev Studio
+  publisher: CN=00000000-0000-0000-0000-000000000000
+  languages: [es-ES, en-US]
+  # Autostart en MSIX: extensión StartupTask del manifiesto.
+  addAutoLaunchExtension: true
+  backgroundColor: '#1C1C1E'

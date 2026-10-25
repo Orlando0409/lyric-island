@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LyricIsland.MediaHelper.Tests/LyricIsland.MediaHelper.Tests.csproj" />
+  <Project Path="LyricIsland.MediaHelper/LyricIsland.MediaHelper.csproj" />
+</Solution>

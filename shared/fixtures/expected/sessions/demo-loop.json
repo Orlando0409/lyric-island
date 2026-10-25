@@ -1,0 +1,461 @@
+[
+ {
+  "t": 0,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 1000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 940
+ },
+ {
+  "t": 2000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 1940
+ },
+ {
+  "t": 3000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 2940
+ },
+ {
+  "t": 4000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 3940
+ },
+ {
+  "t": 5000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 2,
+  "pos": 4940
+ },
+ {
+  "t": 6000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 5940
+ },
+ {
+  "t": 7000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 6940
+ },
+ {
+  "t": 8000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 7940
+ },
+ {
+  "t": 9000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 1,
+  "pos": 8940
+ },
+ {
+  "t": 10000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 3,
+  "pos": 9940
+ },
+ {
+  "t": 11000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 10940
+ },
+ {
+  "t": 12000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 11940
+ },
+ {
+  "t": 13000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 12940
+ },
+ {
+  "t": 14000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 1,
+  "pos": 13940
+ },
+ {
+  "t": 15000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 14940
+ },
+ {
+  "t": 16000,
+  "mode": "paused",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16000
+ },
+ {
+  "t": 17000,
+  "mode": "paused",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16000
+ },
+ {
+  "t": 18000,
+  "mode": "paused",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16000
+ },
+ {
+  "t": 19000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16000
+ },
+ {
+  "t": 20000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 17000
+ },
+ {
+  "t": 21000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 2,
+  "pos": 18000
+ },
+ {
+  "t": 22000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 3,
+  "pos": 19000
+ },
+ {
+  "t": 23000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 4,
+  "pos": 20000
+ },
+ {
+  "t": 24000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 21000
+ },
+ {
+  "t": 25000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 22000
+ },
+ {
+  "t": 26000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 23000
+ },
+ {
+  "t": 27000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 24000
+ },
+ {
+  "t": 28000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 25000
+ },
+ {
+  "t": 29000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 26000
+ },
+ {
+  "t": 30000,
+  "mode": "compact",
+  "title": "Ruta Norte",
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 31000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 990
+ },
+ {
+  "t": 32000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 1990
+ },
+ {
+  "t": 33000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 2990
+ },
+ {
+  "t": 34000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 3990
+ },
+ {
+  "t": 35000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 0,
+  "word": 1,
+  "pos": 4990
+ },
+ {
+  "t": 36000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 0,
+  "word": 3,
+  "pos": 5990
+ },
+ {
+  "t": 37000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 6990
+ },
+ {
+  "t": 38000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 7990
+ },
+ {
+  "t": 39000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 1,
+  "word": 1,
+  "pos": 8990
+ },
+ {
+  "t": 40000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 1,
+  "word": 3,
+  "pos": 9990
+ },
+ {
+  "t": 41000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 10990
+ },
+ {
+  "t": 42000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 11990
+ },
+ {
+  "t": 43000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 12990
+ },
+ {
+  "t": 44000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 2,
+  "word": 1,
+  "pos": 13990
+ },
+ {
+  "t": 45000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 14990
+ },
+ {
+  "t": 46000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 15990
+ },
+ {
+  "t": 47000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16990
+ },
+ {
+  "t": 48000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 3,
+  "word": 2,
+  "pos": 17990
+ },
+ {
+  "t": 49000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 3,
+  "word": 3,
+  "pos": 18990
+ },
+ {
+  "t": 50000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 3,
+  "word": 4,
+  "pos": 19990
+ }
+]

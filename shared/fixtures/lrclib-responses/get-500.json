@@ -1,0 +1,13 @@
+{
+  "file": "get-500.json",
+  "route": "get",
+  "match": {
+    "track_name": "Servidor Roto",
+    "artist_name": "Los Fixtures"
+  },
+  "status": 500,
+  "body": {
+    "code": 500,
+    "message": "Internal error"
+  }
+}

@@ -1,0 +1,1820 @@
+{
+ "offsetMs": 0,
+ "meta": {
+  "ar": "Artista Sintético 0",
+  "ti": "Canción 0",
+  "length": "03:00"
+ },
+ "lines": [
+  {
+   "startMs": 14410,
+   "endMs": 18160,
+   "text": "Fuego la camino canto brilla calle viento",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fuego ",
+     14410,
+     14946,
+     true
+    ],
+    [
+     "la ",
+     14946,
+     15160,
+     true
+    ],
+    [
+     "camino ",
+     15160,
+     15803,
+     true
+    ],
+    [
+     "canto ",
+     15803,
+     16339,
+     true
+    ],
+    [
+     "brilla ",
+     16339,
+     16981,
+     true
+    ],
+    [
+     "calle ",
+     16981,
+     17517,
+     true
+    ],
+    [
+     "viento",
+     17517,
+     18160,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 18160,
+   "endMs": 21270,
+   "text": "Mar luz",
+   "isInterlude": false,
+   "words": [
+    [
+     "Mar ",
+     18160,
+     18560,
+     true
+    ],
+    [
+     "luz",
+     18560,
+     18960,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 21270,
+   "endMs": 27110,
+   "text": "Sobre sobre el mañana",
+   "isInterlude": false,
+   "words": [
+    [
+     "Sobre ",
+     21270,
+     21820,
+     true
+    ],
+    [
+     "sobre ",
+     21820,
+     22370,
+     true
+    ],
+    [
+     "el ",
+     22370,
+     22590,
+     true
+    ],
+    [
+     "mañana",
+     22590,
+     23250,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 27110,
+   "endMs": 28960,
+   "text": "Calle brilla luz ritmo noche el la la viento",
+   "isInterlude": false,
+   "words": [
+    [
+     "Calle ",
+     27110,
+     27367,
+     true
+    ],
+    [
+     "brilla ",
+     27367,
+     27675,
+     true
+    ],
+    [
+     "luz ",
+     27675,
+     27829,
+     true
+    ],
+    [
+     "ritmo ",
+     27829,
+     28086,
+     true
+    ],
+    [
+     "noche ",
+     28086,
+     28343,
+     true
+    ],
+    [
+     "el ",
+     28343,
+     28446,
+     true
+    ],
+    [
+     "la ",
+     28446,
+     28549,
+     true
+    ],
+    [
+     "la ",
+     28549,
+     28652,
+     true
+    ],
+    [
+     "viento",
+     28652,
+     28960,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 28960,
+   "endMs": 34160,
+   "text": "Sobre isla despacio sueño ritmo mar ritmo el mañana",
+   "isInterlude": false,
+   "words": [
+    [
+     "Sobre ",
+     28960,
+     29510,
+     true
+    ],
+    [
+     "isla ",
+     29510,
+     29950,
+     true
+    ],
+    [
+     "despacio ",
+     29950,
+     30830,
+     true
+    ],
+    [
+     "sueño ",
+     30830,
+     31380,
+     true
+    ],
+    [
+     "ritmo ",
+     31380,
+     31930,
+     true
+    ],
+    [
+     "mar ",
+     31930,
+     32260,
+     true
+    ],
+    [
+     "ritmo ",
+     32260,
+     32810,
+     true
+    ],
+    [
+     "el ",
+     32810,
+     33030,
+     true
+    ],
+    [
+     "mañana",
+     33030,
+     33690,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 34160,
+   "endMs": 37600,
+   "text": "Noche contigo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Noche ",
+     34160,
+     34710,
+     true
+    ],
+    [
+     "contigo",
+     34710,
+     35480,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 37600,
+   "endMs": 39520,
+   "text": "Brilla la mar siempre la viento canto canto",
+   "isInterlude": false,
+   "words": [
+    [
+     "Brilla ",
+     37600,
+     37920,
+     true
+    ],
+    [
+     "la ",
+     37920,
+     38027,
+     true
+    ],
+    [
+     "mar ",
+     38027,
+     38187,
+     true
+    ],
+    [
+     "siempre ",
+     38187,
+     38560,
+     true
+    ],
+    [
+     "la ",
+     38560,
+     38667,
+     true
+    ],
+    [
+     "viento ",
+     38667,
+     38987,
+     true
+    ],
+    [
+     "canto ",
+     38987,
+     39253,
+     true
+    ],
+    [
+     "canto",
+     39253,
+     39520,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 39520,
+   "endMs": 41750,
+   "text": "Noche brilla brilla canto,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Noche ",
+     39520,
+     39994,
+     true
+    ],
+    [
+     "brilla ",
+     39994,
+     40564,
+     true
+    ],
+    [
+     "brilla ",
+     40564,
+     41133,
+     true
+    ],
+    [
+     "canto,",
+     41133,
+     41750,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 41750,
+   "endMs": 45300,
+   "text": "Silencio isla calle silencio viento corazón el despacio corazón",
+   "isInterlude": false,
+   "words": [
+    [
+     "Silencio ",
+     41750,
+     42266,
+     true
+    ],
+    [
+     "isla ",
+     42266,
+     42525,
+     true
+    ],
+    [
+     "calle ",
+     42525,
+     42847,
+     true
+    ],
+    [
+     "silencio ",
+     42847,
+     43364,
+     true
+    ],
+    [
+     "viento ",
+     43364,
+     43751,
+     true
+    ],
+    [
+     "corazón ",
+     43751,
+     44203,
+     true
+    ],
+    [
+     "el ",
+     44203,
+     44332,
+     true
+    ],
+    [
+     "despacio ",
+     44332,
+     44848,
+     true
+    ],
+    [
+     "corazón",
+     44848,
+     45300,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 45300,
+   "endMs": 47100,
+   "text": "Sueño fuego isla sobre volver camino",
+   "isInterlude": false,
+   "words": [
+    [
+     "Sueño ",
+     45300,
+     45590,
+     true
+    ],
+    [
+     "fuego ",
+     45590,
+     45881,
+     true
+    ],
+    [
+     "isla ",
+     45881,
+     46113,
+     true
+    ],
+    [
+     "sobre ",
+     46113,
+     46403,
+     true
+    ],
+    [
+     "volver ",
+     46403,
+     46752,
+     true
+    ],
+    [
+     "camino",
+     46752,
+     47100,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 47100,
+   "endMs": 51610,
+   "text": "Ritmo despacio luz siempre camino volver contigo isla mar,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Ritmo ",
+     47100,
+     47547,
+     true
+    ],
+    [
+     "despacio ",
+     47547,
+     48261,
+     true
+    ],
+    [
+     "luz ",
+     48261,
+     48529,
+     true
+    ],
+    [
+     "siempre ",
+     48529,
+     49154,
+     true
+    ],
+    [
+     "camino ",
+     49154,
+     49690,
+     true
+    ],
+    [
+     "volver ",
+     49690,
+     50226,
+     true
+    ],
+    [
+     "contigo ",
+     50226,
+     50851,
+     true
+    ],
+    [
+     "isla ",
+     50851,
+     51208,
+     true
+    ],
+    [
+     "mar,",
+     51208,
+     51610,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 51610,
+   "endMs": 65810,
+   "text": "Silencio brilla sueño brilla mar canto canto brilla",
+   "isInterlude": false,
+   "words": [
+    [
+     "Silencio ",
+     51610,
+     52490,
+     true
+    ],
+    [
+     "brilla ",
+     52490,
+     53150,
+     true
+    ],
+    [
+     "sueño ",
+     53150,
+     53700,
+     true
+    ],
+    [
+     "brilla ",
+     53700,
+     54360,
+     true
+    ],
+    [
+     "mar ",
+     54360,
+     54690,
+     true
+    ],
+    [
+     "canto ",
+     54690,
+     55240,
+     true
+    ],
+    [
+     "canto ",
+     55240,
+     55790,
+     true
+    ],
+    [
+     "brilla",
+     55790,
+     56450,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 65810,
+   "endMs": 71250,
+   "text": "Fuego camino corazón brilla ritmo ritmo mañana",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fuego ",
+     65810,
+     66360,
+     true
+    ],
+    [
+     "camino ",
+     66360,
+     67020,
+     true
+    ],
+    [
+     "corazón ",
+     67020,
+     67790,
+     true
+    ],
+    [
+     "brilla ",
+     67790,
+     68450,
+     true
+    ],
+    [
+     "ritmo ",
+     68450,
+     69000,
+     true
+    ],
+    [
+     "ritmo ",
+     69000,
+     69550,
+     true
+    ],
+    [
+     "mañana",
+     69550,
+     70210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 71250,
+   "endMs": 76400,
+   "text": "Despacio la luz el brilla luz brilla el camino",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     71250,
+     72130,
+     true
+    ],
+    [
+     "la ",
+     72130,
+     72350,
+     true
+    ],
+    [
+     "luz ",
+     72350,
+     72680,
+     true
+    ],
+    [
+     "el ",
+     72680,
+     72900,
+     true
+    ],
+    [
+     "brilla ",
+     72900,
+     73560,
+     true
+    ],
+    [
+     "luz ",
+     73560,
+     73890,
+     true
+    ],
+    [
+     "brilla ",
+     73890,
+     74550,
+     true
+    ],
+    [
+     "el ",
+     74550,
+     74770,
+     true
+    ],
+    [
+     "camino",
+     74770,
+     75430,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 76400,
+   "endMs": 82250,
+   "text": "Despacio canto noche sueño luz isla brilla noche,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     76400,
+     77270,
+     true
+    ],
+    [
+     "canto ",
+     77270,
+     77813,
+     true
+    ],
+    [
+     "noche ",
+     77813,
+     78357,
+     true
+    ],
+    [
+     "sueño ",
+     78357,
+     78900,
+     true
+    ],
+    [
+     "luz ",
+     78900,
+     79226,
+     true
+    ],
+    [
+     "isla ",
+     79226,
+     79661,
+     true
+    ],
+    [
+     "brilla ",
+     79661,
+     80313,
+     true
+    ],
+    [
+     "noche,",
+     80313,
+     81020,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 82250,
+   "endMs": 96790,
+   "text": "Isla ritmo sobre canto noche brilla calle,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Isla ",
+     82250,
+     82684,
+     true
+    ],
+    [
+     "ritmo ",
+     82684,
+     83226,
+     true
+    ],
+    [
+     "sobre ",
+     83226,
+     83769,
+     true
+    ],
+    [
+     "canto ",
+     83769,
+     84311,
+     true
+    ],
+    [
+     "noche ",
+     84311,
+     84854,
+     true
+    ],
+    [
+     "brilla ",
+     84854,
+     85505,
+     true
+    ],
+    [
+     "calle,",
+     85505,
+     86210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 96790,
+   "endMs": 101610,
+   "text": "Mañana viento contigo el mañana despacio",
+   "isInterlude": false,
+   "words": [
+    [
+     "Mañana ",
+     96790,
+     97450,
+     true
+    ],
+    [
+     "viento ",
+     97450,
+     98110,
+     true
+    ],
+    [
+     "contigo ",
+     98110,
+     98880,
+     true
+    ],
+    [
+     "el ",
+     98880,
+     99100,
+     true
+    ],
+    [
+     "mañana ",
+     99100,
+     99760,
+     true
+    ],
+    [
+     "despacio",
+     99760,
+     100640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 101610,
+   "endMs": 113010,
+   "text": "La la",
+   "isInterlude": false,
+   "words": [
+    [
+     "La ",
+     101610,
+     102010,
+     true
+    ],
+    [
+     "la",
+     102010,
+     102410,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 113010,
+   "endMs": 116460,
+   "text": "Viento la brilla mañana despacio sueño despacio",
+   "isInterlude": false,
+   "words": [
+    [
+     "Viento ",
+     113010,
+     113515,
+     true
+    ],
+    [
+     "la ",
+     113515,
+     113683,
+     true
+    ],
+    [
+     "brilla ",
+     113683,
+     114188,
+     true
+    ],
+    [
+     "mañana ",
+     114188,
+     114693,
+     true
+    ],
+    [
+     "despacio ",
+     114693,
+     115366,
+     true
+    ],
+    [
+     "sueño ",
+     115366,
+     115787,
+     true
+    ],
+    [
+     "despacio",
+     115787,
+     116460,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 116460,
+   "endMs": 120460,
+   "text": "Mar sueño ritmo siempre brilla noche la",
+   "isInterlude": false,
+   "words": [
+    [
+     "Mar ",
+     116460,
+     116790,
+     true
+    ],
+    [
+     "sueño ",
+     116790,
+     117340,
+     true
+    ],
+    [
+     "ritmo ",
+     117340,
+     117890,
+     true
+    ],
+    [
+     "siempre ",
+     117890,
+     118660,
+     true
+    ],
+    [
+     "brilla ",
+     118660,
+     119320,
+     true
+    ],
+    [
+     "noche ",
+     119320,
+     119870,
+     true
+    ],
+    [
+     "la",
+     119870,
+     120090,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 120460,
+   "endMs": 124880,
+   "text": "Noche mañana sobre contigo mar el noche contigo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Noche ",
+     120460,
+     121010,
+     true
+    ],
+    [
+     "mañana ",
+     121010,
+     121670,
+     true
+    ],
+    [
+     "sobre ",
+     121670,
+     122220,
+     true
+    ],
+    [
+     "contigo ",
+     122220,
+     122990,
+     true
+    ],
+    [
+     "mar ",
+     122990,
+     123320,
+     true
+    ],
+    [
+     "el ",
+     123320,
+     123540,
+     true
+    ],
+    [
+     "noche ",
+     123540,
+     124090,
+     true
+    ],
+    [
+     "contigo",
+     124090,
+     124860,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 124880,
+   "endMs": 129110,
+   "text": "Ritmo sueño sobre contigo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Ritmo ",
+     124880,
+     125430,
+     true
+    ],
+    [
+     "sueño ",
+     125430,
+     125980,
+     true
+    ],
+    [
+     "sobre ",
+     125980,
+     126530,
+     true
+    ],
+    [
+     "contigo",
+     126530,
+     127300,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 129110,
+   "endMs": 142830,
+   "text": "Silencio sueño camino calle,",
+   "isInterlude": false,
+   "words": [
+    [
+     "Silencio ",
+     129110,
+     129973,
+     true
+    ],
+    [
+     "sueño ",
+     129973,
+     130512,
+     true
+    ],
+    [
+     "camino ",
+     130512,
+     131159,
+     true
+    ],
+    [
+     "calle,",
+     131159,
+     131860,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 142830,
+   "endMs": 144880,
+   "text": "Viento canto ritmo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Viento ",
+     142830,
+     143490,
+     true
+    ],
+    [
+     "canto ",
+     143490,
+     144040,
+     true
+    ],
+    [
+     "ritmo",
+     144040,
+     144590,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 144880,
+   "endMs": 150020,
+   "text": "Ritmo la mañana",
+   "isInterlude": false,
+   "words": [
+    [
+     "Ritmo ",
+     144880,
+     145430,
+     true
+    ],
+    [
+     "la ",
+     145430,
+     145650,
+     true
+    ],
+    [
+     "mañana",
+     145650,
+     146310,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 150020,
+   "endMs": 152020,
+   "text": "Ritmo despacio canto",
+   "isInterlude": false,
+   "words": [
+    [
+     "Ritmo ",
+     150020,
+     150570,
+     true
+    ],
+    [
+     "despacio ",
+     150570,
+     151450,
+     true
+    ],
+    [
+     "canto",
+     151450,
+     152000,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 14409,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 14410,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 16285,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.8993,
+   "interlude": null
+  },
+  {
+   "pos": 18159,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 6,
+   "wordProgress": 0.9984,
+   "interlude": null
+  },
+  {
+   "pos": 18160,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 19715,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 21269,
+   "line": 1,
+   "lineProgress": 0.9997,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 21270,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 24190,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 27109,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 27110,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 28035,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.8016,
+   "interlude": null
+  },
+  {
+   "pos": 28959,
+   "line": 3,
+   "lineProgress": 0.9995,
+   "word": 8,
+   "wordProgress": 0.9968,
+   "interlude": null
+  },
+  {
+   "pos": 28960,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 31560,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.3273,
+   "interlude": null
+  },
+  {
+   "pos": 34159,
+   "line": 4,
+   "lineProgress": 0.9998,
+   "word": 8,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 34160,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 35880,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 37599,
+   "line": 5,
+   "lineProgress": 0.9997,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 37600,
+   "line": 6,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 38560,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 39519,
+   "line": 6,
+   "lineProgress": 0.9995,
+   "word": 7,
+   "wordProgress": 0.9963,
+   "interlude": null
+  },
+  {
+   "pos": 39520,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 40635,
+   "line": 7,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1248,
+   "interlude": null
+  },
+  {
+   "pos": 41749,
+   "line": 7,
+   "lineProgress": 0.9996,
+   "word": 3,
+   "wordProgress": 0.9984,
+   "interlude": null
+  },
+  {
+   "pos": 41750,
+   "line": 8,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 43525,
+   "line": 8,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.416,
+   "interlude": null
+  },
+  {
+   "pos": 45299,
+   "line": 8,
+   "lineProgress": 0.9997,
+   "word": 8,
+   "wordProgress": 0.9978,
+   "interlude": null
+  },
+  {
+   "pos": 45300,
+   "line": 9,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 46200,
+   "line": 9,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.3,
+   "interlude": null
+  },
+  {
+   "pos": 47099,
+   "line": 9,
+   "lineProgress": 0.9994,
+   "word": 5,
+   "wordProgress": 0.9971,
+   "interlude": null
+  },
+  {
+   "pos": 47100,
+   "line": 10,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 49355,
+   "line": 10,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.375,
+   "interlude": null
+  },
+  {
+   "pos": 51609,
+   "line": 10,
+   "lineProgress": 0.9998,
+   "word": 8,
+   "wordProgress": 0.9975,
+   "interlude": null
+  },
+  {
+   "pos": 51610,
+   "line": 11,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 58710,
+   "line": 11,
+   "lineProgress": 0.5,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.2415,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 65809,
+   "line": 11,
+   "lineProgress": 0.9999,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 65810,
+   "line": 12,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 68530,
+   "line": 12,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.1455,
+   "interlude": null
+  },
+  {
+   "pos": 71249,
+   "line": 12,
+   "lineProgress": 0.9998,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 71250,
+   "line": 13,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 73825,
+   "line": 13,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 0.803,
+   "interlude": null
+  },
+  {
+   "pos": 76399,
+   "line": 13,
+   "lineProgress": 0.9998,
+   "word": 8,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 76400,
+   "line": 14,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 79325,
+   "line": 14,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 0.2276,
+   "interlude": null
+  },
+  {
+   "pos": 82249,
+   "line": 14,
+   "lineProgress": 0.9998,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 82250,
+   "line": 15,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 89520,
+   "line": 15,
+   "lineProgress": 0.5,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.3129,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 96789,
+   "line": 15,
+   "lineProgress": 0.9999,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 96790,
+   "line": 16,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 99200,
+   "line": 16,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 101609,
+   "line": 16,
+   "lineProgress": 0.9998,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 101610,
+   "line": 17,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 107310,
+   "line": 17,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.4623,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 113009,
+   "line": 17,
+   "lineProgress": 0.9999,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 113010,
+   "line": 18,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 114735,
+   "line": 18,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.0624,
+   "interlude": null
+  },
+  {
+   "pos": 116459,
+   "line": 18,
+   "lineProgress": 0.9997,
+   "word": 6,
+   "wordProgress": 0.9985,
+   "interlude": null
+  },
+  {
+   "pos": 116460,
+   "line": 19,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 118460,
+   "line": 19,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.7403,
+   "interlude": null
+  },
+  {
+   "pos": 120459,
+   "line": 19,
+   "lineProgress": 0.9998,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 120460,
+   "line": 20,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 122670,
+   "line": 20,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.5844,
+   "interlude": null
+  },
+  {
+   "pos": 124879,
+   "line": 20,
+   "lineProgress": 0.9998,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 124880,
+   "line": 21,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 126995,
+   "line": 21,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.6039,
+   "interlude": null
+  },
+  {
+   "pos": 129109,
+   "line": 21,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 129110,
+   "line": 22,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 135970,
+   "line": 22,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.3747,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 142829,
+   "line": 22,
+   "lineProgress": 0.9999,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 142830,
+   "line": 23,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 143855,
+   "line": 23,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.6636,
+   "interlude": null
+  },
+  {
+   "pos": 144879,
+   "line": 23,
+   "lineProgress": 0.9995,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 144880,
+   "line": 24,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 147450,
+   "line": 24,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 150019,
+   "line": 24,
+   "lineProgress": 0.9998,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 150020,
+   "line": 25,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 151020,
+   "line": 25,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.5114,
+   "interlude": null
+  },
+  {
+   "pos": 153020,
+   "line": 25,
+   "lineProgress": 1,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

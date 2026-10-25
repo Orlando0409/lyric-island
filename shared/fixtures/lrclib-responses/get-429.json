@@ -1,0 +1,13 @@
+{
+  "file": "get-429.json",
+  "route": "get",
+  "match": {
+    "track_name": "Muy Rápido",
+    "artist_name": "Los Fixtures"
+  },
+  "status": 429,
+  "body": {
+    "code": 429,
+    "message": "Too many requests"
+  }
+}

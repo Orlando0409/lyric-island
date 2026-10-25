@@ -1,0 +1,335 @@
+[
+ {
+  "t": 0,
+  "mode": "compact",
+  "title": "Isla de Luz",
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 1000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 1,
+  "pos": 4490
+ },
+ {
+  "t": 2000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 5490
+ },
+ {
+  "t": 3000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 6490
+ },
+ {
+  "t": 4000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 7490
+ },
+ {
+  "t": 5000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 8490
+ },
+ {
+  "t": 6000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 2,
+  "pos": 9490
+ },
+ {
+  "t": 7000,
+  "mode": "paused",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 10490
+ },
+ {
+  "t": 8000,
+  "mode": "paused",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 10490
+ },
+ {
+  "t": 9000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 10490
+ },
+ {
+  "t": 10000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 11490
+ },
+ {
+  "t": 11000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 12490
+ },
+ {
+  "t": 12000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 1,
+  "pos": 13490
+ },
+ {
+  "t": 13000,
+  "mode": "hidden",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 14490
+ },
+ {
+  "t": 14000,
+  "mode": "hidden",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 15490
+ },
+ {
+  "t": 15000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16490
+ },
+ {
+  "t": 16000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 17000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 18000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 19000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 20000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 21000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 22000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 23000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 24000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 25000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 26000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 27000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 28000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 29000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 30000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 31000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 32000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 33000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 34000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 35000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 36000,
+  "mode": "hidden",
+  "title": null,
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ }
+]

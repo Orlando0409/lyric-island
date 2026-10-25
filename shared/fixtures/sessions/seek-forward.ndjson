@@ -1,0 +1,3 @@
+{"at":0,"msg":{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Ruta Norte","artist":"Banda Mock","album":"Kilómetro Cero","durationMs":185000,"artworkHash":null}}
+{"at":0,"msg":{"v":1,"type":"timeline","positionMs":0,"updatedAtMs":1761340000000,"rate":1,"status":"playing"}}
+{"at":5000,"msg":{"v":1,"type":"timeline","positionMs":30000,"updatedAtMs":1761340005000,"rate":1,"status":"playing"}}

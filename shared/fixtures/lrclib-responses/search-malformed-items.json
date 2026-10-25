@@ -1,0 +1,29 @@
+{
+  "file": "search-malformed-items.json",
+  "route": "search",
+  "match": {
+    "track_name": "Basura"
+  },
+  "status": 200,
+  "body": [
+    null,
+    7,
+    {
+      "id": "x"
+    },
+    {
+      "trackName": "sin id"
+    },
+    {
+      "id": 2008,
+      "name": "Basura",
+      "trackName": "Basura",
+      "artistName": "Los Fixtures",
+      "albumName": null,
+      "duration": 100,
+      "instrumental": false,
+      "plainLyrics": "Basura: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Basura: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+    }
+  ]
+}

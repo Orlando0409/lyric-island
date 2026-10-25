@@ -1,0 +1,281 @@
+[
+ {
+  "t": 0,
+  "mode": "compact",
+  "title": "Isla de Luz",
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 1000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 1000
+ },
+ {
+  "t": 2000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 2000
+ },
+ {
+  "t": 3000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 3000
+ },
+ {
+  "t": 4000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 0,
+  "pos": 4000
+ },
+ {
+  "t": 5000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 2,
+  "pos": 5000
+ },
+ {
+  "t": 6000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 6000
+ },
+ {
+  "t": 7000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 7000
+ },
+ {
+  "t": 8000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 0,
+  "word": 5,
+  "pos": 8000
+ },
+ {
+  "t": 9000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 1,
+  "pos": 9000
+ },
+ {
+  "t": 10000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 3,
+  "pos": 10000
+ },
+ {
+  "t": 11000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 11120
+ },
+ {
+  "t": 12000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 12120
+ },
+ {
+  "t": 13000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 0,
+  "pos": 13120
+ },
+ {
+  "t": 14000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 1,
+  "pos": 14120
+ },
+ {
+  "t": 15000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 15120
+ },
+ {
+  "t": 16000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 16120
+ },
+ {
+  "t": 17000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 2,
+  "word": 3,
+  "pos": 17120
+ },
+ {
+  "t": 18000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 2,
+  "pos": 18120
+ },
+ {
+  "t": 19000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 3,
+  "pos": 19120
+ },
+ {
+  "t": 20000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 3,
+  "word": 4,
+  "pos": 20120
+ },
+ {
+  "t": 21000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 21120
+ },
+ {
+  "t": 22000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 22120
+ },
+ {
+  "t": 23000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 23120
+ },
+ {
+  "t": 24000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 24120
+ },
+ {
+  "t": 25000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 25120
+ },
+ {
+  "t": 26000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 26120
+ },
+ {
+  "t": 27000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 27120
+ },
+ {
+  "t": 28000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 4,
+  "word": -1,
+  "pos": 28120
+ },
+ {
+  "t": 29000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 5,
+  "word": 0,
+  "pos": 29120
+ },
+ {
+  "t": 30000,
+  "mode": "expanded",
+  "title": "Isla de Luz",
+  "kind": "synced",
+  "line": 5,
+  "word": 2,
+  "pos": 30120
+ }
+]

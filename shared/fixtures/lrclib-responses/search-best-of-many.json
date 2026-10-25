@@ -1,0 +1,43 @@
+{
+  "file": "search-best-of-many.json",
+  "route": "search",
+  "match": {
+    "track_name": "Faro"
+  },
+  "status": 200,
+  "body": [
+    {
+      "id": 2005,
+      "name": "Faro (Remix)",
+      "trackName": "Faro (Remix)",
+      "artistName": "DJ Prueba",
+      "albumName": null,
+      "duration": 250,
+      "instrumental": false,
+      "plainLyrics": "Faro (Remix): la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Faro (Remix): la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+    },
+    {
+      "id": 2006,
+      "name": "Faro",
+      "trackName": "Faro",
+      "artistName": "Los Fixtures",
+      "albumName": "Costa",
+      "duration": 205,
+      "instrumental": false,
+      "plainLyrics": "Faro: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": null
+    },
+    {
+      "id": 2007,
+      "name": "Faro",
+      "trackName": "Faro",
+      "artistName": "Los Fixtures",
+      "albumName": "Costa",
+      "duration": 204,
+      "instrumental": false,
+      "plainLyrics": "Faro: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Faro: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+    }
+  ]
+}

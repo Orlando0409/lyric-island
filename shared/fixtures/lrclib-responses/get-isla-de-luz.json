@@ -1,0 +1,20 @@
+{
+  "file": "get-isla-de-luz.json",
+  "route": "get",
+  "match": {
+    "track_name": "Isla de Luz",
+    "artist_name": "Los Fixtures"
+  },
+  "status": 200,
+  "body": {
+    "id": 1001,
+    "name": "Isla de Luz",
+    "trackName": "Isla de Luz",
+    "artistName": "Los Fixtures",
+    "albumName": "Pruebas Unitarias",
+    "duration": 210,
+    "instrumental": false,
+    "plainLyrics": "Isla de Luz: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+    "syncedLyrics": "[00:04.00]Isla de Luz: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+  }
+}

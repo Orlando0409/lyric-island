@@ -1,0 +1,8 @@
+packages:
+  - desktop
+
+# Electron necesita su postinstall para descargar el binario.
+allowBuilds:
+  electron: true
+  esbuild: true
+  electron-winstaller: true

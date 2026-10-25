@@ -1,0 +1,236 @@
+[
+ {
+  "t": 0,
+  "mode": "compact",
+  "title": "Ruta Norte",
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 1000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 1000
+ },
+ {
+  "t": 2000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 2000
+ },
+ {
+  "t": 3000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": -1,
+  "word": -1,
+  "pos": 3000
+ },
+ {
+  "t": 4000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 0,
+  "word": 0,
+  "pos": 4000
+ },
+ {
+  "t": 5000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 5,
+  "word": 2,
+  "pos": 30000
+ },
+ {
+  "t": 6000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 5,
+  "word": 3,
+  "pos": 31000
+ },
+ {
+  "t": 7000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 5,
+  "word": 3,
+  "pos": 32000
+ },
+ {
+  "t": 8000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 5,
+  "word": 3,
+  "pos": 33000
+ },
+ {
+  "t": 9000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 1,
+  "pos": 34000
+ },
+ {
+  "t": 10000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 35000
+ },
+ {
+  "t": 11000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 36000
+ },
+ {
+  "t": 12000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 37000
+ },
+ {
+  "t": 13000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 38000
+ },
+ {
+  "t": 14000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 39000
+ },
+ {
+  "t": 15000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 40000
+ },
+ {
+  "t": 16000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 41000
+ },
+ {
+  "t": 17000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 42000
+ },
+ {
+  "t": 18000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 43000
+ },
+ {
+  "t": 19000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 44000
+ },
+ {
+  "t": 20000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 45000
+ },
+ {
+  "t": 21000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 46000
+ },
+ {
+  "t": 22000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 47000
+ },
+ {
+  "t": 23000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 48000
+ },
+ {
+  "t": 24000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 49000
+ },
+ {
+  "t": 25000,
+  "mode": "expanded",
+  "title": "Ruta Norte",
+  "kind": "synced",
+  "line": 6,
+  "word": 4,
+  "pos": 50000
+ }
+]

@@ -1,0 +1,15 @@
+[ar:Los Fixtures]
+[ti:Todos los Casos]
+[al:Pruebas Unitarias]
+[length:05:54]
+[offset:+150]
+
+[00:12.34]Primera línea de prueba
+[00:16.10]Segunda línea, con coma
+[00:20.00][01:45.00]Línea repetida en dos momentos
+[00:25.5]Fracción de un dígito
+[00:30.123]Fracción de tres dígitos
+[00:35]Sin fracción
+[00:40.00]
+
+[00:50.00]<00:50.00>Palabra <00:50.60>por <00:51.00>palabra

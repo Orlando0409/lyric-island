@@ -1,0 +1,319 @@
+{
+ "offsetMs": 0,
+ "meta": {
+  "ar": "Los Fixtures",
+  "ti": "Isla de Luz",
+  "al": "Pruebas Unitarias",
+  "length": "03:30"
+ },
+ "lines": [
+  {
+   "startMs": 12340,
+   "endMs": 16100,
+   "text": "Se enciende la isla sobre la ciudad",
+   "isInterlude": false,
+   "words": [
+    [
+     "Se ",
+     12340,
+     12560,
+     true
+    ],
+    [
+     "enciende ",
+     12560,
+     13440,
+     true
+    ],
+    [
+     "la ",
+     13440,
+     13660,
+     true
+    ],
+    [
+     "isla ",
+     13660,
+     14100,
+     true
+    ],
+    [
+     "sobre ",
+     14100,
+     14650,
+     true
+    ],
+    [
+     "la ",
+     14650,
+     14870,
+     true
+    ],
+    [
+     "ciudad",
+     14870,
+     15530,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 16100,
+   "endMs": 20000,
+   "text": "Cada palabra brilla en su lugar",
+   "isInterlude": false,
+   "words": [
+    [
+     "Cada ",
+     16100,
+     16540,
+     true
+    ],
+    [
+     "palabra ",
+     16540,
+     17310,
+     true
+    ],
+    [
+     "brilla ",
+     17310,
+     17970,
+     true
+    ],
+    [
+     "en ",
+     17970,
+     18190,
+     true
+    ],
+    [
+     "su ",
+     18190,
+     18410,
+     true
+    ],
+    [
+     "lugar",
+     18410,
+     18960,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 20000,
+   "endMs": 25500,
+   "text": "Y la canción no deja de girar",
+   "isInterlude": false,
+   "words": [
+    [
+     "Y ",
+     20000,
+     20211,
+     true
+    ],
+    [
+     "la ",
+     20211,
+     20422,
+     true
+    ],
+    [
+     "canción ",
+     20422,
+     21160,
+     true
+    ],
+    [
+     "no ",
+     21160,
+     21370,
+     true
+    ],
+    [
+     "deja ",
+     21370,
+     21792,
+     true
+    ],
+    [
+     "de ",
+     21792,
+     22003,
+     true
+    ],
+    [
+     "girar",
+     22003,
+     22530,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 25500,
+   "endMs": 28020,
+   "text": "Seguimos el compás hasta el final",
+   "isInterlude": false,
+   "words": [
+    [
+     "Seguimos ",
+     25500,
+     26220,
+     true
+    ],
+    [
+     "el ",
+     26220,
+     26400,
+     true
+    ],
+    [
+     "compás ",
+     26400,
+     26940,
+     true
+    ],
+    [
+     "hasta ",
+     26940,
+     27390,
+     true
+    ],
+    [
+     "el ",
+     27390,
+     27570,
+     true
+    ],
+    [
+     "final",
+     27570,
+     28020,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 12339,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 12340,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 14220,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.2182,
+   "interlude": null
+  },
+  {
+   "pos": 16099,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 16100,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 18050,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.3636,
+   "interlude": null
+  },
+  {
+   "pos": 19999,
+   "line": 1,
+   "lineProgress": 0.9997,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 20000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 22750,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 25499,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 6,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 25500,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 26760,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.6667,
+   "interlude": null
+  },
+  {
+   "pos": 29020,
+   "line": 3,
+   "lineProgress": 1,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

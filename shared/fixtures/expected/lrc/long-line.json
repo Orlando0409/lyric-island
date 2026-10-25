@@ -1,0 +1,406 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 20000,
+   "text": "una línea muy larga que no cabe en la isla y necesita marquee una línea muy larga que no cabe en la isla y necesita marquee una línea muy larga que no cabe en la isla y necesita marquee una línea muy larga que no cabe en la isla y necesita marquee",
+   "isInterlude": false,
+   "words": [
+    [
+     "una ",
+     1000,
+     1285,
+     true
+    ],
+    [
+     "línea ",
+     1285,
+     1760,
+     true
+    ],
+    [
+     "muy ",
+     1760,
+     2045,
+     true
+    ],
+    [
+     "larga ",
+     2045,
+     2520,
+     true
+    ],
+    [
+     "que ",
+     2520,
+     2805,
+     true
+    ],
+    [
+     "no ",
+     2805,
+     2995,
+     true
+    ],
+    [
+     "cabe ",
+     2995,
+     3375,
+     true
+    ],
+    [
+     "en ",
+     3375,
+     3565,
+     true
+    ],
+    [
+     "la ",
+     3565,
+     3755,
+     true
+    ],
+    [
+     "isla ",
+     3755,
+     4135,
+     true
+    ],
+    [
+     "y ",
+     4135,
+     4325,
+     true
+    ],
+    [
+     "necesita ",
+     4325,
+     5085,
+     true
+    ],
+    [
+     "marquee ",
+     5085,
+     5750,
+     true
+    ],
+    [
+     "una ",
+     5750,
+     6035,
+     true
+    ],
+    [
+     "línea ",
+     6035,
+     6510,
+     true
+    ],
+    [
+     "muy ",
+     6510,
+     6795,
+     true
+    ],
+    [
+     "larga ",
+     6795,
+     7270,
+     true
+    ],
+    [
+     "que ",
+     7270,
+     7555,
+     true
+    ],
+    [
+     "no ",
+     7555,
+     7745,
+     true
+    ],
+    [
+     "cabe ",
+     7745,
+     8125,
+     true
+    ],
+    [
+     "en ",
+     8125,
+     8315,
+     true
+    ],
+    [
+     "la ",
+     8315,
+     8505,
+     true
+    ],
+    [
+     "isla ",
+     8505,
+     8885,
+     true
+    ],
+    [
+     "y ",
+     8885,
+     9075,
+     true
+    ],
+    [
+     "necesita ",
+     9075,
+     9835,
+     true
+    ],
+    [
+     "marquee ",
+     9835,
+     10500,
+     true
+    ],
+    [
+     "una ",
+     10500,
+     10785,
+     true
+    ],
+    [
+     "línea ",
+     10785,
+     11260,
+     true
+    ],
+    [
+     "muy ",
+     11260,
+     11545,
+     true
+    ],
+    [
+     "larga ",
+     11545,
+     12020,
+     true
+    ],
+    [
+     "que ",
+     12020,
+     12305,
+     true
+    ],
+    [
+     "no ",
+     12305,
+     12495,
+     true
+    ],
+    [
+     "cabe ",
+     12495,
+     12875,
+     true
+    ],
+    [
+     "en ",
+     12875,
+     13065,
+     true
+    ],
+    [
+     "la ",
+     13065,
+     13255,
+     true
+    ],
+    [
+     "isla ",
+     13255,
+     13635,
+     true
+    ],
+    [
+     "y ",
+     13635,
+     13825,
+     true
+    ],
+    [
+     "necesita ",
+     13825,
+     14585,
+     true
+    ],
+    [
+     "marquee ",
+     14585,
+     15250,
+     true
+    ],
+    [
+     "una ",
+     15250,
+     15535,
+     true
+    ],
+    [
+     "línea ",
+     15535,
+     16010,
+     true
+    ],
+    [
+     "muy ",
+     16010,
+     16295,
+     true
+    ],
+    [
+     "larga ",
+     16295,
+     16770,
+     true
+    ],
+    [
+     "que ",
+     16770,
+     17055,
+     true
+    ],
+    [
+     "no ",
+     17055,
+     17245,
+     true
+    ],
+    [
+     "cabe ",
+     17245,
+     17625,
+     true
+    ],
+    [
+     "en ",
+     17625,
+     17815,
+     true
+    ],
+    [
+     "la ",
+     17815,
+     18005,
+     true
+    ],
+    [
+     "isla ",
+     18005,
+     18385,
+     true
+    ],
+    [
+     "y ",
+     18385,
+     18575,
+     true
+    ],
+    [
+     "necesita ",
+     18575,
+     19335,
+     true
+    ],
+    [
+     "marquee",
+     19335,
+     20000,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 20000,
+   "endMs": 22000,
+   "text": "corta",
+   "isInterlude": false,
+   "words": [
+    [
+     "corta",
+     20000,
+     20800,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 10500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 26,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 19999,
+   "line": 0,
+   "lineProgress": 0.9999,
+   "word": 51,
+   "wordProgress": 0.9985,
+   "interlude": null
+  },
+  {
+   "pos": 20000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 21000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 23000,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 0,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

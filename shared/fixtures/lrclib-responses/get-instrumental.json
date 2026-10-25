@@ -1,0 +1,20 @@
+{
+  "file": "get-instrumental.json",
+  "route": "get",
+  "match": {
+    "track_name": "Interludio Azul",
+    "artist_name": "Cuarteto Stub"
+  },
+  "status": 200,
+  "body": {
+    "id": 1004,
+    "name": "Interludio Azul",
+    "trackName": "Interludio Azul",
+    "artistName": "Cuarteto Stub",
+    "albumName": "Sin Voz",
+    "duration": 240,
+    "instrumental": true,
+    "plainLyrics": null,
+    "syncedLyrics": null
+  }
+}

@@ -1,0 +1,3 @@
+{"at":0,"msg":{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Isla de Luz","artist":"Los Fixtures","album":"Pruebas Unitarias","durationMs":210000,"artworkHash":null}}
+{"at":0,"msg":{"v":1,"type":"timeline","positionMs":0,"updatedAtMs":1761340000000,"rate":1,"status":"playing"}}
+{"at":10000,"msg":{"v":1,"type":"timeline","positionMs":10120,"updatedAtMs":1761340010000,"rate":1,"status":"playing"}}

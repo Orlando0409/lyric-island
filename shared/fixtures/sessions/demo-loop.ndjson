@@ -1,0 +1,7 @@
+{"at":0,"msg":{"v":1,"type":"hello","helperVersion":"fake","os":"fake"}}
+{"at":50,"msg":{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Isla de Luz","artist":"Los Fixtures","album":"Pruebas Unitarias","durationMs":40000,"artworkHash":null,"artworkFile":"artwork/art-012-gradient.png"}}
+{"at":60,"msg":{"v":1,"type":"timeline","positionMs":0,"updatedAtMs":1761340000060,"rate":1,"status":"playing"}}
+{"at":16000,"msg":{"v":1,"type":"timeline","positionMs":16000,"updatedAtMs":1761340016000,"rate":0,"status":"paused"}}
+{"at":19000,"msg":{"v":1,"type":"timeline","positionMs":16000,"updatedAtMs":1761340019000,"rate":1,"status":"playing"}}
+{"at":30000,"msg":{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Ruta Norte","artist":"Banda Mock","album":"Kilómetro Cero","durationMs":40000,"artworkHash":null,"artworkFile":"artwork/art-003-blobs.png"}}
+{"at":30010,"msg":{"v":1,"type":"timeline","positionMs":0,"updatedAtMs":1761340030010,"rate":1,"status":"playing"}}

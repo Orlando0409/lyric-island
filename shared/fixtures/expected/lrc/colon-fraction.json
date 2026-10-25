@@ -1,0 +1,130 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 5500,
+   "endMs": 8250,
+   "text": "Fracción con dos puntos",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fracción ",
+     5500,
+     6380,
+     true
+    ],
+    [
+     "con ",
+     6380,
+     6710,
+     true
+    ],
+    [
+     "dos ",
+     6710,
+     7040,
+     true
+    ],
+    [
+     "puntos",
+     7040,
+     7700,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 8250,
+   "endMs": 10250,
+   "text": "Formato alternativo",
+   "isInterlude": false,
+   "words": [
+    [
+     "Formato ",
+     8250,
+     9020,
+     true
+    ],
+    [
+     "alternativo",
+     9020,
+     10230,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 5499,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9998,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 5500,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 6875,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.5,
+   "interlude": null
+  },
+  {
+   "pos": 8249,
+   "line": 0,
+   "lineProgress": 0.9996,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8250,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 9250,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.1901,
+   "interlude": null
+  },
+  {
+   "pos": 11250,
+   "line": 1,
+   "lineProgress": 1,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

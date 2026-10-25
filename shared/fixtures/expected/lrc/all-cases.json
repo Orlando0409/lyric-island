@@ -1,0 +1,518 @@
+{
+ "offsetMs": 150,
+ "meta": {
+  "ar": "Los Fixtures",
+  "ti": "Todos los Casos",
+  "al": "Pruebas Unitarias",
+  "length": "05:54",
+  "offset": "+150"
+ },
+ "lines": [
+  {
+   "startMs": 12340,
+   "endMs": 16100,
+   "text": "Primera línea de prueba",
+   "isInterlude": false,
+   "words": [
+    [
+     "Primera ",
+     12340,
+     13110,
+     true
+    ],
+    [
+     "línea ",
+     13110,
+     13660,
+     true
+    ],
+    [
+     "de ",
+     13660,
+     13880,
+     true
+    ],
+    [
+     "prueba",
+     13880,
+     14540,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 16100,
+   "endMs": 20000,
+   "text": "Segunda línea, con coma",
+   "isInterlude": false,
+   "words": [
+    [
+     "Segunda ",
+     16100,
+     16851,
+     true
+    ],
+    [
+     "línea, ",
+     16851,
+     17549,
+     true
+    ],
+    [
+     "con ",
+     17549,
+     17871,
+     true
+    ],
+    [
+     "coma",
+     17871,
+     18300,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 20000,
+   "endMs": 25500,
+   "text": "Línea repetida en dos momentos",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     20000,
+     20550,
+     true
+    ],
+    [
+     "repetida ",
+     20550,
+     21430,
+     true
+    ],
+    [
+     "en ",
+     21430,
+     21650,
+     true
+    ],
+    [
+     "dos ",
+     21650,
+     21980,
+     true
+    ],
+    [
+     "momentos",
+     21980,
+     22860,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 25500,
+   "endMs": 30123,
+   "text": "Fracción de un dígito",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fracción ",
+     25500,
+     26380,
+     true
+    ],
+    [
+     "de ",
+     26380,
+     26600,
+     true
+    ],
+    [
+     "un ",
+     26600,
+     26820,
+     true
+    ],
+    [
+     "dígito",
+     26820,
+     27480,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 30123,
+   "endMs": 35000,
+   "text": "Fracción de tres dígitos",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fracción ",
+     30123,
+     31003,
+     true
+    ],
+    [
+     "de ",
+     31003,
+     31223,
+     true
+    ],
+    [
+     "tres ",
+     31223,
+     31663,
+     true
+    ],
+    [
+     "dígitos",
+     31663,
+     32433,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 35000,
+   "endMs": 40000,
+   "text": "Sin fracción",
+   "isInterlude": false,
+   "words": [
+    [
+     "Sin ",
+     35000,
+     35330,
+     true
+    ],
+    [
+     "fracción",
+     35330,
+     36210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 40000,
+   "endMs": 50000,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  },
+  {
+   "startMs": 50000,
+   "endMs": 105000,
+   "text": "Palabra por palabra",
+   "isInterlude": false,
+   "words": [
+    [
+     "Palabra ",
+     50000,
+     50600,
+     false
+    ],
+    [
+     "por ",
+     50600,
+     51000,
+     false
+    ],
+    [
+     "palabra",
+     51000,
+     105000,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 105000,
+   "endMs": 107340,
+   "text": "Línea repetida en dos momentos",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     105000,
+     105450,
+     true
+    ],
+    [
+     "repetida ",
+     105450,
+     106170,
+     true
+    ],
+    [
+     "en ",
+     106170,
+     106350,
+     true
+    ],
+    [
+     "dos ",
+     106350,
+     106620,
+     true
+    ],
+    [
+     "momentos",
+     106620,
+     107340,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 12339,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": true
+   }
+  },
+  {
+   "pos": 12340,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 14220,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.5152,
+   "interlude": null
+  },
+  {
+   "pos": 16099,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 16100,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 18050,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.4172,
+   "interlude": null
+  },
+  {
+   "pos": 19999,
+   "line": 1,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 20000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 22750,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.875,
+   "interlude": null
+  },
+  {
+   "pos": 25499,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 25500,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 27811,
+   "line": 3,
+   "lineProgress": 0.4999,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 30122,
+   "line": 3,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 30123,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 32561,
+   "line": 4,
+   "lineProgress": 0.4999,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 34999,
+   "line": 4,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 35000,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 37500,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 39999,
+   "line": 5,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 40000,
+   "line": 6,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 45000,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.5,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 49999,
+   "line": 6,
+   "lineProgress": 0.9999,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": {
+    "progress": 0.9999,
+    "beforeFirst": false
+   }
+  },
+  {
+   "pos": 50000,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 77500,
+   "line": 7,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.4907,
+   "interlude": null
+  },
+  {
+   "pos": 104999,
+   "line": 7,
+   "lineProgress": 1,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 105000,
+   "line": 8,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 106170,
+   "line": 8,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 108340,
+   "line": 8,
+   "lineProgress": 1,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+  "name": "lyric-island-desktop",
+  "productName": "LyricIsland",
+  "version": "0.1.0",
+  "description": "Isla dinámica flotante con letras sincronizadas para Windows",
+  "author": "OB Dev Studio",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "type": "module",
+  "main": "out/main/index.js",
+  "packageManager": "pnpm@12.14.0",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "dev:fake": "node tools/dev-fake.mjs",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "spike:hitrate": "tsx tools/spike-hitrate.ts",
+    "spike:smtc": "node tools/spike-smtc.mjs",
+    "golden": "cross-env UPDATE_GOLDEN=1 vitest run tests/unit/golden.test.ts",
+    "helper:build": "node tools/build-helper.mjs",
+    "dist:nsis": "electron-vite build && electron-builder --win nsis",
+    "dist:msix": "electron-vite build && electron-builder --win appx"
+  },
+  "dependencies": {
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "cross-env": "^10.1.0",
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0",
+    "electron-vite": "^6.0.0",
+    "motion": "^14.6.0",
+    "node-vibrant": "^4.0.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

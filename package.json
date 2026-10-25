@@ -1,0 +1,9 @@
+{
+  "name": "lyric-island",
+  "private": true,
+  "packageManager": "pnpm@12.14.0",
+  "scripts": {
+    "test": "pnpm -C desktop test",
+    "dev": "pnpm -C desktop dev"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "file": "get-404.json",
+  "route": "get",
+  "match": {
+    "track_name": "No Existe",
+    "artist_name": "Nadie"
+  },
+  "status": 404,
+  "body": {
+    "code": 404,
+    "name": "TrackNotFound",
+    "message": "Failed to find specified track"
+  }
+}

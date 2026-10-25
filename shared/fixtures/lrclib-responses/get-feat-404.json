@@ -1,0 +1,12 @@
+{
+  "file": "get-feat-404.json",
+  "route": "get",
+  "match": {
+    "track_name": "Juntos (feat. Invitada)",
+    "artist_name": "Banda Mock, Invitada"
+  },
+  "status": 404,
+  "body": {
+    "code": 404
+  }
+}

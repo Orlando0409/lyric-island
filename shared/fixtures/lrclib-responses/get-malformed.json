@@ -1,0 +1,10 @@
+{
+  "file": "get-malformed.json",
+  "route": "get",
+  "match": {
+    "track_name": "JSON Roto",
+    "artist_name": "Los Fixtures"
+  },
+  "status": 200,
+  "rawBody": "{\"id\": 12, \"trackName\": \"JSON Roto\", "
+}
