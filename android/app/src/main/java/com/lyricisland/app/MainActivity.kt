@@ -53,6 +53,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
+import androidx.lifecycle.lifecycleScope
 import com.lyricisland.app.data.AppSettings
 import com.lyricisland.app.data.BgStyle
 import com.lyricisland.app.media.MediaListenerService
@@ -68,6 +69,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        // Solo debug: la matriz de emuladores (android/tools/run-matrix.sh) activa la isla sin tocar la UI.
+        if (BuildConfig.DEBUG && intent.getBooleanExtra(EXTRA_ENABLE_ISLAND, false)) {
+            lifecycleScope.launch { graph.settings.update { it.copy(enabled = true) } }
+        }
         setContent {
             MaterialTheme(colorScheme = darkColorScheme(primary = Color(0xFFB69DF8))) {
                 Surface(Modifier.fillMaxSize()) {
@@ -77,6 +82,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    companion object {
+        const val EXTRA_ENABLE_ISLAND = "enableIsland"
     }
 
     override fun onResume() {

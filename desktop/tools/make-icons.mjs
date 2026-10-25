@@ -3,11 +3,11 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import zlib from 'node:zlib';
 
-function png(size, pixel) {
-  const raw = Buffer.alloc((size * 4 + 1) * size);
-  for (let y = 0; y < size; y++) {
-    raw[y * (size * 4 + 1)] = 0;
-    for (let x = 0; x < size; x++) raw.set(pixel(x + 0.5, y + 0.5), y * (size * 4 + 1) + 1 + x * 4);
+function png(width, height, pixel) {
+  const raw = Buffer.alloc((width * 4 + 1) * height);
+  for (let y = 0; y < height; y++) {
+    raw[y * (width * 4 + 1)] = 0;
+    for (let x = 0; x < width; x++) raw.set(pixel(x + 0.5, y + 0.5), y * (width * 4 + 1) + 1 + x * 4);
   }
   const chunk = (type, data) => {
     const len = Buffer.alloc(4);
@@ -18,20 +18,22 @@ function png(size, pixel) {
     return Buffer.concat([len, td, crc]);
   };
   const ihdr = Buffer.alloc(13);
-  ihdr.writeUInt32BE(size, 0);
-  ihdr.writeUInt32BE(size, 4);
+  ihdr.writeUInt32BE(width, 0);
+  ihdr.writeUInt32BE(height, 4);
   ihdr[8] = 8;
   ihdr[9] = 6; // RGBA
   return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', ihdr), chunk('IDAT', zlib.deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);
 }
 
-function icon(size) {
+/** Cápsula centrada en un lienzo de width × height (la cápsula se dimensiona con el lado menor). */
+function icon(width, height = width) {
+  const size = Math.min(width, height);
   const h = size * 0.46;
   const w = size * 0.92;
   const r = h / 2;
-  const cx = size / 2;
-  const cy = size / 2;
-  return png(size, (x, y) => {
+  const cx = width / 2;
+  const cy = height / 2;
+  return png(width, height, (x, y) => {
     // distancia con signo a una cápsula (rectángulo redondeado)
     const qx = Math.abs(x - cx) - (w / 2 - r);
     const qy = Math.abs(y - cy) - (h / 2 - r);
@@ -55,4 +57,16 @@ mkdirSync(join(root, 'resources'), { recursive: true });
 mkdirSync(join(root, 'build'), { recursive: true });
 writeFileSync(join(root, 'resources', 'tray.png'), icon(32));
 writeFileSync(join(root, 'build', 'icon.png'), icon(256));
+// Logos del paquete MSIX (electron-builder los toma de build/appx).
+mkdirSync(join(root, 'build', 'appx'), { recursive: true });
+for (const [name, w, h] of [
+  ['StoreLogo.png', 50, 50],
+  ['Square44x44Logo.png', 44, 44],
+  ['Square150x150Logo.png', 150, 150],
+  ['Wide310x150Logo.png', 310, 150],
+  ['LargeTile.png', 310, 310],
+  ['SmallTile.png', 71, 71],
+]) {
+  writeFileSync(join(root, 'build', 'appx', name), icon(w, h));
+}
 console.log('íconos generados');
