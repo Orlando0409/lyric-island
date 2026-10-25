@@ -1,0 +1,100 @@
+{
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "Dijo: \"ya llegó\" y se fue",
+   "isInterlude": false,
+   "words": [
+    [
+     "Dijo: ",
+     1000,
+     1500,
+     false
+    ],
+    [
+     "\"ya ",
+     1500,
+     1800,
+     false
+    ],
+    [
+     "llegó\" ",
+     1800,
+     2300,
+     false
+    ],
+    [
+     "y ",
+     2300,
+     2450,
+     false
+    ],
+    [
+     "se ",
+     2450,
+     2600,
+     false
+    ],
+    [
+     "fue",
+     2600,
+     3200,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 9000,
+   "text": "Escape é y tab\tfinal",
+   "isInterlude": false,
+   "words": [
+    [
+     "Escape ",
+     5000,
+     5600,
+     false
+    ],
+    [
+     "é ",
+     5600,
+     5800,
+     false
+    ],
+    [
+     "y ",
+     5800,
+     6000,
+     false
+    ],
+    [
+     "tab\t",
+     6000,
+     6300,
+     false
+    ],
+    [
+     "final",
+     6300,
+     7000,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 9800,
+   "text": "12345",
+   "isInterlude": false,
+   "words": [
+    [
+     "12345",
+     9000,
+     9800,
+     false
+    ]
+   ]
+  }
+ ]
+}

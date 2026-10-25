@@ -62,11 +62,18 @@ class LyricsRepository(
                 instrumental = (o["instrumental"] as? JsonPrimitive)?.booleanOrNull == true,
                 plainLyrics = o.str("plainLyrics"),
                 syncedLyrics = o.str("syncedLyrics"),
+                hasWordSync = (o["hasWordSync"] as? JsonPrimitive)?.booleanOrNull == true,
+                lyricsfile = o.str("lyricsfile"),
             )
         }
 
-        fun documentFromCandidate(c: Candidate, durationMs: Long?, source: LyricsSource): LyricsDocument =
-            LrcParser.buildDocument(
+        fun documentFromCandidate(c: Candidate, durationMs: Long?, source: LyricsSource): LyricsDocument {
+            val dur = durationMs ?: c.duration?.let { jsRound(it * 1000) }
+            // Tiempos reales por palabra (lyricsfile) cuando existen; si no se pueden leer, la letra LRC de siempre.
+            if (c.hasWordSync && c.lyricsfile != null && !c.instrumental) {
+                Lyricsfile.parse(c.lyricsfile, dur)?.let { return LyricsDocument(LyricsKind.SYNCED, it, c.plainLyrics, 0, source, c.id) }
+            }
+            return LrcParser.buildDocument(
                 synced = c.syncedLyrics,
                 plain = c.plainLyrics,
                 instrumental = c.instrumental,
@@ -74,6 +81,10 @@ class LyricsRepository(
                 source = source,
                 lrclibId = c.id,
             )
+        }
+
+        /** Una versión con tiempos por palabra solo reemplaza a la de /api/get si su duración coincide (±2 s). */
+        const val WORD_SYNC_MAX_DELTA_MS = 2000L
 
         val NONE = LyricsDocument(LyricsKind.NONE, emptyList(), null, 0, LyricsSource.LRCLIB, null)
     }
@@ -140,8 +151,10 @@ class LyricsRepository(
         if (q.artist != attempts[0].artist || q.title != attempts[0].title) attempts.add(q)
 
         var found: Candidate? = null
+        var gets = 0
         for (a in attempts) {
             if (a.title.isEmpty()) continue
+            gets++
             found = toCandidate(
                 request(
                     "/get",
@@ -152,6 +165,19 @@ class LyricsRepository(
         }
         if (found == null && q.title.isNotEmpty()) {
             found = TrackMatcher.pickBest(q, track.durationMs, search(track), track.album)?.first
+        } else if (found != null && !found.hasWordSync && gets == 1 && q.title.isNotEmpty()) {
+            // /api/get devuelve una sola versión: si otra subida trae tiempos por palabra, se prefiere
+            // (como mucho 2 peticiones por pista nueva, RNF-16). Un error aquí no afecta a la letra ya encontrada.
+            try {
+                val dur = track.durationMs
+                val withWords = search(track).filter { c ->
+                    c.hasWordSync && c.syncedLyrics != null && dur != null && c.duration != null &&
+                        kotlin.math.abs(c.duration * 1000 - dur) <= WORD_SYNC_MAX_DELTA_MS
+                }
+                TrackMatcher.pickBest(q, track.durationMs, withWords, track.album)?.let { found = it.first }
+            } catch (e: TransientLyricsError) {
+                // se queda con la versión de /api/get
+            }
         }
         if (found == null) {
             cache.set(key, CacheEntry(false, now, null))

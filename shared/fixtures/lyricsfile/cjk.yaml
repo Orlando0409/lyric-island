@@ -1,0 +1,31 @@
+version: '1.0'
+metadata:
+  title: 夜空の島
+  artist: テスト
+  duration_ms: 30000
+  instrumental: false
+lines:
+- text: 夜空に光る島
+  words:
+  - text: 夜空
+    start_ms: 2000
+  - text: に
+    start_ms: 2700
+  - text: 光る
+    start_ms: 3000
+  - text: 島
+    start_ms: 3900
+  start_ms: 2000
+  end_ms: 4800
+- text: 밤하늘 위의 작은 섬
+  words:
+  - text: 밤하늘
+    start_ms: 6000
+  - text: 위의
+    start_ms: 7000
+  - text: 작은
+    start_ms: 7700
+  - text: 섬
+    start_ms: 8400
+  start_ms: 6000
+  end_ms: 9200

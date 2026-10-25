@@ -167,6 +167,9 @@ export interface Candidate {
   instrumental: boolean;
   plainLyrics: string | null;
   syncedLyrics: string | null;
+  /** LRCLIB: la versión trae tiempos reales por palabra en `lyricsfile`. */
+  hasWordSync?: boolean;
+  lyricsfile?: string | null;
 }
 
 export const ACCEPT_THRESHOLD = 0.75;
@@ -190,7 +193,7 @@ export function scoreCandidate(query: ScoreQuery, c: Candidate): number {
     simArtist = 0.5;
   }
   let score =
-    0.45 * simTitle + 0.3 * simArtist + 0.2 * durationSimilarity(query.durationMs, candDurMs) + 0.05 * (c.syncedLyrics ? 1 : 0);
+    0.45 * simTitle + 0.3 * simArtist + 0.2 * durationSimilarity(query.durationMs, candDurMs) + 0.05 * (c.syncedLyrics ? 1 : 0) + 0.03 * (c.hasWordSync ? 1 : 0); // se prefieren tiempos por palabra
   if (query.durationMs !== null && candDurMs !== null && Math.abs(query.durationMs - candDurMs) > 15_000) score -= 0.3;
   return score;
 }

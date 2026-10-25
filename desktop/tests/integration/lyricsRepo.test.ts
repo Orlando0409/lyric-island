@@ -31,8 +31,10 @@ describe('LyricsRepository ↔ LRCLIB grabado', () => {
     const doc = await r.get(q('Isla de Luz', 'Los Fixtures', 210, 'Pruebas Unitarias'));
     expect(doc).toMatchObject({ kind: 'synced', source: 'lrclib', lrclibId: 1001 });
     expect(doc.lines.length).toBeGreaterThan(3);
-    expect(log).toHaveLength(1);
+    // /get + una búsqueda de versiones con tiempos por palabra (como mucho 2 por pista nueva, RNF-16).
+    expect(log).toHaveLength(2);
     expect(log[0]).toContain('/get?artist_name=Los%20Fixtures&track_name=Isla%20de%20Luz&album_name=Pruebas%20Unitarias&duration=210');
+    expect(log[1]).toContain('/search?');
   });
 
   it('segunda vez sale de caché (0 peticiones)', async () => {
@@ -41,7 +43,7 @@ describe('LyricsRepository ↔ LRCLIB grabado', () => {
     await r.get(q('Isla de Luz', 'Los Fixtures', 210));
     const doc = await r.get(q('Isla de Luz', 'Los Fixtures', 210));
     expect(doc.source).toBe('cache');
-    expect(log).toHaveLength(1);
+    expect(log).toHaveLength(2); // las 2 de la primera vez; la segunda no pide nada
   });
 
   it('404 → reintenta normalizado (Remastered)', async () => {
@@ -102,6 +104,50 @@ describe('LyricsRepository ↔ LRCLIB grabado', () => {
     expect((await r.get(q('Corazón Áspero', 'Ñandú', 190))).lrclibId).toBe(1008);
   });
 
+  it('tiempos por palabra: /get con lyricsfile → palabras reales (no estimadas)', async () => {
+    const log: string[] = [];
+    const { r } = repo(fixtureHttp(log));
+    const doc = await r.get(q('Palabra Exacta', 'Los Fixtures', 40, 'Pruebas Unitarias'));
+    expect(doc).toMatchObject({ kind: 'synced', lrclibId: 3001 });
+    expect(doc.lines[0].words.every((w) => !w.estimated)).toBe(true);
+    expect(log).toHaveLength(1); // ya trae palabras: no hace falta buscar otra versión
+    // Desde la caché también se usan los tiempos por palabra.
+    const cached = await r.get(q('Palabra Exacta', 'Los Fixtures', 40, 'Pruebas Unitarias'));
+    expect(cached.source).toBe('cache');
+    expect(cached.lines[0].words[0]).toMatchObject({ startMs: 4000, estimated: false });
+  });
+
+  it('se prefiere otra subida con tiempos por palabra si su duración coincide (±2 s)', async () => {
+    const log: string[] = [];
+    const { r } = repo(fixtureHttp(log));
+    const doc = await r.get(q('Doble Versión', 'Banda Mock', 40, 'Kilómetro Cero'));
+    expect(doc.lrclibId).toBe(3003); // 3004 tiene palabras pero dura 6 s más; 3002 (de /get) no tiene palabras
+    expect(doc.lines[0].words[0].estimated).toBe(false);
+    expect(log).toHaveLength(2);
+  });
+
+  it('si la búsqueda de la versión con palabras falla, se queda con la de /get', async () => {
+    let calls = 0;
+    const http: HttpGet = async (url, t) => {
+      calls++;
+      if (url.includes('/search')) throw new Error('timeout');
+      return fixtureHttp()(url, t);
+    };
+    const { r } = repo(http);
+    expect((await r.get(q('Doble Versión', 'Banda Mock', 40, 'Kilómetro Cero'))).lrclibId).toBe(3002);
+    expect(calls).toBe(2);
+  });
+
+  it('lyricsfile ilegible → se usa syncedLyrics', async () => {
+    const http: HttpGet = async () => ({
+      status: 200,
+      json: async () => ({ id: 9, trackName: 'x', artistName: 'y', duration: 30, hasWordSync: true, lyricsfile: ': : [', syncedLyrics: '[00:01.00]hola', plainLyrics: 'hola' }),
+    });
+    const doc = await repo(http).r.get(q('x', 'y', 30));
+    expect(doc.kind).toBe('synced');
+    expect(doc.lines[0].words[0].estimated).toBe(true);
+  });
+
   it('no encontrada en ningún paso', async () => {
     const { r } = repo();
     expect((await r.get(q('No Existe', 'Nadie', 200))).kind).toBe('none');
@@ -145,7 +191,7 @@ describe('LyricsRepository ↔ LRCLIB grabado', () => {
     await r.get(q('Isla de Luz', 'Los Fixtures', 210));
     now.t += POSITIVE_TTL_MS + 1;
     await r.get(q('Isla de Luz', 'Los Fixtures', 210));
-    expect(log).toHaveLength(2);
+    expect(log).toHaveLength(4);
   });
 
   it('getById y search', async () => {

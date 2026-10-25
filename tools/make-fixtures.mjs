@@ -1,7 +1,7 @@
 // Genera los fixtures compartidos (shared/fixtures) de forma determinista.
 // Todas las letras son INVENTADAS para no redistribuir letras con derechos de autor.
 // Uso: node tools/make-fixtures.mjs
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import zlib from 'node:zlib';
@@ -194,6 +194,7 @@ const record = (id, trackName, artistName, albumName, duration, extra = {}) => (
   syncedLyrics: songLrc(trackName),
   ...extra,
 });
+const wordsYaml = readFileSync(join(root, 'lyricsfile', 'basic-words.yaml'), 'utf8');
 const responses = [
   { file: 'get-isla-de-luz.json', route: 'get', match: { track_name: 'Isla de Luz', artist_name: 'Los Fixtures' }, status: 200, body: record(1001, 'Isla de Luz', 'Los Fixtures', 'Pruebas Unitarias', 210) },
   { file: 'get-ruta-norte.json', route: 'get', match: { track_name: 'Ruta Norte', artist_name: 'Banda Mock' }, status: 200, body: record(1002, 'Ruta Norte', 'Banda Mock', 'Kilómetro Cero', 185) },
@@ -216,6 +217,20 @@ const responses = [
   { file: 'search-best-of-many.json', route: 'search', match: { track_name: 'Faro' }, status: 200, body: [record(2005, 'Faro (Remix)', 'DJ Prueba', null, 250), record(2006, 'Faro', 'Los Fixtures', 'Costa', 205, { syncedLyrics: null }), record(2007, 'Faro', 'Los Fixtures', 'Costa', 204)] },
   { file: 'search-malformed-items.json', route: 'search', match: { track_name: 'Basura' }, status: 200, body: [null, 7, { id: 'x' }, { trackName: 'sin id' }, record(2008, 'Basura', 'Los Fixtures', null, 100)] },
   { file: 'get-by-id.json', route: 'get-id', match: { id: '2007' }, status: 200, body: record(2007, 'Faro', 'Los Fixtures', 'Costa', 204) },
+  // Tiempos por palabra (lyricsfile + hasWordSync): /get directo, y una canción cuya versión con palabras solo aparece en /search.
+  { file: 'get-wordsync.json', route: 'get', match: { track_name: 'Palabra Exacta', artist_name: 'Los Fixtures' }, status: 200, body: record(3001, 'Palabra Exacta', 'Los Fixtures', 'Pruebas Unitarias', 40, { hasWordSync: true, lyricsfile: wordsYaml }) },
+  { file: 'get-doble-version.json', route: 'get', match: { track_name: 'Doble Versión', artist_name: 'Banda Mock' }, status: 200, body: record(3002, 'Doble Versión', 'Banda Mock', 'Kilómetro Cero', 40) },
+  {
+    file: 'search-doble-version.json',
+    route: 'search',
+    match: { track_name: 'Doble Versión' },
+    status: 200,
+    body: [
+      record(3004, 'Doble Versión', 'Banda Mock', 'Kilómetro Cero', 46, { hasWordSync: true, lyricsfile: wordsYaml }),
+      record(3003, 'Doble Versión', 'Banda Mock', 'Kilómetro Cero', 41, { hasWordSync: true, lyricsfile: wordsYaml }),
+      record(3002, 'Doble Versión', 'Banda Mock', 'Kilómetro Cero', 40),
+    ],
+  },
   { file: 'search-youtube.json', route: 'search', match: { track_name: 'Marea Alta' }, status: 200, body: [record(2009, 'Marea Alta', 'Banda Mock', null, 230)] },
 ];
 for (const r of responses) out(`lrclib-responses/${r.file}`, JSON.stringify(r, null, 2) + '\n');

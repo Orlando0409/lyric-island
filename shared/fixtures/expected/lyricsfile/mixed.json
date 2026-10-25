@@ -1,0 +1,101 @@
+{
+ "lines": [
+  {
+   "startMs": 8000,
+   "endMs": 10000,
+   "text": "Línea con palabras",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     8000,
+     8500,
+     false
+    ],
+    [
+     "con ",
+     8500,
+     8800,
+     false
+    ],
+    [
+     "palabras",
+     8800,
+     9800,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 10000,
+   "endMs": 25000,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  },
+  {
+   "startMs": 25000,
+   "endMs": 30000,
+   "text": "Línea sin tiempos por palabra",
+   "isInterlude": false,
+   "words": [
+    [
+     "Línea ",
+     25000,
+     25500,
+     true
+    ],
+    [
+     "sin ",
+     25500,
+     25800,
+     true
+    ],
+    [
+     "tiempos ",
+     25800,
+     26500,
+     true
+    ],
+    [
+     "por ",
+     26500,
+     26800,
+     true
+    ],
+    [
+     "palabra",
+     26800,
+     27500,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 30000,
+   "endMs": 32000,
+   "text": "Última sin end_ms",
+   "isInterlude": false,
+   "words": [
+    [
+     "Última ",
+     30000,
+     30600,
+     false
+    ],
+    [
+     "sin ",
+     30600,
+     30900,
+     false
+    ],
+    [
+     "end_ms",
+     30900,
+     32000,
+     false
+    ]
+   ]
+  }
+ ]
+}

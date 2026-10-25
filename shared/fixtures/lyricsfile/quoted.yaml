@@ -1,0 +1,43 @@
+version: '1.0'
+metadata:
+  title: 'Comillas: y dos puntos'
+  artist: "Los \"Fixtures\""
+  duration_ms: 30000
+  instrumental: false
+lines:
+- text: 'Dijo: "ya llegó" y se fue'
+  words:
+  - text: 'Dijo:'
+    start_ms: 1000
+  - text: '"ya'
+    start_ms: 1500
+  - text: 'llegó"'
+    start_ms: 1800
+  - text: y
+    start_ms: 2300
+  - text: se
+    start_ms: 2450
+  - text: fue
+    start_ms: 2600
+  start_ms: 1000
+  end_ms: 3200
+- text: "Escape é y tab\tfinal"
+  words:
+  - text: Escape
+    start_ms: 5000
+  - text: "é"
+    start_ms: 5600
+  - text: y
+    start_ms: 5800
+  - text: "tab"
+    start_ms: 6000
+  - text: final
+    start_ms: 6300
+  start_ms: 5000
+  end_ms: 7000
+- text: 12345
+  words:
+  - text: 12345
+    start_ms: 9000
+  start_ms: 9000
+  end_ms: 9800

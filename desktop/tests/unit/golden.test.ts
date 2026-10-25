@@ -7,6 +7,7 @@ import { describe, expect, it } from 'vitest';
 import { buildPalette, toSwatches } from '../../src/core/color';
 import { IslandController } from '../../src/core/controller';
 import { parseLrc } from '../../src/core/lrc';
+import { parseLyricsfile } from '../../src/core/lyricsfile';
 import { LyricsRepository } from '../../src/core/lyricsRepo';
 import { cacheKeySource, normalizeQuery, scoreCandidate, type Candidate } from '../../src/core/matcher';
 import { computeFrame } from '../../src/core/sync';
@@ -65,6 +66,23 @@ describe('golden: LRC', () => {
           interlude: fr.interlude ? { progress: r4(fr.interlude.progress), beforeFirst: fr.interlude.beforeFirst } : null,
         };
       }),
+    });
+  });
+});
+
+describe('golden: lyricsfile (tiempos por palabra)', () => {
+  const files = readdirSync(join(FIXTURES, 'lyricsfile')).filter((f) => f.endsWith('.yaml'));
+  it.each(files)('%s', (f) => {
+    const lines = parseLyricsfile(readFileSync(join(FIXTURES, 'lyricsfile', f), 'utf8'), null);
+    golden(`lyricsfile/${f.replace(/\.yaml$/, '.json')}`, {
+      lines:
+        lines?.map((l) => ({
+          startMs: l.startMs,
+          endMs: l.endMs,
+          text: l.text,
+          isInterlude: l.isInterlude,
+          words: l.words.map((w) => [w.text, w.startMs, w.endMs, w.estimated]),
+        })) ?? null,
     });
   });
 });

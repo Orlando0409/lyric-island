@@ -95,6 +95,54 @@ class GoldenTest {
         }
     }
 
+    @TestFactory
+    fun lyricsfile(): List<DynamicTest> {
+        val files = File(fixtures, "lyricsfile").listFiles { f -> f.name.endsWith(".yaml") }!!.sortedBy { it.name }
+        assertTrue(files.size >= 5)
+        return files.map { f ->
+            DynamicTest.dynamicTest(f.name) {
+                val lines = Lyricsfile.parse(f.readText())
+                val exp = read(File(expected, "lyricsfile/${f.nameWithoutExtension}.json")).jsonObject["lines"]!!
+                if (exp is JsonNull) {
+                    assertEquals(null, lines, "debe devolver null")
+                    return@dynamicTest
+                }
+                val expLines = exp.jsonArray
+                assertEquals(expLines.size, lines!!.size, "líneas")
+                expLines.forEachIndexed { i, el ->
+                    val e = el.jsonObject
+                    val l = lines[i]
+                    assertEquals(e["startMs"]!!.jsonPrimitive.long, l.startMs, "start $i")
+                    assertEquals(e["endMs"]!!.jsonPrimitive.long, l.endMs, "end $i")
+                    assertEquals(e["text"]!!.jsonPrimitive.content, l.text, "text $i")
+                    assertEquals(e["isInterlude"]!!.jsonPrimitive.boolean, l.isInterlude)
+                    val ew = e["words"]!!.jsonArray.map { w ->
+                        val a = w.jsonArray
+                        LyricWord(a[0].jsonPrimitive.content, a[1].jsonPrimitive.long, a[2].jsonPrimitive.long, a[3].jsonPrimitive.boolean)
+                    }
+                    assertEquals(ew, l.words, "palabras de la línea $i")
+                }
+            }
+        }
+    }
+
+    @Test
+    fun repositorioPrefiereTiemposPorPalabra() = runBlocking {
+        val log = ArrayList<String>()
+        val base = fixtureHttp()
+        val http = HttpGet { url, t -> log.add(url); base.get(url, t) }
+        val repo = LyricsRepository(http, MemoryLyricsCache(), ::sha1, { 0L }, sleep = {})
+        val exact = repo.get(QueryTrack("Palabra Exacta", "Los Fixtures", "Pruebas Unitarias", 40_000))
+        assertEquals(3001L, exact.lrclibId)
+        assertTrue(exact.lines[0].words.none { it.estimated })
+        assertEquals(1, log.size)
+        log.clear()
+        val doble = repo.get(QueryTrack("Doble Versión", "Banda Mock", "Kilómetro Cero", 40_000))
+        assertEquals(3003L, doble.lrclibId) // 3004 dura 6 s más; 3002 (de /get) no tiene palabras
+        assertEquals(false, doble.lines[0].words[0].estimated)
+        assertEquals(2, log.size)
+    }
+
     @Test
     fun matcher() {
         val titles = read(File(fixtures, "matcher/titles.json")).jsonArray

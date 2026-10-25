@@ -1,0 +1,76 @@
+{
+ "lines": [
+  {
+   "startMs": 2000,
+   "endMs": 6000,
+   "text": "Primera línea fuera de orden",
+   "isInterlude": false,
+   "words": [
+    [
+     "Primera línea ",
+     2000,
+     2400,
+     false
+    ],
+    [
+     "palabraquenoesta ",
+     2400,
+     2800,
+     false
+    ],
+    [
+     "fuera ",
+     2800,
+     3100,
+     false
+    ],
+    [
+     "de ",
+     3100,
+     3300,
+     false
+    ],
+    [
+     "orden",
+     3300,
+     4000,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 6000,
+   "endMs": 15000,
+   "text": "Segunda línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Segunda ",
+     6000,
+     6500,
+     false
+    ],
+    [
+     "línea",
+     6500,
+     7200,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 15000,
+   "endMs": 16500,
+   "text": "Final con palabra vacía",
+   "isInterlude": false,
+   "words": [
+    [
+     "Final con palabra vacía",
+     15000,
+     16500,
+     false
+    ]
+   ]
+  }
+ ]
+}

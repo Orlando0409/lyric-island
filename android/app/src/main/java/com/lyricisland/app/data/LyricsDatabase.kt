@@ -91,6 +91,8 @@ class RoomLyricsCache(private val dao: LyricsDao, private val now: () -> Long = 
             put("instrumental", JsonPrimitive(c.instrumental))
             put("plainLyrics", c.plainLyrics?.let(::JsonPrimitive) ?: JsonNull)
             put("syncedLyrics", c.syncedLyrics?.let(::JsonPrimitive) ?: JsonNull)
+            put("hasWordSync", JsonPrimitive(c.hasWordSync))
+            put("lyricsfile", c.lyricsfile?.let(::JsonPrimitive) ?: JsonNull)
         }.toString()
 
         fun decode(s: String?): Candidate? = s?.let { runCatching { LyricsRepository.toCandidate(Json.parseToJsonElement(it)) }.getOrNull() }

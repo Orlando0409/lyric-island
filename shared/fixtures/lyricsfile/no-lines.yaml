@@ -1,0 +1,9 @@
+version: '1.0'
+metadata:
+  title: Sin líneas
+  artist: Nadie
+  duration_ms: 1000
+  instrumental: false
+lines: []
+plain: |-
+  solo texto plano

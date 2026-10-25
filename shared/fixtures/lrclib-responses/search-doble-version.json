@@ -1,0 +1,47 @@
+{
+  "file": "search-doble-version.json",
+  "route": "search",
+  "match": {
+    "track_name": "Doble Versión"
+  },
+  "status": 200,
+  "body": [
+    {
+      "id": 3004,
+      "name": "Doble Versión",
+      "trackName": "Doble Versión",
+      "artistName": "Banda Mock",
+      "albumName": "Kilómetro Cero",
+      "duration": 46,
+      "instrumental": false,
+      "plainLyrics": "Doble Versión: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Doble Versión: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba",
+      "hasWordSync": true,
+      "lyricsfile": "version: '1.0'\nmetadata:\n  title: Isla de Luz\n  artist: Los Fixtures\n  album: Pruebas Unitarias\n  duration_ms: 40000\n  instrumental: false\nlines:\n- text: Se enciende la isla\n  words:\n  - text: Se\n    start_ms: 4000\n  - text: enciende\n    start_ms: 4300\n  - text: la\n    start_ms: 5100\n  - text: isla\n    start_ms: 5350\n  start_ms: 4000\n  end_ms: 6200\n- text: Cada palabra en su lugar\n  words:\n  - text: Cada\n    start_ms: 9000\n  - text: palabra\n    start_ms: 9400\n  - text: en\n    start_ms: 10100\n  - text: su\n    start_ms: 10300\n  - text: lugar\n    start_ms: 10600\n  start_ms: 9000\n  end_ms: 11500\n- text: Fin de la prueba\n  words:\n  - text: Fin\n    start_ms: 20000\n  - text: de\n    start_ms: 20400\n  - text: la\n    start_ms: 20600\n  - text: prueba\n    start_ms: 20800\n  start_ms: 20000\n  end_ms: 22000\n"
+    },
+    {
+      "id": 3003,
+      "name": "Doble Versión",
+      "trackName": "Doble Versión",
+      "artistName": "Banda Mock",
+      "albumName": "Kilómetro Cero",
+      "duration": 41,
+      "instrumental": false,
+      "plainLyrics": "Doble Versión: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Doble Versión: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba",
+      "hasWordSync": true,
+      "lyricsfile": "version: '1.0'\nmetadata:\n  title: Isla de Luz\n  artist: Los Fixtures\n  album: Pruebas Unitarias\n  duration_ms: 40000\n  instrumental: false\nlines:\n- text: Se enciende la isla\n  words:\n  - text: Se\n    start_ms: 4000\n  - text: enciende\n    start_ms: 4300\n  - text: la\n    start_ms: 5100\n  - text: isla\n    start_ms: 5350\n  start_ms: 4000\n  end_ms: 6200\n- text: Cada palabra en su lugar\n  words:\n  - text: Cada\n    start_ms: 9000\n  - text: palabra\n    start_ms: 9400\n  - text: en\n    start_ms: 10100\n  - text: su\n    start_ms: 10300\n  - text: lugar\n    start_ms: 10600\n  start_ms: 9000\n  end_ms: 11500\n- text: Fin de la prueba\n  words:\n  - text: Fin\n    start_ms: 20000\n  - text: de\n    start_ms: 20400\n  - text: la\n    start_ms: 20600\n  - text: prueba\n    start_ms: 20800\n  start_ms: 20000\n  end_ms: 22000\n"
+    },
+    {
+      "id": 3002,
+      "name": "Doble Versión",
+      "trackName": "Doble Versión",
+      "artistName": "Banda Mock",
+      "albumName": "Kilómetro Cero",
+      "duration": 40,
+      "instrumental": false,
+      "plainLyrics": "Doble Versión: la primera línea\nLa isla cambia de color\nCada palabra se rellena\nY la siguiente espera abajo\n\nVuelve el estribillo inventado\nHasta que termina la prueba",
+      "syncedLyrics": "[00:04.00]Doble Versión: la primera línea\n[00:08.50]La isla cambia de color\n[00:13.00]Cada palabra se rellena\n[00:17.20]Y la siguiente espera abajo\n[00:21.00]\n[00:29.00]Vuelve el estribillo inventado\n[00:33.40]Hasta que termina la prueba"
+    }
+  ]
+}

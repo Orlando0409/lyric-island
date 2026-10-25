@@ -1,0 +1,41 @@
+version: '1.0'
+metadata:
+  title: Desordenada
+  artist: Los Fixtures
+  duration_ms: 20000
+  instrumental: false
+lines:
+- text: Segunda línea
+  words:
+  - text: línea
+    start_ms: 6500
+  - text: Segunda
+    start_ms: 6000
+  start_ms: 6000
+  end_ms: 7200
+- text: Primera línea fuera de orden
+  words:
+  - text: Primera
+    start_ms: 2000
+  - text: palabraquenoesta
+    start_ms: 2400
+  - text: fuera
+    start_ms: 2800
+  - text: de
+    start_ms: 3100
+  - text: orden
+    start_ms: 3300
+  start_ms: 2000
+  end_ms: 4000
+- text: sin start_ms se ignora
+  end_ms: 9000
+- 42
+- text: Final con palabra vacía
+  words:
+  - text: ''
+    start_ms: 15000
+  - text: Final
+    start_ms: 15000
+  - start_ms: 15200
+  start_ms: 15000
+  end_ms: 16500

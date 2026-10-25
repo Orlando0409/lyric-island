@@ -1,6 +1,7 @@
 // LyricsRepository (secciones 8.1, 8.2 y 8.4): LRCLIB + caché positiva/negativa.
 // La red, la caché, el hash y la espera se inyectan para poder probarlo sin red.
 import { buildDocument } from './lrc';
+import { parseLyricsfile } from './lyricsfile';
 import { cacheKeySource, normalizeQuery, pickBest, type Candidate, type QueryTrack } from './matcher';
 import type { LyricsDocument } from './types';
 
@@ -9,6 +10,11 @@ export const REQUEST_TIMEOUT_MS = 5000;
 export const POSITIVE_TTL_MS = 30 * 24 * 3600 * 1000;
 export const NEGATIVE_TTL_MS = 24 * 3600 * 1000;
 export const RATE_LIMIT_BACKOFF_MS = [1000, 2000];
+/** Una versión con tiempos por palabra solo reemplaza a la de /api/get si su duración coincide (±2 s). */
+export const WORD_SYNC_MAX_DELTA_MS = 2000;
+
+const withinMs = (c: Candidate, durationMs: number | null, max: number) =>
+  durationMs !== null && c.duration !== null && Math.abs(c.duration * 1000 - durationMs) <= max;
 
 export interface HttpResponse {
   status: number;
@@ -64,10 +70,18 @@ export function toCandidate(raw: unknown): Candidate | null {
     instrumental: r.instrumental === true,
     plainLyrics: str(r.plainLyrics),
     syncedLyrics: str(r.syncedLyrics),
+    hasWordSync: r.hasWordSync === true,
+    lyricsfile: str(r.lyricsfile),
   };
 }
 
 export function documentFromCandidate(c: Candidate, durationMs: number | null, source: LyricsDocument['source']): LyricsDocument {
+  const dur = durationMs ?? (c.duration !== null ? Math.round(c.duration * 1000) : null);
+  // Tiempos reales por palabra (lyricsfile) cuando existen; si no se pueden leer, la letra LRC de siempre.
+  if (c.hasWordSync && c.lyricsfile && !c.instrumental) {
+    const lines = parseLyricsfile(c.lyricsfile, dur);
+    if (lines) return { kind: 'synced', lines, plainText: c.plainLyrics, offsetMs: 0, source, lrclibId: c.id };
+  }
   return buildDocument({
     synced: c.syncedLyrics,
     plain: c.plainLyrics,
@@ -156,8 +170,10 @@ export class LyricsRepository {
     if (q.artist !== attempts[0].artist || q.title !== attempts[0].title) attempts.push(q);
 
     let found: Candidate | null = null;
+    let gets = 0;
     for (const a of attempts) {
       if (!a.title) continue;
+      gets++;
       found = toCandidate(
         await this.request('/get', { artist_name: a.artist, track_name: a.title, album_name: track.album, duration: durationS }),
       );
@@ -166,6 +182,18 @@ export class LyricsRepository {
     if (!found && q.title) {
       const candidates = await this.search(track);
       found = pickBest({ ...q, durationMs: track.durationMs, album: track.album }, candidates)?.candidate ?? null;
+    } else if (found && !found.hasWordSync && gets === 1 && q.title) {
+      // /api/get devuelve una sola versión: si otra subida de la misma canción trae tiempos por palabra,
+      // se prefiere (como mucho 2 peticiones por pista nueva, RNF-16). Un error aquí no afecta a la letra ya encontrada.
+      try {
+        const withWords = (await this.search(track)).filter(
+          (c) => c.hasWordSync && c.syncedLyrics !== null && withinMs(c, track.durationMs, WORD_SYNC_MAX_DELTA_MS),
+        );
+        const alt = pickBest({ ...q, durationMs: track.durationMs, album: track.album }, withWords);
+        if (alt) found = alt.candidate;
+      } catch {
+        // se queda con la versión de /api/get
+      }
     }
 
     if (!found) {

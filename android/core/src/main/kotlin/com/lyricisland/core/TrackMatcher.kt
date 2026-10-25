@@ -18,6 +18,9 @@ data class Candidate(
     val instrumental: Boolean,
     val plainLyrics: String?,
     val syncedLyrics: String?,
+    /** LRCLIB: la versión trae tiempos reales por palabra en `lyricsfile`. */
+    val hasWordSync: Boolean = false,
+    val lyricsfile: String? = null,
 )
 
 object TrackMatcher {
@@ -165,7 +168,7 @@ object TrackMatcher {
             !album.isNullOrEmpty() && !c.albumName.isNullOrEmpty() -> textSimilarity(album, c.albumName)
             else -> 0.5
         }
-        var score = 0.45 * simTitle + 0.3 * simArtist + 0.2 * durationSimilarity(durationMs, candDurMs) + 0.05 * (if (c.syncedLyrics != null) 1 else 0)
+        var score = 0.45 * simTitle + 0.3 * simArtist + 0.2 * durationSimilarity(durationMs, candDurMs) + 0.05 * (if (c.syncedLyrics != null) 1 else 0) + 0.03 * (if (c.hasWordSync) 1 else 0) // se prefieren tiempos por palabra
         if (durationMs != null && candDurMs != null && abs(durationMs - candDurMs) > 15_000) score -= 0.3
         return score
     }

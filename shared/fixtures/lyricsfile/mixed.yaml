@@ -1,0 +1,32 @@
+version: '1.0'
+metadata:
+  title: Mezcla
+  artist: Los Fixtures
+  duration_ms: 60000
+  instrumental: false
+lines:
+- text: Línea con palabras
+  words:
+  - text: Línea
+    start_ms: 8000
+  - text: con
+    start_ms: 8500
+  - text: palabras
+    start_ms: 8800
+  start_ms: 8000
+  end_ms: 9800
+- text: ''
+  start_ms: 10000
+  end_ms: 10000
+- text: Línea sin tiempos por palabra
+  start_ms: 25000
+  end_ms: 27500
+- text: Última sin end_ms
+  words:
+  - text: Última
+    start_ms: 30000
+  - text: sin
+    start_ms: 30600
+  - text: end_ms
+    start_ms: 30900
+  start_ms: 30000

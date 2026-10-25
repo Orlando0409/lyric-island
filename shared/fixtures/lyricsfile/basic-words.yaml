@@ -1,0 +1,46 @@
+version: '1.0'
+metadata:
+  title: Isla de Luz
+  artist: Los Fixtures
+  album: Pruebas Unitarias
+  duration_ms: 40000
+  instrumental: false
+lines:
+- text: Se enciende la isla
+  words:
+  - text: Se
+    start_ms: 4000
+  - text: enciende
+    start_ms: 4300
+  - text: la
+    start_ms: 5100
+  - text: isla
+    start_ms: 5350
+  start_ms: 4000
+  end_ms: 6200
+- text: Cada palabra en su lugar
+  words:
+  - text: Cada
+    start_ms: 9000
+  - text: palabra
+    start_ms: 9400
+  - text: en
+    start_ms: 10100
+  - text: su
+    start_ms: 10300
+  - text: lugar
+    start_ms: 10600
+  start_ms: 9000
+  end_ms: 11500
+- text: Fin de la prueba
+  words:
+  - text: Fin
+    start_ms: 20000
+  - text: de
+    start_ms: 20400
+  - text: la
+    start_ms: 20600
+  - text: prueba
+    start_ms: 20800
+  start_ms: 20000
+  end_ms: 22000

@@ -1,0 +1,106 @@
+{
+ "lines": [
+  {
+   "startMs": 4000,
+   "endMs": 9000,
+   "text": "Se enciende la isla",
+   "isInterlude": false,
+   "words": [
+    [
+     "Se ",
+     4000,
+     4300,
+     false
+    ],
+    [
+     "enciende ",
+     4300,
+     5100,
+     false
+    ],
+    [
+     "la ",
+     5100,
+     5350,
+     false
+    ],
+    [
+     "isla",
+     5350,
+     6200,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 20000,
+   "text": "Cada palabra en su lugar",
+   "isInterlude": false,
+   "words": [
+    [
+     "Cada ",
+     9000,
+     9400,
+     false
+    ],
+    [
+     "palabra ",
+     9400,
+     10100,
+     false
+    ],
+    [
+     "en ",
+     10100,
+     10300,
+     false
+    ],
+    [
+     "su ",
+     10300,
+     10600,
+     false
+    ],
+    [
+     "lugar",
+     10600,
+     11500,
+     false
+    ]
+   ]
+  },
+  {
+   "startMs": 20000,
+   "endMs": 22000,
+   "text": "Fin de la prueba",
+   "isInterlude": false,
+   "words": [
+    [
+     "Fin ",
+     20000,
+     20400,
+     false
+    ],
+    [
+     "de ",
+     20400,
+     20600,
+     false
+    ],
+    [
+     "la ",
+     20600,
+     20800,
+     false
+    ],
+    [
+     "prueba",
+     20800,
+     22000,
+     false
+    ]
+   ]
+  }
+ ]
+}
