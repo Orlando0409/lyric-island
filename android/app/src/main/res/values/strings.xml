@@ -17,8 +17,6 @@
     <string name="perm_notifications_why">Android exige una notificación fija mientras la isla está activa (con botones para ocultarla o pausarla).</string>
     <string name="perm_battery">Excluir de la optimización de batería</string>
     <string name="perm_battery_why">Opcional. Algunos fabricantes (Xiaomi, Samsung, Huawei, Oppo) cierran apps en segundo plano. Guía: dontkillmyapp.com</string>
-    <string name="grant">Conceder</string>
-    <string name="granted">Concedido ✓</string>
     <string name="start_island">Activar isla</string>
     <string name="stop_island">Desactivar isla</string>
     <string name="s_appearance">Apariencia</string>
@@ -59,4 +57,11 @@
     <string name="export_logs">Exportar logs de diagnóstico</string>
     <string name="quick_offset">Desfase de la letra</string>
     <string name="done">Hecho</string>
+    <string name="perm_continue">Continuar</string>
+    <string name="perm_not_now">Ahora no</string>
+    <string name="perm_remaining">Faltan %1$d permisos para activar la isla.</string>
+    <string name="perm_denied">Sin «%1$s» la isla no puede funcionar. Tocá «Activar isla» para volver a intentarlo.</string>
+    <string name="perm_needed_title">LyricIsland necesita permisos</string>
+    <string name="perm_needed_text">Se quitó un permiso de la isla. Tocá para volver a concederlo.</string>
+    <string name="perm_channel">Avisos de permisos</string>
 </resources>

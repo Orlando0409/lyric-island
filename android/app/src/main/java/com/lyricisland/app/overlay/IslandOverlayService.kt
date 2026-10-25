@@ -59,6 +59,8 @@ class IslandOverlayService : LifecycleService() {
     companion object {
         const val CHANNEL = "island"
         const val NOTIF_ID = 1
+        const val CHANNEL_PERMS = "permissions"
+        const val NOTIF_PERMS_ID = 2
         const val ACTION_TOGGLE_HIDE = "com.lyricisland.TOGGLE_HIDE"
         const val ACTION_PAUSE_1H = "com.lyricisland.PAUSE_1H"
         const val ACTION_STOP = "com.lyricisland.STOP"
@@ -97,6 +99,13 @@ class IslandOverlayService : LifecycleService() {
         super.onCreate()
         running = true
         startInForeground()
+        // Se quitó un permiso (o arrancó tras reiniciar sin ellos): se avisa y se detiene; la app los vuelve a pedir.
+        if (!Settings.canDrawOverlays(this) || !MediaListenerService.isEnabled(this)) {
+            AppLog.log("service", "faltan permisos: se detiene y avisa")
+            notifyPermissionsNeeded()
+            stopSelf()
+            return
+        }
         val g = graph
         controller = IslandController(
             clock = { SystemClock.elapsedRealtime() }, // mismo reloj que PlaybackState.lastPositionUpdateTime
@@ -249,6 +258,7 @@ class IslandOverlayService : LifecycleService() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
+        if (!::controller.isInitialized) return START_NOT_STICKY // detenido por falta de permisos
         when (intent?.action) {
             ACTION_TOGGLE_HIDE -> {
                 hiddenUntilNextTrack = false
@@ -283,8 +293,31 @@ class IslandOverlayService : LifecycleService() {
         ServiceCompat.startForeground(this, NOTIF_ID, n, type)
     }
 
+    private fun notifyPermissionsNeeded() {
+        val nm = getSystemService(NotificationManager::class.java)
+        nm.createNotificationChannel(NotificationChannel(CHANNEL_PERMS, getString(R.string.perm_channel), NotificationManager.IMPORTANCE_DEFAULT))
+        val open = PendingIntent.getActivity(
+            this,
+            11,
+            Intent(this, MainActivity::class.java).putExtra(MainActivity.EXTRA_REQUEST_PERMISSIONS, true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
+        val n = NotificationCompat.Builder(this, CHANNEL_PERMS)
+            .setSmallIcon(R.drawable.ic_stat_island)
+            .setContentTitle(getString(R.string.perm_needed_title))
+            .setContentText(getString(R.string.perm_needed_text))
+            .setContentIntent(open)
+            .setAutoCancel(true)
+            .build()
+        runCatching { nm.notify(NOTIF_PERMS_ID, n) } // sin permiso de notificaciones no se muestra; la app los pide al abrirse
+    }
+
     override fun onDestroy() {
         running = false
+        if (!::controller.isInitialized) { // se detuvo por falta de permisos antes de inicializar
+            super.onDestroy()
+            return
+        }
         runCatching { unregisterReceiver(screenReceiver) }
         tracker.stop()
         controller.dispose()

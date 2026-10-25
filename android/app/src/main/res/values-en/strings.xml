@@ -16,8 +16,6 @@
     <string name="perm_notifications_why">Android requires a persistent notification while the island is active (with buttons to hide or pause it).</string>
     <string name="perm_battery">Exclude from battery optimization</string>
     <string name="perm_battery_why">Optional. Some manufacturers (Xiaomi, Samsung, Huawei, Oppo) kill background apps. Guide: dontkillmyapp.com</string>
-    <string name="grant">Grant</string>
-    <string name="granted">Granted ✓</string>
     <string name="start_island">Enable island</string>
     <string name="stop_island">Disable island</string>
     <string name="s_appearance">Appearance</string>
@@ -58,4 +56,11 @@
     <string name="export_logs">Export diagnostic logs</string>
     <string name="quick_offset">Lyrics offset</string>
     <string name="done">Done</string>
+    <string name="perm_continue">Continue</string>
+    <string name="perm_not_now">Not now</string>
+    <string name="perm_remaining">%1$d permissions left to enable the island.</string>
+    <string name="perm_denied">Without “%1$s” the island cannot work. Tap “Enable island” to try again.</string>
+    <string name="perm_needed_title">LyricIsland needs permissions</string>
+    <string name="perm_needed_text">An island permission was removed. Tap to grant it again.</string>
+    <string name="perm_channel">Permission alerts</string>
 </resources>
