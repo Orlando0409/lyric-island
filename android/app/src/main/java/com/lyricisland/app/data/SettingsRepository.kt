@@ -31,8 +31,8 @@ data class AppSettings(
     val pauseBehavior: PauseBehavior = PauseBehavior.DIM,
     val pauseDelayMs: Long = 10_000,
     val noLyricsBehavior: NoLyricsBehavior = NoLyricsBehavior.TITLE,
-    val alignCutout: Boolean = true,
-    val topMarginDp: Int = 6,
+    val alignCutout: Boolean = false,
+    val topMarginDp: Int = 30,
     val hideInLandscape: Boolean = true,
     /** Por defecto se permiten las apps de música; navegadores y YouTube (video) quedan opcionales (R12, HU-09). */
     val blockedApps: List<String> = DEFAULT_BLOCKED,
@@ -81,6 +81,12 @@ class SettingsRepository(private val context: Context) {
         val pausedUntil = longPreferencesKey("pausedUntil")
         val leadMs = longPreferencesKey("leadMs")
         val showRomaji = booleanPreferencesKey("showRomaji")
+        /** Versión de los valores por defecto guardados (2: sin alinear a la cámara y margen de 30 dp). */
+        val defaultsVersion = intPreferencesKey("defaultsVersion")
+    }
+
+    private companion object {
+        const val DEFAULTS_VERSION = 2
     }
 
     private inline fun <reified E : Enum<E>> enumOr(v: String?, d: E): E = v?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: d
@@ -89,6 +95,8 @@ class SettingsRepository(private val context: Context) {
 
     private fun fromPrefs(p: Preferences): AppSettings {
         val d = AppSettings()
+        // Ajustes guardados con los valores por defecto viejos (alinear a la cámara, 6 dp): se toman los nuevos.
+        val current = (p[K.defaultsVersion] ?: 0) >= DEFAULTS_VERSION
         return AppSettings(
             enabled = p[K.enabled] ?: d.enabled,
             fontScale = p[K.fontScale] ?: d.fontScale,
@@ -99,8 +107,8 @@ class SettingsRepository(private val context: Context) {
             pauseBehavior = enumOr(p[K.pauseBehavior], d.pauseBehavior),
             pauseDelayMs = p[K.pauseDelayMs] ?: d.pauseDelayMs,
             noLyricsBehavior = enumOr(p[K.noLyrics], d.noLyricsBehavior),
-            alignCutout = p[K.alignCutout] ?: d.alignCutout,
-            topMarginDp = p[K.topMarginDp] ?: d.topMarginDp,
+            alignCutout = p[K.alignCutout]?.takeIf { current } ?: d.alignCutout,
+            topMarginDp = p[K.topMarginDp]?.takeIf { current } ?: d.topMarginDp,
             hideInLandscape = p[K.hideInLandscape] ?: d.hideInLandscape,
             blockedApps = list(p[K.blocked], d.blockedApps),
             detectedApps = list(p[K.detected], emptyList()),
@@ -134,6 +142,7 @@ class SettingsRepository(private val context: Context) {
             p[K.pausedUntil] = n.pausedUntilMs
             p[K.leadMs] = n.leadMs
             p[K.showRomaji] = n.showRomaji
+            p[K.defaultsVersion] = DEFAULTS_VERSION
         }
     }
 
