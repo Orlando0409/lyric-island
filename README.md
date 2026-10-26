@@ -7,7 +7,7 @@ desktop/          Electron + React + TS (isla, letra completa, ajustes, bandeja,
 desktop-helper/   Helper C# (.NET 10) que lee la sesión multimedia de Windows (SMTC) → NDJSON
 android/          core/ (núcleo Kotlin JVM puro) · app/ (overlay Compose + servicios) · testplayer/
 shared/fixtures/  Fixtures y golden files COMPARTIDOS por los tests de TS y Kotlin
-docs/             ADRs, diseño y política de privacidad
+docs/             Diseño y política de privacidad
 tools/            Generador de fixtures
 ```
 
