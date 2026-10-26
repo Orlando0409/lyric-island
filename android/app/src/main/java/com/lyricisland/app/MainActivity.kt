@@ -74,6 +74,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import com.lyricisland.app.data.AppSettings
 import com.lyricisland.app.data.BgStyle
+import com.lyricisland.app.data.OverlayStyle
 import com.lyricisland.app.overlay.IslandOverlayService
 import com.lyricisland.core.NoLyricsBehavior
 import com.lyricisland.core.PauseBehavior
@@ -385,6 +386,13 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
     val exportTitle = stringResource(R.string.export_logs)
 
     Header(R.string.s_appearance)
+    Choice(R.string.overlay_style, listOf(OverlayStyle.ISLAND to R.string.style_island, OverlayStyle.BUBBLE to R.string.style_bubble), s.overlayStyle) { v ->
+        set { it.copy(overlayStyle = v) }
+    }
+    if (s.overlayStyle == OverlayStyle.BUBBLE) {
+        Text(stringResource(R.string.bubble_hint), style = MaterialTheme.typography.bodySmall)
+        SwitchRow(R.string.bubble_show_line, s.bubbleShowLine) { v -> set { it.copy(bubbleShowLine = v) } }
+    }
     Text("${stringResource(R.string.font_scale)}: ${(s.fontScale * 100).toInt()} %")
     Slider(s.fontScale, { v -> set { it.copy(fontScale = v) } }, valueRange = 0.8f..1.5f)
     Text("${stringResource(R.string.max_opacity)}: ${(s.maxOpacity * 100).toInt()} %")
@@ -411,9 +419,12 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
     BatteryOptimizationButton()
 
     Header(R.string.s_position)
-    SwitchRow(R.string.align_cutout, s.alignCutout) { v -> set { it.copy(alignCutout = v) } }
-    Text("${stringResource(R.string.top_margin)}: ${s.topMarginDp}")
-    Slider(s.topMarginDp.toFloat(), { v -> set { it.copy(topMarginDp = v.toInt()) } }, valueRange = 0f..120f)
+    // La burbuja se coloca arrastrándola; estos ajustes son de la isla.
+    if (s.overlayStyle == OverlayStyle.ISLAND) {
+        SwitchRow(R.string.align_cutout, s.alignCutout) { v -> set { it.copy(alignCutout = v) } }
+        Text("${stringResource(R.string.top_margin)}: ${s.topMarginDp}")
+        Slider(s.topMarginDp.toFloat(), { v -> set { it.copy(topMarginDp = v.toInt()) } }, valueRange = 0f..120f)
+    }
     SwitchRow(R.string.hide_landscape, s.hideInLandscape) { v -> set { it.copy(hideInLandscape = v) } }
 
     Header(R.string.s_players)

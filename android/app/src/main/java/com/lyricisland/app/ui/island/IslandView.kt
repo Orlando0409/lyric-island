@@ -89,6 +89,7 @@ import androidx.compose.ui.unit.sp
 import com.lyricisland.app.R
 import com.lyricisland.app.data.AppSettings
 import com.lyricisland.app.data.BgStyle
+import com.lyricisland.app.data.OverlayStyle
 import com.lyricisland.core.ColorEngine
 import com.lyricisland.core.IslandController
 import com.lyricisland.core.IslandMode
@@ -109,7 +110,38 @@ data class IslandGeometry(
     val cutoutHeightDp: Float? = null,
 )
 
-private fun hex(c: String) = Color(ColorEngine.toArgb(c).toInt())
+internal fun hex(c: String) = Color(ColorEngine.toArgb(c).toInt())
+
+/** Colores de la isla: paleta de la carátula (transición de 600 ms) o el degradado personalizado. */
+internal class IslandColors(
+    val bg: Color,
+    val gradFrom: Color,
+    val gradTo: Color,
+    val accent: Color,
+    val sung: Color,
+    val upcoming: Color,
+    val secondary: Color,
+)
+
+@Composable
+internal fun rememberIslandColors(snap: IslandSnapshot, settings: AppSettings): IslandColors {
+    val bg by animateColorAsState(hex(snap.palette.background), tween(600, easing = FastOutSlowInEasing), label = "bg")
+    val bgAlt by animateColorAsState(hex(snap.palette.backgroundAlt), tween(600, easing = FastOutSlowInEasing), label = "bgAlt")
+    val accent by animateColorAsState(hex(snap.palette.accent), tween(600), label = "accent")
+    // Degradado personalizado: colores del usuario, oscurecidos si hace falta para que la letra blanca se lea.
+    val customGradient = settings.gradientCustom && settings.bgStyle != BgStyle.SOLID
+    val from = remember(settings.gradientFrom) { hex(ColorEngine.readableBackground(settings.gradientFrom)) }
+    val to = remember(settings.gradientTo) { hex(ColorEngine.readableBackground(settings.gradientTo)) }
+    return IslandColors(
+        bg = bg,
+        gradFrom = if (customGradient) from else bg,
+        gradTo = if (customGradient) to else bgAlt,
+        accent = accent,
+        sung = hex(snap.palette.textPrimary),
+        upcoming = hex(snap.palette.textUpcoming),
+        secondary = hex(snap.palette.textSecondary),
+    )
+}
 
 /** Conecta el controlador con Compose y corre el bucle de frames solo cuando hace falta (8.5.7). */
 @Composable
@@ -126,6 +158,8 @@ fun IslandOverlay(
     onOffset: (Int) -> Unit,
     onHide: () -> Unit,
     onOpenSettings: () -> Unit,
+    /** Modo burbuja: posición y gestos los maneja el servicio. */
+    bubble: BubbleControls? = null,
 ) {
     var snap by remember { mutableStateOf(controller.snapshot()) }
     var version by remember { mutableIntStateOf(0) }
@@ -141,7 +175,8 @@ fun IslandOverlay(
             snap = controller.snapshot()
         }
     }
-    IslandView(snap, settings, artwork, geometry, reducedMotion, onTap, onSwipeUp, onOffset, onHide, onOpenSettings)
+    if (bubble != null && settings.overlayStyle == OverlayStyle.BUBBLE) BubbleView(snap, settings, artwork, reducedMotion, bubble)
+    else IslandView(snap, settings, artwork, geometry, reducedMotion, onTap, onSwipeUp, onOffset, onHide, onOpenSettings)
 }
 
 @Composable
@@ -184,16 +219,14 @@ fun IslandView(
     val radius by animateDpAsState(if (expanded) 28.dp else targetH / 2, anim, label = "r")
     val alpha by animateFloatAsState(if (hidden) 0f else settings.maxOpacity, tween(200), label = "a")
 
-    val bg by animateColorAsState(hex(snap.palette.background), tween(600, easing = FastOutSlowInEasing), label = "bg")
-    val bgAlt by animateColorAsState(hex(snap.palette.backgroundAlt), tween(600, easing = FastOutSlowInEasing), label = "bgAlt")
-    val accent by animateColorAsState(hex(snap.palette.accent), tween(600), label = "accent")
-    // Degradado personalizado: colores del usuario, oscurecidos si hace falta para que la letra blanca se lea.
-    val customGradient = settings.gradientCustom && settings.bgStyle != BgStyle.SOLID
-    val gradFrom = if (customGradient) remember(settings.gradientFrom) { hex(ColorEngine.readableBackground(settings.gradientFrom)) } else bg
-    val gradTo = if (customGradient) remember(settings.gradientTo) { hex(ColorEngine.readableBackground(settings.gradientTo)) } else bgAlt
-    val sung = hex(snap.palette.textPrimary)
-    val upcoming = hex(snap.palette.textUpcoming)
-    val secondary = hex(snap.palette.textSecondary)
+    val colors = rememberIslandColors(snap, settings)
+    val bg = colors.bg
+    val gradFrom = colors.gradFrom
+    val gradTo = colors.gradTo
+    val accent = colors.accent
+    val sung = colors.sung
+    val upcoming = colors.upcoming
+    val secondary = colors.secondary
 
     var panel by remember { mutableStateOf(false) }
 
@@ -252,7 +285,7 @@ fun IslandView(
 }
 
 @Composable
-private fun Modifier.islandBackground(style: BgStyle, bg: Color, bgAlt: Color, angle: Int, artwork: ImageBitmap?, reduced: Boolean): Modifier = when (style) {
+internal fun Modifier.islandBackground(style: BgStyle, bg: Color, bgAlt: Color, angle: Int, artwork: ImageBitmap?, reduced: Boolean): Modifier = when (style) {
     BgStyle.SOLID -> background(bg)
     BgStyle.GRADIENT -> angledGradient(bg, bgAlt, angle, null)
     BgStyle.LIVE -> if (reduced) angledGradient(bg, bgAlt, angle, null) else this.then(Modifier.liveGradient(bg, bgAlt, angle))
@@ -290,7 +323,7 @@ private fun Modifier.liveGradient(bg: Color, bgAlt: Color, angle: Int): Modifier
 }
 
 @Composable
-private fun Artwork(artwork: ImageBitmap?, size: Dp, show: Boolean, accent: Color) {
+internal fun Artwork(artwork: ImageBitmap?, size: Dp, show: Boolean, accent: Color) {
     if (!show) return
     if (artwork != null) {
         Image(artwork, null, Modifier.size(size).clip(CircleShape), contentScale = ContentScale.Crop)
@@ -338,7 +371,7 @@ private fun Equalizer(playing: Boolean, color: Color) {
 }
 
 @Composable
-private fun ExpandedContent(
+internal fun ExpandedContent(
     snap: IslandSnapshot,
     settings: AppSettings,
     artwork: ImageBitmap?,
@@ -425,17 +458,27 @@ internal enum class LineFit { SINGLE, WRAP, SCROLL }
  * Con movimiento reducido se rellena por palabras enteras, sin barrido.
  */
 @Composable
-private fun KaraokeLine(line: LyricLine, live: State<IslandSnapshot>, reduced: Boolean, sung: Color, upcoming: Color, textSize: TextUnit) {
+internal fun KaraokeLine(
+    line: LyricLine,
+    live: State<IslandSnapshot>,
+    reduced: Boolean,
+    sung: Color,
+    upcoming: Color,
+    textSize: TextUnit,
+    /** Burbuja: ancho justo del texto (hasta el máximo) y siempre en un renglón. */
+    compact: Boolean = false,
+) {
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
-    BoxWithConstraints(Modifier.fillMaxWidth().clipToBounds().testTag("current-line")) {
+    BoxWithConstraints((if (compact) Modifier else Modifier.fillMaxWidth()).clipToBounds().testTag("current-line")) {
         val maxW = constraints.maxWidth
         val base = TextStyle(fontSize = textSize, fontWeight = FontWeight.SemiBold)
         val small = base.copy(fontSize = textSize * 0.9f)
-        val (fit, layout) = remember(line.text, maxW, textSize) {
+        val (fit, layout) = remember(line.text, maxW, textSize, compact) {
             val single = measurer.measure(line.text, base, maxLines = 1, softWrap = false)
             when {
                 single.size.width <= maxW -> LineFit.SINGLE to single
+                compact -> LineFit.SCROLL to single
                 else -> {
                     val wrapped = measurer.measure(line.text, small, maxLines = 2, softWrap = true, constraints = Constraints(maxWidth = maxW))
                     if (!wrapped.hasVisualOverflow) LineFit.WRAP to wrapped else LineFit.SCROLL to single
@@ -443,7 +486,8 @@ private fun KaraokeLine(line: LyricLine, live: State<IslandSnapshot>, reduced: B
             }
         }
 
-        Canvas(Modifier.fillMaxWidth().height(with(density) { layout.size.height.toDp() }).semantics { contentDescription = line.text }.testTag(fit.name)) {
+        val width = if (compact) Modifier.width(with(density) { minOf(layout.size.width, maxW).toDp() }) else Modifier.fillMaxWidth()
+        Canvas(width.height(with(density) { layout.size.height.toDp() }).semantics { contentDescription = line.text }.testTag(fit.name)) {
             // Se lee el avance aquí (fase de dibujo): cada frame redibuja sin recomponer.
             val s = live.value
             val fill = karaokeFill(line, layout, s.wordIndex, if (reduced) 1.0 else s.wordProgress)

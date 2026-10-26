@@ -7,6 +7,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.lyricisland.app.data.AppSettings
+import com.lyricisland.app.ui.island.BubbleControls
+import com.lyricisland.app.ui.island.BubbleView
 import com.lyricisland.app.ui.island.IslandGeometry
 import com.lyricisland.app.ui.island.IslandView
 import com.lyricisland.core.ColorEngine
@@ -87,6 +89,27 @@ class IslandViewTest {
             IslandView(snap(IslandMode.EXPANDED).copy(lyrics = long), AppSettings(), null, IslandGeometry(screenWidthDp = 360f), reducedMotion = true)
         }
         rule.onNodeWithTag("WRAP", useUnmergedTree = true).assertExists()
+    }
+
+    private fun bubble(open: Boolean, toggles: () -> Unit = {}) = BubbleControls(open, onRight = true, dragging = false, {}, { _, _ -> }, {}, toggles)
+
+    @Test
+    fun burbuja_muestraLaLineaActualAlLado_yTocarAbreLaTarjeta() {
+        var toggles = 0
+        rule.setContent { BubbleView(snap(IslandMode.EXPANDED), AppSettings(), null, reducedMotion = true, controls = bubble(open = false) { toggles++ }) }
+        rule.onNodeWithTag("bubble").assertIsDisplayed()
+        rule.onNodeWithTag("bubble-line", useUnmergedTree = true).assertExists()
+        rule.onNodeWithTag("bubble").performClick()
+        rule.waitForIdle()
+        assertEquals(1, toggles)
+    }
+
+    @Test
+    fun burbujaAbierta_muestraLaLetraEnLaTarjeta() {
+        rule.setContent { BubbleView(snap(IslandMode.EXPANDED), AppSettings(), null, reducedMotion = true, controls = bubble(open = true)) }
+        rule.onNodeWithTag("bubble-card").assertIsDisplayed()
+        rule.onNodeWithTag("current-line", useUnmergedTree = true).assertExists()
+        rule.onNodeWithTag("bubble-line", useUnmergedTree = true).assertDoesNotExist()
     }
 
     @Test

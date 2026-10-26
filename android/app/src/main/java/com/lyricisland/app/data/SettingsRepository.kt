@@ -21,6 +21,9 @@ import kotlinx.coroutines.flow.map
 
 enum class BgStyle { SOLID, GRADIENT, LIVE, BLUR }
 
+/** Isla arriba (alrededor de la cámara) o burbuja flotante que se arrastra, como las de Messenger. */
+enum class OverlayStyle { ISLAND, BUBBLE }
+
 data class AppSettings(
     val enabled: Boolean = false,
     val fontScale: Float = 1f,
@@ -33,6 +36,11 @@ data class AppSettings(
     val gradientFrom: String = "#6A3DE8",
     val gradientTo: String = "#E83D84",
     val gradientAngle: Int = 135,
+    val overlayStyle: OverlayStyle = OverlayStyle.ISLAND,
+    /** Burbuja: lado de la pantalla, altura (fracción de la pantalla) y línea actual al lado de la burbuja. */
+    val bubbleRight: Boolean = true,
+    val bubbleY: Float = 0.3f,
+    val bubbleShowLine: Boolean = true,
     val pauseBehavior: PauseBehavior = PauseBehavior.DIM,
     val pauseDelayMs: Long = 10_000,
     val noLyricsBehavior: NoLyricsBehavior = NoLyricsBehavior.TITLE,
@@ -78,6 +86,10 @@ class SettingsRepository(private val context: Context) {
         val gradientFrom = stringPreferencesKey("gradientFrom")
         val gradientTo = stringPreferencesKey("gradientTo")
         val gradientAngle = intPreferencesKey("gradientAngle")
+        val overlayStyle = stringPreferencesKey("overlayStyle")
+        val bubbleRight = booleanPreferencesKey("bubbleRight")
+        val bubbleY = floatPreferencesKey("bubbleY")
+        val bubbleShowLine = booleanPreferencesKey("bubbleShowLine")
         val pauseBehavior = stringPreferencesKey("pauseBehavior")
         val pauseDelayMs = longPreferencesKey("pauseDelayMs")
         val noLyrics = stringPreferencesKey("noLyrics")
@@ -118,6 +130,10 @@ class SettingsRepository(private val context: Context) {
             gradientFrom = p[K.gradientFrom]?.takeIf { HEX.matches(it) } ?: d.gradientFrom,
             gradientTo = p[K.gradientTo]?.takeIf { HEX.matches(it) } ?: d.gradientTo,
             gradientAngle = p[K.gradientAngle] ?: d.gradientAngle,
+            overlayStyle = enumOr(p[K.overlayStyle], d.overlayStyle),
+            bubbleRight = p[K.bubbleRight] ?: d.bubbleRight,
+            bubbleY = (p[K.bubbleY] ?: d.bubbleY).coerceIn(0f, 1f),
+            bubbleShowLine = p[K.bubbleShowLine] ?: d.bubbleShowLine,
             pauseBehavior = enumOr(p[K.pauseBehavior], d.pauseBehavior),
             pauseDelayMs = p[K.pauseDelayMs] ?: d.pauseDelayMs,
             noLyricsBehavior = enumOr(p[K.noLyrics], d.noLyricsBehavior),
@@ -148,6 +164,10 @@ class SettingsRepository(private val context: Context) {
             p[K.gradientFrom] = n.gradientFrom
             p[K.gradientTo] = n.gradientTo
             p[K.gradientAngle] = n.gradientAngle
+            p[K.overlayStyle] = n.overlayStyle.name
+            p[K.bubbleRight] = n.bubbleRight
+            p[K.bubbleY] = n.bubbleY
+            p[K.bubbleShowLine] = n.bubbleShowLine
             p[K.pauseBehavior] = n.pauseBehavior.name
             p[K.pauseDelayMs] = n.pauseDelayMs
             p[K.noLyrics] = n.noLyricsBehavior.name

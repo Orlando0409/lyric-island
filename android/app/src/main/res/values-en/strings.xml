@@ -78,4 +78,9 @@
     <string name="preset_forest">Forest</string>
     <string name="preset_neon">Neon</string>
     <string name="preset_graphite">Graphite</string>
+    <string name="overlay_style">Style</string>
+    <string name="style_island">Island</string>
+    <string name="style_bubble">Bubble</string>
+    <string name="bubble_hint">Drag the bubble anywhere; it sticks to the edge. Tap it to see the lyrics and drag it to the ✕ at the bottom to hide it until the next song.</string>
+    <string name="bubble_show_line">Show the current line next to the bubble</string>
 </resources>

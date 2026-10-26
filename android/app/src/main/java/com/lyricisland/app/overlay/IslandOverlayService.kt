@@ -9,6 +9,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.ServiceInfo
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ValueAnimator
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Build
@@ -17,6 +20,9 @@ import android.os.Looper
 import android.os.PowerManager
 import android.os.SystemClock
 import android.provider.Settings
+import android.view.Gravity
+import android.view.MotionEvent
+import android.view.WindowManager
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -32,10 +38,13 @@ import com.lyricisland.app.MainActivity
 import com.lyricisland.app.Romanizer
 import com.lyricisland.app.R
 import com.lyricisland.app.data.AppSettings
+import com.lyricisland.app.data.OverlayStyle
 import com.lyricisland.app.graph
 import com.lyricisland.app.media.MediaEvent
 import com.lyricisland.app.media.MediaListenerService
 import com.lyricisland.app.media.SessionTracker
+import com.lyricisland.app.ui.island.BubbleControls
+import com.lyricisland.app.ui.island.BubbleDismissTarget
 import com.lyricisland.app.ui.island.IslandGeometry
 import com.lyricisland.app.ui.island.IslandOverlay
 import com.lyricisland.core.ColorEngine
@@ -51,6 +60,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.math.hypot
 
 /**
  * Foreground service (tipo specialUse) que mantiene viva la isla (12.8): crea la ventana overlay,
@@ -89,6 +99,19 @@ class IslandOverlayService : LifecycleService() {
     private var lastTrackKey: String? = null
     private var userHiddenByNotif = false
 
+    // Modo burbuja: la ventana se arrastra (coordenadas desde la izquierda mientras se mueve) y se pega a un borde.
+    private val bubbleOpen = mutableStateOf(false)
+    private val bubbleDragging = mutableStateOf(false)
+    private val dismissNear = mutableStateOf(false)
+    private var dragX = 0f
+    private var dragY = 0f
+    private var snapAnimator: ValueAnimator? = null
+    private var dismissWindow: OverlayWindowController? = null
+    private val toggleBubble: () -> Unit = {
+        bubbleOpen.value = !bubbleOpen.value
+        placeBubble()
+    }
+
     private val screenReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             screenOn.value = intent.action != Intent.ACTION_SCREEN_OFF
@@ -123,7 +146,8 @@ class IslandOverlayService : LifecycleService() {
             saveUserOffset = { t, ms -> lifecycleScope.launch { g.saveOffset(t, ms) } },
         )
         tracker = SessionTracker(this).apply { onDetected = { pkg -> lifecycleScope.launch { g.settings.noteDetected(pkg) } } }
-        window = OverlayWindowController(this)
+        // FLAG_WATCH_OUTSIDE_TOUCH: tocar fuera de la tarjeta de la burbuja la cierra.
+        window = OverlayWindowController(this, extraFlags = WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH)
 
         val view = ComposeView(this).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
@@ -144,7 +168,23 @@ class IslandOverlayService : LifecycleService() {
                     onOffset = { steps -> controller.adjustOffset(steps * IslandController.OFFSET_STEP_MS) },
                     onHide = { controller.setHidden(true); hiddenUntilNextTrack = true },
                     onOpenSettings = { startActivity(Intent(this@IslandOverlayService, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) },
+                    bubble = BubbleControls(
+                        open = bubbleOpen.value,
+                        onRight = settingsState.value.bubbleRight,
+                        dragging = bubbleDragging.value,
+                        onDragStart = ::onBubbleDragStart,
+                        onDrag = ::onBubbleDrag,
+                        onDragEnd = ::onBubbleDragEnd,
+                        onToggleOpen = toggleBubble,
+                    ),
                 )
+            }
+            setOnTouchListener { _, e ->
+                if (e.action == MotionEvent.ACTION_OUTSIDE && bubbleOpen.value) {
+                    bubbleOpen.value = false
+                    placeBubble()
+                }
+                false
             }
         }
         owner.attach(view)
@@ -249,10 +289,110 @@ class IslandOverlayService : LifecycleService() {
             cutoutWidthDp = cutout?.rect?.width()?.div(density),
             cutoutHeightDp = cutout?.rect?.height()?.div(density),
         )
-        val topPx = cutout?.let { maxOf(0, it.rect.top - (4 * density).toInt()) } ?: (s.topMarginDp * density).toInt()
-        window.setTopOffset(topPx)
+        if (s.overlayStyle == OverlayStyle.BUBBLE) {
+            placeBubble()
+        } else {
+            bubbleOpen.value = false
+            val topPx = cutout?.let { maxOf(0, it.rect.top - (4 * density).toInt()) } ?: (s.topMarginDp * density).toInt()
+            window.place(Gravity.TOP or Gravity.CENTER_HORIZONTAL, 0, topPx)
+        }
         // En horizontal la isla se oculta por defecto (suele coincidir con video o juegos).
         controller.onFullscreen(landscape && s.hideInLandscape)
+    }
+
+    /** Burbuja quieta: pegada a su borde a la altura guardada; con la tarjeta abierta ocupa todo el ancho. */
+    private fun placeBubble() {
+        if (bubbleDragging.value || snapAnimator != null) return
+        val s = settingsState.value
+        val dm = resources.displayMetrics
+        val y = (s.bubbleY * dm.heightPixels).toInt().coerceIn(0, maxOf(0, dm.heightPixels - (80 * dm.density).toInt()))
+        when {
+            bubbleOpen.value -> window.place(Gravity.TOP or Gravity.START, 0, y, fullWidth = true)
+            s.bubbleRight -> window.place(Gravity.TOP or Gravity.END, 0, y)
+            else -> window.place(Gravity.TOP or Gravity.START, 0, y)
+        }
+    }
+
+    private fun onBubbleDragStart() {
+        snapAnimator?.cancel()
+        snapAnimator = null
+        val dm = resources.displayMetrics
+        val p = window.params
+        bubbleOpen.value = false
+        // Se pasa a coordenadas desde la izquierda (con gravity END, x se mide desde la derecha).
+        val fromRight = (p.gravity and Gravity.HORIZONTAL_GRAVITY_MASK) == Gravity.END
+        dragX = (if (fromRight) dm.widthPixels - window.width - p.x else p.x).toFloat()
+        dragY = p.y.toFloat()
+        bubbleDragging.value = true
+        window.place(Gravity.TOP or Gravity.START, dragX.toInt(), dragY.toInt())
+        showDismissTarget()
+    }
+
+    private fun onBubbleDrag(dx: Float, dy: Float) {
+        val dm = resources.displayMetrics
+        dragX = (dragX + dx).coerceIn(0f, (dm.widthPixels - window.width).toFloat().coerceAtLeast(0f))
+        dragY = (dragY + dy).coerceIn(0f, (dm.heightPixels - window.height).toFloat().coerceAtLeast(0f))
+        window.place(Gravity.TOP or Gravity.START, dragX.toInt(), dragY.toInt())
+        dismissNear.value = isNearDismiss()
+    }
+
+    /** El centro de la burbuja está cerca del blanco de abajo (radio de 96 dp). */
+    private fun isNearDismiss(): Boolean {
+        val dm = resources.displayMetrics
+        val cx = dragX + window.width / 2f
+        val cy = dragY + window.height / 2f
+        val tx = dm.widthPixels / 2f
+        val ty = dm.heightPixels - 80 * dm.density
+        return hypot(cx - tx, cy - ty) < 96 * dm.density
+    }
+
+    private fun onBubbleDragEnd() {
+        if (!bubbleDragging.value) return
+        val dm = resources.displayMetrics
+        val dismiss = isNearDismiss()
+        bubbleDragging.value = false
+        dismissNear.value = false
+        val right = dragX + window.width / 2f > dm.widthPixels / 2f
+        val yFraction = (dragY / dm.heightPixels).coerceIn(0f, 1f)
+        if (dismiss) {
+            // Igual que deslizar la isla hacia arriba: se oculta hasta la próxima canción (o desde la notificación).
+            hiddenUntilNextTrack = true
+            controller.setHidden(true)
+        }
+        // Se pega al borde más cercano con una animación corta y luego se guardan el lado y la altura.
+        val target = if (right) (dm.widthPixels - window.width).toFloat() else 0f
+        val y = dragY.toInt()
+        snapAnimator = ValueAnimator.ofFloat(dragX, target).apply {
+            duration = if (dismiss) 0 else 220
+            addUpdateListener { a -> window.place(Gravity.TOP or Gravity.START, (a.animatedValue as Float).toInt(), y) }
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    snapAnimator = null
+                    settingsState.value = settingsState.value.copy(bubbleRight = right, bubbleY = yFraction)
+                    placeBubble()
+                    lifecycleScope.launch { graph.settings.update { it.copy(bubbleRight = right, bubbleY = yFraction) } }
+                }
+            })
+            start()
+        }
+    }
+
+    /** Blanco para descartar (ventana aparte, sin toques); se crea la primera vez y se desvanece al soltar. */
+    private fun showDismissTarget() {
+        if (dismissWindow != null) return
+        val ctrl = OverlayWindowController(
+            this,
+            gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL,
+            extraFlags = WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+        )
+        val v = ComposeView(this).apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
+            setContent { BubbleDismissTarget(visible = bubbleDragging.value, near = dismissNear.value) }
+        }
+        owner.share(v)
+        ctrl.params.y = (24 * resources.displayMetrics.density).toInt()
+        ctrl.show(v)
+        dismissWindow = ctrl
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -326,6 +466,8 @@ class IslandOverlayService : LifecycleService() {
         tracker.stop()
         controller.dispose()
         owner.pause()
+        snapAnimator?.cancel()
+        dismissWindow?.remove()
         window.remove()
         owner.destroy()
         handler.removeCallbacksAndMessages(null)

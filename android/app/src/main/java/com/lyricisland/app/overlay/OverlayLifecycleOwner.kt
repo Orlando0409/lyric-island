@@ -35,6 +35,13 @@ class OverlayLifecycleOwner : LifecycleOwner, SavedStateRegistryOwner, ViewModel
         view.setViewTreeViewModelStoreOwner(this)
     }
 
+    /** Otra vista del mismo servicio (p. ej. el blanco para descartar la burbuja) con los mismos owners. */
+    fun share(view: View) {
+        view.setViewTreeLifecycleOwner(this)
+        view.setViewTreeSavedStateRegistryOwner(this)
+        view.setViewTreeViewModelStoreOwner(this)
+    }
+
     fun resume() {
         registry.handleLifecycleEvent(Lifecycle.Event.ON_START)
         registry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
