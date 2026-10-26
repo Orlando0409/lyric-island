@@ -7,6 +7,7 @@ export const ShortcutsSchema = z.object({
   offsetPlus: z.string().default('Control+Alt+Right'),
   offsetMinus: z.string().default('Control+Alt+Left'),
   offsetReset: z.string().default('Control+Alt+0'),
+  lyricsWindow: z.string().default('Control+Alt+J'),
 });
 
 const HexColor = z.string().regex(/^#[0-9A-Fa-f]{6}$/);
@@ -68,6 +69,18 @@ export const SettingsSchema = z.object({
       leadMs: z.number().min(0).max(600).default(150),
       // Canciones en japonés: romaji debajo de la línea actual (en lugar de la siguiente).
       showRomaji: z.boolean().default(true),
+    })
+    .prefault({}),
+  // Ventana "Letra completa" (estilo Spotify).
+  lyricsView: z
+    .object({
+      fontScale: z.number().min(0.7).max(1.8).default(1),
+      alwaysOnTop: z.boolean().default(false),
+      bounds: z
+        .object({ x: z.number(), y: z.number(), width: z.number().min(200), height: z.number().min(200) })
+        .nullable()
+        .default(null)
+        .catch(null),
     })
     .prefault({}),
   shortcuts: ShortcutsSchema.prefault({}),

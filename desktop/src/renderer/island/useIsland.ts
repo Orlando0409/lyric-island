@@ -16,7 +16,11 @@ export interface IslandView {
   artworkUrl: string | null;
 }
 
-export function useIsland(): IslandView {
+/**
+ * `fullView`: ventana de letra completa. Usa el mismo controlador, pero nunca se oculta por pantalla completa ni por
+ * pausa (la letra sigue a la vista).
+ */
+export function useIsland({ fullView = false }: { fullView?: boolean } = {}): IslandView {
   const api = window.lyricIsland;
   const controller = useMemo(
     () =>
@@ -77,15 +81,15 @@ export function useIsland(): IslandView {
   // Ajustes que afectan a la máquina de estados.
   useEffect(() => {
     controller.setBehavior({
-      pauseBehavior: settings.behavior.pauseBehavior,
+      pauseBehavior: fullView ? 'dim' : settings.behavior.pauseBehavior,
       pauseCompactDelayMs: settings.behavior.pauseCompactDelayMs,
-      noLyricsBehavior: settings.behavior.noLyricsBehavior,
-      hideOnFullscreen: !settings.general.showInFullscreen,
+      noLyricsBehavior: fullView ? 'title' : settings.behavior.noLyricsBehavior,
+      hideOnFullscreen: fullView ? false : !settings.general.showInFullscreen,
       playerFilter: { mode: settings.players.mode, apps: settings.players.apps },
       experimentalPlain: settings.lyrics.experimentalPlain,
       lyricsLeadMs: settings.lyrics.leadMs,
     });
-  }, [controller, settings]);
+  }, [controller, settings, fullView]);
 
   // Bucle de animación: solo reproduciendo y visible (en pausa, 0 % de CPU). 30 fps con batería.
   useEffect(() => {

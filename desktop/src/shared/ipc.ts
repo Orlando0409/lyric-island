@@ -35,6 +35,8 @@ export interface LyricIslandApi {
   clearOffsets(): Promise<void>;
   exportLogs(): Promise<string | null>;
   appInfo(): Promise<{ version: string; helper: string | null }>;
+  /** Abre o cierra la ventana de letra completa. */
+  toggleLyricsWindow(): Promise<void>;
 }
 
 export const IPC = {
@@ -56,4 +58,5 @@ export const IPC = {
   clearOffsets: 'lyrics:clearOffsets',
   exportLogs: 'app:exportLogs',
   appInfo: 'app:info',
+  toggleLyricsWindow: 'lyrics:toggleWindow',
 } as const;

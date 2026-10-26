@@ -314,6 +314,9 @@ export function Settings() {
           <Toggle value={s.lyrics.experimentalPlain} onChange={(v) => update({ lyrics: { experimentalPlain: v } })} />
         </Row>
         <div className="buttons">
+          <button onClick={() => void api.toggleLyricsWindow()} data-testid="open-lyrics">
+            {L('openLyrics')}
+          </button>
           <button onClick={() => void api.clearCache().then(() => flash(L('done')))}>{L('clearCache')}</button>
           <button onClick={() => void api.clearOffsets().then(() => (setOffsets({}), flash(L('done'))))}>{L('clearOffsets')}</button>
         </div>
@@ -329,6 +332,9 @@ export function Settings() {
           </li>
           <li>
             <kbd>{s.shortcuts.toggleExpand}</kbd> {L('trayExpand')}
+          </li>
+          <li>
+            <kbd>{s.shortcuts.lyricsWindow}</kbd> {L('trayLyrics')}
           </li>
           <li>
             <kbd>{s.shortcuts.offsetPlus}</kbd> +100 ms · <kbd>{s.shortcuts.offsetMinus}</kbd> −100 ms · <kbd>{s.shortcuts.offsetReset}</kbd> reset

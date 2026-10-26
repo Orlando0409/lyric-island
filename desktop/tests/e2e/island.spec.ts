@@ -216,3 +216,32 @@ test('ajustes: se guardan en disco y llegan a la isla', async () => {
     server.close();
   }
 });
+
+test('letra completa: toda la letra, la línea actual con karaoke y siempre encima', async () => {
+  const { app, server, userData } = await launch('e2e.ndjson', { LYRICISLAND_OPEN_LYRICS: '1' });
+  try {
+    let page: Page | undefined;
+    await expect.poll(() => (page = app.windows().find((w) => w.url().includes('lyrics.html'))), { timeout: 10_000 }).toBeTruthy();
+    const full = page!;
+    await expect(full.getByTestId('full-current-line')).toContainText('la primera línea', { timeout: 10_000 });
+    // Todas las líneas están en la vista, no solo la actual y la siguiente.
+    expect(await full.locator('.lyric').count()).toBeGreaterThan(3);
+    await expect(full.locator('.lyric.future').first()).toContainText('La isla cambia de color');
+    // La línea actual queda cerca de la altura de foco (no fuera de la vista).
+    const box = await full.getByTestId('full-current-line').boundingBox();
+    const height = await full.evaluate(() => window.innerHeight);
+    expect(box!.y).toBeGreaterThan(0);
+    expect(box!.y).toBeLessThan(height * 0.7);
+    await full.screenshot({ path: 'test-results/full-lyrics.png' });
+    // Fijar encima: se guarda y la ventana queda siempre encima.
+    await full.getByTestId('pin').click();
+    const file = join(userData, 'settings.json');
+    await expect.poll(() => existsSync(file) && JSON.parse(readFileSync(file, 'utf8')).lyricsView.alwaysOnTop, { timeout: 5000 }).toBe(true);
+    await expect
+      .poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows().find((w) => w.webContents.getURL().includes('lyrics.html'))!.isAlwaysOnTop()))
+      .toBe(true);
+  } finally {
+    await app.close();
+    server.close();
+  }
+});

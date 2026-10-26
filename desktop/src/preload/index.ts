@@ -27,6 +27,7 @@ const api: LyricIslandApi = {
   clearOffsets: () => ipcRenderer.invoke(IPC.clearOffsets),
   exportLogs: () => ipcRenderer.invoke(IPC.exportLogs),
   appInfo: () => ipcRenderer.invoke(IPC.appInfo),
+  toggleLyricsWindow: () => ipcRenderer.invoke(IPC.toggleLyricsWindow),
 };
 
 contextBridge.exposeInMainWorld('lyricIsland', api);

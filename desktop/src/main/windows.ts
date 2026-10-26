@@ -1,5 +1,5 @@
 // Ventanas: la isla (transparente, siempre encima, click-through) y la ventana de ajustes.
-import { BrowserWindow, screen, type Display } from 'electron';
+import { BrowserWindow, screen, type Display, type Rectangle } from 'electron';
 import { join } from 'node:path';
 import type { Settings } from '../shared/settings';
 
@@ -9,7 +9,7 @@ export const ISLAND_HEIGHT = 140;
 
 const preloadPath = () => join(import.meta.dirname, '../preload/index.cjs');
 
-function loadRenderer(win: BrowserWindow, page: 'island' | 'settings'): void {
+function loadRenderer(win: BrowserWindow, page: 'island' | 'settings' | 'lyrics'): void {
   const devUrl = process.env.ELECTRON_RENDERER_URL;
   if (devUrl) void win.loadURL(`${devUrl}/${page}.html`);
   else void win.loadFile(join(import.meta.dirname, `../renderer/${page}.html`));
@@ -94,6 +94,48 @@ export function openSettingsWindow(): BrowserWindow {
   settingsWin.on('closed', () => (settingsWin = null));
   loadRenderer(settingsWin, 'settings');
   return settingsWin;
+}
+
+let lyricsWin: BrowserWindow | null = null;
+
+export function lyricsWindow(): BrowserWindow | null {
+  return lyricsWin && !lyricsWin.isDestroyed() ? lyricsWin : null;
+}
+
+/**
+ * Letra completa (estilo Spotify): ventana normal y redimensionable con toda la letra, que se desplaza sola.
+ * Recuerda su tamaño y posición; `onBounds` los guarda al cerrarla.
+ */
+export function openLyricsWindow(s: Settings, onBounds: (b: Rectangle) => void): BrowserWindow {
+  const existing = lyricsWindow();
+  if (existing) {
+    existing.show();
+    existing.focus();
+    return existing;
+  }
+  const saved = s.lyricsView.bounds;
+  // Solo se reutiliza la posición guardada si sigue dentro de algún monitor (pudo desconectarse).
+  const visible = saved && screen.getAllDisplays().some((d) => {
+    const a = d.workArea;
+    return saved.x < a.x + a.width - 80 && saved.x + saved.width > a.x + 80 && saved.y >= a.y - 20 && saved.y < a.y + a.height - 80;
+  });
+  lyricsWin = new BrowserWindow({
+    ...(visible ? saved : { width: 520, height: 720 }),
+    minWidth: 360,
+    minHeight: 420,
+    title: 'LyricIsland',
+    autoHideMenuBar: true,
+    show: false,
+    alwaysOnTop: s.lyricsView.alwaysOnTop,
+    backgroundColor: '#1C1C1E',
+    webPreferences: { preload: preloadPath(), contextIsolation: true, nodeIntegration: false, sandbox: true, backgroundThrottling: false },
+  });
+  const win = lyricsWin;
+  win.once('ready-to-show', () => win.show());
+  win.on('close', () => onBounds(win.getNormalBounds()));
+  win.on('closed', () => (lyricsWin = null));
+  loadRenderer(win, 'lyrics');
+  return win;
 }
 
 export function allWindows(): BrowserWindow[] {

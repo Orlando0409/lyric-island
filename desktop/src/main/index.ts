@@ -11,7 +11,7 @@ import { FakeHelper, HelperProcess, type MediaSource } from './mediaBridge';
 import { LyricsService } from './lyricsService';
 import type { HelperMessage } from './protocol';
 import { SettingsStore } from './settingsStore';
-import { allWindows, createIslandWindow, openSettingsWindow, positionIsland } from './windows';
+import { allWindows, createIslandWindow, lyricsWindow, openLyricsWindow, openSettingsWindow, positionIsland } from './windows';
 
 // El userData aislado (E2E) va ANTES del bloqueo de instancia única: el bloqueo se asocia al userData,
 // así una LyricIsland instalada y abierta no impide correr las pruebas.
@@ -43,6 +43,18 @@ function sendIsland(channel: string, ...args: unknown[]): void {
   if (island && !island.isDestroyed()) island.webContents.send(channel, ...args);
 }
 
+/** Lo que suena (pista, posición, offsets) va a la isla y a la ventana de letra completa. */
+function sendMedia(channel: string, ...args: unknown[]): void {
+  sendIsland(channel, ...args);
+  lyricsWindow()?.webContents.send(channel, ...args);
+}
+
+function toggleLyricsWindow(): void {
+  const w = lyricsWindow();
+  if (w && w.isVisible() && w.isFocused()) w.close();
+  else openLyricsWindow(settings.get(), (bounds) => void settings.update({ lyricsView: { bounds } }));
+}
+
 function command(c: IslandCommand): void {
   if (c.type === 'toggleHidden') {
     islandHidden = !islandHidden;
@@ -50,7 +62,9 @@ function command(c: IslandCommand): void {
     rebuildTrayMenu();
     return;
   }
-  sendIsland(IPC.command, c);
+  // El offset también se aplica en la ventana de letra completa; ocultar y compactar son solo de la isla.
+  if (c.type === 'offset' || c.type === 'offsetReset') sendMedia(IPC.command, c);
+  else sendIsland(IPC.command, c);
 }
 
 function onHelperMessage(m: HelperMessage): void {
@@ -70,17 +84,17 @@ function onHelperMessage(m: HelperMessage): void {
         artworkHash: m.artworkHash,
       };
       lastTrack = { track, artworkDataUrl: m.artworkHash ? (artworkByHash.get(m.artworkHash) ?? null) : null };
-      sendIsland(IPC.track, lastTrack);
+      sendMedia(IPC.track, lastTrack);
       break;
     }
     case 'timeline':
       lastTimeline = m;
-      sendIsland(IPC.timeline, { positionMs: m.positionMs, updatedAtMs: m.updatedAtMs, rate: m.rate, status: m.status });
+      sendMedia(IPC.timeline, { positionMs: m.positionMs, updatedAtMs: m.updatedAtMs, rate: m.rate, status: m.status });
       break;
     case 'cleared':
       lastTrack = null;
       lastTimeline = null;
-      sendIsland(IPC.cleared);
+      sendMedia(IPC.cleared);
       break;
     case 'fullscreen':
       sendIsland(IPC.fullscreen, m.active);
@@ -120,6 +134,7 @@ function registerShortcuts(s: Settings): void {
     [s.shortcuts.offsetPlus, () => command({ type: 'offset', deltaMs: 100 })],
     [s.shortcuts.offsetMinus, () => command({ type: 'offset', deltaMs: -100 })],
     [s.shortcuts.offsetReset, () => command({ type: 'offsetReset' })],
+    [s.shortcuts.lyricsWindow, toggleLyricsWindow],
   ];
   for (const [accel, fn] of map) {
     try {
@@ -142,6 +157,7 @@ function rebuildTrayMenu(): void {
     Menu.buildFromTemplate([
       { label: t(lang, islandHidden ? 'trayShow' : 'trayHide'), click: () => command({ type: 'toggleHidden' }) },
       { label: t(lang, 'trayExpand'), click: () => command({ type: 'toggleCompact' }) },
+      { label: t(lang, 'trayLyrics'), click: () => toggleLyricsWindow() },
       { type: 'separator' },
       { label: t(lang, 'traySettings'), click: () => openSettingsWindow() },
       { type: 'separator' },
@@ -179,14 +195,20 @@ function registerIpc(): void {
     writeFileSync(r.filePath, dumpLogs());
     return r.filePath;
   });
-  // La isla terminó de cargar: se reenvía el estado actual (por si llegó antes que el renderer).
+  ipcMain.handle(IPC.toggleLyricsWindow, () => toggleLyricsWindow());
+  // La isla o la letra completa terminó de cargar: se le reenvía el estado actual (por si llegó antes que el renderer).
   ipcMain.on(IPC.ready, (e) => {
-    if (!island || e.sender !== island.webContents) return;
-    sendIsland(IPC.settingsChanged, settings.get());
-    sendIsland(IPC.power, powerMonitor.isOnBatteryPower());
-    if (islandHidden) sendIsland(IPC.command, { type: 'setHidden', hidden: true } satisfies IslandCommand);
-    if (lastTrack) sendIsland(IPC.track, lastTrack);
-    if (lastTimeline?.type === 'timeline') onHelperMessage(lastTimeline);
+    const isIsland = !!island && e.sender === island.webContents;
+    if (!isIsland && e.sender !== lyricsWindow()?.webContents) return;
+    const send = (channel: string, ...args: unknown[]) => e.sender.send(channel, ...args);
+    send(IPC.settingsChanged, settings.get());
+    send(IPC.power, powerMonitor.isOnBatteryPower());
+    if (isIsland && islandHidden) send(IPC.command, { type: 'setHidden', hidden: true } satisfies IslandCommand);
+    if (lastTrack) send(IPC.track, lastTrack);
+    if (lastTimeline?.type === 'timeline') {
+      const m = lastTimeline;
+      send(IPC.timeline, { positionMs: m.positionMs, updatedAtMs: m.updatedAtMs, rate: m.rate, status: m.status });
+    }
     media?.send({ cmd: 'requestSnapshot' });
   });
 }
@@ -210,6 +232,7 @@ app.whenReady().then(() => {
     applyLoginItem(s);
     rebuildTrayMenu();
     if (island) positionIsland(island, s);
+    lyricsWindow()?.setAlwaysOnTop(s.lyricsView.alwaysOnTop);
   });
 
   const reposition = () => island && positionIsland(island, settings.get());
@@ -221,6 +244,7 @@ app.whenReady().then(() => {
   powerMonitor.on('resume', () => media?.send({ cmd: 'requestSnapshot' }));
 
   if (process.env.LYRICISLAND_OPEN_SETTINGS === '1') openSettingsWindow();
+  if (process.env.LYRICISLAND_OPEN_LYRICS === '1') toggleLyricsWindow();
 });
 
 app.on('second-instance', () => openSettingsWindow());

@@ -25,6 +25,7 @@ export default defineConfig({
         input: {
           island: resolve(__dirname, 'src/renderer/island.html'),
           settings: resolve(__dirname, 'src/renderer/settings.html'),
+          lyrics: resolve(__dirname, 'src/renderer/lyrics.html'),
         },
       },
     },
