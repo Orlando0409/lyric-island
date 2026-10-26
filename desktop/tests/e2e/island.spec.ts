@@ -11,8 +11,11 @@ const MAIN = join(ROOT, 'out', 'main', 'index.js');
 async function launch(session: string, extraEnv: Record<string, string> = {}) {
   const { server, baseUrl } = await startFixtureServer();
   const userData = mkdtempSync(join(tmpdir(), 'lyricisland-e2e-'));
+  // LYRICISLAND_E2E_EXE=dist/win-unpacked/LyricIsland.exe prueba la app ya empaquetada (asar, diccionario incluido).
+  const exe = process.env.LYRICISLAND_E2E_EXE;
   const app = await electron.launch({
-    args: [ROOT],
+    ...(exe ? { executablePath: exe } : {}),
+    args: exe ? [] : [ROOT],
     env: {
       ...process.env,
       LYRICISLAND_FAKE_HELPER: join(FIXTURES, 'sessions', session),
