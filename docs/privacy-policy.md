@@ -1,6 +1,6 @@
 # Política de privacidad de LyricIsland
 
-_Última actualización: 24 de octubre de 2026_
+_Última actualización: 26 de octubre de 2026_
 
 LyricIsland es una aplicación para Windows y Android que muestra la letra de la canción que suena en tu dispositivo.
 
@@ -29,4 +29,4 @@ Puedes borrar la caché y los desfases desde Ajustes → Letras, o desinstalando
 
 ## Contacto
 
-OB Dev Studio — (agregar correo o página del proyecto al publicar).
+OB Dev Studio — dudas o pedidos sobre privacidad: abrí un issue en https://github.com/Orlando0409/lyric-island/issues
