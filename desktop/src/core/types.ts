@@ -34,6 +34,8 @@ export interface LyricLine {
   isInterlude: boolean; // línea vacía o hueco largo → "♪ • • •"
   /** Transliteración (romaji) de las líneas en japonés; se muestra debajo de la línea actual. */
   romaji?: string | null;
+  /** Alineación romaji ↔ original en pares planos [finEnOriginal, finEnRomaji, …] (ver romajiFill). */
+  romajiMarks?: number[] | null;
 }
 
 export type LyricsKind = 'synced' | 'plain' | 'instrumental' | 'none';

@@ -2,12 +2,14 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildDocument } from '../../src/core/lrc';
-import { isJapaneseLyrics, kanaToRomaji, romanizeDocument, tokensToRomaji, type JaToken } from '../../src/core/romaji';
+import { alignRomaji, isJapaneseLyrics, kanaToRomaji, romajiFill, romanizeDocument, tokensToRomaji, type JaToken } from '../../src/core/romaji';
 
 // Casos escritos a mano (romaji correcto), compartidos con android/core.
 const cases = JSON.parse(readFileSync(join(__dirname, '..', '..', '..', 'shared', 'fixtures', 'romaji', 'cases.json'), 'utf8')) as {
   kana: [string, string][];
   tokens: { tokens: [string, string | null, string, string][]; romaji: string }[];
+  align: { text: string; tokens: number; romaji: string; marks: number[] }[];
+  fill: { text: string; romaji: string; marks: number[]; words: string[]; wordIndex: number; wordProgress: number; fill: number }[];
   detect: { lines: string[]; japanese: boolean }[];
 };
 const toTokens = (rows: [string, string | null, string, string][]): JaToken[] =>
@@ -22,6 +24,19 @@ describe('kanaToRomaji (Hepburn)', () => {
 describe('tokensToRomaji', () => {
   it.each(cases.tokens.map((c) => [c.romaji, c.tokens] as const))('→ %s', (romaji, rows) => {
     expect(tokensToRomaji(toTokens([...rows]))).toBe(romaji);
+  });
+});
+
+describe('alignRomaji', () => {
+  it.each(cases.align.map((c) => [c.romaji, c] as const))('→ %s', (_, c) => {
+    expect(alignRomaji(c.text, toTokens([...cases.tokens[c.tokens].tokens]))).toEqual({ romaji: c.romaji, marks: c.marks });
+  });
+});
+
+describe('romajiFill: el romaji avanza al mismo punto que lo cantado del original', () => {
+  it.each(cases.fill.map((c) => [c.text, c.wordIndex, c.wordProgress, c.fill, c] as const))('%s @%i+%d → %d', (_t, _i, _p, fill, c) => {
+    const line = { text: c.text, romaji: c.romaji, romajiMarks: c.marks, words: c.words.map((text) => ({ text, startMs: 0, endMs: 0, estimated: true })) };
+    expect(romajiFill(line, c.wordIndex, c.wordProgress)).toBeCloseTo(fill, 9);
   });
 });
 

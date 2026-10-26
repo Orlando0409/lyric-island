@@ -274,11 +274,15 @@ body,
   font-style: italic;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+/* El degradado va en el texto (no en toda la caja): --p es la fracción del romaji ya cantada. */
+.romaji-text {
+  display: inline-block;
   background: linear-gradient(90deg, var(--sung) var(--p), var(--secondary) var(--p));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  transition: transform 0.25s ease-out;
 }
 
 /* Líneas largas (RF-31): medidor oculto del ancho natural, dos renglones o desplazamiento que sigue a la palabra. */

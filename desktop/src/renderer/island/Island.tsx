@@ -2,6 +2,7 @@
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import type { IslandSnapshot } from '../../core/controller';
+import { romajiFill } from '../../core/romaji';
 import type { LyricLine, Palette } from '../../core/types';
 import type { Settings } from '../../shared/settings';
 import { useIsland } from './useIsland';
@@ -43,10 +44,42 @@ function useGhost(enabled: boolean, ref: React.RefObject<HTMLElement | null>): b
 }
 
 function wordFill(i: number, snap: IslandSnapshot, reducedKaraoke: boolean): number {
-  if (reducedKaraoke) return 1; // relleno por línea
   if (i < snap.wordIndex) return 1;
-  if (i === snap.wordIndex) return snap.wordProgress;
+  if (i === snap.wordIndex) return reducedKaraoke ? 1 : snap.wordProgress; // movimiento reducido: palabras enteras, sin barrido
   return 0;
+}
+
+/**
+ * Romaji debajo de la línea japonesa, rellenado al mismo punto que lo cantado del original (romajiFill).
+ * El degradado cubre solo el texto; si no entra, se desplaza siguiendo al relleno.
+ */
+function RomajiLine({ text, fill }: { text: string; fill: number }) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [box, setBox] = useState({ width: 0, natural: 0 });
+  useLayoutEffect(() => {
+    const boxEl = boxRef.current;
+    const t = textRef.current;
+    if (!boxEl || !t) return;
+    const measure = () => setBox({ width: boxEl.clientWidth, natural: t.offsetWidth });
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(boxEl);
+    return () => ro.disconnect();
+  }, [text]);
+  const overflow = Math.max(0, box.natural - box.width);
+  const shift = Math.min(overflow, Math.max(0, box.natural * fill - box.width * 0.35));
+  return (
+    <div className="line next romaji" ref={boxRef} data-testid="romaji-line">
+      <span
+        className="romaji-text"
+        ref={textRef}
+        style={{ '--p': `${(fill * 100).toFixed(2)}%`, transform: shift ? `translateX(${-shift}px)` : undefined } as CSSProperties}
+      >
+        {text}
+      </span>
+    </div>
+  );
 }
 
 /** Cómo entra una línea: en un renglón, partida en dos (letra algo menor) o desplazándose (RF-31). */
@@ -234,14 +267,11 @@ export function Island() {
                 </motion.div>
               </AnimatePresence>
               {romajiLine ? (
-                // Canción en japonés: romaji de la línea de arriba (se rellena con el progreso de la línea).
-                <div
-                  className="line next romaji"
-                  data-testid="romaji-line"
-                  style={{ '--p': `${(romajiLine === current ? (reduced ? 1 : snap.lineProgress) : 0) * 100}%` } as CSSProperties}
-                >
-                  {romajiLine.romaji}
-                </div>
+                // Canción en japonés: romaji de la línea de arriba, rellenado al mismo ritmo que la línea original.
+                <RomajiLine
+                  text={romajiLine.romaji ?? ''}
+                  fill={romajiLine === current ? romajiFill(current, snap.wordIndex, reduced ? 1 : snap.wordProgress) : 0}
+                />
               ) : settings.appearance.showNextLine && (
                 <div className="line next" dir="auto" data-testid="next-line">
                   {/* Antes de la primera línea: con interludio la siguiente es la 1.ª; sin él, la 1.ª ya está arriba. */}

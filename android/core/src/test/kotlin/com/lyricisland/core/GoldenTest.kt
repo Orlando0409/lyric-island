@@ -142,6 +142,26 @@ class GoldenTest {
             }
             assertEquals(o["romaji"]!!.jsonPrimitive.content, Romaji.tokensToRomaji(tokens))
         }
+        val tokenCases = cases["tokens"]!!.jsonArray
+        for (c in cases["align"]!!.jsonArray) {
+            val o = c.jsonObject
+            val tokens = tokenCases[o["tokens"]!!.jsonPrimitive.int].jsonObject["tokens"]!!.jsonArray.map { t ->
+                val a = t.jsonArray
+                JaToken(a[0].jsonPrimitive.content, (a[1] as? kotlinx.serialization.json.JsonPrimitive)?.takeIf { it.isString }?.content, a[2].jsonPrimitive.content, a[3].jsonPrimitive.content)
+            }
+            val expected = Romaji.AlignedRomaji(o["romaji"]!!.jsonPrimitive.content, o["marks"]!!.jsonArray.map { it.jsonPrimitive.int })
+            assertEquals(expected, Romaji.alignRomaji(o["text"]!!.jsonPrimitive.content, tokens))
+        }
+        for (c in cases["fill"]!!.jsonArray) {
+            val o = c.jsonObject
+            val line = LyricLine(
+                0, 0, 0, o["text"]!!.jsonPrimitive.content,
+                o["words"]!!.jsonArray.map { LyricWord(it.jsonPrimitive.content, 0, 0, true) }, false,
+                o["romaji"]!!.jsonPrimitive.content, o["marks"]!!.jsonArray.map { it.jsonPrimitive.int },
+            )
+            val fill = Romaji.romajiFill(line, o["wordIndex"]!!.jsonPrimitive.int, o["wordProgress"]!!.jsonPrimitive.double)
+            assertEquals(o["fill"]!!.jsonPrimitive.double, fill, 1e-9, o.toString())
+        }
         for (d in cases["detect"]!!.jsonArray) {
             val o = d.jsonObject
             assertEquals(o["japanese"]!!.jsonPrimitive.boolean, Romaji.isJapaneseLyrics(o["lines"]!!.jsonArray.map { it.jsonPrimitive.content }), o.toString())

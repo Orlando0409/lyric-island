@@ -134,12 +134,23 @@ interface Group {
   particle: string | null;
   opening: boolean;
   closing: boolean;
+  /** Fin (exclusivo) del grupo en el texto original. */
+  srcEnd: number;
 }
 
-/** Tokens de una línea → romaji legible, con espacios entre palabras. */
-export function tokensToRomaji(tokens: JaToken[]): string {
+export interface AlignedRomaji {
+  romaji: string;
+  /** Pares planos [finEnOriginal, finEnRomaji, …], crecientes: qué parte del romaji corresponde a qué parte del original. */
+  marks: number[];
+}
+
+/** Tokens de una línea → romaji legible, con espacios entre palabras, alineado con el texto original. */
+export function alignRomaji(text: string, tokens: JaToken[]): AlignedRomaji {
   const groups: Group[] = [];
+  let cursor = 0;
   for (const t of tokens) {
+    const at = text.indexOf(t.surface, cursor);
+    cursor = at >= 0 ? at + t.surface.length : Math.min(text.length, cursor + t.surface.length);
     if (t.surface.trim().length === 0) continue;
     const japanese = containsJapanese(t.surface);
     const reading = t.reading && t.reading !== '*' ? t.reading : null;
@@ -150,20 +161,59 @@ export function tokensToRomaji(tokens: JaToken[]): string {
     const prev = groups.at(-1);
     if (prev && !particle && !opening && !closing && !prev.opening && !prev.closing && prev.japanese === japanese && attachesToPrevious(t)) {
       prev.kana += kana;
+      prev.srcEnd = cursor;
       continue;
     }
-    groups.push({ kana, japanese, particle, opening, closing });
+    groups.push({ kana, japanese, particle, opening, closing, srcEnd: cursor });
   }
   let out = '';
+  const marks: number[] = [];
   let prev: Group | null = null;
   for (const g of groups) {
-    const text = (g.particle ?? kanaToRomaji(g.kana)).trim();
-    if (text.length === 0) continue;
+    const piece = (g.particle ?? kanaToRomaji(g.kana)).replace(/\s+/g, ' ').trim();
+    if (piece.length === 0) continue;
     const space = out.length > 0 && !g.closing && !(prev?.opening ?? false);
-    out += (space ? ' ' : '') + text;
+    out += (space ? ' ' : '') + piece;
+    marks.push(g.srcEnd, out.length);
     prev = g;
   }
-  return out.replace(/\s+/g, ' ').trim();
+  return { romaji: out, marks };
+}
+
+export function tokensToRomaji(tokens: JaToken[]): string {
+  return alignRomaji(tokens.map((t) => t.surface).join(''), tokens).romaji;
+}
+
+/** Caracteres del texto original ya cantados según la palabra actual y su avance. */
+export function sungChars(line: Pick<LyricLine, 'text' | 'words'>, wordIndex: number, wordProgress: number): number {
+  if (wordIndex < 0 || line.words.length === 0) return 0;
+  if (wordIndex >= line.words.length) return line.text.length;
+  let n = 0;
+  for (let i = 0; i < wordIndex; i++) n += line.words[i].text.length;
+  n += line.words[wordIndex].text.trimEnd().length * Math.min(1, Math.max(0, wordProgress));
+  return Math.min(line.text.length, n);
+}
+
+/**
+ * Relleno (0..1) del romaji que acompaña a la letra original: avanza al mismo punto que lo ya cantado
+ * del original (a la mitad de 光る, a la mitad de "hikaru"), interpolando entre las marcas de alineación.
+ */
+export function romajiFill(line: Pick<LyricLine, 'text' | 'words' | 'romaji' | 'romajiMarks'>, wordIndex: number, wordProgress: number): number {
+  const total = line.romaji?.length ?? 0;
+  if (total === 0 || line.text.length === 0) return 0;
+  const s = sungChars(line, wordIndex, wordProgress);
+  const marks = line.romajiMarks ?? [];
+  let s0 = 0;
+  let o0 = 0;
+  for (let i = 0; i + 1 < marks.length; i += 2) {
+    const s1 = marks[i];
+    const o1 = marks[i + 1];
+    if (s <= s1) return (s1 > s0 ? o0 + ((s - s0) / (s1 - s0)) * (o1 - o0) : o1) / total;
+    s0 = s1;
+    o0 = o1;
+  }
+  const s1 = line.text.length;
+  return (s1 > s0 ? o0 + ((s - s0) / (s1 - s0)) * (total - o0) : total) / total;
 }
 
 /** Una canción se trata como japonesa si al menos el 30 % de sus líneas con CJK tienen kana (así no se romaniza chino). */
@@ -183,6 +233,10 @@ export function romanizeDocument(doc: LyricsDocument, analyze: (text: string) =>
   if (doc.kind !== 'synced' || !isJapaneseLyrics(doc.lines)) return doc;
   return {
     ...doc,
-    lines: doc.lines.map((l) => (containsJapanese(l.text) ? { ...l, romaji: tokensToRomaji(analyze(l.text)) } : l)),
+    lines: doc.lines.map((l) => {
+      if (!containsJapanese(l.text)) return l;
+      const { romaji, marks } = alignRomaji(l.text, analyze(l.text));
+      return { ...l, romaji, romajiMarks: marks };
+    }),
   };
 }

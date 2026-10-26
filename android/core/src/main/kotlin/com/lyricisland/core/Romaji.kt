@@ -112,12 +112,19 @@ object Romaji {
         return t.pos == "助詞" && t.posDetail == "接続助詞" && (t.surface == "て" || t.surface == "で" || t.surface == "ば")
     }
 
-    private class Group(var kana: String, val japanese: Boolean, val particle: String?, val opening: Boolean, val closing: Boolean)
+    /** `srcEnd`: fin (exclusivo) del grupo en el texto original. */
+    private class Group(var kana: String, val japanese: Boolean, val particle: String?, val opening: Boolean, val closing: Boolean, var srcEnd: Int)
 
-    /** Tokens de una línea → romaji legible, con espacios entre palabras. */
-    fun tokensToRomaji(tokens: List<JaToken>): String {
+    /** `marks`: pares planos [finEnOriginal, finEnRomaji, …], crecientes: qué parte del romaji corresponde a qué parte del original. */
+    data class AlignedRomaji(val romaji: String, val marks: List<Int>)
+
+    /** Tokens de una línea → romaji legible, con espacios entre palabras, alineado con el texto original. */
+    fun alignRomaji(text: String, tokens: List<JaToken>): AlignedRomaji {
         val groups = ArrayList<Group>()
+        var cursor = 0
         for (t in tokens) {
+            val at = text.indexOf(t.surface, cursor)
+            cursor = if (at >= 0) at + t.surface.length else minOf(text.length, cursor + t.surface.length)
             if (t.surface.jsTrim().isEmpty()) continue
             val japanese = containsJapanese(t.surface)
             val reading = t.reading?.takeIf { it != "*" }
@@ -128,21 +135,61 @@ object Romaji {
             val prev = groups.lastOrNull()
             if (prev != null && particle == null && !opening && !closing && !prev.opening && !prev.closing && prev.japanese == japanese && attachesToPrevious(t)) {
                 prev.kana += kana
+                prev.srcEnd = cursor
                 continue
             }
-            groups.add(Group(kana, japanese, particle, opening, closing))
+            groups.add(Group(kana, japanese, particle, opening, closing, cursor))
         }
         val out = StringBuilder()
+        val marks = ArrayList<Int>()
         var prev: Group? = null
         for (g in groups) {
-            val text = (g.particle ?: kanaToRomaji(g.kana)).jsTrim()
-            if (text.isEmpty()) continue
+            val piece = (g.particle ?: kanaToRomaji(g.kana)).replace(Regex("[$JS_SPACE]+"), " ").jsTrim()
+            if (piece.isEmpty()) continue
             val space = out.isNotEmpty() && !g.closing && prev?.opening != true
             if (space) out.append(' ')
-            out.append(text)
+            out.append(piece)
+            marks.add(g.srcEnd)
+            marks.add(out.length)
             prev = g
         }
-        return out.toString().replace(Regex("[$JS_SPACE]+"), " ").jsTrim()
+        return AlignedRomaji(out.toString(), marks)
+    }
+
+    fun tokensToRomaji(tokens: List<JaToken>): String = alignRomaji(tokens.joinToString("") { it.surface }, tokens).romaji
+
+    /** Caracteres del texto original ya cantados según la palabra actual y su avance. */
+    fun sungChars(line: LyricLine, wordIndex: Int, wordProgress: Double): Double {
+        if (wordIndex < 0 || line.words.isEmpty()) return 0.0
+        if (wordIndex >= line.words.size) return line.text.length.toDouble()
+        var n = 0.0
+        for (i in 0 until wordIndex) n += line.words[i].text.length
+        n += line.words[wordIndex].text.jsTrimEnd().length * wordProgress.coerceIn(0.0, 1.0)
+        return minOf(line.text.length.toDouble(), n)
+    }
+
+    /**
+     * Relleno (0..1) del romaji que acompaña a la letra original: avanza al mismo punto que lo ya cantado
+     * del original (a la mitad de 光る, a la mitad de "hikaru"), interpolando entre las marcas de alineación.
+     */
+    fun romajiFill(line: LyricLine, wordIndex: Int, wordProgress: Double): Double {
+        val total = line.romaji?.length ?: 0
+        if (total == 0 || line.text.isEmpty()) return 0.0
+        val s = sungChars(line, wordIndex, wordProgress)
+        val marks = line.romajiMarks ?: emptyList()
+        var s0 = 0.0
+        var o0 = 0.0
+        var i = 0
+        while (i + 1 < marks.size) {
+            val s1 = marks[i].toDouble()
+            val o1 = marks[i + 1].toDouble()
+            if (s <= s1) return (if (s1 > s0) o0 + (s - s0) / (s1 - s0) * (o1 - o0) else o1) / total
+            s0 = s1
+            o0 = o1
+            i += 2
+        }
+        val s1 = line.text.length.toDouble()
+        return (if (s1 > s0) o0 + (s - s0) / (s1 - s0) * (total - o0) else total.toDouble()) / total
     }
 
     /** Una canción se trata como japonesa si al menos el 30 % de sus líneas con CJK tienen kana (así no se romaniza chino). */
@@ -160,6 +207,12 @@ object Romaji {
     /** Agrega `romaji` a las líneas japonesas del documento. `analyze` es el analizador de la plataforma. */
     fun romanizeDocument(doc: LyricsDocument, analyze: (String) -> List<JaToken>): LyricsDocument {
         if (doc.kind != LyricsKind.SYNCED || !isJapaneseLyrics(doc.lines.map { it.text })) return doc
-        return doc.copy(lines = doc.lines.map { l -> if (containsJapanese(l.text)) l.copy(romaji = tokensToRomaji(analyze(l.text))) else l })
+        return doc.copy(
+            lines = doc.lines.map { l ->
+                if (!containsJapanese(l.text)) return@map l
+                val a = alignRomaji(l.text, analyze(l.text))
+                l.copy(romaji = a.romaji, romajiMarks = a.marks)
+            },
+        )
     }
 }

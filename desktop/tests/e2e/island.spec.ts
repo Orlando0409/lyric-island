@@ -104,6 +104,9 @@ test('canción en japonés: romaji debajo de la línea actual', async () => {
     await expect.poll(() => mode(page), { timeout: 10_000 }).toBe('expanded');
     await expect(page.getByTestId('current-line')).toContainText('夜空に光る島', { timeout: 8000 });
     await expect(page.getByTestId('romaji-line')).toHaveText('yozora ni hikaru shima o miteita', { timeout: 8000 });
+    // El romaji se rellena al ritmo de la línea original (no queda vacío ni lleno de golpe).
+    const romajiFill = () => page.locator('.romaji-text').evaluate((el) => parseFloat((el as HTMLElement).style.getPropertyValue('--p')));
+    await expect.poll(romajiFill, { timeout: 6000 }).toBeGreaterThan(0);
     await page.waitForTimeout(500);
     await page.screenshot({ path: 'test-results/island-romaji.png' });
   } finally {

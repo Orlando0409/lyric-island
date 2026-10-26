@@ -43,10 +43,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
@@ -93,6 +95,7 @@ import com.lyricisland.core.IslandMode
 import com.lyricisland.core.IslandSnapshot
 import com.lyricisland.core.LyricLine
 import com.lyricisland.core.PlaybackStatus
+import com.lyricisland.core.Romaji
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -330,6 +333,9 @@ private fun ExpandedContent(
     // Antes de la primera línea: con interludio la siguiente es la 1.ª; sin él, la 1.ª ya está arriba.
     val next = if (snap.activeLineIndex < 0) lines.filter { !it.isInterlude }.getOrNull(if (showInterlude) 0 else 1) else lines.getOrNull(snap.activeLineIndex + 1)
     val dim = if (snap.mode == IslandMode.PAUSED) 0.5f else 1f
+    // El avance del karaoke se lee al dibujar desde este State: así se redibuja en cada frame aunque
+    // AnimatedContent no vuelva a componer su contenido (antes la línea se quedaba sin rellenar).
+    val live = rememberUpdatedState(snap)
     Box(Modifier.fillMaxSize()) {
         if (settings.bgStyle == BgStyle.BLUR && artwork != null && Build.VERSION.SDK_INT >= 31) {
             Image(artwork, null, Modifier.fillMaxSize().blur(40.dp), contentScale = ContentScale.Crop)
@@ -354,7 +360,7 @@ private fun ExpandedContent(
                     val line = lines.getOrNull(index)
                     when {
                         interlude -> Interlude(snap.interlude?.progress ?: 0.0, accent, sp)
-                        line != null && !line.isInterlude -> KaraokeLine(line, snap, reduced, sung, upcoming, sp(17f))
+                        line != null && !line.isInterlude -> KaraokeLine(line, live, reduced, sung, upcoming, sp(17f))
                         else -> Text(
                             lines.firstOrNull { !it.isInterlude }?.text ?: snap.track?.title.orEmpty(),
                             color = upcoming, fontSize = sp(17f), fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -363,17 +369,8 @@ private fun ExpandedContent(
                 }
                 // Canción en japonés: romaji de la línea de arriba en lugar de la siguiente.
                 val topLine = if (showInterlude) null else active?.takeIf { !it.isInterlude } ?: if (snap.activeLineIndex < 0) lines.firstOrNull { !it.isInterlude } else null
-                val romaji = topLine?.romaji?.takeIf { settings.showRomaji }
-                if (romaji != null) {
-                    Text(
-                        romaji,
-                        color = secondary,
-                        fontSize = sp(13f),
-                        fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.testTag("romaji-line"),
-                    )
+                if (topLine?.romaji != null && settings.showRomaji) {
+                    RomajiLine(topLine, isCurrent = topLine === active, live, reduced, sung, secondary, sp(13f))
                 } else if (settings.showNextLine) {
                     Text(next?.text.orEmpty(), color = secondary, fontSize = sp(13f), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.testTag("next-line"))
                 }
@@ -402,10 +399,10 @@ internal enum class LineFit { SINGLE, WRAP, SCROLL }
  * Relleno karaoke (10.5): el texto se mide con TextMeasurer y se dibuja dos veces (pendiente y cantado); el
  * cantado se recorta renglón por renglón hasta la posición de la palabra actual. Las líneas largas se parten en
  * dos renglones; si ni así entran, se desplazan siguiendo a la palabra que se canta (siempre visible).
- * Con movimiento reducido se rellena por línea.
+ * Con movimiento reducido se rellena por palabras enteras, sin barrido.
  */
 @Composable
-private fun KaraokeLine(line: LyricLine, snap: IslandSnapshot, reduced: Boolean, sung: Color, upcoming: Color, textSize: TextUnit) {
+private fun KaraokeLine(line: LyricLine, live: State<IslandSnapshot>, reduced: Boolean, sung: Color, upcoming: Color, textSize: TextUnit) {
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
     BoxWithConstraints(Modifier.fillMaxWidth().clipToBounds().testTag("current-line")) {
@@ -423,33 +420,16 @@ private fun KaraokeLine(line: LyricLine, snap: IslandSnapshot, reduced: Boolean,
             }
         }
 
-        // Posición del relleno: renglón y x; null = línea completa.
-        val fill: Pair<Int, Float>? = run {
-            if (reduced || line.words.isEmpty()) return@run null
-            if (snap.wordIndex >= line.words.size - 1 && snap.wordProgress >= 1.0) return@run null
-            if (snap.wordIndex < 0) return@run 0 to 0f
-            var offset = 0
-            for ((i, w) in line.words.withIndex()) {
-                val start = offset.coerceAtMost(line.text.length)
-                val end = (offset + w.text.length).coerceAtMost(line.text.length)
-                offset = end
-                if (i < snap.wordIndex) continue
-                val row = layout.getLineForOffset(start)
-                val x0 = layout.getHorizontalPosition(start, true)
-                val x1 = if (layout.getLineForOffset(maxOf(start, end - 1)) == row) layout.getHorizontalPosition(end, true) else layout.getLineRight(row)
-                return@run row to (x0 + (x1 - x0) * snap.wordProgress.toFloat())
-            }
-            null
-        }
-        val shift = if (fit == LineFit.SCROLL && fill != null) {
-            (fill.second - maxW * 0.35f).coerceIn(0f, (layout.size.width - maxW).toFloat().coerceAtLeast(0f))
-        } else if (fit == LineFit.SCROLL && fill == null && !reduced) {
-            (layout.size.width - maxW).toFloat().coerceAtLeast(0f)
-        } else {
-            0f
-        }
-
         Canvas(Modifier.fillMaxWidth().height(with(density) { layout.size.height.toDp() }).semantics { contentDescription = line.text }.testTag(fit.name)) {
+            // Se lee el avance aquí (fase de dibujo): cada frame redibuja sin recomponer.
+            val s = live.value
+            val fill = karaokeFill(line, layout, s.wordIndex, if (reduced) 1.0 else s.wordProgress)
+            val overflow = (layout.size.width - maxW).toFloat().coerceAtLeast(0f)
+            val shift = when {
+                fit != LineFit.SCROLL -> 0f
+                fill != null -> (fill.second - maxW * 0.35f).coerceIn(0f, overflow)
+                else -> overflow
+            }
             translate(left = -shift) {
                 drawText(layout, color = upcoming)
                 for (row in 0 until layout.lineCount) {
@@ -462,6 +442,52 @@ private fun KaraokeLine(line: LyricLine, snap: IslandSnapshot, reduced: Boolean,
                     }
                     clipRect(left = 0f, top = top, right = right, bottom = bottom) { drawText(layout, color = sung) }
                 }
+            }
+        }
+    }
+}
+
+/** Posición del relleno de lo cantado: renglón y x; null = línea completa. */
+private fun karaokeFill(line: LyricLine, layout: TextLayoutResult, wordIndex: Int, wordProgress: Double): Pair<Int, Float>? {
+    if (line.words.isEmpty()) return null
+    if (wordIndex >= line.words.size - 1 && wordProgress >= 1.0) return null
+    if (wordIndex < 0) return 0 to 0f
+    var offset = 0
+    for ((i, w) in line.words.withIndex()) {
+        val start = offset.coerceAtMost(line.text.length)
+        val end = (offset + w.text.length).coerceAtMost(line.text.length)
+        offset = end
+        if (i < wordIndex) continue
+        val row = layout.getLineForOffset(start)
+        val x0 = layout.getHorizontalPosition(start, true)
+        val x1 = if (layout.getLineForOffset(maxOf(start, end - 1)) == row) layout.getHorizontalPosition(end, true) else layout.getLineRight(row)
+        return row to (x0 + (x1 - x0) * wordProgress.toFloat())
+    }
+    return null
+}
+
+/**
+ * Romaji debajo de la línea japonesa, con el mismo relleno karaoke: avanza al mismo punto que lo cantado del
+ * original (Romaji.romajiFill). Si no entra, se desplaza siguiendo al relleno.
+ */
+@Composable
+private fun RomajiLine(line: LyricLine, isCurrent: Boolean, live: State<IslandSnapshot>, reduced: Boolean, sung: Color, secondary: Color, textSize: TextUnit) {
+    val text = line.romaji.orEmpty()
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    BoxWithConstraints(Modifier.fillMaxWidth().clipToBounds()) {
+        val maxW = constraints.maxWidth
+        val layout = remember(text, textSize) {
+            measurer.measure(text, TextStyle(fontSize = textSize, fontStyle = FontStyle.Italic), maxLines = 1, softWrap = false)
+        }
+        Canvas(Modifier.fillMaxWidth().height(with(density) { layout.size.height.toDp() }).semantics { contentDescription = text }.testTag("romaji-line")) {
+            val s = live.value
+            val fraction = if (isCurrent) Romaji.romajiFill(line, s.wordIndex, if (reduced) 1.0 else s.wordProgress).toFloat() else 0f
+            val x = layout.size.width * fraction
+            val shift = (x - maxW * 0.35f).coerceIn(0f, (layout.size.width - maxW).toFloat().coerceAtLeast(0f))
+            translate(left = -shift) {
+                drawText(layout, color = secondary)
+                if (x > 0f) clipRect(left = 0f, top = 0f, right = x, bottom = layout.size.height.toFloat()) { drawText(layout, color = sung) }
             }
         }
     }

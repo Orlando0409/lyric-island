@@ -57,6 +57,19 @@
       "romaji": "謎 no kotoba"
     }
   ],
+  "align": [
+    { "text": "夜空に光る島を見ていた", "tokens": 0, "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32] },
+    { "text": "君は「さよなら」と言った", "tokens": 1, "romaji": "kimi wa \"sayonara\" to itta", "marks": [1, 4, 2, 7, 3, 9, 7, 17, 8, 18, 9, 21, 12, 26] }
+  ],
+  "fill": [
+    { "text": "夜空に光る島を見ていた", "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32], "words": ["夜", "空", "に", "光", "る", "島", "を", "見", "て", "い", "た"], "wordIndex": -1, "wordProgress": 0, "fill": 0 },
+    { "text": "夜空に光る島を見ていた", "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32], "words": ["夜", "空", "に", "光", "る", "島", "を", "見", "て", "い", "た"], "wordIndex": 0, "wordProgress": 0.5, "fill": 0.046875 },
+    { "text": "夜空に光る島を見ていた", "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32], "words": ["夜", "空", "に", "光", "る", "島", "を", "見", "て", "い", "た"], "wordIndex": 3, "wordProgress": 0.5, "fill": 0.3359375 },
+    { "text": "夜空に光る島を見ていた", "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32], "words": ["夜", "空", "に", "光", "る", "島", "を", "見", "て", "い", "た"], "wordIndex": 4, "wordProgress": 1, "fill": 0.5 },
+    { "text": "夜空に光る島を見ていた", "romaji": "yozora ni hikaru shima o miteita", "marks": [2, 6, 3, 9, 5, 16, 6, 22, 7, 24, 11, 32], "words": ["夜", "空", "に", "光", "る", "島", "を", "見", "て", "い", "た"], "wordIndex": 10, "wordProgress": 1, "fill": 1 },
+    { "text": "Love してる", "romaji": "Love shiteru", "marks": [4, 4, 8, 12], "words": ["Love ", "し", "て", "る"], "wordIndex": 1, "wordProgress": 1, "fill": 0.6666666666666666 },
+    { "text": "ひかり", "romaji": "hikari", "marks": [], "words": ["ひ", "か", "り"], "wordIndex": 1, "wordProgress": 0, "fill": 0.3333333333333333 }
+  ],
   "detect": [
     { "lines": ["夜空に光る島", "Love song", "言葉"], "japanese": true },
     { "lines": ["海上的小岛在发光", "每一个字都在跳舞"], "japanese": false },
