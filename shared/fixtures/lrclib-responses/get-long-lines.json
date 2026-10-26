@@ -1,0 +1,20 @@
+{
+  "file": "get-long-lines.json",
+  "route": "get",
+  "match": {
+    "track_name": "Línea Larga",
+    "artist_name": "Los Fixtures"
+  },
+  "status": 200,
+  "body": {
+    "id": 4002,
+    "name": "Línea Larga",
+    "trackName": "Línea Larga",
+    "artistName": "Los Fixtures",
+    "albumName": "Pruebas Unitarias",
+    "duration": 40,
+    "instrumental": false,
+    "plainLyrics": null,
+    "syncedLyrics": "[00:02.00]Esta línea es bastante larga y no entra entera en un solo renglón de la isla\n[00:10.00]Y esta otra es larguísima, tan larga que ni partida en dos renglones alcanza, así que la isla tiene que ir siguiendo a la palabra que se está cantando para que siempre se vea\n[00:22.00]Corta"
+  }
+}

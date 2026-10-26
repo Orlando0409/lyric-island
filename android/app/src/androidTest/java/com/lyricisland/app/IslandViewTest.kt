@@ -78,6 +78,18 @@ class IslandViewTest {
     }
 
     @Test
+    fun lineaLarga_seParteEnDosRenglones() {
+        val long = LrcParser.buildDocument(
+            "[00:01.00]Esta línea es bastante larga y no entra entera en un solo renglón de la isla\n[00:09.00]Fin",
+            null, false, 60_000, LyricsSource.LRCLIB, 1,
+        )
+        rule.setContent {
+            IslandView(snap(IslandMode.EXPANDED).copy(lyrics = long), AppSettings(), null, IslandGeometry(screenWidthDp = 360f), reducedMotion = true)
+        }
+        rule.onNodeWithTag("WRAP", useUnmergedTree = true).assertExists()
+    }
+
+    @Test
     fun oculta_noDibujaLaIsla() {
         rule.setContent { IslandView(snap(IslandMode.HIDDEN), AppSettings(), null, IslandGeometry(), reducedMotion = true) }
         rule.waitForIdle()

@@ -280,3 +280,30 @@ body,
   background-clip: text;
   color: transparent;
 }
+
+/* Líneas largas (RF-31): medidor oculto del ancho natural, dos renglones o desplazamiento que sigue a la palabra. */
+.line-box {
+  position: relative;
+}
+.line.current.measure {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: pre;
+  width: auto;
+  min-width: 0;
+}
+.line.current.wrap {
+  white-space: normal;
+  width: auto;
+  min-width: 0;
+  font-size: calc(16px * var(--fs));
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line.current[data-fit='scroll'] {
+  transition: transform 0.25s linear;
+}

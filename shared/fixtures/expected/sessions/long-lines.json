@@ -1,0 +1,191 @@
+[
+ {
+  "t": 0,
+  "mode": "compact",
+  "title": "Línea Larga",
+  "kind": null,
+  "line": -1,
+  "word": -1,
+  "pos": 0
+ },
+ {
+  "t": 1000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 3,
+  "pos": 3490
+ },
+ {
+  "t": 2000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 4,
+  "pos": 4490
+ },
+ {
+  "t": 3000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 7,
+  "pos": 5490
+ },
+ {
+  "t": 4000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 10,
+  "pos": 6490
+ },
+ {
+  "t": 5000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 12,
+  "pos": 7490
+ },
+ {
+  "t": 6000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 15,
+  "pos": 8490
+ },
+ {
+  "t": 7000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 0,
+  "word": 15,
+  "pos": 9490
+ },
+ {
+  "t": 8000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 1,
+  "pos": 10490
+ },
+ {
+  "t": 9000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 4,
+  "pos": 11490
+ },
+ {
+  "t": 10000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 6,
+  "pos": 12490
+ },
+ {
+  "t": 11000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 9,
+  "pos": 13490
+ },
+ {
+  "t": 12000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 12,
+  "pos": 14490
+ },
+ {
+  "t": 13000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 13,
+  "pos": 15490
+ },
+ {
+  "t": 14000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 17,
+  "pos": 16490
+ },
+ {
+  "t": 15000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 21,
+  "pos": 17490
+ },
+ {
+  "t": 16000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 24,
+  "pos": 18490
+ },
+ {
+  "t": 17000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 27,
+  "pos": 19490
+ },
+ {
+  "t": 18000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 29,
+  "pos": 20490
+ },
+ {
+  "t": 19000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 1,
+  "word": 31,
+  "pos": 21490
+ },
+ {
+  "t": 20000,
+  "mode": "expanded",
+  "title": "Línea Larga",
+  "kind": "synced",
+  "line": 2,
+  "word": 0,
+  "pos": 22490
+ }
+]

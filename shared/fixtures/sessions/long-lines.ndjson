@@ -1,0 +1,2 @@
+{"at":0,"msg":{"v":1,"type":"track","sourceAppId":"Spotify.exe","title":"Línea Larga","artist":"Los Fixtures","album":"Pruebas Unitarias","durationMs":40000,"artworkHash":null,"artworkFile":"artwork/art-003-blobs.png"}}
+{"at":10,"msg":{"v":1,"type":"timeline","positionMs":2500,"updatedAtMs":1761340000010,"rate":1,"status":"playing"}}

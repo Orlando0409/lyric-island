@@ -109,6 +109,41 @@ test('canción en japonés: romaji debajo de la línea actual', async () => {
   }
 });
 
+test('líneas largas: dos renglones o desplazamiento que sigue a la palabra cantada', async () => {
+  const { app, server } = await launch('long-lines.ndjson');
+  try {
+    const page = await islandPage(app);
+    const line = page.getByTestId('current-line');
+    await expect.poll(() => mode(page), { timeout: 10_000 }).toBe('expanded');
+    await expect(line).toContainText('bastante larga', { timeout: 8000 });
+    await expect(line).toHaveAttribute('data-fit', 'wrap');
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: 'test-results/island-long-wrap.png' });
+    // Línea larguísima (00:10): se desplaza y la palabra que se canta queda dentro de la isla.
+    await expect(line).toContainText('larguísima', { timeout: 12_000 });
+    await expect(line).toHaveAttribute('data-fit', 'scroll');
+    await page.waitForTimeout(5000);
+    const visible = await page.evaluate(() => {
+      // La línea en modo desplazamiento (durante la transición puede haber otra saliendo).
+      const lineEl = document.querySelector<HTMLElement>('[data-testid="current-line"][data-fit="scroll"]');
+      if (!lineEl) return true;
+      const box = lineEl.parentElement!.getBoundingClientRect();
+      const filled = [...lineEl.querySelectorAll<HTMLElement>('.word')].filter(
+        (w) => w.style.getPropertyValue('--p') !== '0.00%' && w.style.getPropertyValue('--p') !== '100.00%',
+      );
+      if (filled.length === 0) return true;
+      const r = filled[0].getBoundingClientRect();
+      // Tolerancia para la transición de 250 ms del desplazamiento.
+      return r.left >= box.left - 24 && r.right <= box.right + 24;
+    });
+    expect(visible).toBe(true);
+    await page.screenshot({ path: 'test-results/island-long-scroll.png' });
+  } finally {
+    await app.close();
+    server.close();
+  }
+});
+
 test('sin letra: compacta con título; instrumental', async () => {
   const { app, server } = await launch('instrumental.ndjson');
   try {

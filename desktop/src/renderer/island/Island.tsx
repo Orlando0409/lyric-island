@@ -49,29 +49,66 @@ function wordFill(i: number, snap: IslandSnapshot, reducedKaraoke: boolean): num
   return 0;
 }
 
+/** Cómo entra una línea: en un renglón, partida en dos (letra algo menor) o desplazándose (RF-31). */
+type LineFit = 'single' | 'wrap' | 'scroll';
+const WRAP_FONT_RATIO = 16 / 18;
+
 function KaraokeLine({ line, snap, reduced }: { line: LyricLine; snap: IslandSnapshot; reduced: boolean }) {
   const boxRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  const [overflow, setOverflow] = useState(0);
+  const measureRef = useRef<HTMLSpanElement>(null);
+  const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [fit, setFit] = useState<LineFit>('single');
+  const [box, setBox] = useState({ width: 0, overflow: 0 });
   useLayoutEffect(() => {
-    const box = boxRef.current;
-    const text = textRef.current;
-    if (!box || !text) return;
+    const boxEl = boxRef.current;
+    const m = measureRef.current;
+    if (!boxEl || !m) return;
     // Se re-mide cuando la isla termina de crecer (spring) o cambia la fuente.
-    const measure = () => setOverflow(Math.max(0, text.scrollWidth - box.clientWidth));
+    const measure = () => {
+      const width = boxEl.clientWidth;
+      const natural = m.scrollWidth; // ancho en un solo renglón con la fuente normal
+      if (natural <= width) setFit('single');
+      else if (natural * WRAP_FONT_RATIO <= width * 2 * 0.92) setFit('wrap');
+      else setFit('scroll');
+      setBox({ width, overflow: Math.max(0, natural - width) });
+    };
     measure();
     const ro = new ResizeObserver(measure);
-    ro.observe(box);
+    ro.observe(boxEl);
     return () => ro.disconnect();
   }, [line.text]);
-  // Marquee (RF-31): el desplazamiento sigue el progreso del canto.
-  const k = Math.min(1, Math.max(0, (snap.lineProgress - 0.1) / 0.75));
+
+  // Líneas larguísimas: el desplazamiento sigue a la palabra que se está cantando (siempre visible).
+  let shift = 0;
+  if (fit === 'scroll') {
+    const span = wordRefs.current[snap.wordIndex];
+    if (span) {
+      const sungX = span.offsetLeft + span.offsetWidth * (reduced ? 1 : snap.wordProgress);
+      shift = Math.min(box.overflow, Math.max(0, sungX - box.width * 0.35));
+    } else if (snap.wordIndex >= line.words.length - 1 && snap.lineProgress >= 1) shift = box.overflow;
+  }
   const words = line.words.length > 0 ? line.words : [{ text: line.text, startMs: line.startMs, endMs: line.endMs, estimated: true }];
   return (
     <div className="line-box" ref={boxRef}>
-      <div className="line current" dir="auto" ref={textRef} style={{ transform: overflow ? `translateX(${-overflow * k}px)` : undefined }} data-testid="current-line">
+      <span className="line current measure" aria-hidden ref={measureRef}>
+        {line.text}
+      </span>
+      <div
+        className={`line current ${fit === 'wrap' ? 'wrap' : ''}`}
+        dir="auto"
+        style={{ transform: shift ? `translateX(${-shift}px)` : undefined }}
+        data-testid="current-line"
+        data-fit={fit}
+      >
         {words.map((w, i) => (
-          <span key={i} className="word" style={{ '--p': `${(wordFill(i, snap, reduced) * 100).toFixed(2)}%` } as CSSProperties}>
+          <span
+            key={i}
+            ref={(el) => {
+              wordRefs.current[i] = el;
+            }}
+            className="word"
+            style={{ '--p': `${(wordFill(i, snap, reduced) * 100).toFixed(2)}%` } as CSSProperties}
+          >
             {w.text}
           </span>
         ))}

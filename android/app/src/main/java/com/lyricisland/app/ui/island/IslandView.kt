@@ -73,6 +73,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.Canvas
 import androidx.compose.ui.unit.sp
 import com.lyricisland.app.R
 import com.lyricisland.app.data.AppSettings
@@ -385,55 +395,75 @@ private fun Interlude(progress: Double, accent: Color, sp: (Float) -> TextUnit) 
     }
 }
 
+/** Cómo entra una línea: en un renglón, partida en dos (letra un 10 % menor) o desplazándose (RF-31). */
+internal enum class LineFit { SINGLE, WRAP, SCROLL }
+
 /**
- * Relleno karaoke: el texto se dibuja dos veces (pendiente y cantado) y el cantado se recorta con clipRect
- * hasta la posición de la palabra actual (10.5). Con movimiento reducido se rellena por línea.
+ * Relleno karaoke (10.5): el texto se mide con TextMeasurer y se dibuja dos veces (pendiente y cantado); el
+ * cantado se recorta renglón por renglón hasta la posición de la palabra actual. Las líneas largas se parten en
+ * dos renglones; si ni así entran, se desplazan siguiendo a la palabra que se canta (siempre visible).
+ * Con movimiento reducido se rellena por línea.
  */
 @Composable
 private fun KaraokeLine(line: LyricLine, snap: IslandSnapshot, reduced: Boolean, sung: Color, upcoming: Color, textSize: TextUnit) {
-    var layout by remember { mutableStateOf<TextLayoutResult?>(null) }
-    // Devuelve la x del borde del relleno; null = línea completa.
-    val fillX: (TextLayoutResult) -> Float? = { l ->
-        if (reduced || line.words.isEmpty()) null
-        else {
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    BoxWithConstraints(Modifier.fillMaxWidth().clipToBounds().testTag("current-line")) {
+        val maxW = constraints.maxWidth
+        val base = TextStyle(fontSize = textSize, fontWeight = FontWeight.SemiBold)
+        val small = base.copy(fontSize = textSize * 0.9f)
+        val (fit, layout) = remember(line.text, maxW, textSize) {
+            val single = measurer.measure(line.text, base, maxLines = 1, softWrap = false)
+            when {
+                single.size.width <= maxW -> LineFit.SINGLE to single
+                else -> {
+                    val wrapped = measurer.measure(line.text, small, maxLines = 2, softWrap = true, constraints = Constraints(maxWidth = maxW))
+                    if (!wrapped.hasVisualOverflow) LineFit.WRAP to wrapped else LineFit.SCROLL to single
+                }
+            }
+        }
+
+        // Posición del relleno: renglón y x; null = línea completa.
+        val fill: Pair<Int, Float>? = run {
+            if (reduced || line.words.isEmpty()) return@run null
+            if (snap.wordIndex >= line.words.size - 1 && snap.wordProgress >= 1.0) return@run null
+            if (snap.wordIndex < 0) return@run 0 to 0f
             var offset = 0
-            var x = 0f
             for ((i, w) in line.words.withIndex()) {
-                val start = offset
+                val start = offset.coerceAtMost(line.text.length)
                 val end = (offset + w.text.length).coerceAtMost(line.text.length)
                 offset = end
                 if (i < snap.wordIndex) continue
-                if (i == snap.wordIndex) {
-                    val x0 = l.getHorizontalPosition(start, true)
-                    val x1 = l.getHorizontalPosition(end, true)
-                    x = x0 + (x1 - x0) * snap.wordProgress.toFloat()
-                }
-                break
+                val row = layout.getLineForOffset(start)
+                val x0 = layout.getHorizontalPosition(start, true)
+                val x1 = if (layout.getLineForOffset(maxOf(start, end - 1)) == row) layout.getHorizontalPosition(end, true) else layout.getLineRight(row)
+                return@run row to (x0 + (x1 - x0) * snap.wordProgress.toFloat())
             }
-            when {
-                snap.wordIndex < 0 -> l.getHorizontalPosition(0, true)
-                snap.wordIndex >= line.words.size - 1 && snap.wordProgress >= 1.0 -> null
-                else -> x
+            null
+        }
+        val shift = if (fit == LineFit.SCROLL && fill != null) {
+            (fill.second - maxW * 0.35f).coerceIn(0f, (layout.size.width - maxW).toFloat().coerceAtLeast(0f))
+        } else if (fit == LineFit.SCROLL && fill == null && !reduced) {
+            (layout.size.width - maxW).toFloat().coerceAtLeast(0f)
+        } else {
+            0f
+        }
+
+        Canvas(Modifier.fillMaxWidth().height(with(density) { layout.size.height.toDp() }).semantics { contentDescription = line.text }.testTag(fit.name)) {
+            translate(left = -shift) {
+                drawText(layout, color = upcoming)
+                for (row in 0 until layout.lineCount) {
+                    val top = layout.getLineTop(row)
+                    val bottom = layout.getLineBottom(row)
+                    val right = when {
+                        fill == null || row < fill.first -> layout.size.width.toFloat()
+                        row == fill.first -> fill.second
+                        else -> continue
+                    }
+                    clipRect(left = 0f, top = top, right = right, bottom = bottom) { drawText(layout, color = sung) }
+                }
             }
         }
-    }
-    Box(Modifier.fillMaxWidth().basicMarquee(iterations = Int.MAX_VALUE, initialDelayMillis = 1200).testTag("current-line")) {
-        Text(line.text, color = upcoming, fontSize = textSize, fontWeight = FontWeight.SemiBold, maxLines = 1, softWrap = false, onTextLayout = { layout = it })
-        Text(
-            line.text,
-            color = sung,
-            fontSize = textSize,
-            fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
-            softWrap = false,
-            modifier = Modifier.drawWithContent {
-                val l = layout ?: return@drawWithContent
-                val x = fillX(l)?.roundToInt()?.toFloat() ?: return@drawWithContent drawContent()
-                // RTL: lo cantado crece desde la derecha.
-                if (l.getParagraphDirection(0) == ResolvedTextDirection.Rtl) clipRect(left = x) { this@drawWithContent.drawContent() }
-                else clipRect(right = x) { this@drawWithContent.drawContent() }
-            },
-        )
     }
 }
 
