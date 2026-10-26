@@ -37,6 +37,12 @@ android {
         compose = true
         buildConfig = true
     }
+    packaging {
+        resources {
+            // kuromoji y kuromoji-ipadic traen los mismos archivos de documentación (el diccionario no se toca).
+            pickFirsts += setOf("META-INF/CONTRIBUTORS.md", "META-INF/LICENSE.md", "META-INF/NOTICE.md", "META-INF/README.md")
+        }
+    }
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
@@ -74,6 +80,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
+    implementation(libs.kuromoji.ipadic) // romaji: lecturas de los kanji (diccionario IPADIC, ~13 MB)
 
     testImplementation(libs.junit4)
     testImplementation(libs.kotlin.test)

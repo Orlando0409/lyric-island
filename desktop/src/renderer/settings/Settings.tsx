@@ -208,6 +208,9 @@ export function Settings() {
           <input type="range" min={0} max={600} step={25} value={s.lyrics.leadMs} onChange={(e) => update({ lyrics: { leadMs: Number(e.target.value) } })} />
         </Row>
         <p className="hint">{L('leadHint')}</p>
+        <Row label={L('showRomaji')}>
+          <Toggle value={s.lyrics.showRomaji} onChange={(v) => update({ lyrics: { showRomaji: v } })} />
+        </Row>
         <Row label={L('experimentalPlain')}>
           <Toggle value={s.lyrics.experimentalPlain} onChange={(v) => update({ lyrics: { experimentalPlain: v } })} />
         </Row>

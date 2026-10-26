@@ -268,3 +268,15 @@ body,
     animation: none;
   }
 }
+
+/* Romaji (canciones en japonés): debajo de la línea actual, con el relleno del progreso de la línea. */
+.line.next.romaji {
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: linear-gradient(90deg, var(--sung) var(--p), var(--secondary) var(--p));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

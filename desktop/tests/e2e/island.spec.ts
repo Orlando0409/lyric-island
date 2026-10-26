@@ -94,6 +94,21 @@ test('flujo completo: aparece, karaoke, color, pausa, pantalla completa y cleare
   }
 });
 
+test('canción en japonés: romaji debajo de la línea actual', async () => {
+  const { app, server } = await launch('japanese.ndjson');
+  try {
+    const page = await islandPage(app);
+    await expect.poll(() => mode(page), { timeout: 10_000 }).toBe('expanded');
+    await expect(page.getByTestId('current-line')).toContainText('夜空に光る島', { timeout: 8000 });
+    await expect(page.getByTestId('romaji-line')).toHaveText('yozora ni hikaru shima o miteita', { timeout: 8000 });
+    await page.waitForTimeout(500);
+    await page.screenshot({ path: 'test-results/island-romaji.png' });
+  } finally {
+    await app.close();
+    server.close();
+  }
+});
+
 test('sin letra: compacta con título; instrumental', async () => {
   const { app, server } = await launch('instrumental.ndjson');
   try {

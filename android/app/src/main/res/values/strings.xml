@@ -50,6 +50,7 @@
     <string name="experimental_plain">Letra plana repartida (experimental, ≈)</string>
     <string name="lead_ms">Adelanto de la letra</string>
     <string name="lead_hint">Muestra cada línea un poco antes. Para una canción concreta, deslizá la isla a la izquierda o derecha (se guarda por canción).</string>
+    <string name="show_romaji">Romaji en canciones japonesas (debajo de la línea)</string>
     <string name="clear_cache">Limpiar caché de letras</string>
     <string name="clear_offsets">Borrar offsets guardados</string>
     <string name="credits">Letras de LRCLIB (lrclib.net), una base de datos comunitaria y abierta.</string>

@@ -55,6 +55,8 @@ export const SettingsSchema = z.object({
       experimentalPlain: z.boolean().default(false),
       // Adelanto global (ms): compensa la animación de entrada de cada línea.
       leadMs: z.number().min(0).max(600).default(150),
+      // Canciones en japonés: romaji debajo de la línea actual (en lugar de la siguiente).
+      showRomaji: z.boolean().default(true),
     })
     .prefault({}),
   shortcuts: ShortcutsSchema.prefault({}),

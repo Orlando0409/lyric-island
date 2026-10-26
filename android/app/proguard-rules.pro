@@ -4,3 +4,6 @@
 -dontwarn org.conscrypt.**
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
+
+# kuromoji carga su diccionario (recursos del jar) por nombre de clase.
+-keep class com.atilika.kuromoji.** { *; }

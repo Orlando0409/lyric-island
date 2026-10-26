@@ -40,6 +40,8 @@ data class AppSettings(
     val experimentalPlain: Boolean = false,
     /** Adelanto global (ms): compensa la animación de entrada de cada línea. */
     val leadMs: Long = 150,
+    /** Canciones en japonés: romaji debajo de la línea actual (en lugar de la siguiente). */
+    val showRomaji: Boolean = true,
     val pausedUntilMs: Long = 0, // "Pausar 1 h" desde la notificación (reloj de pared)
 ) {
     fun behavior() = IslandBehavior(
@@ -78,6 +80,7 @@ class SettingsRepository(private val context: Context) {
         val experimentalPlain = booleanPreferencesKey("experimentalPlain")
         val pausedUntil = longPreferencesKey("pausedUntil")
         val leadMs = longPreferencesKey("leadMs")
+        val showRomaji = booleanPreferencesKey("showRomaji")
     }
 
     private inline fun <reified E : Enum<E>> enumOr(v: String?, d: E): E = v?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: d
@@ -104,6 +107,7 @@ class SettingsRepository(private val context: Context) {
             experimentalPlain = p[K.experimentalPlain] ?: d.experimentalPlain,
             pausedUntilMs = p[K.pausedUntil] ?: 0,
             leadMs = p[K.leadMs] ?: d.leadMs,
+            showRomaji = p[K.showRomaji] ?: d.showRomaji,
         )
     }
 
@@ -129,6 +133,7 @@ class SettingsRepository(private val context: Context) {
             p[K.experimentalPlain] = n.experimentalPlain
             p[K.pausedUntil] = n.pausedUntilMs
             p[K.leadMs] = n.leadMs
+            p[K.showRomaji] = n.showRomaji
         }
     }
 

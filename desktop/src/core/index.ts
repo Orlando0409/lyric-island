@@ -2,6 +2,7 @@ export * from './types';
 export * from './words';
 export * from './lrc';
 export * from './lyricsfile';
+export * from './romaji';
 export * from './sync';
 export * from './matcher';
 export * from './color';

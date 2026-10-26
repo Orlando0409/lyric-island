@@ -13,13 +13,15 @@ import type { HelperMessage } from './protocol';
 import { SettingsStore } from './settingsStore';
 import { allWindows, createIslandWindow, openSettingsWindow, positionIsland } from './windows';
 
+// El userData aislado (E2E) va ANTES del bloqueo de instancia única: el bloqueo se asocia al userData,
+// así una LyricIsland instalada y abierta no impide correr las pruebas.
+const userData = process.env.LYRICISLAND_USER_DATA;
+if (userData) app.setPath('userData', resolve(userData));
+
 if (!app.requestSingleInstanceLock()) {
   app.quit();
   process.exit(0);
 }
-
-const userData = process.env.LYRICISLAND_USER_DATA;
-if (userData) app.setPath('userData', resolve(userData)); // aislamiento en E2E
 
 let island: BrowserWindow | null = null;
 let tray: Tray | null = null;

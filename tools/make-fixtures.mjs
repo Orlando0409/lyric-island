@@ -231,6 +231,8 @@ const responses = [
       record(3002, 'Doble Versión', 'Banda Mock', 'Kilómetro Cero', 40),
     ],
   },
+  // Canción en japonés (letra inventada) para ver el romaji en la isla.
+  { file: 'get-japanese.json', route: 'get', match: { track_name: '星の歌', artist_name: 'テストバンド' }, status: 200, body: record(4001, '星の歌', 'テストバンド', 'テスト', 40, { syncedLyrics: ['[00:02.00]夜空に光る島を見ていた', '[00:07.00]君は「さよなら」と言った', '[00:12.00]ずっと待っていたんだ', '[00:17.00]明日も歌おう'].join('\n'), plainLyrics: null }) },
   { file: 'search-youtube.json', route: 'search', match: { track_name: 'Marea Alta' }, status: 200, body: [record(2009, 'Marea Alta', 'Banda Mock', null, 230)] },
 ];
 for (const r of responses) out(`lrclib-responses/${r.file}`, JSON.stringify(r, null, 2) + '\n');
@@ -273,6 +275,7 @@ const sessions = {
     ev(14500, { v: 1, type: 'fullscreen', active: false }),
     ev(16000, { v: 1, type: 'cleared' }),
   ],
+  'japanese.ndjson': [ev(0, track('星の歌', 'テストバンド', 'テスト', 40000, 'Spotify.exe', 'artwork/art-021-split.png')), tl(10, 2500)],
   'demo-loop.ndjson': [ev(0, { v: 1, type: 'hello', helperVersion: 'fake', os: 'fake' }), ev(50, track('Isla de Luz', 'Los Fixtures', 'Pruebas Unitarias', 40000, 'Spotify.exe', 'artwork/art-012-gradient.png')), tl(60, 0), tl(16000, 16000, 'paused'), tl(19000, 16000, 'playing'), ev(30000, track('Ruta Norte', 'Banda Mock', 'Kilómetro Cero', 40000, 'Spotify.exe', 'artwork/art-003-blobs.png')), tl(30010, 0)],
 };
 for (const [name, evs] of Object.entries(sessions)) out(`sessions/${name}`, evs.map((e) => JSON.stringify(e)).join('\n') + '\n');

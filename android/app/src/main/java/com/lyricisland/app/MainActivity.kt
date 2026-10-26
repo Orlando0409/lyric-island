@@ -339,6 +339,7 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
     Text("${stringResource(R.string.lead_ms)}: ${s.leadMs} ms")
     Slider(s.leadMs.toFloat(), { v -> set { it.copy(leadMs = (v / 25).toLong() * 25) } }, valueRange = 0f..600f)
     Text(stringResource(R.string.lead_hint), style = MaterialTheme.typography.bodySmall)
+    SwitchRow(R.string.show_romaji, s.showRomaji) { v -> set { it.copy(showRomaji = v) } }
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         OutlinedButton(onClick = { scope.launch { g.db.dao().clear(); note = doneText } }) { Text(stringResource(R.string.clear_cache)) }
         OutlinedButton(onClick = { scope.launch { g.db.dao().clearOffsets(); note = doneText } }) { Text(stringResource(R.string.clear_offsets)) }

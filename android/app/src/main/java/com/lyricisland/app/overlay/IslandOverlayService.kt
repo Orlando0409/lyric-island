@@ -29,6 +29,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
 import com.lyricisland.app.AppLog
 import com.lyricisland.app.MainActivity
+import com.lyricisland.app.Romanizer
 import com.lyricisland.app.R
 import com.lyricisland.app.data.AppSettings
 import com.lyricisland.app.graph
@@ -114,7 +115,10 @@ class IslandOverlayService : LifecycleService() {
                 override fun clearTimeout(handle: Any) = handler.removeCallbacks(handle as Runnable)
             },
             launch = { block -> lifecycleScope.launch { block() } },
-            fetchLyrics = { t -> g.lyrics.get(QueryTrack(t.title, t.artist, t.album, t.durationMs)) },
+            fetchLyrics = { t ->
+                val doc = g.lyrics.get(QueryTrack(t.title, t.artist, t.album, t.durationMs))
+                withContext(Dispatchers.Default) { Romanizer.addRomaji(doc) } // canciones en japonés
+            },
             loadUserOffset = { t -> g.loadOffset(t) },
             saveUserOffset = { t, ms -> lifecycleScope.launch { g.saveOffset(t, ms) } },
         )

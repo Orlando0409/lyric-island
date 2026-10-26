@@ -5,6 +5,7 @@ import { cacheKeySource } from '../core/matcher';
 import type { LyricsDocument, NowPlaying } from '../core/types';
 import { JsonLyricsCache } from './cache';
 import { log } from './logger';
+import { addRomaji } from './romanizer';
 
 // User-Agent identificable (8.1). Al publicar el repositorio, agregar su URL: "LyricIsland/x.y.z (https://github.com/<usuario>/lyric-island)".
 export const USER_AGENT = `LyricIsland/${process.env.npm_package_version ?? '0.1.0'} (Windows desktop; lyrics overlay)`;
@@ -37,6 +38,7 @@ export class LyricsService {
     if (existing) return existing;
     const p = this.repo
       .get(track)
+      .then(addRomaji) // canciones en japonés: romaji debajo de cada línea
       .then((doc) => {
         log('info', 'lyrics', `${track.artist} — ${track.title}: ${doc.kind} (${doc.source})`);
         return doc;

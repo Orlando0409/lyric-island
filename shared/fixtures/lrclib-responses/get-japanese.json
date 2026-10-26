@@ -1,0 +1,20 @@
+{
+  "file": "get-japanese.json",
+  "route": "get",
+  "match": {
+    "track_name": "星の歌",
+    "artist_name": "テストバンド"
+  },
+  "status": 200,
+  "body": {
+    "id": 4001,
+    "name": "星の歌",
+    "trackName": "星の歌",
+    "artistName": "テストバンド",
+    "albumName": "テスト",
+    "duration": 40,
+    "instrumental": false,
+    "plainLyrics": null,
+    "syncedLyrics": "[00:02.00]夜空に光る島を見ていた\n[00:07.00]君は「さよなら」と言った\n[00:12.00]ずっと待っていたんだ\n[00:17.00]明日も歌おう"
+  }
+}

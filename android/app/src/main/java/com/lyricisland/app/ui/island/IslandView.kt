@@ -66,6 +66,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.ResolvedTextDirection
 import androidx.compose.ui.text.style.TextOverflow
@@ -350,7 +351,20 @@ private fun ExpandedContent(
                         )
                     }
                 }
-                if (settings.showNextLine) {
+                // Canción en japonés: romaji de la línea de arriba en lugar de la siguiente.
+                val topLine = if (showInterlude) null else active?.takeIf { !it.isInterlude } ?: if (snap.activeLineIndex < 0) lines.firstOrNull { !it.isInterlude } else null
+                val romaji = topLine?.romaji?.takeIf { settings.showRomaji }
+                if (romaji != null) {
+                    Text(
+                        romaji,
+                        color = secondary,
+                        fontSize = sp(13f),
+                        fontStyle = FontStyle.Italic,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.testTag("romaji-line"),
+                    )
+                } else if (settings.showNextLine) {
                     Text(next?.text.orEmpty(), color = secondary, fontSize = sp(13f), maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.testTag("next-line"))
                 }
             }

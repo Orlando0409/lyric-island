@@ -127,6 +127,28 @@ class GoldenTest {
     }
 
     @Test
+    fun romaji() {
+        // Casos escritos a mano (romaji correcto), los mismos que valida desktop/tests/unit/romaji.test.ts.
+        val cases = read(File(fixtures, "romaji/cases.json")).jsonObject
+        for (k in cases["kana"]!!.jsonArray) {
+            val (kana, expected) = k.jsonArray.map { it.jsonPrimitive.content }
+            assertEquals(expected, Romaji.kanaToRomaji(kana), "kana $kana")
+        }
+        for (c in cases["tokens"]!!.jsonArray) {
+            val o = c.jsonObject
+            val tokens = o["tokens"]!!.jsonArray.map { t ->
+                val a = t.jsonArray
+                JaToken(a[0].jsonPrimitive.content, (a[1] as? kotlinx.serialization.json.JsonPrimitive)?.takeIf { it.isString }?.content, a[2].jsonPrimitive.content, a[3].jsonPrimitive.content)
+            }
+            assertEquals(o["romaji"]!!.jsonPrimitive.content, Romaji.tokensToRomaji(tokens))
+        }
+        for (d in cases["detect"]!!.jsonArray) {
+            val o = d.jsonObject
+            assertEquals(o["japanese"]!!.jsonPrimitive.boolean, Romaji.isJapaneseLyrics(o["lines"]!!.jsonArray.map { it.jsonPrimitive.content }), o.toString())
+        }
+    }
+
+    @Test
     fun repositorioPrefiereTiemposPorPalabra() = runBlocking {
         val log = ArrayList<String>()
         val base = fixtureHttp()

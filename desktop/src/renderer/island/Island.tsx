@@ -148,6 +148,9 @@ export function Island() {
   const showInterlude = !!snap.interlude || (active?.isInterlude ?? false);
   const next = lines[snap.activeLineIndex + 1] ?? null;
   const current = active && !active.isInterlude ? active : null;
+  // Línea que se ve arriba (la actual o, antes de empezar, la primera) y su romaji si la canción es japonesa.
+  const topLine = showInterlude ? null : (current ?? (snap.activeLineIndex < 0 ? (lines.find((l) => !l.isInterlude) ?? null) : null));
+  const romajiLine = settings.lyrics.showRomaji && topLine?.romaji ? topLine : null;
   const title = snap.track ? [snap.track.title, snap.track.artist].filter(Boolean).join(' — ') : '';
 
   const vars = {
@@ -193,7 +196,16 @@ export function Island() {
                   )}
                 </motion.div>
               </AnimatePresence>
-              {settings.appearance.showNextLine && (
+              {romajiLine ? (
+                // Canción en japonés: romaji de la línea de arriba (se rellena con el progreso de la línea).
+                <div
+                  className="line next romaji"
+                  data-testid="romaji-line"
+                  style={{ '--p': `${(romajiLine === current ? (reduced ? 1 : snap.lineProgress) : 0) * 100}%` } as CSSProperties}
+                >
+                  {romajiLine.romaji}
+                </div>
+              ) : settings.appearance.showNextLine && (
                 <div className="line next" dir="auto" data-testid="next-line">
                   {/* Antes de la primera línea: con interludio la siguiente es la 1.ª; sin él, la 1.ª ya está arriba. */}
                   {(snap.activeLineIndex < 0 ? lines.filter((l) => !l.isInterlude)[showInterlude ? 0 : 1] : next)?.text ?? ''}

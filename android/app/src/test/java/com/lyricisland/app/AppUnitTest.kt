@@ -62,6 +62,17 @@ class AppUnitTest {
     }
 
     @Test
+    fun romajiConKuromoji() {
+        // Mismas frases y resultado que desktop/tests/integration/romanizer.test.ts (kuromoji.js).
+        val doc = com.lyricisland.core.LrcParser.buildDocument(
+            "[00:01.00]夜空に光る島を見ていた\n[00:05.00]君は「さよなら」と言った\n[00:09.00]Love song",
+            null, false, 20_000, com.lyricisland.core.LyricsSource.LRCLIB, 1,
+        )
+        val r = Romanizer.addRomaji(doc)
+        assertEquals(listOf("yozora ni hikaru shima o miteita", "kimi wa \"sayonara\" to itta", null), r.lines.map { it.romaji })
+    }
+
+    @Test
     fun lrclibConMockWebServer() = runTest {
         val server = MockWebServer()
         server.enqueue(MockResponse().setResponseCode(404))

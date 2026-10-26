@@ -39,6 +39,8 @@ data class LyricLine(
     val text: String,
     val words: List<LyricWord>,
     val isInterlude: Boolean,
+    /** Transliteración (romaji) de las líneas en japonés; se muestra debajo de la línea actual. */
+    val romaji: String? = null,
 )
 
 enum class LyricsKind(val wire: String) { SYNCED("synced"), PLAIN("plain"), INSTRUMENTAL("instrumental"), NONE("none") }
