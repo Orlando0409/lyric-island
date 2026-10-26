@@ -1,12 +1,16 @@
 // Empaqueta y FIRMA el instalador NSIS, el helper y el MSIX con el certificado autofirmado de LyricIsland
 // (creado con tools/make-codesign-cert.ps1 en Cert:\CurrentUser\My). Usa signtool y makeappx del Windows SDK.
+// El Subject del certificado va en build/codesign.local.json ({ "subject": "CN=…, O=…" }, no se sube al repositorio)
+// o en la variable LYRICISLAND_CERT_SUBJECT.
 // Uso: pnpm dist:signed
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const SUBJECT_CN = 'OB Dev Studio';
-const PUBLISHER = 'CN=OB Dev Studio, O=LyricIsland'; // debe coincidir EXACTO con el Subject del certificado
+const LOCAL = join(import.meta.dirname, '..', 'build', 'codesign.local.json');
+const PUBLISHER = // debe coincidir EXACTO con el Subject del certificado
+  process.env.LYRICISLAND_CERT_SUBJECT ?? (existsSync(LOCAL) ? JSON.parse(readFileSync(LOCAL, 'utf8')).subject : 'CN=LyricIsland');
+const SUBJECT_CN = /CN=([^,]+)/.exec(PUBLISHER)?.[1]?.trim() ?? 'LyricIsland';
 
 function windowsKit() {
   const base = 'C:\\Program Files (x86)\\Windows Kits\\10\\bin';

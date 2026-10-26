@@ -1,6 +1,5 @@
-// Paquete MSIX para subir a la Microsoft Store (Partner Center). La Store lo firma: aquí va SIN firmar, con la
-// identidad que Partner Center asignó al reservar el nombre (Administración de productos → Identidad del producto).
-// Esos datos van en build/store-identity.json (no son secretos; ver build/store-identity.example.json).
+// Paquete MSIX para la Microsoft Store. La Store lo firma: aquí va SIN firmar, con la identidad del producto
+// en build/store-identity.json (local, no se sube; formato en build/store-identity.example.json).
 // Uso: pnpm dist:store
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync, renameSync } from 'node:fs';

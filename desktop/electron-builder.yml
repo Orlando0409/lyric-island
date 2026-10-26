@@ -34,7 +34,7 @@ nsis:
   createDesktopShortcut: false
   runAfterFinish: true
 appx:
-  # Para la Store, pnpm dist:store reemplaza la identidad con build/store-identity.json (Partner Center).
+  # pnpm dist:store reemplaza la identidad con build/store-identity.json (local, no se sube).
   identityName: LyricIsland
   applicationId: LyricIsland
   displayName: LyricIsland

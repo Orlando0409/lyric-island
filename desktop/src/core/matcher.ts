@@ -182,7 +182,7 @@ export interface ScoreQuery extends SearchQuery {
 export function scoreCandidate(query: ScoreQuery, c: Candidate): number {
   const candDurMs = c.duration === null ? null : Math.round(c.duration * 1000);
   const simTitle = Math.max(textSimilarity(query.title, c.trackName), textSimilarity(query.title, cleanTitle(c.trackName)));
-  // Spike S0.1: Spotify desktop (Store) publica en SMTC el artista vacío. Sin artista, ese peso lo toma
+  // Spotify desktop (Store) publica en SMTC el artista vacío. Sin artista, ese peso lo toma
   // la similitud de álbum; sin álbum tampoco, un 0.5 neutro.
   let simArtist: number;
   if (query.artist.trim().length > 0) {

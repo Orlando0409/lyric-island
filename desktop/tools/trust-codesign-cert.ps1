@@ -6,7 +6,7 @@
 #
 # Uso (PowerShell como administrador):
 #   powershell -ExecutionPolicy Bypass -File "C:\ruta\a\trust-codesign-cert.ps1" [-CerPath "C:\ruta\a\LyricIsland-codesign.cer"]
-# Para revertirlo: certlm.msc -> borrar "OB Dev Studio" de Raiz de confianza, Editores de confianza y Personas de confianza.
+# Para revertirlo: certlm.msc -> borrar el certificado de LyricIsland de Raiz de confianza, Editores de confianza y Personas de confianza.
 #
 # (Archivo solo con caracteres ASCII: Windows PowerShell 5.1 lee los .ps1 sin BOM como ANSI.)
 param([string]$CerPath)

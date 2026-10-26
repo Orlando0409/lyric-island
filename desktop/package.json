@@ -19,8 +19,6 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "spike:hitrate": "tsx tools/spike-hitrate.ts",
-    "spike:smtc": "node tools/spike-smtc.mjs",
     "golden": "cross-env UPDATE_GOLDEN=1 vitest run tests/unit/golden.test.ts",
     "helper:build": "node tools/build-helper.mjs",
     "dist:nsis": "electron-vite build && electron-builder --win nsis",

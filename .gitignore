@@ -20,3 +20,9 @@ playwright-report/
 # Listas de canciones exportadas (datos personales)
 playlist.csv
 *.playlist.csv
+
+# Notas, guías y datos personales: solo en esta PC, nunca en el repositorio
+privado/
+desktop/build/store-identity.json
+desktop/build/codesign.local.json
+desktop/build/codesign/

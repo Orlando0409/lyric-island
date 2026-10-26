@@ -5,7 +5,7 @@
 # Uso: powershell -ExecutionPolicy Bypass -File desktop/tools/make-codesign-cert.ps1
 # (Archivo solo con caracteres ASCII: Windows PowerShell 5.1 lee los .ps1 sin BOM como ANSI.)
 param(
-    [string]$Subject = 'CN=OB Dev Studio, O=LyricIsland',
+    [string]$Subject = 'CN=LyricIsland',
     [int]$Years = 5
 )
 $ErrorActionPreference = 'Stop'

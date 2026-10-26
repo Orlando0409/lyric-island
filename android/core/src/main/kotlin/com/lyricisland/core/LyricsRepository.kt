@@ -105,7 +105,7 @@ class LyricsRepository(
             }
             when {
                 res.status == 404 -> return null
-                // 429 (rate limit) y 503 (sobrecarga momentánea, medido en el spike S0.5): reintento con backoff.
+                // 429 (rate limit) y 503 (sobrecarga momentánea, frecuente en ráfagas de consultas): reintento con backoff.
                 res.status == 429 || res.status == 503 -> {
                     if (attempt < RATE_LIMIT_BACKOFF_MS.size) {
                         sleep(RATE_LIMIT_BACKOFF_MS[attempt++])

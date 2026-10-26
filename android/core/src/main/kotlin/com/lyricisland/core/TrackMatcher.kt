@@ -160,7 +160,7 @@ object TrackMatcher {
     fun scoreCandidate(query: SearchQuery, durationMs: Long?, c: Candidate, album: String? = null): Double {
         val candDurMs = c.duration?.let { jsRound(it * 1000) }
         val simTitle = maxOf(textSimilarity(query.title, c.trackName), textSimilarity(query.title, cleanTitle(c.trackName)))
-        // Spike S0.1: Spotify desktop (Store) publica en SMTC el artista vacío. Sin artista, ese peso lo toma
+        // Spotify desktop (Store) publica en SMTC el artista vacío. Sin artista, ese peso lo toma
         // la similitud de álbum; sin álbum tampoco, un 0.5 neutro.
         val simArtist = when {
             query.artist.jsTrim().isNotEmpty() ->
