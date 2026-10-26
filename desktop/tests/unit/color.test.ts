@@ -1,4 +1,4 @@
-import { readdirSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Vibrant } from 'node-vibrant/node';
 import { describe, expect, it } from 'vitest';
@@ -11,6 +11,7 @@ import {
   mixPalette,
   NEUTRAL_PALETTE,
   oklchToHex,
+  readableBackground,
   rgbToHex,
   toSwatches,
   validSwatches,
@@ -93,6 +94,19 @@ describe('buildPalette', () => {
   });
   it('toSwatches adapta la salida de vibrant', () => {
     expect(toSwatches({ Vibrant: { hex: '#abcdef', population: 3 }, Muted: null })).toEqual({ Vibrant: { hex: '#ABCDEF', population: 3 } });
+  });
+});
+
+describe('degradado personalizado (readableBackground)', () => {
+  const golden = JSON.parse(readFileSync(join(__dirname, '..', '..', '..', 'shared', 'fixtures', 'expected', 'readable-backgrounds.json'), 'utf8')) as { input: string; output: string }[];
+  it.each(golden.map((g) => [g.input, g.output] as const))('%s → %s, texto blanco legible', (input, output) => {
+    const out = readableBackground(input);
+    expect(out).toBe(output);
+    expect(contrastRatio('#FFFFFF', out)).toBeGreaterThanOrEqual(4.5);
+  });
+  it('mantiene el tono y no toca colores ya legibles', () => {
+    expect(readableBackground('#6a3de8')).toBe('#6A3DE8');
+    expect(Math.abs(hexToOklch(readableBackground('#FFD60A')).h - hexToOklch('#FFD60A').h)).toBeLessThan(3);
   });
 });
 

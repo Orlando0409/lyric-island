@@ -220,6 +220,17 @@ class GoldenTest {
     }
 
     @Test
+    fun readableBackgrounds() {
+        // Colores de degradado personalizados: mismos resultados que desktop (± 1 por canal) y contraste ≥ 4.5.
+        for (el in read(File(expected, "readable-backgrounds.json")).jsonArray) {
+            val o = el.jsonObject
+            val out = ColorEngine.readableBackground(o["input"]!!.jsonPrimitive.content)
+            assertTrue(channelDiff(o["output"]!!.jsonPrimitive.content, out) <= 1, "$o vs $out")
+            assertTrue(ColorEngine.contrastRatio("#FFFFFF", out) >= 4.5, "$out contraste")
+        }
+    }
+
+    @Test
     fun palettes() {
         val items = read(File(expected, "palettes.json")).jsonArray
         assertEquals(200, items.size)

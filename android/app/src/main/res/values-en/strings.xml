@@ -64,4 +64,18 @@
     <string name="perm_needed_title">LyricIsland needs permissions</string>
     <string name="perm_needed_text">An island permission was removed. Tap to grant it again.</string>
     <string name="perm_channel">Permission alerts</string>
+    <string name="gradient_source">Gradient colors</string>
+    <string name="gradient_artwork">From the artwork</string>
+    <string name="gradient_custom">Custom</string>
+    <string name="gradient_start">Start</string>
+    <string name="gradient_end">End</string>
+    <string name="gradient_swap">Swap</string>
+    <string name="gradient_angle">Angle</string>
+    <string name="gradient_preview">This is how lyrics will look</string>
+    <string name="gradient_hint">Very light colors are darkened a little so the white lyrics stay readable.</string>
+    <string name="preset_sunset">Sunset</string>
+    <string name="preset_ocean">Ocean</string>
+    <string name="preset_forest">Forest</string>
+    <string name="preset_neon">Neon</string>
+    <string name="preset_graphite">Graphite</string>
 </resources>

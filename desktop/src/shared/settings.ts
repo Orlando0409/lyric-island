@@ -9,6 +9,8 @@ export const ShortcutsSchema = z.object({
   offsetReset: z.string().default('Control+Alt+0'),
 });
 
+const HexColor = z.string().regex(/^#[0-9A-Fa-f]{6}$/);
+
 export const SettingsSchema = z.object({
   general: z
     .object({
@@ -26,6 +28,15 @@ export const SettingsSchema = z.object({
       showArtwork: z.boolean().default(true),
       animations: z.enum(['full', 'reduced']).default('full'),
       ghostMode: z.boolean().default(true),
+      // Modo fantasma: opacidad con el cursor encima y duración del fundido.
+      ghostOpacity: z.number().min(0).max(0.6).default(0.15),
+      ghostFadeMs: z.number().min(0).max(1000).default(150),
+      // Degradado (estilos "gradient" y "live"): colores de la carátula o elegidos por el usuario, y ángulo.
+      gradientSource: z.enum(['artwork', 'custom']).default('artwork'),
+      // .catch: un color mal escrito vuelve al de por defecto sin descartar el resto de los ajustes.
+      gradientFrom: HexColor.default('#6A3DE8').catch('#6A3DE8'),
+      gradientTo: HexColor.default('#E83D84').catch('#E83D84'),
+      gradientAngle: z.number().min(0).max(360).default(135),
     })
     .prefault({}),
   position: z

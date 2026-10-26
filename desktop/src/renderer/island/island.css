@@ -44,10 +44,10 @@ body,
   background: var(--bg);
 }
 .bg.gradient {
-  background: linear-gradient(135deg, var(--bg), var(--bg-alt));
+  background: linear-gradient(var(--bg-angle, 135deg), var(--bg), var(--bg-alt));
 }
 .bg.live {
-  background: linear-gradient(135deg, var(--bg), var(--bg-alt), var(--bg));
+  background: linear-gradient(var(--bg-angle, 135deg), var(--bg), var(--bg-alt), var(--bg));
   background-size: 300% 300%;
   animation: live-gradient 20s ease-in-out infinite;
 }

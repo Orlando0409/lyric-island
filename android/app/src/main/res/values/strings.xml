@@ -65,4 +65,18 @@
     <string name="perm_needed_title">LyricIsland necesita permisos</string>
     <string name="perm_needed_text">Se quitó un permiso de la isla. Tocá para volver a concederlo.</string>
     <string name="perm_channel">Avisos de permisos</string>
+    <string name="gradient_source">Colores del degradado</string>
+    <string name="gradient_artwork">De la carátula</string>
+    <string name="gradient_custom">Personalizados</string>
+    <string name="gradient_start">Inicio</string>
+    <string name="gradient_end">Fin</string>
+    <string name="gradient_swap">Intercambiar</string>
+    <string name="gradient_angle">Ángulo</string>
+    <string name="gradient_preview">Así se verá la letra</string>
+    <string name="gradient_hint">Si un color es muy claro se oscurece un poco para que la letra blanca se lea bien.</string>
+    <string name="preset_sunset">Atardecer</string>
+    <string name="preset_ocean">Océano</string>
+    <string name="preset_forest">Bosque</string>
+    <string name="preset_neon">Neón</string>
+    <string name="preset_graphite">Grafito</string>
 </resources>

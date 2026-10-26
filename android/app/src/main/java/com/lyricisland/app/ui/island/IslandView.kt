@@ -98,7 +98,9 @@ import com.lyricisland.core.PlaybackStatus
 import com.lyricisland.core.Romaji
 import kotlinx.coroutines.delay
 import kotlin.math.abs
+import kotlin.math.cos
 import kotlin.math.roundToInt
+import kotlin.math.sin
 
 /** Geometría de la pantalla para colocar la isla alrededor de la cámara (12.7). */
 data class IslandGeometry(
@@ -185,6 +187,10 @@ fun IslandView(
     val bg by animateColorAsState(hex(snap.palette.background), tween(600, easing = FastOutSlowInEasing), label = "bg")
     val bgAlt by animateColorAsState(hex(snap.palette.backgroundAlt), tween(600, easing = FastOutSlowInEasing), label = "bgAlt")
     val accent by animateColorAsState(hex(snap.palette.accent), tween(600), label = "accent")
+    // Degradado personalizado: colores del usuario, oscurecidos si hace falta para que la letra blanca se lea.
+    val customGradient = settings.gradientCustom && settings.bgStyle != BgStyle.SOLID
+    val gradFrom = if (customGradient) remember(settings.gradientFrom) { hex(ColorEngine.readableBackground(settings.gradientFrom)) } else bg
+    val gradTo = if (customGradient) remember(settings.gradientTo) { hex(ColorEngine.readableBackground(settings.gradientTo)) } else bgAlt
     val sung = hex(snap.palette.textPrimary)
     val upcoming = hex(snap.palette.textUpcoming)
     val secondary = hex(snap.palette.textSecondary)
@@ -204,7 +210,7 @@ fun IslandView(
                 .height(h)
                 .alpha(alpha)
                 .clip(RoundedCornerShape(radius))
-                .islandBackground(settings.bgStyle, bg, bgAlt, artwork, reducedMotion)
+                .islandBackground(settings.bgStyle, gradFrom, gradTo, settings.gradientAngle, artwork, reducedMotion)
                 .pointerInput(Unit) {
                     detectTapGestures(onTap = { onTap() }, onLongPress = { panel = !panel })
                 }
@@ -246,24 +252,41 @@ fun IslandView(
 }
 
 @Composable
-private fun Modifier.islandBackground(style: BgStyle, bg: Color, bgAlt: Color, artwork: ImageBitmap?, reduced: Boolean): Modifier = when (style) {
+private fun Modifier.islandBackground(style: BgStyle, bg: Color, bgAlt: Color, angle: Int, artwork: ImageBitmap?, reduced: Boolean): Modifier = when (style) {
     BgStyle.SOLID -> background(bg)
-    BgStyle.GRADIENT -> background(Brush.linearGradient(listOf(bg, bgAlt)))
-    BgStyle.LIVE -> if (reduced) background(Brush.linearGradient(listOf(bg, bgAlt))) else this.then(Modifier.liveGradient(bg, bgAlt))
+    BgStyle.GRADIENT -> angledGradient(bg, bgAlt, angle, null)
+    BgStyle.LIVE -> if (reduced) angledGradient(bg, bgAlt, angle, null) else this.then(Modifier.liveGradient(bg, bgAlt, angle))
     // Carátula difuminada: la imagen con blur (RenderEffect, API 31+) se dibuja encima en ExpandedContent;
     // debajo (y en versiones anteriores) queda el degradado.
-    BgStyle.BLUR -> background(Brush.linearGradient(listOf(bg, bgAlt)))
+    BgStyle.BLUR -> angledGradient(bg, bgAlt, angle, null)
+}
+
+/**
+ * Degradado lineal con ángulo como en CSS (0° hacia arriba, 90° hacia la derecha, 135° hacia abajo a la derecha).
+ * `shift` (0..1) desplaza un degradado bg → alt → bg tres veces más largo, como el "degradado vivo" de desktop.
+ */
+private fun Modifier.angledGradient(bg: Color, bgAlt: Color, angle: Int, shift: Float?): Modifier = drawWithContent {
+    val rad = Math.toRadians(angle.toDouble())
+    val dx = sin(rad).toFloat()
+    val dy = -cos(rad).toFloat()
+    val len = abs(size.width * dx) + abs(size.height * dy)
+    val c = Offset(size.width / 2, size.height / 2)
+    val dir = Offset(dx, dy)
+    val brush = if (shift == null) {
+        Brush.linearGradient(listOf(bg, bgAlt), start = c - dir * (len / 2), end = c + dir * (len / 2))
+    } else {
+        val move = dir * (len * (1f - 2f * shift))
+        Brush.linearGradient(listOf(bg, bgAlt, bg), start = c - dir * (len * 1.5f) + move, end = c + dir * (len * 1.5f) + move)
+    }
+    drawRect(brush)
+    drawContent()
 }
 
 @Composable
-private fun Modifier.liveGradient(bg: Color, bgAlt: Color): Modifier {
+private fun Modifier.liveGradient(bg: Color, bgAlt: Color, angle: Int): Modifier {
     val t = rememberInfiniteTransition(label = "live")
     val shift by t.animateFloat(0f, 1f, infiniteRepeatable(tween(20_000, easing = LinearEasing), RepeatMode.Reverse), label = "shift")
-    return drawWithContent {
-        val x = size.width * shift
-        drawRect(Brush.linearGradient(listOf(bg, bgAlt, bg), start = Offset(x - size.width, 0f), end = Offset(x + size.width, size.height)))
-        drawContent()
-    }
+    return angledGradient(bg, bgAlt, angle, shift)
 }
 
 @Composable

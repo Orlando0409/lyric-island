@@ -180,6 +180,22 @@ export function buildPalette(swatches: Swatches | null | undefined): Palette {
   };
 }
 
+/**
+ * Color de degradado elegido por el usuario → fondo legible: si el texto blanco no llega a contraste 4.5,
+ * se oscurece en OKLCH (mismo tono) hasta llegar.
+ */
+export function readableBackground(hex: string): string {
+  const input = rgbToHex(...hexToRgb(hex));
+  if (contrastRatio('#FFFFFF', input) >= MIN_CONTRAST) return input;
+  let c = hexToOklch(input);
+  let out = input;
+  for (let step = 0; step < 50 && contrastRatio('#FFFFFF', out) < MIN_CONTRAST; step++) {
+    c = { ...c, l: Math.max(0, c.l - 0.02) };
+    out = oklchToHex(c);
+  }
+  return out;
+}
+
 /** Interpolación en OKLCH por el camino corto del tono (transiciones de 600 ms, 9.5). */
 export function mixOklch(a: string, b: string, t: number): string {
   const ca = hexToOklch(a);

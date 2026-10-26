@@ -1,6 +1,7 @@
 // IslandView (sección 10): estados, karaoke, interludios, ecualizador y modo fantasma.
 import { AnimatePresence, motion, type Transition } from 'motion/react';
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { readableBackground } from '../../core/color';
 import type { IslandSnapshot } from '../../core/controller';
 import { romajiFill } from '../../core/romaji';
 import type { LyricLine, Palette } from '../../core/types';
@@ -186,7 +187,13 @@ function Artwork({ url, size, show }: { url: string | null; size: number; show: 
   );
 }
 
-function Background({ style, palette, artworkUrl, reduced }: { style: Settings['appearance']['backgroundStyle']; palette: Palette; artworkUrl: string | null; reduced: boolean }) {
+function Background({ appearance: a, palette, artworkUrl, reduced }: { appearance: Settings['appearance']; palette: Palette; artworkUrl: string | null; reduced: boolean }) {
+  const style = a.backgroundStyle;
+  // Colores personalizados del degradado, oscurecidos si hace falta para que la letra blanca se lea.
+  const custom = useMemo(
+    () => (a.gradientSource === 'custom' ? { from: readableBackground(a.gradientFrom), to: readableBackground(a.gradientTo) } : null),
+    [a.gradientSource, a.gradientFrom, a.gradientTo],
+  );
   if (style === 'blur' && artworkUrl)
     return (
       <div className="bg">
@@ -195,7 +202,12 @@ function Background({ style, palette, artworkUrl, reduced }: { style: Settings['
       </div>
     );
   const cls = style === 'live' && !reduced ? 'bg live' : style === 'solid' ? 'bg solid' : 'bg gradient';
-  return <div className={cls} style={{ '--bg': palette.background, '--bg-alt': palette.backgroundAlt } as CSSProperties} />;
+  const vars = {
+    '--bg': style !== 'solid' && custom ? custom.from : palette.background,
+    '--bg-alt': style !== 'solid' && custom ? custom.to : palette.backgroundAlt,
+    '--bg-angle': `${a.gradientAngle}deg`,
+  } as CSSProperties;
+  return <div className={cls} style={vars} data-testid="island-bg" />;
 }
 
 export function Island() {
@@ -211,7 +223,8 @@ export function Island() {
   const size = expanded
     ? { width: 560, height: Math.round(84 * Math.min(fs, 1.45)), borderRadius: 28 }
     : { width: 240, height: Math.round(38 * Math.min(fs, 1.3)), borderRadius: 19 };
-  const opacity = mode === 'hidden' ? 0 : ghost ? 0.15 : settings.appearance.maxOpacity;
+  const opacity = mode === 'hidden' ? 0 : ghost ? settings.appearance.ghostOpacity : settings.appearance.maxOpacity;
+  const ghostFade = settings.appearance.ghostFadeMs / 1000;
 
   const lines = snap.lyrics?.lines ?? [];
   const active = snap.activeLineIndex >= 0 ? lines[snap.activeLineIndex] : null;
@@ -240,9 +253,9 @@ export function Island() {
         data-mode={mode}
         initial={false}
         animate={{ ...size, opacity, scale: mode === 'hidden' ? 0.85 : 1 }}
-        transition={reduced ? INSTANT : { ...SPRING, opacity: { duration: ghost ? 0.15 : 0.2 }, scale: { duration: 0.2 } }}
+        transition={reduced ? INSTANT : { ...SPRING, opacity: { duration: ghost ? ghostFade : Math.max(0.2, ghostFade) }, scale: { duration: 0.2 } }}
       >
-        <Background style={settings.appearance.backgroundStyle} palette={palette} artworkUrl={artworkUrl} reduced={reduced} />
+        <Background appearance={settings.appearance} palette={palette} artworkUrl={artworkUrl} reduced={reduced} />
         {expanded ? (
           <div className={`content expanded ${mode === 'paused' ? 'dimmed' : ''}`}>
             <Artwork url={artworkUrl} size={32} show={settings.appearance.showArtwork} />

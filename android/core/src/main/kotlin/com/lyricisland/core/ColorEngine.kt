@@ -142,6 +142,25 @@ object ColorEngine {
         return Palette(bgHex, altHex, textPrimary, "#FFFFFF73", "#FFFFFF8C", if (accent.startsWith("#")) accent else "#$accent")
     }
 
+    /**
+     * Color de degradado elegido por el usuario → fondo legible: si el texto blanco no llega a contraste 4.5,
+     * se oscurece en OKLCH (mismo tono) hasta llegar.
+     */
+    fun readableBackground(hex: String): String {
+        val rgb = hexToRgb(hex)
+        val input = rgbToHex(rgb[0].toDouble(), rgb[1].toDouble(), rgb[2].toDouble())
+        if (contrastRatio("#FFFFFF", input) >= MIN_CONTRAST) return input
+        var c = hexToOklch(input)
+        var out = input
+        var step = 0
+        while (step < 50 && contrastRatio("#FFFFFF", out) < MIN_CONTRAST) {
+            c = c.copy(l = maxOf(0.0, c.l - 0.02))
+            out = oklchToHex(c)
+            step++
+        }
+        return out
+    }
+
     fun mixOklch(a: String, b: String, t: Double): String {
         val ca = hexToOklch(a)
         val cb = hexToOklch(b)

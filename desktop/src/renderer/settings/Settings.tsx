@@ -1,5 +1,6 @@
 // Pantalla de ajustes (sección 10.7).
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { readableBackground } from '../../core/color';
 import { t, type StringKey } from '../../shared/i18n';
 import type { DeepPartial, Settings as S } from '../../shared/settings';
 
@@ -38,6 +39,36 @@ function Select<T extends string>({ value, options, onChange }: { value: T; opti
     </select>
   );
 }
+
+/** Selector de color: muestra el cambio al instante y guarda con un pequeño retardo (el selector dispara muchos eventos). */
+function ColorInput({ value, onChange, testId }: { value: string; onChange: (v: string) => void; testId?: string }) {
+  const [local, setLocal] = useState(value);
+  const timer = useRef<number | undefined>(undefined);
+  useEffect(() => setLocal(value), [value]);
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+  return (
+    <input
+      type="color"
+      value={local}
+      data-testid={testId}
+      onChange={(e) => {
+        const v = e.target.value.toUpperCase();
+        setLocal(v);
+        window.clearTimeout(timer.current);
+        timer.current = window.setTimeout(() => onChange(v), 150);
+      }}
+    />
+  );
+}
+
+/** Degradados de partida para el degradado personalizado. */
+const GRADIENT_PRESETS: Array<{ key: StringKey; from: string; to: string }> = [
+  { key: 'presetSunset', from: '#E8573D', to: '#8E2DE2' },
+  { key: 'presetOcean', from: '#1A6DD1', to: '#0E9F8E' },
+  { key: 'presetForest', from: '#1F7A4D', to: '#4E6B1F' },
+  { key: 'presetNeon', from: '#6A3DE8', to: '#E83D84' },
+  { key: 'presetGraphite', from: '#2C2C2E', to: '#48484A' },
+];
 
 export function Settings() {
   const [s, setS] = useState<S | null>(null);
@@ -90,6 +121,64 @@ export function Settings() {
             onChange={(v) => update({ appearance: { backgroundStyle: v } })}
           />
         </Row>
+        {(s.appearance.backgroundStyle === 'gradient' || s.appearance.backgroundStyle === 'live') && (
+          <div className="sub" data-testid="gradient-settings">
+            <Row label={L('gradientSource')}>
+              <Select
+                value={s.appearance.gradientSource}
+                options={[
+                  ['artwork', L('gradientArtwork')],
+                  ['custom', L('gradientCustom')],
+                ]}
+                onChange={(v) => update({ appearance: { gradientSource: v } })}
+              />
+            </Row>
+            {s.appearance.gradientSource === 'custom' && (
+              <>
+                <Row label={L('gradientColors')}>
+                  <span className="colors">
+                    <ColorInput value={s.appearance.gradientFrom} onChange={(v) => update({ appearance: { gradientFrom: v } })} testId="gradient-from" />
+                    <button
+                      type="button"
+                      title={L('gradientSwap')}
+                      onClick={() => update({ appearance: { gradientFrom: s.appearance.gradientTo, gradientTo: s.appearance.gradientFrom } })}
+                    >
+                      ⇄
+                    </button>
+                    <ColorInput value={s.appearance.gradientTo} onChange={(v) => update({ appearance: { gradientTo: v } })} testId="gradient-to" />
+                  </span>
+                </Row>
+                <div className="buttons">
+                  {GRADIENT_PRESETS.map((p) => (
+                    <button
+                      key={p.key}
+                      type="button"
+                      className="chip preset"
+                      style={{ background: `linear-gradient(90deg, ${p.from}, ${p.to})` }}
+                      onClick={() => update({ appearance: { gradientFrom: p.from, gradientTo: p.to } })}
+                    >
+                      {L(p.key)}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+            <Row label={`${L('gradientAngle')}: ${s.appearance.gradientAngle}°`}>
+              <input type="range" min={0} max={360} step={15} value={s.appearance.gradientAngle} onChange={(e) => update({ appearance: { gradientAngle: Number(e.target.value) } })} />
+            </Row>
+            {s.appearance.gradientSource === 'custom' && (
+              <div
+                className="gradient-preview"
+                style={{
+                  background: `linear-gradient(${s.appearance.gradientAngle}deg, ${readableBackground(s.appearance.gradientFrom)}, ${readableBackground(s.appearance.gradientTo)})`,
+                }}
+              >
+                {L('gradientPreview')}
+              </div>
+            )}
+            {s.appearance.gradientSource === 'custom' && <p className="hint">{L('gradientHint')}</p>}
+          </div>
+        )}
         <Row label={`${L('fontScale')}: ${Math.round(s.appearance.fontScale * 100)} %`}>
           <input type="range" min={0.8} max={1.5} step={0.05} value={s.appearance.fontScale} onChange={(e) => update({ appearance: { fontScale: Number(e.target.value) } })} />
         </Row>
@@ -115,6 +204,16 @@ export function Settings() {
         <Row label={L('ghostMode')}>
           <Toggle value={s.appearance.ghostMode} onChange={(v) => update({ appearance: { ghostMode: v } })} />
         </Row>
+        {s.appearance.ghostMode && (
+          <div className="sub" data-testid="ghost-settings">
+            <Row label={`${L('ghostOpacity')}: ${Math.round(s.appearance.ghostOpacity * 100)} %`}>
+              <input type="range" min={0} max={0.6} step={0.05} value={s.appearance.ghostOpacity} onChange={(e) => update({ appearance: { ghostOpacity: Number(e.target.value) } })} />
+            </Row>
+            <Row label={`${L('ghostFade')}: ${s.appearance.ghostFadeMs} ms`}>
+              <input type="range" min={0} max={1000} step={50} value={s.appearance.ghostFadeMs} onChange={(e) => update({ appearance: { ghostFadeMs: Number(e.target.value) } })} />
+            </Row>
+          </div>
+        )}
       </Section>
 
       <Section title={L('position')}>

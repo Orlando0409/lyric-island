@@ -28,6 +28,11 @@ data class AppSettings(
     val showNextLine: Boolean = true,
     val showArtwork: Boolean = true,
     val bgStyle: BgStyle = BgStyle.SOLID,
+    /** Degradado (estilos GRADIENT y LIVE): colores elegidos por el usuario en lugar de los de la carátula, y ángulo (como en CSS). */
+    val gradientCustom: Boolean = false,
+    val gradientFrom: String = "#6A3DE8",
+    val gradientTo: String = "#E83D84",
+    val gradientAngle: Int = 135,
     val pauseBehavior: PauseBehavior = PauseBehavior.DIM,
     val pauseDelayMs: Long = 10_000,
     val noLyricsBehavior: NoLyricsBehavior = NoLyricsBehavior.TITLE,
@@ -69,6 +74,10 @@ class SettingsRepository(private val context: Context) {
         val showNextLine = booleanPreferencesKey("showNextLine")
         val showArtwork = booleanPreferencesKey("showArtwork")
         val bgStyle = stringPreferencesKey("bgStyle")
+        val gradientCustom = booleanPreferencesKey("gradientCustom")
+        val gradientFrom = stringPreferencesKey("gradientFrom")
+        val gradientTo = stringPreferencesKey("gradientTo")
+        val gradientAngle = intPreferencesKey("gradientAngle")
         val pauseBehavior = stringPreferencesKey("pauseBehavior")
         val pauseDelayMs = longPreferencesKey("pauseDelayMs")
         val noLyrics = stringPreferencesKey("noLyrics")
@@ -87,6 +96,7 @@ class SettingsRepository(private val context: Context) {
 
     private companion object {
         const val DEFAULTS_VERSION = 2
+        val HEX = Regex("^#[0-9A-Fa-f]{6}$")
     }
 
     private inline fun <reified E : Enum<E>> enumOr(v: String?, d: E): E = v?.let { runCatching { enumValueOf<E>(it) }.getOrNull() } ?: d
@@ -104,6 +114,10 @@ class SettingsRepository(private val context: Context) {
             showNextLine = p[K.showNextLine] ?: d.showNextLine,
             showArtwork = p[K.showArtwork] ?: d.showArtwork,
             bgStyle = enumOr(p[K.bgStyle], d.bgStyle),
+            gradientCustom = p[K.gradientCustom] ?: d.gradientCustom,
+            gradientFrom = p[K.gradientFrom]?.takeIf { HEX.matches(it) } ?: d.gradientFrom,
+            gradientTo = p[K.gradientTo]?.takeIf { HEX.matches(it) } ?: d.gradientTo,
+            gradientAngle = p[K.gradientAngle] ?: d.gradientAngle,
             pauseBehavior = enumOr(p[K.pauseBehavior], d.pauseBehavior),
             pauseDelayMs = p[K.pauseDelayMs] ?: d.pauseDelayMs,
             noLyricsBehavior = enumOr(p[K.noLyrics], d.noLyricsBehavior),
@@ -130,6 +144,10 @@ class SettingsRepository(private val context: Context) {
             p[K.showNextLine] = n.showNextLine
             p[K.showArtwork] = n.showArtwork
             p[K.bgStyle] = n.bgStyle.name
+            p[K.gradientCustom] = n.gradientCustom
+            p[K.gradientFrom] = n.gradientFrom
+            p[K.gradientTo] = n.gradientTo
+            p[K.gradientAngle] = n.gradientAngle
             p[K.pauseBehavior] = n.pauseBehavior.name
             p[K.pauseDelayMs] = n.pauseDelayMs
             p[K.noLyrics] = n.noLyricsBehavior.name

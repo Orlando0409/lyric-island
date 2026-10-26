@@ -126,8 +126,9 @@ test('líneas largas: dos renglones o desplazamiento que sigue a la palabra cant
     await page.waitForTimeout(400);
     await page.screenshot({ path: 'test-results/island-long-wrap.png' });
     // Línea larguísima (00:10): se desplaza y la palabra que se canta queda dentro de la isla.
-    await expect(line).toContainText('larguísima', { timeout: 12_000 });
-    await expect(line).toHaveAttribute('data-fit', 'scroll');
+    // Durante la transición conviven la línea que sale y la que entra: se busca la nueva por su texto.
+    const longest = page.getByTestId('current-line').filter({ hasText: 'larguísima' });
+    await expect(longest).toHaveAttribute('data-fit', 'scroll', { timeout: 12_000 });
     await page.waitForTimeout(5000);
     const visible = await page.evaluate(() => {
       // La línea en modo desplazamiento (durante la transición puede haber otra saliendo).
@@ -157,6 +158,39 @@ test('sin letra: compacta con título; instrumental', async () => {
     await expect.poll(() => mode(page), { timeout: 8000 }).toBe('compact');
     await expect(page.getByTestId('title')).toContainText('Interludio Azul');
     await page.screenshot({ path: 'test-results/island-compact.png' });
+  } finally {
+    await app.close();
+    server.close();
+  }
+});
+
+test('ajustes: degradado personalizado y modo fantasma', async () => {
+  const { app, server, userData } = await launch('normal-play.ndjson', { LYRICISLAND_OPEN_SETTINGS: '1' });
+  try {
+    let settingsPage: Page | undefined;
+    await expect
+      .poll(() => (settingsPage = app.windows().find((w) => w.url().includes('settings.html'))), { timeout: 10_000 })
+      .toBeTruthy();
+    const sp = settingsPage!;
+    // El fantasma ya está activo por defecto: se ven sus controles.
+    await expect(sp.getByTestId('ghost-settings')).toBeVisible();
+    await sp.locator('select').nth(1).selectOption('gradient');
+    await expect(sp.getByTestId('gradient-settings')).toBeVisible();
+    await sp.getByTestId('gradient-settings').locator('select').selectOption('custom');
+    await sp.getByRole('button', { name: 'Océano' }).click();
+    const file = join(userData, 'settings.json');
+    await expect
+      .poll(() => existsSync(file) && JSON.parse(readFileSync(file, 'utf8')).appearance.gradientFrom, { timeout: 5000 })
+      .toBe('#1A6DD1');
+    const island = await islandPage(app);
+    await expect.poll(() => mode(island), { timeout: 8000 }).toBe('expanded');
+    // #1A6DD1 ya es legible con texto blanco (no se oscurece); #0E9F8E sí.
+    const bgVar = (name: string) => island.getByTestId('island-bg').evaluate((el, n) => (el as HTMLElement).style.getPropertyValue(n), name);
+    await expect.poll(() => bgVar('--bg'), { timeout: 5000 }).toBe('#1A6DD1');
+    expect(await bgVar('--bg-alt')).not.toBe('#0E9F8E');
+    expect(await bgVar('--bg-angle')).toBe('135deg');
+    await sp.screenshot({ path: 'test-results/settings-gradient.png', fullPage: true });
+    await island.screenshot({ path: 'test-results/island-gradient.png' });
   } finally {
     await app.close();
     server.close();

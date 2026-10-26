@@ -11,6 +11,25 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.AssistChip
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.font.FontWeight
+import com.lyricisland.core.ColorEngine
+import kotlin.math.abs
+import kotlin.math.cos
+import kotlin.math.roundToInt
+import kotlin.math.sin
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -282,6 +301,80 @@ private fun <T> Choice(label: Int, options: List<Pair<T, Int>>, value: T, onChan
     }
 }
 
+/** Colores para elegir el inicio y el fin del degradado personalizado. */
+private val GRADIENT_SWATCHES = listOf(
+    "#E8573D", "#E8A33D", "#C9B400", "#2EA44F", "#0E9F8E", "#1A6DD1",
+    "#3D5AE8", "#6A3DE8", "#8E2DE2", "#E83D84", "#2C2C2E", "#48484A",
+)
+
+/** Degradados de partida (los mismos que en desktop). */
+private val GRADIENT_PRESETS = listOf(
+    Triple(R.string.preset_sunset, "#E8573D", "#8E2DE2"),
+    Triple(R.string.preset_ocean, "#1A6DD1", "#0E9F8E"),
+    Triple(R.string.preset_forest, "#1F7A4D", "#4E6B1F"),
+    Triple(R.string.preset_neon, "#6A3DE8", "#E83D84"),
+    Triple(R.string.preset_graphite, "#2C2C2E", "#48484A"),
+)
+
+private fun colorOf(hex: String) = Color(ColorEngine.toArgb(hex).toInt())
+
+@Composable
+private fun SwatchRow(label: Int, selected: String, onPick: (String) -> Unit) {
+    Text(stringResource(label), style = MaterialTheme.typography.bodySmall)
+    Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        for (hex in GRADIENT_SWATCHES) {
+            val isSel = hex.equals(selected, ignoreCase = true)
+            Box(
+                Modifier.size(32.dp).clip(CircleShape).background(colorOf(hex))
+                    .border(if (isSel) 3.dp else 0.dp, MaterialTheme.colorScheme.onSurface, CircleShape)
+                    .clickable { onPick(hex) },
+            )
+        }
+    }
+}
+
+@Composable
+private fun GradientSettings(s: AppSettings, set: ((AppSettings) -> AppSettings) -> Unit) {
+    Column(Modifier.padding(start = 12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Choice(R.string.gradient_source, listOf(false to R.string.gradient_artwork, true to R.string.gradient_custom), s.gradientCustom) { v ->
+            set { it.copy(gradientCustom = v) }
+        }
+        if (s.gradientCustom) {
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                for ((name, from, to) in GRADIENT_PRESETS) {
+                    AssistChip(
+                        onClick = { set { it.copy(gradientFrom = from, gradientTo = to) } },
+                        label = { Text(stringResource(name)) },
+                        leadingIcon = { Box(Modifier.size(16.dp).clip(CircleShape).background(Brush.linearGradient(listOf(colorOf(from), colorOf(to))))) },
+                    )
+                }
+            }
+            SwatchRow(R.string.gradient_start, s.gradientFrom) { v -> set { it.copy(gradientFrom = v) } }
+            SwatchRow(R.string.gradient_end, s.gradientTo) { v -> set { it.copy(gradientTo = v) } }
+            TextButton(onClick = { set { it.copy(gradientFrom = s.gradientTo, gradientTo = s.gradientFrom) } }) { Text("⇄ " + stringResource(R.string.gradient_swap)) }
+        }
+        Text("${stringResource(R.string.gradient_angle)}: ${s.gradientAngle}°")
+        Slider(s.gradientAngle.toFloat(), { v -> set { it.copy(gradientAngle = ((v / 15).roundToInt() * 15)) } }, valueRange = 0f..360f)
+        if (s.gradientCustom) {
+            val from = colorOf(ColorEngine.readableBackground(s.gradientFrom))
+            val to = colorOf(ColorEngine.readableBackground(s.gradientTo))
+            val rad = Math.toRadians(s.gradientAngle.toDouble())
+            Box(
+                Modifier.fillMaxWidth().height(44.dp).clip(RoundedCornerShape(22.dp)).drawBehind {
+                    val dir = Offset(sin(rad).toFloat(), -cos(rad).toFloat())
+                    val len = abs(size.width * dir.x) + abs(size.height * dir.y)
+                    val c = Offset(size.width / 2, size.height / 2)
+                    drawRect(Brush.linearGradient(listOf(from, to), start = c - dir * (len / 2), end = c + dir * (len / 2)))
+                },
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(stringResource(R.string.gradient_preview), color = Color.White, fontWeight = FontWeight.SemiBold)
+            }
+            Text(stringResource(R.string.gradient_hint), style = MaterialTheme.typography.bodySmall)
+        }
+    }
+}
+
 @Composable
 private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) -> Unit) {
     val ctx = LocalContext.current
@@ -303,6 +396,7 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
         listOf(BgStyle.SOLID to R.string.bg_solid, BgStyle.GRADIENT to R.string.bg_gradient, BgStyle.LIVE to R.string.bg_live, BgStyle.BLUR to R.string.bg_blur),
         s.bgStyle,
     ) { v -> set { it.copy(bgStyle = v) } }
+    if (s.bgStyle == BgStyle.GRADIENT || s.bgStyle == BgStyle.LIVE) GradientSettings(s, set)
 
     Header(R.string.s_behavior)
     Choice(R.string.on_pause, listOf(PauseBehavior.DIM to R.string.pause_dim, PauseBehavior.COMPACT to R.string.pause_compact, PauseBehavior.HIDE to R.string.pause_hide), s.pauseBehavior) { v ->
