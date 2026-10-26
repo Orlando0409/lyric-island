@@ -16,6 +16,13 @@
     <IsAotCompatible>true</IsAotCompatible>
     <JsonSerializerIsReflectionEnabledByDefault>false</JsonSerializerIsReflectionEnabledByDefault>
   </PropertyGroup>
+  <!-- Binario publicado sin símbolos ni rutas de la máquina que lo compiló. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <PathMap>$(MSBuildProjectDirectory)=/src</PathMap>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="LyricIsland.MediaHelper.Tests" />
   </ItemGroup>
