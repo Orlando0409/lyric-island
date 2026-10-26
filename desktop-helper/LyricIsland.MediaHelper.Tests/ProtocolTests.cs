@@ -101,6 +101,16 @@ public class ProtocolTests
     }
 
     [Fact]
+    public async Task CommandLoop_SetStartup_SinPaquete_AvisaYSigue()
+    {
+        // Fuera del MSIX no hay identidad de paquete: StartupTask falla, se avisa por log y el helper sigue vivo.
+        var sink = new CollectingSink();
+        var loop = new CommandLoop(new MediaTracker(new FakeMediaSessionSource(), sink), sink);
+        Assert.True(await loop.HandleAsync("""{"cmd":"setStartup","enabled":true}"""));
+        Assert.Contains(sink.Of<LogMessage>(), m => m.Level == "warn" && m.Msg.Contains("inicio con Windows"));
+    }
+
+    [Fact]
     public async Task CommandLoop_FinDeEntrada()
     {
         var loop = new CommandLoop(new MediaTracker(new FakeMediaSessionSource(), new CollectingSink()), new CollectingSink());

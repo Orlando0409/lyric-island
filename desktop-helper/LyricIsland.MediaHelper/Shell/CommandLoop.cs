@@ -39,6 +39,9 @@ public sealed class CommandLoop
             case "requestSnapshot":
                 await _tracker.RequestSnapshotAsync();
                 return true;
+            case "setStartup":
+                await StartupToggle.SetAsync(cmd.Enabled ?? false, _sink);
+                return true;
             case "shutdown":
                 return false;
             default:

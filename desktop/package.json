@@ -25,7 +25,8 @@
     "helper:build": "node tools/build-helper.mjs",
     "dist:nsis": "electron-vite build && electron-builder --win nsis",
     "dist:msix": "electron-vite build && electron-builder --win appx",
-    "dist:signed": "node tools/dist-signed.mjs"
+    "dist:signed": "node tools/dist-signed.mjs",
+    "dist:store": "node tools/dist-store.mjs"
   },
   "dependencies": {
     "kuromoji": "0.1.2",

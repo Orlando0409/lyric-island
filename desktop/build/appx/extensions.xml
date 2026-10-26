@@ -1,0 +1,4 @@
+        <!-- Iniciar con Windows (MSIX): apagado por defecto; se activa desde Ajustes → General (lo aplica el helper). -->
+        <desktop:Extension Category="windows.startupTask" Executable="app\LyricIsland.exe" EntryPoint="Windows.FullTrustApplication">
+          <desktop:StartupTask TaskId="LyricIslandStartup" Enabled="false" DisplayName="LyricIsland" />
+        </desktop:Extension>

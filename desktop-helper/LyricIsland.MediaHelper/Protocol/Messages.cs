@@ -39,6 +39,8 @@ public sealed class Command
     public string? Cmd { get; set; }
     public string? Mode { get; set; }
     public string[]? Apps { get; set; }
+    /// <summary>"setStartup": iniciar con Windows (solo en el paquete MSIX).</summary>
+    public bool? Enabled { get; set; }
 }
 
 [JsonSourceGenerationOptions(

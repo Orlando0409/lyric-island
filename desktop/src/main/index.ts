@@ -175,8 +175,10 @@ function createTray(): void {
 
 function applyLoginItem(s: Settings): void {
   if (!app.isPackaged) return; // en desarrollo no se registra el autostart
-  // NSIS: registro de inicio de sesión. MSIX usa la extensión StartupTask del manifiesto.
-  if (!process.windowsStore) app.setLoginItemSettings({ openAtLogin: s.general.launchAtLogin });
+  // NSIS: registro de inicio de sesión. MSIX (Store): la extensión StartupTask del manifiesto, que el helper
+  // activa o desactiva (corre dentro del paquete, con su identidad).
+  if (process.windowsStore) media?.send({ cmd: 'setStartup', enabled: s.general.launchAtLogin });
+  else app.setLoginItemSettings({ openAtLogin: s.general.launchAtLogin });
 }
 
 function registerIpc(): void {
@@ -222,8 +224,8 @@ app.whenReady().then(() => {
   island = createIslandWindow(settings.get());
   createTray();
   registerShortcuts(settings.get());
-  applyLoginItem(settings.get());
   startMedia();
+  applyLoginItem(settings.get()); // después del helper: en MSIX lo aplica él
 
   settings.on('change', (s) => {
     broadcast(IPC.settingsChanged, s);

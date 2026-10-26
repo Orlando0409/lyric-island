@@ -55,4 +55,5 @@ export function parseHelperLine(line: string): ParseResult {
 export type HelperCommand =
   | { cmd: 'setFilter'; mode: 'allow' | 'deny'; apps: string[] }
   | { cmd: 'requestSnapshot' }
+  | { cmd: 'setStartup'; enabled: boolean }
   | { cmd: 'shutdown' };
