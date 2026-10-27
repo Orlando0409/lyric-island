@@ -568,7 +568,7 @@ internal fun fillPoint(spans: List<RowSpan>, progress: Float): Pair<Int, Float> 
  * original (Romaji.romajiFill). Si no entra, se desplaza siguiendo al relleno.
  */
 @Composable
-private fun RomajiLine(line: LyricLine, isCurrent: Boolean, live: State<IslandSnapshot>, reduced: Boolean, sung: Color, secondary: Color, textSize: TextUnit) {
+internal fun RomajiLine(line: LyricLine, isCurrent: Boolean, live: State<IslandSnapshot>, reduced: Boolean, sung: Color, secondary: Color, textSize: TextUnit) {
     val text = line.romaji.orEmpty()
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current

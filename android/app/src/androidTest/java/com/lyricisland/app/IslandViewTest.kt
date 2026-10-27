@@ -119,6 +119,14 @@ class IslandViewTest {
     }
 
     @Test
+    fun ventanaFlotante_romajiDeLaLineaActualConRelleno() {
+        val ja = doc.copy(lines = doc.lines.mapIndexed { i, l -> if (i == 0) l.copy(romaji = "yozora ni hikaru shima", romajiMarks = listOf(2, 6)) else l })
+        rule.setContent { BubbleView(snap(IslandMode.EXPANDED).copy(lyrics = ja), AppSettings(), null, reducedMotion = true, controls = bubble(open = true)) }
+        // La línea actual usa el mismo romaji con relleno que la isla (no un texto fijo).
+        rule.onNodeWithTag("romaji-line", useUnmergedTree = true).assertExists()
+    }
+
+    @Test
     fun oculta_noDibujaLaIsla() {
         rule.setContent { IslandView(snap(IslandMode.HIDDEN), AppSettings(), null, IslandGeometry(), reducedMotion = true) }
         rule.waitForIdle()

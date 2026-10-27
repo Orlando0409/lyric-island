@@ -248,14 +248,16 @@ private fun PanelLyrics(
                 line.isInterlude -> Text("♪", color = colors.accent, fontSize = sp(18f))
                 i == active -> Column {
                     KaraokeLine(line, live, reduced, colors.sung, colors.upcoming, sp(19f))
+                    // El romaji se rellena al mismo ritmo que el original, igual que en la isla.
                     if (settings.showRomaji && line.romaji != null) {
-                        Text(line.romaji.orEmpty(), color = colors.secondary, fontSize = sp(13f), fontStyle = FontStyle.Italic)
+                        RomajiLine(line, isCurrent = true, live, reduced, colors.sung, colors.secondary, sp(13f))
                     }
                 }
                 else -> Column(Modifier.alpha(if (i < active) 0.55f else 1f)) {
                     Text(line.text, color = if (i < active) colors.sung else colors.upcoming, fontSize = sp(17f), fontWeight = FontWeight.SemiBold)
                     if (settings.showRomaji && line.romaji != null) {
-                        Text(line.romaji.orEmpty(), color = colors.secondary, fontSize = sp(12f), fontStyle = FontStyle.Italic)
+                        // Ya cantado: romaji relleno (como en la letra completa de Windows); lo que viene, sin rellenar.
+                        Text(line.romaji.orEmpty(), color = if (i < active) colors.sung else colors.secondary, fontSize = sp(12f), fontStyle = FontStyle.Italic)
                     }
                 }
             }
