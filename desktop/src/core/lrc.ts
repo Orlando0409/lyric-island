@@ -72,6 +72,42 @@ function parseEnhanced(rest: string, lineStart: number): { text: string; words: 
   return { text, words: words.length > 0 ? words : null, endTag };
 }
 
+/** Tiene letras que no son del alfabeto latino (japonés, coreano, cirílico…): es el verso original, no su romanización. */
+export function hasNonLatinLetters(text: string): boolean {
+  for (const ch of text) if (/\p{L}/u.test(ch) && !/\p{Script=Latin}/u.test(ch)) return true;
+  return false;
+}
+
+/** Fracción de versos con texto que comparten tiempo con otro a partir de la cual la letra se trata como "doble". */
+export const DOUBLED_SHARE = 0.3;
+/** …y al menos tantos instantes repetidos (un par de líneas a la vez, como en un dúo, no es una letra doble). */
+export const DOUBLED_MIN_TIMES = 3;
+
+/**
+ * Letras "dobles": algunas versiones de LRCLIB traen la letra entera dos veces con los mismos tiempos (el original y
+ * después el romaji o una traducción). Con dos versos en el mismo instante se mostraba el último y el original quedaba
+ * con duración cero. Si al menos el 30 % de los versos (y 3 instantes) comparte tiempo, se deja uno por tiempo: el que tiene letras no
+ * latinas (el original) o, si no hay, el primero del archivo. Recibe y devuelve las líneas ordenadas por tiempo.
+ */
+function dropDoubledLyrics<T extends { startMs: number; text: string }>(sorted: T[]): T[] {
+  const withText = sorted.filter((r) => r.text.length > 0);
+  const count = new Map<number, number>();
+  for (const r of withText) count.set(r.startMs, (count.get(r.startMs) ?? 0) + 1);
+  const shared = withText.filter((r) => (count.get(r.startMs) ?? 0) > 1).length;
+  const sharedTimes = [...count.values()].filter((n) => n > 1).length;
+  if (withText.length === 0 || shared / withText.length < DOUBLED_SHARE || sharedTimes < DOUBLED_MIN_TIMES) return sorted;
+  const out: T[] = [];
+  for (let i = 0; i < sorted.length; ) {
+    let j = i;
+    while (j < sorted.length && sorted[j].startMs === sorted[i].startMs) j++;
+    const group = sorted.slice(i, j);
+    const texts = group.filter((r) => r.text.length > 0);
+    out.push(texts.find((r) => hasNonLatinLetters(r.text)) ?? texts[0] ?? group[0]);
+    i = j;
+  }
+  return out;
+}
+
 export function parseLrc(input: string, durationMs: number | null = null): ParsedLrc {
   const result: ParsedLrc = { lines: [], offsetMs: 0, meta: {}, warnings: [] };
   try {
@@ -128,9 +164,11 @@ export function parseLrc(input: string, durationMs: number | null = null): Parse
     }
 
     raw.sort((a, b) => a.startMs - b.startMs || a.order - b.order);
+    const kept = dropDoubledLyrics(raw);
+    if (kept.length < raw.length) result.warnings.push(`letra doble: ${raw.length - kept.length} versos repetidos con el mismo tiempo`);
 
-    result.lines = raw.map((r, i): LyricLine => {
-      const next = raw[i + 1];
+    result.lines = kept.map((r, i): LyricLine => {
+      const next = kept[i + 1];
       let endMs: number;
       if (next) endMs = next.startMs;
       else {

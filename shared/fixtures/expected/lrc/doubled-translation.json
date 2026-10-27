@@ -1,0 +1,204 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "La isla brilla de noche",
+   "isInterlude": false,
+   "words": [
+    [
+     "La ",
+     1000,
+     1220,
+     true
+    ],
+    [
+     "isla ",
+     1220,
+     1660,
+     true
+    ],
+    [
+     "brilla ",
+     1660,
+     2320,
+     true
+    ],
+    [
+     "de ",
+     2320,
+     2540,
+     true
+    ],
+    [
+     "noche",
+     2540,
+     3090,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 9000,
+   "text": "Cada palabra en su lugar",
+   "isInterlude": false,
+   "words": [
+    [
+     "Cada ",
+     5000,
+     5440,
+     true
+    ],
+    [
+     "palabra ",
+     5440,
+     6210,
+     true
+    ],
+    [
+     "en ",
+     6210,
+     6430,
+     true
+    ],
+    [
+     "su ",
+     6430,
+     6650,
+     true
+    ],
+    [
+     "lugar",
+     6650,
+     7200,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 11000,
+   "text": "Y la canción sigue",
+   "isInterlude": false,
+   "words": [
+    [
+     "Y ",
+     9000,
+     9206,
+     true
+    ],
+    [
+     "la ",
+     9206,
+     9413,
+     true
+    ],
+    [
+     "canción ",
+     9413,
+     10134,
+     true
+    ],
+    [
+     "sigue",
+     10134,
+     10650,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.8364,
+   "interlude": null
+  },
+  {
+   "pos": 4999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.6364,
+   "interlude": null
+  },
+  {
+   "pos": 8999,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 4,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 10000,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.8141,
+   "interlude": null
+  },
+  {
+   "pos": 12000,
+   "line": 2,
+   "lineProgress": 1,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

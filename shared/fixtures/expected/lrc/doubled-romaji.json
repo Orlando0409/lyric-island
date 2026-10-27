@@ -1,0 +1,351 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 2000,
+   "endMs": 6000,
+   "text": "夜空に光る島",
+   "isInterlude": false,
+   "words": [
+    [
+     "夜",
+     2000,
+     2260,
+     true
+    ],
+    [
+     "空",
+     2260,
+     2520,
+     true
+    ],
+    [
+     "に",
+     2520,
+     2780,
+     true
+    ],
+    [
+     "光",
+     2780,
+     3040,
+     true
+    ],
+    [
+     "る",
+     3040,
+     3300,
+     true
+    ],
+    [
+     "島",
+     3300,
+     3560,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 6000,
+   "endMs": 10000,
+   "text": "言葉が流れていく",
+   "isInterlude": false,
+   "words": [
+    [
+     "言",
+     6000,
+     6260,
+     true
+    ],
+    [
+     "葉",
+     6260,
+     6520,
+     true
+    ],
+    [
+     "が",
+     6520,
+     6780,
+     true
+    ],
+    [
+     "流",
+     6780,
+     7040,
+     true
+    ],
+    [
+     "れ",
+     7040,
+     7300,
+     true
+    ],
+    [
+     "て",
+     7300,
+     7560,
+     true
+    ],
+    [
+     "い",
+     7560,
+     7820,
+     true
+    ],
+    [
+     "く",
+     7820,
+     8080,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 10000,
+   "endMs": 14000,
+   "text": "(Shine on, little island)",
+   "isInterlude": false,
+   "words": [
+    [
+     "(Shine ",
+     10000,
+     10590,
+     true
+    ],
+    [
+     "on, ",
+     10590,
+     11003,
+     true
+    ],
+    [
+     "little ",
+     11003,
+     11712,
+     true
+    ],
+    [
+     "island)",
+     11712,
+     12420,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 14000,
+   "endMs": 18000,
+   "text": "ひとつずつ、歌おう。",
+   "isInterlude": false,
+   "words": [
+    [
+     "ひ",
+     14000,
+     14223,
+     true
+    ],
+    [
+     "と",
+     14223,
+     14445,
+     true
+    ],
+    [
+     "つ",
+     14445,
+     14668,
+     true
+    ],
+    [
+     "ず",
+     14668,
+     14891,
+     true
+    ],
+    [
+     "つ",
+     14891,
+     15114,
+     true
+    ],
+    [
+     "、",
+     15114,
+     15302,
+     true
+    ],
+    [
+     "歌",
+     15302,
+     15525,
+     true
+    ],
+    [
+     "お",
+     15525,
+     15747,
+     true
+    ],
+    [
+     "う",
+     15747,
+     15970,
+     true
+    ],
+    [
+     "。",
+     15970,
+     16300,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 18000,
+   "endMs": 20000,
+   "text": "",
+   "isInterlude": true,
+   "words": []
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 4000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 5,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 6000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 8000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 7,
+   "wordProgress": 0.6923,
+   "interlude": null
+  },
+  {
+   "pos": 9999,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 7,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 10000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 12000,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 3,
+   "wordProgress": 0.4068,
+   "interlude": null
+  },
+  {
+   "pos": 13999,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 14000,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 16000,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 9,
+   "wordProgress": 0.0909,
+   "interlude": null
+  },
+  {
+   "pos": 17999,
+   "line": 3,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 18000,
+   "line": 4,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 19000,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 21000,
+   "line": 4,
+   "lineProgress": 1,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  }
+ ]
+}

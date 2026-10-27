@@ -58,6 +58,48 @@ object LrcParser {
         return Enhanced(words.joinToString("") { it.text }, words.ifEmpty { null }, endTag)
     }
 
+    /** Tiene letras que no son del alfabeto latino (japonés, coreano, cirílico…): es el verso original, no su romanización. */
+    fun hasNonLatinLetters(text: String): Boolean {
+        var i = 0
+        while (i < text.length) {
+            val cp = text.codePointAt(i)
+            if (Character.isLetter(cp) && Character.UnicodeScript.of(cp) != Character.UnicodeScript.LATIN) return true
+            i += Character.charCount(cp)
+        }
+        return false
+    }
+
+    /** Fracción de versos con texto que comparten tiempo con otro a partir de la cual la letra se trata como "doble". */
+    const val DOUBLED_SHARE = 0.3
+
+    /** …y al menos tantos instantes repetidos (un par de líneas a la vez, como en un dúo, no es una letra doble). */
+    const val DOUBLED_MIN_TIMES = 3
+
+    /**
+     * Letras "dobles": algunas versiones de LRCLIB traen la letra entera dos veces con los mismos tiempos (el original y
+     * después el romaji o una traducción). Con dos versos en el mismo instante se mostraba el último y el original quedaba
+     * con duración cero. Si al menos el 30 % de los versos (y 3 instantes) comparte tiempo, se deja uno por tiempo: el que tiene letras no
+     * latinas (el original) o, si no hay, el primero del archivo. Recibe y devuelve las líneas ordenadas por tiempo.
+     */
+    private fun dropDoubledLyrics(sorted: List<RawLine>): List<RawLine> {
+        val withText = sorted.filter { it.text.isNotEmpty() }
+        val count = withText.groupingBy { it.startMs }.eachCount()
+        val shared = withText.count { (count[it.startMs] ?: 0) > 1 }
+        val sharedTimes = count.values.count { it > 1 }
+        if (withText.isEmpty() || shared.toDouble() / withText.size < DOUBLED_SHARE || sharedTimes < DOUBLED_MIN_TIMES) return sorted
+        val out = ArrayList<RawLine>()
+        var i = 0
+        while (i < sorted.size) {
+            var j = i
+            while (j < sorted.size && sorted[j].startMs == sorted[i].startMs) j++
+            val group = sorted.subList(i, j)
+            val texts = group.filter { it.text.isNotEmpty() }
+            out.add(texts.firstOrNull { hasNonLatinLetters(it.text) } ?: texts.firstOrNull() ?: group[0])
+            i = j
+        }
+        return out
+    }
+
     fun parse(input: String, durationMs: Long? = null): ParsedLrc {
         val meta = LinkedHashMap<String, String>()
         val warnings = ArrayList<String>()
@@ -113,7 +155,9 @@ object LrcParser {
                     )
                 }
             }
-            val sorted = raw.sortedWith(compareBy<RawLine>({ it.startMs }, { it.order }))
+            val all = raw.sortedWith(compareBy<RawLine>({ it.startMs }, { it.order }))
+            val sorted = dropDoubledLyrics(all)
+            if (sorted.size < all.size) warnings.add("letra doble: ${all.size - sorted.size} versos repetidos con el mismo tiempo")
             sorted.mapIndexed { i, r ->
                 val next = sorted.getOrNull(i + 1)
                 var endMs: Long

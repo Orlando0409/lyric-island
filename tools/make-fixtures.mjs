@@ -97,6 +97,36 @@ texto suelto sin marca
 [00:06.00]言葉が流れていく
 [00:10.00]ひとつずつ、歌おう。
 `,
+  // Letra "doble" (como algunas versiones de LRCLIB): el original y después su romaji, con los mismos tiempos.
+  'doubled-romaji.lrc': `[00:02.00]夜空に光る島
+[00:06.00]言葉が流れていく
+[00:10.00](Shine on, little island)
+[00:14.00]ひとつずつ、歌おう。
+[00:18.00]
+[00:02.00]Yozora ni hikaru shima
+[00:06.00]Kotoba ga nagarete iku
+[00:10.00](Shine on, little island)
+[00:14.00]Hitotsu zutsu, utaou.
+[00:18.00]
+`,
+  // Doble en alfabeto latino (letra y traducción): queda la primera del archivo.
+  'doubled-translation.lrc': `[00:01.00]La isla brilla de noche
+[00:05.00]Cada palabra en su lugar
+[00:09.00]Y la canción sigue
+[00:01.00]The island shines at night
+[00:05.00]Every word in its place
+[00:09.00]And the song goes on
+`,
+  // Un solo instante compartido (dúo) no es una letra doble: se conservan las dos líneas.
+  'shared-time-duet.lrc': `[00:01.00]Primera voz
+[00:05.00]Segunda línea
+[00:09.00]Las dos voces
+[00:09.00]A la vez
+[00:13.00]Tercera línea
+[00:17.00]Cuarta línea
+[00:21.00]Quinta línea
+[00:25.00]Sexta línea
+`,
   'cjk-chinese.lrc': `[00:01.00]海上的小岛在发光
 [00:05.00]每一个字都在跳舞
 `,

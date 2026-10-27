@@ -1,0 +1,364 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1000,
+   "endMs": 5000,
+   "text": "Primera voz",
+   "isInterlude": false,
+   "words": [
+    [
+     "Primera ",
+     1000,
+     1770,
+     true
+    ],
+    [
+     "voz",
+     1770,
+     2100,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5000,
+   "endMs": 9000,
+   "text": "Segunda línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Segunda ",
+     5000,
+     5770,
+     true
+    ],
+    [
+     "línea",
+     5770,
+     6320,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 9000,
+   "text": "Las dos voces",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     9000,
+     9000,
+     true
+    ],
+    [
+     "dos ",
+     9000,
+     9000,
+     true
+    ],
+    [
+     "voces",
+     9000,
+     9000,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 13000,
+   "text": "A la vez",
+   "isInterlude": false,
+   "words": [
+    [
+     "A ",
+     9000,
+     9229,
+     true
+    ],
+    [
+     "la ",
+     9229,
+     9457,
+     true
+    ],
+    [
+     "vez",
+     9457,
+     9800,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 13000,
+   "endMs": 17000,
+   "text": "Tercera línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Tercera ",
+     13000,
+     13770,
+     true
+    ],
+    [
+     "línea",
+     13770,
+     14320,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 17000,
+   "endMs": 21000,
+   "text": "Cuarta línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Cuarta ",
+     17000,
+     17660,
+     true
+    ],
+    [
+     "línea",
+     17660,
+     18210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 21000,
+   "endMs": 25000,
+   "text": "Quinta línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Quinta ",
+     21000,
+     21660,
+     true
+    ],
+    [
+     "línea",
+     21660,
+     22210,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 25000,
+   "endMs": 27000,
+   "text": "Sexta línea",
+   "isInterlude": false,
+   "words": [
+    [
+     "Sexta ",
+     25000,
+     25550,
+     true
+    ],
+    [
+     "línea",
+     25550,
+     26100,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3000,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 4999,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5000,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7000,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 8999,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 11000,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 12999,
+   "line": 3,
+   "lineProgress": 0.9998,
+   "word": 2,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 13000,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 15000,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 16999,
+   "line": 4,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 17000,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 19000,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 20999,
+   "line": 5,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 21000,
+   "line": 6,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 23000,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 24999,
+   "line": 6,
+   "lineProgress": 0.9998,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 25000,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 26000,
+   "line": 7,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0.8182,
+   "interlude": null
+  },
+  {
+   "pos": 28000,
+   "line": 7,
+   "lineProgress": 1,
+   "word": 1,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}
