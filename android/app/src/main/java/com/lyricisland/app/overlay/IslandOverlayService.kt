@@ -21,7 +21,6 @@ import android.os.PowerManager
 import android.os.SystemClock
 import android.provider.Settings
 import android.view.Gravity
-import android.view.MotionEvent
 import android.view.WindowManager
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.ImageBitmap
@@ -108,8 +107,20 @@ class IslandOverlayService : LifecycleService() {
     private var snapAnimator: ValueAnimator? = null
     private var dismissWindow: OverlayWindowController? = null
     private val toggleBubble: () -> Unit = {
+        if (!bubbleOpen.value) openPanelNearBubble()
         bubbleOpen.value = !bubbleOpen.value
         placeBubble()
+    }
+
+    // Ventana flotante: posición (px desde arriba a la izquierda) y tamaño (dp).
+    private var panelX = 0
+    private var panelY = 0
+    private fun panelSizeDp(): Pair<Float, Float> {
+        val dm = resources.displayMetrics
+        val wDp = dm.widthPixels / dm.density
+        val hDp = dm.heightPixels / dm.density
+        // + 16 dp del margen de la vista (padding de 8 dp a cada lado).
+        return minOf(wDp - 16f - 16f, 360f) to minOf(hDp * 0.6f, 460f)
     }
 
     private val screenReceiver = object : BroadcastReceiver() {
@@ -146,8 +157,7 @@ class IslandOverlayService : LifecycleService() {
             saveUserOffset = { t, ms -> lifecycleScope.launch { g.saveOffset(t, ms) } },
         )
         tracker = SessionTracker(this).apply { onDetected = { pkg -> lifecycleScope.launch { g.settings.noteDetected(pkg) } } }
-        // FLAG_WATCH_OUTSIDE_TOUCH: tocar fuera de la tarjeta de la burbuja la cierra.
-        window = OverlayWindowController(this, extraFlags = WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH)
+        window = OverlayWindowController(this)
 
         val view = ComposeView(this).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
@@ -176,15 +186,11 @@ class IslandOverlayService : LifecycleService() {
                         onDrag = ::onBubbleDrag,
                         onDragEnd = ::onBubbleDragEnd,
                         onToggleOpen = toggleBubble,
+                        panelWidthDp = panelSizeDp().first,
+                        panelHeightDp = panelSizeDp().second,
+                        onPanelDrag = ::onPanelDrag,
                     ),
                 )
-            }
-            setOnTouchListener { _, e ->
-                if (e.action == MotionEvent.ACTION_OUTSIDE && bubbleOpen.value) {
-                    bubbleOpen.value = false
-                    placeBubble()
-                }
-                false
             }
         }
         owner.attach(view)
@@ -307,10 +313,29 @@ class IslandOverlayService : LifecycleService() {
         val dm = resources.displayMetrics
         val y = (s.bubbleY * dm.heightPixels).toInt().coerceIn(0, maxOf(0, dm.heightPixels - (80 * dm.density).toInt()))
         when {
-            bubbleOpen.value -> window.place(Gravity.TOP or Gravity.START, 0, y, fullWidth = true)
+            bubbleOpen.value -> window.place(Gravity.TOP or Gravity.START, panelX, panelY)
             s.bubbleRight -> window.place(Gravity.TOP or Gravity.END, 0, y)
             else -> window.place(Gravity.TOP or Gravity.START, 0, y)
         }
+    }
+
+    /** Abre la ventana flotante del lado de la burbuja, a su altura, sin salirse de la pantalla. */
+    private fun openPanelNearBubble() {
+        val dm = resources.displayMetrics
+        val (wDp, hDp) = panelSizeDp()
+        val w = ((wDp + 16f) * dm.density).toInt()
+        val h = ((hDp + 16f) * dm.density).toInt()
+        val top = (24 * dm.density).toInt()
+        panelX = if (settingsState.value.bubbleRight) maxOf(0, dm.widthPixels - w) else 0
+        panelY = (settingsState.value.bubbleY * dm.heightPixels).toInt().coerceIn(top, maxOf(top, dm.heightPixels - h - top))
+    }
+
+    /** Arrastrar el encabezado mueve la ventana flotante (dentro de la pantalla). */
+    private fun onPanelDrag(dx: Float, dy: Float) {
+        val dm = resources.displayMetrics
+        panelX = (panelX + dx.toInt()).coerceIn(0, maxOf(0, dm.widthPixels - window.width))
+        panelY = (panelY + dy.toInt()).coerceIn(0, maxOf(0, dm.heightPixels - window.height))
+        window.place(Gravity.TOP or Gravity.START, panelX, panelY)
     }
 
     private fun onBubbleDragStart() {

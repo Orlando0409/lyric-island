@@ -83,4 +83,6 @@
     <string name="style_bubble">Bubble</string>
     <string name="bubble_hint">Drag the bubble anywhere; it sticks to the edge. Tap it to see the lyrics and drag it to the ✕ at the bottom to hide it until the next song.</string>
     <string name="bubble_show_line">Show the current line next to the bubble</string>
+    <string name="panel_loading">Looking for lyrics…</string>
+    <string name="panel_no_lyrics">No lyrics for this song</string>
 </resources>

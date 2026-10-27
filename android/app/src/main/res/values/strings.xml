@@ -84,4 +84,6 @@
     <string name="style_bubble">Burbuja</string>
     <string name="bubble_hint">Arrastrá la burbuja a cualquier lado; se pega al borde. Tocala para ver la letra y arrastrala a la ✕ de abajo para ocultarla hasta la próxima canción.</string>
     <string name="bubble_show_line">Mostrar la línea actual al lado de la burbuja</string>
+    <string name="panel_loading">Buscando la letra…</string>
+    <string name="panel_no_lyrics">No hay letra para esta canción</string>
 </resources>

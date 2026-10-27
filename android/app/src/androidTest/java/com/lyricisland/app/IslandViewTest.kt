@@ -105,11 +105,17 @@ class IslandViewTest {
     }
 
     @Test
-    fun burbujaAbierta_muestraLaLetraEnLaTarjeta() {
-        rule.setContent { BubbleView(snap(IslandMode.EXPANDED), AppSettings(), null, reducedMotion = true, controls = bubble(open = true)) }
-        rule.onNodeWithTag("bubble-card").assertIsDisplayed()
+    fun burbujaAbierta_esUnaVentanaFlotanteConTodaLaLetra() {
+        var toggles = 0
+        rule.setContent { BubbleView(snap(IslandMode.EXPANDED), AppSettings(), null, reducedMotion = true, controls = bubble(open = true) { toggles++ }) }
+        rule.onNodeWithTag("bubble-panel").assertIsDisplayed()
+        rule.onNodeWithText("Isla de Luz").assertIsDisplayed()
         rule.onNodeWithTag("current-line", useUnmergedTree = true).assertExists()
+        rule.onNodeWithText("Cada palabra brilla en su lugar").assertExists() // también las líneas que vienen
         rule.onNodeWithTag("bubble-line", useUnmergedTree = true).assertDoesNotExist()
+        rule.onNodeWithTag("bubble-minimize").performClick()
+        rule.waitForIdle()
+        assertEquals(1, toggles)
     }
 
     @Test
