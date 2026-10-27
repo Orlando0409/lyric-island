@@ -265,7 +265,8 @@ export function Island() {
                   key={`c${snap.activeLineIndex}${showInterlude ? 'i' : ''}`}
                   initial={reduced ? false : { y: 10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  exit={reduced ? undefined : { y: -8, opacity: 0, transition: { duration: 0.18 } }}
+                  // La que sale se va rápido: una línea larga (dos renglones) se montaba sobre la que entra.
+                  exit={reduced ? undefined : { y: -6, opacity: 0, transition: { duration: 0.1 } }}
                   transition={{ duration: 0.22 }}
                 >
                   {showInterlude ? (

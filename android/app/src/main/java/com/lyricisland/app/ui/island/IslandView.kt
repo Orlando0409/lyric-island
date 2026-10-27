@@ -525,12 +525,42 @@ private fun karaokeFill(line: LyricLine, layout: TextLayoutResult, wordIndex: In
         val end = (offset + w.text.length).coerceAtMost(line.text.length)
         offset = end
         if (i < wordIndex) continue
-        val row = layout.getLineForOffset(start)
-        val x0 = layout.getHorizontalPosition(start, true)
-        val x1 = if (layout.getLineForOffset(maxOf(start, end - 1)) == row) layout.getHorizontalPosition(end, true) else layout.getLineRight(row)
-        return row to (x0 + (x1 - x0) * wordProgress.toFloat())
+        return fillPoint(wordSpans(layout, start, end, w.text), wordProgress.toFloat())
     }
     return null
+}
+
+/** Tramo de una palabra dentro de un renglón: de x0 a x1 (px). */
+internal data class RowSpan(val row: Int, val x0: Float, val x1: Float)
+
+/**
+ * Tramos que ocupa la palabra [start, end) sin su espacio final. El espacio que queda al final de un renglón
+ * pertenece al renglón siguiente para el layout: antes se medía hasta ahí y el relleno retrocedía al cantar la
+ * última palabra del renglón. Una palabra cortada entre dos renglones da dos tramos.
+ */
+private fun wordSpans(layout: TextLayoutResult, start: Int, end: Int, word: String): List<RowSpan> {
+    val endTrim = (start + word.trimEnd().length).coerceIn(start, end)
+    if (endTrim == start) return listOf(RowSpan(layout.getLineForOffset(start), layout.getHorizontalPosition(start, true), layout.getHorizontalPosition(start, true)))
+    val first = layout.getLineForOffset(start)
+    val last = layout.getLineForOffset(endTrim - 1)
+    return (first..last).map { row ->
+        val x0 = if (row == first) layout.getHorizontalPosition(start, true) else layout.getLineLeft(row)
+        val x1 = if (row == last && layout.getLineForOffset(endTrim) == row) layout.getHorizontalPosition(endTrim, true) else layout.getLineRight(row)
+        RowSpan(row, x0, maxOf(x0, x1))
+    }
+}
+
+/** Punto del relleno (renglón, x) al avanzar `progress` (0..1) a lo largo de los tramos, repartido por ancho. */
+internal fun fillPoint(spans: List<RowSpan>, progress: Float): Pair<Int, Float> {
+    val total = spans.sumOf { (it.x1 - it.x0).toDouble() }.toFloat()
+    if (total <= 0f) return spans.last().let { it.row to it.x1 }
+    var remaining = total * progress.coerceIn(0f, 1f)
+    for (s in spans) {
+        val w = s.x1 - s.x0
+        if (remaining <= w) return s.row to (s.x0 + remaining)
+        remaining -= w
+    }
+    return spans.last().let { it.row to it.x1 }
 }
 
 /**

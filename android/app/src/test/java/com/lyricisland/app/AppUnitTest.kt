@@ -6,6 +6,8 @@ import com.lyricisland.app.data.LrclibHttp
 import com.lyricisland.app.data.RoomLyricsCache
 import com.lyricisland.app.media.SessionSelection
 import com.lyricisland.app.overlay.CutoutLocator
+import com.lyricisland.app.ui.island.RowSpan
+import com.lyricisland.app.ui.island.fillPoint
 import com.lyricisland.core.Candidate
 import com.lyricisland.core.LyricsKind
 import com.lyricisland.core.LyricsRepository
@@ -21,6 +23,25 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AppUnitTest {
+    @Test
+    fun relleno_palabraEnDosRenglones_avanzaSinRetroceder() {
+        // Palabra cortada entre renglones: 0..40 px al final del 1.º y 0..60 px al comienzo del 2.º.
+        val spans = listOf(RowSpan(0, 200f, 240f), RowSpan(1, 0f, 60f))
+        assertEquals(0 to 200f, fillPoint(spans, 0f))
+        assertEquals(0 to 240f, fillPoint(spans, 0.4f))
+        assertEquals(1 to 30f, fillPoint(spans, 0.7f))
+        assertEquals(1 to 60f, fillPoint(spans, 1f))
+        // Recorrido completo: siempre hacia adelante (renglón, x).
+        val path = (0..20).map { fillPoint(spans, it / 20f) }
+        assertTrue(path.zipWithNext().all { (a, b) -> b.first > a.first || (b.first == a.first && b.second >= a.second) })
+    }
+
+    @Test
+    fun relleno_palabraEnUnRenglon_yPalabraVacia() {
+        assertEquals(0 to 150f, fillPoint(listOf(RowSpan(0, 100f, 200f)), 0.5f))
+        assertEquals(2 to 80f, fillPoint(listOf(RowSpan(2, 80f, 80f)), 0.5f))
+    }
+
     private data class S(val pkg: String, val playing: Boolean, val tick: Long)
 
     @Test
