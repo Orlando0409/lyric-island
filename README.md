@@ -27,7 +27,7 @@ pnpm -C desktop dev
 - `pnpm -C desktop dev:fake` — sin .NET ni reproductor: helper falso (sesión grabada) + LRCLIB falso local.
 - `pnpm -C desktop test` / `coverage` — Vitest (núcleo, integración, golden). `pnpm -C desktop test:e2e` — Playwright (requiere `pnpm -C desktop build`).
 - `pnpm -C desktop dist:nsis` — instalador NSIS (`desktop/dist`). `dist:msix` genera el paquete MSIX; en local requiere el Windows SDK y `ELECTRON_BUILDER_WINDOWS_KITS_PATH="C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64"` (en CI no hace falta).
-- `pnpm -C desktop dist:store` — MSIX sin firmar para la Microsoft Store, con la identidad del producto en `desktop/build/store-identity.json` (no se sube al repositorio; formato en `store-identity.example.json`).
+- `pnpm -C desktop dist:store` — MSIX sin firmar para la Microsoft Store; incrementa automáticamente el número de parche y usa la identidad del producto en `desktop/build/store-identity.json` (no se sube al repositorio; formato en `store-identity.example.json`).
 - `pnpm -C desktop dist:signed` — instalador y MSIX firmados con un certificado de firma de código propio (ver más abajo).
 - Atajos: `Ctrl+Alt+L` mostrar/ocultar · `Ctrl+Alt+K` expandir/compactar · `Ctrl+Alt+J` letra completa · `Ctrl+Alt+→/←` desfase ±100 ms · `Ctrl+Alt+0` restablecer.
 - El helper se puede correr solo en una terminal para ver los mensajes: `desktop/resources/helper/LyricIsland.MediaHelper.exe`.

@@ -2,11 +2,12 @@
 // en build/store-identity.json (local, no se sube; formato en build/store-identity.example.json).
 // Uso: pnpm dist:store
 import { spawnSync } from 'node:child_process';
-import { existsSync, readdirSync, readFileSync, renameSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = join(import.meta.dirname, '..');
 const IDENTITY_FILE = join(ROOT, 'build', 'store-identity.json');
+const PACKAGE_FILE = join(ROOT, 'package.json');
 
 if (!existsSync(IDENTITY_FILE)) {
   console.error(
@@ -40,6 +41,22 @@ if (!kit) {
   console.error('Falta el Windows SDK (makeappx).');
   process.exit(1);
 }
+
+function bumpPatchVersion() {
+  const packageJson = JSON.parse(readFileSync(PACKAGE_FILE, 'utf8'));
+  if (typeof packageJson.version !== 'string' || !/^\d+\.\d+\.\d+$/.test(packageJson.version)) {
+    console.error(`desktop/package.json: la versión "${packageJson.version}" no tiene el formato x.y.z esperado.`);
+    process.exit(1);
+  }
+
+  const [major, minor, patch] = packageJson.version.split('.').map(Number);
+  const previousVersion = packageJson.version;
+  packageJson.version = `${major}.${minor}.${patch + 1}`;
+  writeFileSync(PACKAGE_FILE, `${JSON.stringify(packageJson, null, 2)}\n`);
+  console.log(`Versión incrementada: ${previousVersion} → ${packageJson.version}`);
+}
+
+bumpPatchVersion();
 
 const run = (cmd, args) => {
   const r = spawnSync(cmd, args, { stdio: 'inherit', shell: true, cwd: ROOT, env: { ...process.env, ELECTRON_BUILDER_WINDOWS_KITS_PATH: kit } });

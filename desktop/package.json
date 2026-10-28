@@ -1,7 +1,7 @@
 {
   "name": "lyric-island-desktop",
   "productName": "LyricIsland",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Isla dinámica flotante con letras sincronizadas para Windows",
   "author": "OB Dev Studio",
   "license": "GPL-3.0-only",
