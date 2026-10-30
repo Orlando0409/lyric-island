@@ -1,4 +1,4 @@
-// Segmentación de líneas en palabras y karaoke simulado (sección 8.5.4).
+// Segmentación de líneas en palabras y karaoke simulado.
 import type { LyricWord } from './types';
 
 const PUNCT_PAUSE = new Set([',', '.', '，', '。']);
@@ -99,12 +99,43 @@ export function wordWeight(word: string): number {
   return Math.max(2, units) + (PUNCT_PAUSE.has(last) ? 1.5 : 0);
 }
 
-/** Karaoke simulado: reparte la duración de canto entre las palabras según su peso. */
-export function simulateWords(text: string, t0: number, t1: number): LyricWord[] {
+// Ritmo de cada canción. Medido sobre 34 532 versos de 873 canciones de LRCLIB: la duración real de un verso
+// varía mucho con la canción (cuartiles 0.86×–1.56× de lo estimado) y casi nada con las comas. Estimar el ritmo
+// con los propios versos de la canción bajó el error al predecir la duración de un verso de 946 a 571 ms (mediana).
+/** Mediana de duración real / canto estimado en ese corpus: un ritmo 1 deja el relleno como antes. */
+export const TEMPO_REF = 1.14;
+export const TEMPO_MIN = 0.75;
+export const TEMPO_MAX = 1.6;
+/** Con menos versos útiles no se calibra (ritmo 1). */
+export const TEMPO_MIN_LINES = 8;
+
+/**
+ * Ritmo propio de la canción (1 = promedio): canciones lentas, con notas largas o pausas (con coma o sin ella)
+ * estiran el relleno; las rápidas lo aceleran. Se ignoran versos muy cortos, huecos largos y tiempos rotos.
+ * `lines` en orden de tiempo; cada verso dura hasta el inicio del siguiente.
+ */
+export function songTempo(lines: ReadonlyArray<{ startMs: number; text: string }>): number {
+  const ratios: number[] = [];
+  for (let i = 0; i + 1 < lines.length; i++) {
+    if (lines[i].text.length === 0) continue;
+    const est = singEstimateMs(lines[i].text);
+    const dur = lines[i + 1].startMs - lines[i].startMs;
+    if (est < 600 || dur < 500 || dur > 15_000) continue;
+    const r = dur / est;
+    if (r < 0.6 || r > 3) continue;
+    ratios.push(r);
+  }
+  if (ratios.length < TEMPO_MIN_LINES) return 1;
+  ratios.sort((a, b) => a - b);
+  return Math.min(TEMPO_MAX, Math.max(TEMPO_MIN, ratios[Math.floor(ratios.length / 2)] / TEMPO_REF));
+}
+
+/** Karaoke simulado: reparte la duración de canto (ajustada al ritmo de la canción) entre las palabras según su peso. */
+export function simulateWords(text: string, t0: number, t1: number, tempo = 1): LyricWord[] {
   const tokens = tokenize(text);
   if (tokens.length === 0) return [];
   const lineDur = Math.max(0, t1 - t0);
-  const singDur = Math.min(lineDur, Math.max(800, singEstimateMs(text)));
+  const singDur = Math.min(lineDur, Math.max(800, singEstimateMs(text) * tempo));
   const weights = tokens.map(wordWeight);
   const total = weights.reduce((a, b) => a + b, 0);
   const words: LyricWord[] = [];

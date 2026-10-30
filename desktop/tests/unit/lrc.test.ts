@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { buildDocument, estimateLastLineMs, estimatePlainLines, fractionToMs, parseLrc } from '../../src/core/lrc';
-import { simulateWords, singEstimateMs, tokenize, wordWeight } from '../../src/core/words';
+import { simulateWords, singEstimateMs, songTempo, TEMPO_MAX, TEMPO_MIN, tokenize, wordWeight } from '../../src/core/words';
 
 const FIX = join(__dirname, '..', '..', '..', 'shared', 'fixtures', 'lrc');
 const lrc = (name: string) => readFileSync(join(FIX, name), 'utf8');
@@ -137,6 +137,28 @@ describe('parseLrc', () => {
         }
       }
     }
+  });
+});
+
+describe('songTempo: ritmo propio de la canción', () => {
+  // 10 versos de 15 letras (1650 ms estimados) separados por `gap` ms.
+  const song = (gap: number) => Array.from({ length: 10 }, (_, i) => ({ startMs: i * gap, text: `Despacio la isla ${i}` }));
+  it('canción promedio (duración ≈ 1.14 × lo estimado) → 1: el relleno queda como antes', () => {
+    expect(songTempo(song(Math.round(1650 * 1.14)))).toBeCloseTo(1, 2);
+  });
+  it('lenta → estira el relleno (con tope); rápida → lo acelera (con piso)', () => {
+    expect(songTempo(song(3500))).toBe(TEMPO_MAX);
+    expect(songTempo(song(1300))).toBeLessThan(1);
+    expect(songTempo(song(1000))).toBe(TEMPO_MIN);
+  });
+  it('sin suficientes versos útiles no calibra', () => {
+    expect(songTempo(song(3500).slice(0, 5))).toBe(1);
+    expect(songTempo(song(20_000))).toBe(1); // huecos largos: no cuentan
+  });
+  it('simulateWords usa el ritmo pero nunca pasa del verso', () => {
+    const w = simulateWords('Despacio la isla', 0, 2000, 1.6);
+    expect(w.at(-1)!.endMs).toBe(2000);
+    expect(simulateWords('Despacio la isla', 0, 9000, 1.6).at(-1)!.endMs).toBe(Math.round(singEstimateMs('Despacio la isla') * 1.6));
   });
 });
 

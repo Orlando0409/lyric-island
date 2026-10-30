@@ -1,6 +1,6 @@
 package com.lyricisland.core
 
-// Parser LRC (sección 8.3). Puerto de lrc.ts. Nunca lanza excepciones.
+// Parser LRC. Puerto de lrc.ts. Nunca lanza excepciones.
 
 data class ParsedLrc(
     val lines: List<LyricLine>,
@@ -158,6 +158,7 @@ object LrcParser {
             val all = raw.sortedWith(compareBy<RawLine>({ it.startMs }, { it.order }))
             val sorted = dropDoubledLyrics(all)
             if (sorted.size < all.size) warnings.add("letra doble: ${all.size - sorted.size} versos repetidos con el mismo tiempo")
+            val tempo = Words.songTempo(sorted.map { it.startMs to it.text })
             sorted.mapIndexed { i, r ->
                 val next = sorted.getOrNull(i + 1)
                 var endMs: Long
@@ -181,7 +182,7 @@ object LrcParser {
                             )
                         }
                     }
-                    else -> Words.simulateWords(r.text, r.startMs, endMs)
+                    else -> Words.simulateWords(r.text, r.startMs, endMs, tempo)
                 }
                 LyricLine(i, r.startMs, endMs, r.text, words, isInterlude)
             }

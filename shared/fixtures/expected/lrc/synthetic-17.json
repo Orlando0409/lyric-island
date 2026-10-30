@@ -16,13 +16,13 @@
     [
      "Golden ",
      4822,
-     5482,
+     5689,
      true
     ],
     [
      "along",
-     5482,
-     6032,
+     5689,
+     6411,
      true
     ]
    ]
@@ -43,31 +43,31 @@
     [
      "Falling ",
      9107,
-     9865,
+     10102,
      true
     ],
     [
      "island ",
-     9865,
-     10514,
+     10102,
+     10955,
      true
     ],
     [
      "rhythm ",
-     10514,
-     11164,
+     10955,
+     11808,
      true
     ],
     [
      "sing ",
-     11164,
-     11597,
+     11808,
+     12376,
      true
     ],
     [
      "falling.",
-     11597,
-     12517,
+     12376,
+     13584,
      true
     ]
    ]
@@ -81,55 +81,55 @@
     [
      "Glows ",
      14439,
-     14983,
+     14996,
      true
     ],
     [
      "rhythm ",
-     14983,
-     15637,
+     14996,
+     15664,
      true
     ],
     [
      "sing ",
-     15637,
-     16072,
+     15664,
+     16110,
      true
     ],
     [
      "forever ",
-     16072,
-     16835,
+     16110,
+     16889,
      true
     ],
     [
      "lights ",
-     16835,
-     17488,
+     16889,
+     17557,
      true
     ],
     [
      "again ",
-     17488,
-     18032,
+     17557,
+     18114,
      true
     ],
     [
      "over ",
-     18032,
-     18468,
+     18114,
+     18560,
      true
     ],
     [
      "sing ",
-     18468,
-     18903,
+     18560,
+     19005,
      true
     ],
     [
      "forever.",
-     18903,
-     19829,
+     19005,
+     19952,
      true
     ]
    ]
@@ -193,37 +193,37 @@
     [
      "Lights ",
      22542,
-     23202,
+     23409,
      true
     ],
     [
      "again ",
-     23202,
-     23752,
+     23409,
+     24131,
      true
     ],
     [
      "glows ",
-     23752,
-     24302,
+     24131,
+     24853,
      true
     ],
     [
      "we ",
-     24302,
-     24522,
+     24853,
+     25142,
      true
     ],
     [
      "we ",
-     24522,
-     24742,
+     25142,
+     25431,
      true
     ],
     [
      "again",
-     24742,
-     25292,
+     25431,
+     26153,
      true
     ]
    ]
@@ -237,13 +237,13 @@
     [
      "Glows ",
      28270,
-     28820,
+     28992,
      true
     ],
     [
      "over",
-     28820,
-     29260,
+     28992,
+     29570,
      true
     ]
    ]
@@ -307,19 +307,19 @@
     [
      "Echo ",
      34387,
-     34827,
+     34937,
      true
     ],
     [
      "echo ",
-     34827,
-     35267,
+     34937,
+     35487,
      true
     ],
     [
      "river",
-     35267,
-     35817,
+     35487,
+     36175,
      true
     ]
    ]
@@ -333,43 +333,43 @@
     [
      "City ",
      36175,
-     36615,
+     36753,
      true
     ],
     [
      "we ",
-     36615,
-     36835,
+     36753,
+     37042,
      true
     ],
     [
      "the ",
-     36835,
-     37165,
+     37042,
+     37475,
      true
     ],
     [
      "slowly ",
-     37165,
-     37825,
+     37475,
+     38341,
      true
     ],
     [
      "the ",
-     37825,
-     38155,
+     38341,
+     38775,
      true
     ],
     [
      "the ",
-     38155,
-     38485,
+     38775,
+     39208,
      true
     ],
     [
      "falling",
-     38485,
-     39255,
+     39208,
+     40219,
      true
     ]
    ]
@@ -383,13 +383,13 @@
     [
      "Golden ",
      48701,
-     49361,
+     49568,
      true
     ],
     [
      "we",
-     49361,
-     49581,
+     49568,
+     49856,
      true
     ]
    ]
@@ -403,13 +403,13 @@
     [
      "Rhythm ",
      51171,
-     51831,
+     52038,
      true
     ],
     [
      "slowly",
-     51831,
-     52491,
+     52038,
+     52904,
      true
     ]
    ]
@@ -423,25 +423,25 @@
     [
      "River ",
      64015,
-     64565,
+     64706,
      true
     ],
     [
      "along ",
-     64565,
-     65115,
+     64706,
+     65397,
      true
     ],
     [
      "tonight ",
-     65115,
-     65885,
+     65397,
+     66364,
      true
     ],
     [
      "into",
-     65885,
-     66325,
+     66364,
+     66917,
      true
     ]
    ]
@@ -455,25 +455,25 @@
     [
      "Falling ",
      66917,
-     67687,
+     67928,
      true
     ],
     [
      "island ",
-     67687,
-     68347,
+     67928,
+     68795,
      true
     ],
     [
      "river ",
-     68347,
-     68897,
+     68795,
+     69517,
      true
     ],
     [
      "along",
-     68897,
-     69447,
+     69517,
+     70239,
      true
     ]
    ]
@@ -578,7 +578,7 @@
    "line": 0,
    "lineProgress": 0.5,
    "word": 1,
-   "wordProgress": 1,
+   "wordProgress": 0.6316,
    "interlude": null
   },
   {
@@ -625,8 +625,8 @@
    "pos": 11773,
    "line": 2,
    "lineProgress": 0.5,
-   "word": 4,
-   "wordProgress": 0.1913,
+   "word": 2,
+   "wordProgress": 0.959,
    "interlude": null
   },
   {
@@ -650,7 +650,7 @@
    "line": 3,
    "lineProgress": 0.4999,
    "word": 4,
-   "wordProgress": 0.5513,
+   "wordProgress": 0.4581,
    "interlude": null
   },
   {
@@ -658,7 +658,7 @@
    "line": 3,
    "lineProgress": 0.9998,
    "word": 8,
-   "wordProgress": 1,
+   "wordProgress": 0.9989,
    "interlude": null
   },
   {
@@ -697,8 +697,8 @@
    "pos": 25406,
    "line": 5,
    "lineProgress": 0.5,
-   "word": 5,
-   "wordProgress": 1,
+   "word": 4,
+   "wordProgress": 0.9135,
    "interlude": null
   },
   {
@@ -722,7 +722,7 @@
    "line": 6,
    "lineProgress": 0.5,
    "word": 1,
-   "wordProgress": 1,
+   "wordProgress": 0.9239,
    "interlude": null
   },
   {
@@ -769,8 +769,8 @@
    "pos": 35281,
    "line": 8,
    "lineProgress": 0.5,
-   "word": 2,
-   "wordProgress": 0.0255,
+   "word": 1,
+   "wordProgress": 0.6255,
    "interlude": null
   },
   {
@@ -778,7 +778,7 @@
    "line": 8,
    "lineProgress": 0.9994,
    "word": 2,
-   "wordProgress": 1,
+   "wordProgress": 0.9985,
    "interlude": null
   },
   {
@@ -796,7 +796,7 @@
    "word": 6,
    "wordProgress": 1,
    "interlude": {
-    "progress": 0.337,
+    "progress": 0.2616,
     "beforeFirst": false
    }
   },
@@ -850,7 +850,7 @@
    "word": 1,
    "wordProgress": 1,
    "interlude": {
-    "progress": 0.4427,
+    "progress": 0.422,
     "beforeFirst": false
    }
   },
@@ -878,7 +878,7 @@
    "line": 12,
    "lineProgress": 0.5,
    "word": 2,
-   "wordProgress": 0.4558,
+   "wordProgress": 0.0714,
    "interlude": null
   },
   {
@@ -886,7 +886,7 @@
    "line": 12,
    "lineProgress": 0.9997,
    "word": 3,
-   "wordProgress": 1,
+   "wordProgress": 0.9982,
    "interlude": null
   },
   {
@@ -902,7 +902,7 @@
    "line": 13,
    "lineProgress": 0.4999,
    "word": 2,
-   "wordProgress": 0.8418,
+   "wordProgress": 0.0208,
    "interlude": null
   },
   {

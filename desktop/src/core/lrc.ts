@@ -1,6 +1,6 @@
-// Parser LRC (sección 8.3). Nunca lanza excepciones: ante basura devuelve kind 'none'.
+// Parser LRC. Nunca lanza excepciones: ante basura devuelve kind 'none'.
 import type { LyricLine, LyricWord, LyricsDocument } from './types';
-import { simulateWords, singEstimateMs } from './words';
+import { simulateWords, singEstimateMs, songTempo } from './words';
 
 export interface ParsedLrc {
   lines: LyricLine[];
@@ -167,6 +167,7 @@ export function parseLrc(input: string, durationMs: number | null = null): Parse
     const kept = dropDoubledLyrics(raw);
     if (kept.length < raw.length) result.warnings.push(`letra doble: ${raw.length - kept.length} versos repetidos con el mismo tiempo`);
 
+    const tempo = songTempo(kept);
     result.lines = kept.map((r, i): LyricLine => {
       const next = kept[i + 1];
       let endMs: number;
@@ -189,7 +190,7 @@ export function parseLrc(input: string, durationMs: number | null = null): Parse
             estimated: false,
           };
         });
-      } else words = simulateWords(r.text, r.startMs, endMs);
+      } else words = simulateWords(r.text, r.startMs, endMs, tempo);
       return { index: i, startMs: r.startMs, endMs, text: r.text, words, isInterlude };
     });
   } catch (e) {

@@ -15,55 +15,55 @@
     [
      "Volver ",
      5300,
-     5952,
+     6132,
      true
     ],
     [
      "fuego ",
-     5952,
-     6496,
+     6132,
+     6824,
      true
     ],
     [
      "volver ",
-     6496,
-     7148,
+     6824,
+     7656,
      true
     ],
     [
      "el ",
-     7148,
-     7365,
+     7656,
+     7933,
      true
     ],
     [
      "noche ",
-     7365,
-     7909,
+     7933,
+     8626,
      true
     ],
     [
      "camino ",
-     7909,
-     8561,
+     8626,
+     9458,
      true
     ],
     [
      "mar ",
-     8561,
-     8887,
+     9458,
+     9873,
      true
     ],
     [
      "luz ",
-     8887,
-     9213,
+     9873,
+     10289,
      true
     ],
     [
      "sueño,",
-     9213,
-     9920,
+     10289,
+     11190,
      true
     ]
    ]
@@ -77,13 +77,13 @@
     [
      "Despacio ",
      11190,
-     12070,
+     12363,
      true
     ],
     [
      "sobre",
-     12070,
-     12620,
+     12363,
+     13095,
      true
     ]
    ]
@@ -97,19 +97,19 @@
     [
      "Viento ",
      15320,
-     15980,
+     16170,
      true
     ],
     [
      "la ",
-     15980,
-     16200,
+     16170,
+     16453,
      true
     ],
     [
      "isla",
-     16200,
-     16640,
+     16453,
+     17020,
      true
     ]
    ]
@@ -123,19 +123,19 @@
     [
      "Calle ",
      17020,
-     17570,
+     17753,
      true
     ],
     [
      "la ",
-     17570,
-     17790,
+     17753,
+     18046,
      true
     ],
     [
      "mar",
-     17790,
-     18120,
+     18046,
+     18486,
      true
     ]
    ]
@@ -311,13 +311,13 @@
     [
      "Mañana ",
      31990,
-     32650,
+     32869,
      true
     ],
     [
      "viento",
-     32650,
-     33310,
+     32869,
+     33749,
      true
     ]
    ]
@@ -487,49 +487,49 @@
     [
      "Despacio ",
      42990,
-     43870,
+     44163,
      true
     ],
     [
      "siempre ",
-     43870,
-     44640,
+     44163,
+     45188,
      true
     ],
     [
      "ritmo ",
-     44640,
-     45190,
+     45188,
+     45921,
      true
     ],
     [
      "siempre ",
-     45190,
-     45960,
+     45921,
+     46947,
      true
     ],
     [
      "viento ",
-     45960,
-     46620,
+     46947,
+     47827,
      true
     ],
     [
      "mañana ",
-     46620,
-     47280,
+     47827,
+     48706,
      true
     ],
     [
      "sobre ",
-     47280,
-     47830,
+     48706,
+     49439,
      true
     ],
     [
      "ritmo",
-     47830,
-     48380,
+     49439,
+     50172,
      true
     ]
    ]
@@ -587,25 +587,25 @@
     [
      "Noche ",
      58950,
-     59500,
+     59683,
      true
     ],
     [
      "siempre ",
-     59500,
-     60270,
+     59683,
+     60709,
      true
     ],
     [
      "sueño ",
-     60270,
-     60820,
+     60709,
+     61442,
      true
     ],
     [
      "brilla",
-     60820,
-     61480,
+     61442,
+     62321,
      true
     ]
    ]
@@ -619,25 +619,25 @@
     [
      "Sobre ",
      63930,
-     64480,
+     64663,
      true
     ],
     [
      "sueño ",
-     64480,
-     65030,
+     64663,
+     65396,
      true
     ],
     [
      "contigo ",
-     65030,
-     65800,
+     65396,
+     66422,
      true
     ],
     [
      "corazón",
-     65800,
-     66570,
+     66422,
+     67448,
      true
     ]
    ]
@@ -707,19 +707,19 @@
     [
      "Viento ",
      69990,
-     70650,
+     70869,
      true
     ],
     [
      "viento ",
-     70650,
-     71310,
+     70869,
+     71749,
      true
     ],
     [
      "mar",
-     71310,
-     71640,
+     71749,
+     72188,
      true
     ]
    ]
@@ -733,19 +733,19 @@
     [
      "Luz ",
      74370,
-     74700,
+     74810,
      true
     ],
     [
      "noche ",
-     74700,
-     75250,
+     74810,
+     75543,
      true
     ],
     [
      "isla",
-     75250,
-     75690,
+     75543,
+     76129,
      true
     ]
    ]
@@ -786,8 +786,8 @@
    "pos": 8245,
    "line": 0,
    "lineProgress": 0.5,
-   "word": 5,
-   "wordProgress": 0.5153,
+   "word": 4,
+   "wordProgress": 0.4502,
    "interlude": null
   },
   {
@@ -795,7 +795,7 @@
    "line": 0,
    "lineProgress": 0.9998,
    "word": 8,
-   "wordProgress": 1,
+   "wordProgress": 0.9989,
    "interlude": null
   },
   {
@@ -835,7 +835,7 @@
    "line": 2,
    "lineProgress": 0.5,
    "word": 1,
-   "wordProgress": 0.8636,
+   "wordProgress": 0,
    "interlude": null
   },
   {
@@ -843,7 +843,7 @@
    "line": 2,
    "lineProgress": 0.9994,
    "word": 2,
-   "wordProgress": 1,
+   "wordProgress": 0.9982,
    "interlude": null
   },
   {
@@ -955,7 +955,7 @@
    "line": 7,
    "lineProgress": 0.5,
    "word": 1,
-   "wordProgress": 1,
+   "wordProgress": 0.8932,
    "interlude": null
   },
   {
@@ -1050,12 +1050,9 @@
    "pos": 49205,
    "line": 11,
    "lineProgress": 0.5,
-   "word": 7,
-   "wordProgress": 1,
-   "interlude": {
-    "progress": 0.1172,
-    "beforeFirst": false
-   }
+   "word": 6,
+   "wordProgress": 0.6808,
+   "interlude": null
   },
   {
    "pos": 55419,
@@ -1064,7 +1061,7 @@
    "word": 7,
    "wordProgress": 1,
    "interlude": {
-    "progress": 0.9999,
+    "progress": 0.9998,
     "beforeFirst": false
    }
   },
@@ -1104,8 +1101,8 @@
    "pos": 61440,
    "line": 13,
    "lineProgress": 0.5,
-   "word": 3,
-   "wordProgress": 0.9394,
+   "word": 2,
+   "wordProgress": 0.9973,
    "interlude": null
   },
   {
@@ -1128,8 +1125,8 @@
    "pos": 65935,
    "line": 14,
    "lineProgress": 0.5,
-   "word": 3,
-   "wordProgress": 0.1753,
+   "word": 2,
+   "wordProgress": 0.5253,
    "interlude": null
   },
   {
@@ -1177,7 +1174,7 @@
    "line": 16,
    "lineProgress": 0.5,
    "word": 2,
-   "wordProgress": 1,
+   "wordProgress": 0.9818,
    "interlude": null
   },
   {
@@ -1200,8 +1197,8 @@
    "pos": 75370,
    "line": 17,
    "lineProgress": 0.5,
-   "word": 2,
-   "wordProgress": 0.2727,
+   "word": 1,
+   "wordProgress": 0.764,
    "interlude": null
   },
   {

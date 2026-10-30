@@ -1,0 +1,944 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 1500,
+   "endMs": 5500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 0",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     1500,
+     1745,
+     true
+    ],
+    [
+     "palabras ",
+     1745,
+     2398,
+     true
+    ],
+    [
+     "corren ",
+     2398,
+     2887,
+     true
+    ],
+    [
+     "rápido ",
+     2887,
+     3377,
+     true
+    ],
+    [
+     "sin ",
+     3377,
+     3622,
+     true
+    ],
+    [
+     "parar ",
+     3622,
+     4030,
+     true
+    ],
+    [
+     "en ",
+     4030,
+     4193,
+     true
+    ],
+    [
+     "la ",
+     4193,
+     4356,
+     true
+    ],
+    [
+     "ciudad ",
+     4356,
+     4846,
+     true
+    ],
+    [
+     "0",
+     4846,
+     5009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5500,
+   "endMs": 9500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 1",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     5500,
+     5745,
+     true
+    ],
+    [
+     "palabras ",
+     5745,
+     6398,
+     true
+    ],
+    [
+     "corren ",
+     6398,
+     6887,
+     true
+    ],
+    [
+     "rápido ",
+     6887,
+     7377,
+     true
+    ],
+    [
+     "sin ",
+     7377,
+     7622,
+     true
+    ],
+    [
+     "parar ",
+     7622,
+     8030,
+     true
+    ],
+    [
+     "en ",
+     8030,
+     8193,
+     true
+    ],
+    [
+     "la ",
+     8193,
+     8356,
+     true
+    ],
+    [
+     "ciudad ",
+     8356,
+     8846,
+     true
+    ],
+    [
+     "1",
+     8846,
+     9009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9500,
+   "endMs": 13500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 2",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     9500,
+     9745,
+     true
+    ],
+    [
+     "palabras ",
+     9745,
+     10398,
+     true
+    ],
+    [
+     "corren ",
+     10398,
+     10887,
+     true
+    ],
+    [
+     "rápido ",
+     10887,
+     11377,
+     true
+    ],
+    [
+     "sin ",
+     11377,
+     11622,
+     true
+    ],
+    [
+     "parar ",
+     11622,
+     12030,
+     true
+    ],
+    [
+     "en ",
+     12030,
+     12193,
+     true
+    ],
+    [
+     "la ",
+     12193,
+     12356,
+     true
+    ],
+    [
+     "ciudad ",
+     12356,
+     12846,
+     true
+    ],
+    [
+     "2",
+     12846,
+     13009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 13500,
+   "endMs": 17500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 3",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     13500,
+     13745,
+     true
+    ],
+    [
+     "palabras ",
+     13745,
+     14398,
+     true
+    ],
+    [
+     "corren ",
+     14398,
+     14887,
+     true
+    ],
+    [
+     "rápido ",
+     14887,
+     15377,
+     true
+    ],
+    [
+     "sin ",
+     15377,
+     15622,
+     true
+    ],
+    [
+     "parar ",
+     15622,
+     16030,
+     true
+    ],
+    [
+     "en ",
+     16030,
+     16193,
+     true
+    ],
+    [
+     "la ",
+     16193,
+     16356,
+     true
+    ],
+    [
+     "ciudad ",
+     16356,
+     16846,
+     true
+    ],
+    [
+     "3",
+     16846,
+     17009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 17500,
+   "endMs": 21500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 4",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     17500,
+     17745,
+     true
+    ],
+    [
+     "palabras ",
+     17745,
+     18398,
+     true
+    ],
+    [
+     "corren ",
+     18398,
+     18887,
+     true
+    ],
+    [
+     "rápido ",
+     18887,
+     19377,
+     true
+    ],
+    [
+     "sin ",
+     19377,
+     19622,
+     true
+    ],
+    [
+     "parar ",
+     19622,
+     20030,
+     true
+    ],
+    [
+     "en ",
+     20030,
+     20193,
+     true
+    ],
+    [
+     "la ",
+     20193,
+     20356,
+     true
+    ],
+    [
+     "ciudad ",
+     20356,
+     20846,
+     true
+    ],
+    [
+     "4",
+     20846,
+     21009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 21500,
+   "endMs": 25500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 5",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     21500,
+     21745,
+     true
+    ],
+    [
+     "palabras ",
+     21745,
+     22398,
+     true
+    ],
+    [
+     "corren ",
+     22398,
+     22887,
+     true
+    ],
+    [
+     "rápido ",
+     22887,
+     23377,
+     true
+    ],
+    [
+     "sin ",
+     23377,
+     23622,
+     true
+    ],
+    [
+     "parar ",
+     23622,
+     24030,
+     true
+    ],
+    [
+     "en ",
+     24030,
+     24193,
+     true
+    ],
+    [
+     "la ",
+     24193,
+     24356,
+     true
+    ],
+    [
+     "ciudad ",
+     24356,
+     24846,
+     true
+    ],
+    [
+     "5",
+     24846,
+     25009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 25500,
+   "endMs": 29500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 6",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     25500,
+     25745,
+     true
+    ],
+    [
+     "palabras ",
+     25745,
+     26398,
+     true
+    ],
+    [
+     "corren ",
+     26398,
+     26887,
+     true
+    ],
+    [
+     "rápido ",
+     26887,
+     27377,
+     true
+    ],
+    [
+     "sin ",
+     27377,
+     27622,
+     true
+    ],
+    [
+     "parar ",
+     27622,
+     28030,
+     true
+    ],
+    [
+     "en ",
+     28030,
+     28193,
+     true
+    ],
+    [
+     "la ",
+     28193,
+     28356,
+     true
+    ],
+    [
+     "ciudad ",
+     28356,
+     28846,
+     true
+    ],
+    [
+     "6",
+     28846,
+     29009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 29500,
+   "endMs": 33500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 7",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     29500,
+     29745,
+     true
+    ],
+    [
+     "palabras ",
+     29745,
+     30398,
+     true
+    ],
+    [
+     "corren ",
+     30398,
+     30887,
+     true
+    ],
+    [
+     "rápido ",
+     30887,
+     31377,
+     true
+    ],
+    [
+     "sin ",
+     31377,
+     31622,
+     true
+    ],
+    [
+     "parar ",
+     31622,
+     32030,
+     true
+    ],
+    [
+     "en ",
+     32030,
+     32193,
+     true
+    ],
+    [
+     "la ",
+     32193,
+     32356,
+     true
+    ],
+    [
+     "ciudad ",
+     32356,
+     32846,
+     true
+    ],
+    [
+     "7",
+     32846,
+     33009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 33500,
+   "endMs": 37500,
+   "text": "Las palabras corren rápido sin parar en la ciudad 8",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     33500,
+     33745,
+     true
+    ],
+    [
+     "palabras ",
+     33745,
+     34398,
+     true
+    ],
+    [
+     "corren ",
+     34398,
+     34887,
+     true
+    ],
+    [
+     "rápido ",
+     34887,
+     35377,
+     true
+    ],
+    [
+     "sin ",
+     35377,
+     35622,
+     true
+    ],
+    [
+     "parar ",
+     35622,
+     36030,
+     true
+    ],
+    [
+     "en ",
+     36030,
+     36193,
+     true
+    ],
+    [
+     "la ",
+     36193,
+     36356,
+     true
+    ],
+    [
+     "ciudad ",
+     36356,
+     36846,
+     true
+    ],
+    [
+     "8",
+     36846,
+     37009,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 37500,
+   "endMs": 41280,
+   "text": "Las palabras corren rápido sin parar en la ciudad 9",
+   "isInterlude": false,
+   "words": [
+    [
+     "Las ",
+     37500,
+     37745,
+     true
+    ],
+    [
+     "palabras ",
+     37745,
+     38398,
+     true
+    ],
+    [
+     "corren ",
+     38398,
+     38887,
+     true
+    ],
+    [
+     "rápido ",
+     38887,
+     39377,
+     true
+    ],
+    [
+     "sin ",
+     39377,
+     39622,
+     true
+    ],
+    [
+     "parar ",
+     39622,
+     40030,
+     true
+    ],
+    [
+     "en ",
+     40030,
+     40193,
+     true
+    ],
+    [
+     "la ",
+     40193,
+     40356,
+     true
+    ],
+    [
+     "ciudad ",
+     40356,
+     40846,
+     true
+    ],
+    [
+     "9",
+     40846,
+     41009,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1499,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1500,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3500,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 5499,
+   "line": 0,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5500,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7500,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 9499,
+   "line": 1,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9500,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 11500,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 13499,
+   "line": 2,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 13500,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 15500,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 17499,
+   "line": 3,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 17500,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 19500,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 21499,
+   "line": 4,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 21500,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 23500,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 25499,
+   "line": 5,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 25500,
+   "line": 6,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 27500,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 29499,
+   "line": 6,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 29500,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 31500,
+   "line": 7,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 33499,
+   "line": 7,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 33500,
+   "line": 8,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 35500,
+   "line": 8,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.502,
+   "interlude": null
+  },
+  {
+   "pos": 37499,
+   "line": 8,
+   "lineProgress": 0.9998,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 37500,
+   "line": 9,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 39390,
+   "line": 9,
+   "lineProgress": 0.5,
+   "word": 4,
+   "wordProgress": 0.0531,
+   "interlude": null
+  },
+  {
+   "pos": 42280,
+   "line": 9,
+   "lineProgress": 1,
+   "word": 9,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}

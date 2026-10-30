@@ -97,6 +97,29 @@ texto suelto sin marca
 [00:06.00]言葉が流れていく
 [00:10.00]ひとつずつ、歌おう。
 `,
+  // Ritmo de la canción: versos con mucho tiempo (lenta, notas largas) y con poco (rápida); 10 versos para calibrar.
+  'tempo-slow.lrc': `[00:02.00]Despacio la isla 0
+[00:05.50]Despacio la isla 1
+[00:09.00]Despacio la isla 2
+[00:12.50]Despacio la isla 3
+[00:16.00]Despacio la isla 4
+[00:19.50]Despacio la isla 5
+[00:23.00]Despacio la isla 6
+[00:26.50]Despacio la isla 7
+[00:30.00]Despacio la isla 8
+[00:33.50]Despacio la isla 9
+`,
+  'tempo-fast.lrc': `[00:01.50]Las palabras corren rápido sin parar en la ciudad 0
+[00:05.50]Las palabras corren rápido sin parar en la ciudad 1
+[00:09.50]Las palabras corren rápido sin parar en la ciudad 2
+[00:13.50]Las palabras corren rápido sin parar en la ciudad 3
+[00:17.50]Las palabras corren rápido sin parar en la ciudad 4
+[00:21.50]Las palabras corren rápido sin parar en la ciudad 5
+[00:25.50]Las palabras corren rápido sin parar en la ciudad 6
+[00:29.50]Las palabras corren rápido sin parar en la ciudad 7
+[00:33.50]Las palabras corren rápido sin parar en la ciudad 8
+[00:37.50]Las palabras corren rápido sin parar en la ciudad 9
+`,
   // Letra "doble" (como algunas versiones de LRCLIB): el original y después su romaji, con los mismos tiempos.
   'doubled-romaji.lrc': `[00:02.00]夜空に光る島
 [00:06.00]言葉が流れていく

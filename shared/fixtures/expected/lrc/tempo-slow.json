@@ -1,0 +1,584 @@
+{
+ "offsetMs": 0,
+ "meta": {},
+ "lines": [
+  {
+   "startMs": 2000,
+   "endMs": 5500,
+   "text": "Despacio la isla 0",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     2000,
+     3320,
+     true
+    ],
+    [
+     "la ",
+     3320,
+     3650,
+     true
+    ],
+    [
+     "isla ",
+     3650,
+     4310,
+     true
+    ],
+    [
+     "0",
+     4310,
+     4640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 5500,
+   "endMs": 9000,
+   "text": "Despacio la isla 1",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     5500,
+     6820,
+     true
+    ],
+    [
+     "la ",
+     6820,
+     7150,
+     true
+    ],
+    [
+     "isla ",
+     7150,
+     7810,
+     true
+    ],
+    [
+     "1",
+     7810,
+     8140,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 9000,
+   "endMs": 12500,
+   "text": "Despacio la isla 2",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     9000,
+     10320,
+     true
+    ],
+    [
+     "la ",
+     10320,
+     10650,
+     true
+    ],
+    [
+     "isla ",
+     10650,
+     11310,
+     true
+    ],
+    [
+     "2",
+     11310,
+     11640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 12500,
+   "endMs": 16000,
+   "text": "Despacio la isla 3",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     12500,
+     13820,
+     true
+    ],
+    [
+     "la ",
+     13820,
+     14150,
+     true
+    ],
+    [
+     "isla ",
+     14150,
+     14810,
+     true
+    ],
+    [
+     "3",
+     14810,
+     15140,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 16000,
+   "endMs": 19500,
+   "text": "Despacio la isla 4",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     16000,
+     17320,
+     true
+    ],
+    [
+     "la ",
+     17320,
+     17650,
+     true
+    ],
+    [
+     "isla ",
+     17650,
+     18310,
+     true
+    ],
+    [
+     "4",
+     18310,
+     18640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 19500,
+   "endMs": 23000,
+   "text": "Despacio la isla 5",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     19500,
+     20820,
+     true
+    ],
+    [
+     "la ",
+     20820,
+     21150,
+     true
+    ],
+    [
+     "isla ",
+     21150,
+     21810,
+     true
+    ],
+    [
+     "5",
+     21810,
+     22140,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 23000,
+   "endMs": 26500,
+   "text": "Despacio la isla 6",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     23000,
+     24320,
+     true
+    ],
+    [
+     "la ",
+     24320,
+     24650,
+     true
+    ],
+    [
+     "isla ",
+     24650,
+     25310,
+     true
+    ],
+    [
+     "6",
+     25310,
+     25640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 26500,
+   "endMs": 30000,
+   "text": "Despacio la isla 7",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     26500,
+     27820,
+     true
+    ],
+    [
+     "la ",
+     27820,
+     28150,
+     true
+    ],
+    [
+     "isla ",
+     28150,
+     28810,
+     true
+    ],
+    [
+     "7",
+     28810,
+     29140,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 30000,
+   "endMs": 33500,
+   "text": "Despacio la isla 8",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     30000,
+     31320,
+     true
+    ],
+    [
+     "la ",
+     31320,
+     31650,
+     true
+    ],
+    [
+     "isla ",
+     31650,
+     32310,
+     true
+    ],
+    [
+     "8",
+     32310,
+     32640,
+     true
+    ]
+   ]
+  },
+  {
+   "startMs": 33500,
+   "endMs": 35500,
+   "text": "Despacio la isla 9",
+   "isInterlude": false,
+   "words": [
+    [
+     "Despacio ",
+     33500,
+     34500,
+     true
+    ],
+    [
+     "la ",
+     34500,
+     34750,
+     true
+    ],
+    [
+     "isla ",
+     34750,
+     35250,
+     true
+    ],
+    [
+     "9",
+     35250,
+     35500,
+     true
+    ]
+   ]
+  }
+ ],
+ "probes": [
+  {
+   "pos": 0,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 1999,
+   "line": -1,
+   "lineProgress": 0,
+   "word": -1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 2000,
+   "line": 0,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 3750,
+   "line": 0,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 5499,
+   "line": 0,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 5500,
+   "line": 1,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 7250,
+   "line": 1,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 8999,
+   "line": 1,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 9000,
+   "line": 2,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 10750,
+   "line": 2,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 12499,
+   "line": 2,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 12500,
+   "line": 3,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 14250,
+   "line": 3,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 15999,
+   "line": 3,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 16000,
+   "line": 4,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 17750,
+   "line": 4,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 19499,
+   "line": 4,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 19500,
+   "line": 5,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 21250,
+   "line": 5,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 22999,
+   "line": 5,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 23000,
+   "line": 6,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 24750,
+   "line": 6,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 26499,
+   "line": 6,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 26500,
+   "line": 7,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 28250,
+   "line": 7,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 29999,
+   "line": 7,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 30000,
+   "line": 8,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 31750,
+   "line": 8,
+   "lineProgress": 0.5,
+   "word": 2,
+   "wordProgress": 0.1515,
+   "interlude": null
+  },
+  {
+   "pos": 33499,
+   "line": 8,
+   "lineProgress": 0.9997,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  },
+  {
+   "pos": 33500,
+   "line": 9,
+   "lineProgress": 0,
+   "word": 0,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 34500,
+   "line": 9,
+   "lineProgress": 0.5,
+   "word": 1,
+   "wordProgress": 0,
+   "interlude": null
+  },
+  {
+   "pos": 36500,
+   "line": 9,
+   "lineProgress": 1,
+   "word": 3,
+   "wordProgress": 1,
+   "interlude": null
+  }
+ ]
+}
