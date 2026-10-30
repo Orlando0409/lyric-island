@@ -15,7 +15,7 @@ import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 
 /**
  * Un ComposeView necesita LifecycleOwner + SavedStateRegistryOwner + ViewModelStoreOwner en su árbol,
- * y un Service no los tiene (12.5). Sin esto Compose lanza una excepción en el primer frame.
+ * y un Service no los tiene. Sin esto Compose lanza una excepción en el primer frame.
  */
 class OverlayLifecycleOwner : LifecycleOwner, SavedStateRegistryOwner, ViewModelStoreOwner {
     private val registry = LifecycleRegistry(this)

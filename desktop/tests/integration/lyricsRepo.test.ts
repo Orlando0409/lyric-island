@@ -31,7 +31,7 @@ describe('LyricsRepository ↔ LRCLIB grabado', () => {
     const doc = await r.get(q('Isla de Luz', 'Los Fixtures', 210, 'Pruebas Unitarias'));
     expect(doc).toMatchObject({ kind: 'synced', source: 'lrclib', lrclibId: 1001 });
     expect(doc.lines.length).toBeGreaterThan(3);
-    // /get + una búsqueda de versiones con tiempos por palabra (como mucho 2 por pista nueva, RNF-16).
+    // /get + una búsqueda de versiones con tiempos por palabra (como mucho 2 por pista nueva).
     expect(log).toHaveLength(2);
     expect(log[0]).toContain('/get?artist_name=Los%20Fixtures&track_name=Isla%20de%20Luz&album_name=Pruebas%20Unitarias&duration=210');
     expect(log[1]).toContain('/search?');

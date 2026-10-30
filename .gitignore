@@ -27,3 +27,4 @@ desktop/build/store-identity.json
 desktop/build/codesign.local.json
 desktop/build/codesign/
 desktop/resources/helper/
+android/.kotlin/

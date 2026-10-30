@@ -5,7 +5,7 @@ using LyricIsland.MediaHelper.Protocol;
 namespace LyricIsland.MediaHelper.Media;
 
 /// <summary>
-/// Lógica del helper (11.2): sigue las sesiones, elige la activa y emite track / timeline / cleared.
+/// Lógica del helper: sigue las sesiones, elige la activa y emite track / timeline / cleared.
 /// Todo el procesamiento pasa por un candado asíncrono porque los eventos WinRT llegan en hilos del pool.
 /// </summary>
 public sealed class MediaTracker : IDisposable

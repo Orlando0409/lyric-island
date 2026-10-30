@@ -1,4 +1,4 @@
-// Pantalla de ajustes (sección 10.7).
+// Pantalla de ajustes.
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { readableBackground } from '../../core/color';
 import { t, type StringKey } from '../../shared/i18n';

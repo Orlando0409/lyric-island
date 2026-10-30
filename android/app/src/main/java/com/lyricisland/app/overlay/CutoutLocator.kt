@@ -5,7 +5,7 @@ import android.graphics.Rect
 import android.os.Build
 import android.view.WindowManager
 
-/** Rectángulo de la cámara frontal centrada en el borde superior, en px (12.7). */
+/** Rectángulo de la cámara frontal centrada en el borde superior, en px. */
 data class CameraCutout(val rect: Rect, val screenWidth: Int)
 
 object CutoutLocator {

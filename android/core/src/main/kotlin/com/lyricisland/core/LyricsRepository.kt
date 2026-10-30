@@ -11,7 +11,7 @@ import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.longOrNull
 import java.net.URLEncoder
 
-// LyricsRepository (8.1, 8.2, 8.4). Puerto de lyricsRepo.ts: red, caché y hash inyectados.
+// LyricsRepository. Puerto de lyricsRepo.ts: red, caché y hash inyectados.
 
 data class HttpResponse(val status: Int, val body: String)
 
@@ -167,7 +167,7 @@ class LyricsRepository(
             found = TrackMatcher.pickBest(q, track.durationMs, search(track), track.album)?.first
         } else if (found != null && !found.hasWordSync && gets == 1 && q.title.isNotEmpty()) {
             // /api/get devuelve una sola versión: si otra subida trae tiempos por palabra, se prefiere
-            // (como mucho 2 peticiones por pista nueva, RNF-16). Un error aquí no afecta a la letra ya encontrada.
+            // (como mucho 2 peticiones por pista nueva). Un error aquí no afecta a la letra ya encontrada.
             try {
                 val dur = track.durationMs
                 val withWords = search(track).filter { c ->

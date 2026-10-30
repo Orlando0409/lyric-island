@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace LyricIsland.MediaHelper.Protocol;
 
-// Protocolo helper → Electron (sección 7.3): un JSON por línea en stdout.
+// Protocolo helper → Electron: un JSON por línea en stdout.
 // El orden de las propiedades es parte del contrato (los golden tests lo comparan byte a byte).
 
 public abstract record Message([property: JsonPropertyOrder(-9)] string Type)

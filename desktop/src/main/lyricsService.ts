@@ -1,4 +1,4 @@
-// LyricsService (11.3): vive en el main (red + caché) y expone las letras al renderer por IPC.
+// LyricsService: vive en el main (red + caché) y expone las letras al renderer por IPC.
 import { createHash } from 'node:crypto';
 import { LyricsRepository, type HttpGet } from '../core/lyricsRepo';
 import { cacheKeySource } from '../core/matcher';
@@ -7,8 +7,8 @@ import { JsonLyricsCache } from './cache';
 import { log } from './logger';
 import { addRomaji } from './romanizer';
 
-// User-Agent identificable (8.1). Al publicar el repositorio, agregar su URL: "LyricIsland/x.y.z (https://github.com/<usuario>/lyric-island)".
-export const USER_AGENT = `LyricIsland/${process.env.npm_package_version ?? '0.1.0'} (Windows desktop; lyrics overlay)`;
+// User-Agent identificable con el enlace del proyecto, como pide LRCLIB.
+export const USER_AGENT = `LyricIsland/${process.env.npm_package_version ?? '0.1.0'} (Windows; https://github.com/Orlando0409/lyric-island)`;
 
 export const sha1 = (s: string) => createHash('sha1').update(s).digest('hex');
 
@@ -31,7 +31,7 @@ export class LyricsService {
     return sha1(cacheKeySource(track));
   }
 
-  /** Une peticiones simultáneas de la misma pista (como mucho una búsqueda por pista nueva, RNF-16). */
+  /** Une peticiones simultáneas de la misma pista (como mucho una búsqueda por pista nueva). */
   get(track: NowPlaying): Promise<LyricsDocument> {
     const key = this.key(track);
     const existing = this.inflight.get(key);

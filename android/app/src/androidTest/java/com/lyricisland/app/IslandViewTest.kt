@@ -23,7 +23,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-/** Tests instrumentados de la isla (15.5): estados de la figura 10.1 renderizados en un dispositivo real. */
+/** Tests instrumentados de la isla: cada estado (expandida, pausada, compacta, oculta) y la burbuja, en un dispositivo real. */
 @RunWith(AndroidJUnit4::class)
 class IslandViewTest {
     @get:Rule val rule = createComposeRule()

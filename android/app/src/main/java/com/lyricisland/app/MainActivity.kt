@@ -82,7 +82,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 /**
- * Pantalla principal. "Activar isla" verifica los permisos y pide, uno por uno y con una explicación (RF-42),
+ * Pantalla principal. "Activar isla" verifica los permisos y pide, uno por uno y con una explicación,
  * los que falten; cuando están todos arranca la isla. Si la isla estaba activa y algún permiso se revocó,
  * se vuelven a pedir al abrir la app (o al tocar la notificación del servicio).
  */
@@ -105,7 +105,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        // Solo debug: la matriz de emuladores (android/tools/run-matrix.sh) activa la isla sin tocar la UI.
+        // Solo en compilaciones de depuración: permite activar la isla desde adb para pruebas, sin tocar la UI.
         if (BuildConfig.DEBUG && intent.getBooleanExtra(EXTRA_ENABLE_ISLAND, false)) {
             lifecycleScope.launch { graph.settings.update { it.copy(enabled = true) } }
         }
@@ -455,7 +455,7 @@ private fun SettingsSection(s: AppSettings, set: ((AppSettings) -> AppSettings) 
     Text(stringResource(R.string.credits), style = MaterialTheme.typography.bodySmall)
     Text(stringResource(R.string.privacy), style = MaterialTheme.typography.bodySmall)
     OutlinedButton(onClick = {
-        // Exportar logs (RF-44): se comparten como texto; nada sale del dispositivo sin acción del usuario.
+        // Exportar logs: se comparten como texto; nada sale del dispositivo sin acción del usuario.
         val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, AppLog.dump())
         ctx.startActivity(Intent.createChooser(send, exportTitle))
     }) { Text(stringResource(R.string.export_logs)) }

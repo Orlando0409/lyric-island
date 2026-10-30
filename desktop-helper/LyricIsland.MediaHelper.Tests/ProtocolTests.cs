@@ -34,7 +34,7 @@ public class ProtocolTests
     }
 
     /// <summary>
-    /// Contrato C# ↔ zod (15.4): escribe los mensajes en shared/fixtures/expected/protocol-from-csharp.ndjson;
+    /// Contrato C# ↔ zod: escribe los mensajes en shared/fixtures/expected/protocol-from-csharp.ndjson;
     /// el test de Vitest los valida con los esquemas zod y falla si hay diferencias.
     /// </summary>
     [Fact]

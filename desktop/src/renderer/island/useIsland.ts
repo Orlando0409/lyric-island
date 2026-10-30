@@ -116,7 +116,7 @@ export function useIsland({ fullView = false }: { fullView?: boolean } = {}): Is
     };
   }, [controller]);
 
-  // Transición de color en OKLCH (9.5).
+  // Transición de color en OKLCH.
   const target = snap.palette;
   const fromRef = useRef<Palette>(NEUTRAL_PALETTE);
   useEffect(() => {

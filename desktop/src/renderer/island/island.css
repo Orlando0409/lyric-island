@@ -285,7 +285,7 @@ body,
   transition: transform 0.25s ease-out;
 }
 
-/* Líneas largas (RF-31): medidor oculto del ancho natural, dos renglones o desplazamiento que sigue a la palabra. */
+/* Líneas largas: medidor oculto del ancho natural, dos renglones o desplazamiento que sigue a la palabra. */
 .line-box {
   position: relative;
 }

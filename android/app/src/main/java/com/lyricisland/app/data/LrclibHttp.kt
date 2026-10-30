@@ -14,10 +14,10 @@ import java.util.concurrent.TimeUnit
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-/** HTTP a LRCLIB con OkHttp: User-Agent identificable (8.1) y timeout total por petición. */
+/** HTTP a LRCLIB con OkHttp: User-Agent identificable y timeout total por petición. */
 class LrclibHttp(private val client: OkHttpClient = OkHttpClient()) : HttpGet {
     companion object {
-        val USER_AGENT = "LyricIsland/${BuildConfig.VERSION_NAME} (Android; lyrics overlay)"
+        val USER_AGENT = "LyricIsland/${BuildConfig.VERSION_NAME} (Android; https://github.com/Orlando0409/lyric-island)"
     }
 
     override suspend fun get(url: String, timeoutMs: Long): HttpResponse {

@@ -1,4 +1,4 @@
-// Motor de sincronización (sección 8.5): interpolación, deriva/seek, línea y palabra activas, interludios.
+// Motor de sincronización: interpolación, deriva/seek, línea y palabra activas, interludios.
 import type { LyricLine, Timeline } from './types';
 
 export interface Clock {
@@ -20,7 +20,7 @@ export function interpolate(tl: Timeline, nowMs: number): number {
 
 export type TimelineChange = 'init' | 'drift' | 'seek' | 'status';
 
-/** Sigue la posición de reproducción y suaviza las correcciones pequeñas (8.5.2). */
+/** Sigue la posición de reproducción y suaviza las correcciones pequeñas. */
 export class PositionTracker {
   private base: Timeline | null = null;
   private correctionMs = 0;
@@ -147,7 +147,7 @@ export function computeFrame(lines: LyricLine[], pos: number, hint = -1): SyncFr
   return { positionMs: pos, activeLineIndex: i, lineProgress, wordIndex, wordProgress, interlude };
 }
 
-/** Combina el tracker de posición, los offsets y la línea activa (con pista para O(1) en reproducción normal). */
+/** Combina el tracker de posición, los offsets y la línea activa (con pista para O en reproducción normal). */
 export class SyncEngine {
   readonly tracker: PositionTracker;
   private hint = -1;

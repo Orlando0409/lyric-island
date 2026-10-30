@@ -1,4 +1,4 @@
-// Ajustes del usuario (sección 10.7). Compartido por main, preload y renderer.
+// Ajustes del usuario. Compartido por main, preload y renderer.
 import { z } from 'zod';
 
 export const ShortcutsSchema = z.object({
@@ -56,7 +56,7 @@ export const SettingsSchema = z.object({
     .prefault({}),
   players: z
     .object({
-      // Por defecto se permiten Spotify y apps de música; los navegadores quedan opcionales (R12).
+      // Por defecto se permiten Spotify y apps de música; los navegadores quedan opcionales.
       mode: z.enum(['allow', 'deny']).default('deny'),
       apps: z.array(z.string()).default(['chrome', 'msedge', 'firefox', 'opera', 'brave', 'vivaldi']),
       detected: z.array(z.string()).default([]),

@@ -1,4 +1,4 @@
-// TrackMatcher (sección 8.2): normalización de metadatos y puntuación de candidatos de LRCLIB.
+// TrackMatcher: normalización de metadatos y puntuación de candidatos de LRCLIB.
 
 /** Sufijos ruidosos del título. No se quitan "Live", "Acoustic" ni "Remix": cambian la letra o los tiempos. */
 export const TITLE_NOISE_PATTERNS: RegExp[] = [
@@ -217,7 +217,7 @@ export function cacheKeySource(track: QueryTrack): string {
   return `${normalizeForCompare(q.artist)}|${normalizeForCompare(q.title)}|${bucket}`;
 }
 
-/** Anuncios de Spotify Free (RF-09): "Advertisement"/"Spotify" o ≈30 s sin álbum. */
+/** Anuncios de Spotify Free: "Advertisement"/"Spotify" o ≈30 s sin álbum. */
 export function looksLikeAd(track: { title: string; artist: string; album: string | null; durationMs: number | null; sourceAppId: string }): boolean {
   const t = normalizeForCompare(track.title);
   const a = normalizeForCompare(track.artist);

@@ -1,4 +1,4 @@
-// Interfaz en español e inglés (RNF-18).
+// Interfaz en español e inglés.
 export type Lang = 'es' | 'en';
 
 const strings = {

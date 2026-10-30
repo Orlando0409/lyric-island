@@ -103,7 +103,7 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
-/** Geometría de la pantalla para colocar la isla alrededor de la cámara (12.7). */
+/** Geometría de la pantalla para colocar la isla alrededor de la cámara. */
 data class IslandGeometry(
     val screenWidthDp: Float = 400f,
     val cutoutWidthDp: Float? = null,
@@ -143,7 +143,7 @@ internal fun rememberIslandColors(snap: IslandSnapshot, settings: AppSettings): 
     )
 }
 
-/** Conecta el controlador con Compose y corre el bucle de frames solo cuando hace falta (8.5.7). */
+/** Conecta el controlador con Compose y corre el bucle de frames solo cuando hace falta. */
 @Composable
 fun IslandOverlay(
     controller: IslandController,
@@ -193,7 +193,7 @@ fun IslandView(
     onOpenSettings: () -> Unit = {},
 ) {
     val density = LocalDensity.current
-    // Respeta fontScale del sistema con un tope de 1.3 para no romper la isla (10.4).
+    // Respeta fontScale del sistema con un tope de 1.3 para no romper la isla.
     val cappedFont = minOf(density.fontScale, 1.3f)
     fun sp(base: Float): TextUnit = (base * settings.fontScale * cappedFont / density.fontScale).sp
 
@@ -206,7 +206,7 @@ fun IslandView(
         cw != null -> (cw + 2 * 56f).dp
         else -> 220.dp
     }
-    // EXPANDED "se derrama hacia abajo" (10.3): la cámara queda dentro de la franja superior y el texto debajo.
+    // EXPANDED "se derrama hacia abajo": la cámara queda dentro de la franja superior y el texto debajo.
     val cameraInset: Dp = if (expanded && ch != null) (ch + 8f).dp else 0.dp
     val targetH: Dp = when {
         expanded -> (88f * minOf(settings.fontScale, 1.4f)).dp + cameraInset
@@ -448,11 +448,11 @@ private fun Interlude(progress: Double, accent: Color, sp: (Float) -> TextUnit) 
     }
 }
 
-/** Cómo entra una línea: en un renglón, partida en dos (letra un 10 % menor) o desplazándose (RF-31). */
+/** Cómo entra una línea: en un renglón, partida en dos (letra un 10 % menor) o desplazándose. */
 internal enum class LineFit { SINGLE, WRAP, SCROLL }
 
 /**
- * Relleno karaoke (10.5): el texto se mide con TextMeasurer y se dibuja dos veces (pendiente y cantado); el
+ * Relleno karaoke: el texto se mide con TextMeasurer y se dibuja dos veces (pendiente y cantado); el
  * cantado se recorta renglón por renglón hasta la posición de la palabra actual. Las líneas largas se parten en
  * dos renglones; si ni así entran, se desplazan siguiendo a la palabra que se canta (siempre visible).
  * Con movimiento reducido se rellena por palabras enteras, sin barrido.

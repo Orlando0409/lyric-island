@@ -1,4 +1,4 @@
-// Golden files compartidos con Kotlin (sección 13.2). Regenerar: pnpm golden
+// Golden files compartidos con Kotlin. Regenerar: pnpm golden
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';

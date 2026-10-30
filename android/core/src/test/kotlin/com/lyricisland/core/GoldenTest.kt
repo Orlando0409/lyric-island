@@ -25,7 +25,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 /**
- * Paridad TS ↔ Kotlin (sección 13.2): mismos fixtures y mismos golden files que desktop/tests/unit/golden.test.ts.
+ * Paridad TS ↔ Kotlin: mismos fixtures y mismos golden files que desktop/tests/unit/golden.test.ts.
  */
 class GoldenTest {
     private val fixtures = File(System.getProperty("fixtures.dir") ?: "../../shared/fixtures")

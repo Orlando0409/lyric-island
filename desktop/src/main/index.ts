@@ -1,4 +1,4 @@
-// Proceso main de Electron (sección 11.3).
+// Proceso main de Electron.
 import { app, BrowserWindow, dialog, globalShortcut, ipcMain, Menu, nativeImage, powerMonitor, screen, Tray } from 'electron';
 import { existsSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';

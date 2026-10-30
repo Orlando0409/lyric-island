@@ -1,8 +1,6 @@
-# Diseño base de la isla
+# Diseño de la isla
 
-Referencia visual de la sección 10 de la especificación, tomada de la app real (las capturas de Windows usan las letras **inventadas** de `shared/fixtures`; no se guardan capturas con letras reales en el repositorio, ver la sección 16).
-
-> Figma: el conector de Figma de este entorno necesitaba autorización, así que este documento hace de diseño base. Para pasarlo a Figma: un frame por estado con las medidas y los tokens de abajo.
+Referencia visual tomada de la app real. Las capturas usan las letras **inventadas** de `shared/fixtures`: en el repositorio no se guardan capturas con letras reales.
 
 ## Estados
 
@@ -27,7 +25,7 @@ Ajustes (Windows): ![ajustes](windows-settings.png) · Onboarding (Android): ![o
 | `accent` | LightVibrant o Vibrant con L 0.75 | ecualizador, interludio |
 | Transición de color | 600 ms, ease-in-out, interpolación OKLCH | cambio de canción |
 | Spring | rigidez 380, amortiguación 30 (Compose: dampingRatio 0.77) | expandir / compactar |
-| Cambio de línea | sale −8 px en 180 ms · entra en 220 ms | karaoke |
+| Cambio de línea | sale −6 px en 100 ms · entra en 220 ms | karaoke |
 
 ## Tipografía
 

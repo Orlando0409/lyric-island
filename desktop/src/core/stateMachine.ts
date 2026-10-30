@@ -1,4 +1,4 @@
-// IslandStateMachine (sección 10.1): decide el modo visual a partir de los hechos actuales.
+// IslandStateMachine: decide el modo visual a partir de los hechos actuales.
 import type { IslandMode, LyricsKind, NowPlaying, PlaybackStatus } from './types';
 
 export type PauseBehavior = 'dim' | 'compact' | 'hide';

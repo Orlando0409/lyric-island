@@ -1,8 +1,8 @@
-# Empaquetado (sección 11.4): MSIX para Microsoft Store y NSIS para GitHub Releases.
+# Empaquetado: MSIX para Microsoft Store y NSIS para GitHub Releases.
 appId: com.lyricisland.desktop
 productName: LyricIsland
 copyright: Copyright © 2026 OB Dev Studio
-# RNF-17: instalador < 120 MB → compresión máxima y solo los idiomas de la interfaz.
+# Instalador lo más liviano posible: compresión máxima y solo los idiomas de la interfaz.
 compression: maximum
 electronLanguages:
   - es

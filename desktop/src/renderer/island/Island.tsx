@@ -1,4 +1,4 @@
-// IslandView (sección 10): estados, karaoke, interludios, ecualizador y modo fantasma.
+// IslandView: estados, karaoke, interludios, ecualizador y modo fantasma.
 import { AnimatePresence, motion, type Transition } from 'motion/react';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { readableBackground } from '../../core/color';
@@ -22,7 +22,7 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-/** Modo fantasma (RF-34): con el cursor encima la isla se vuelve casi transparente. */
+/** Modo fantasma: con el cursor encima la isla se vuelve casi transparente. */
 function useGhost(enabled: boolean, ref: React.RefObject<HTMLElement | null>): boolean {
   const [ghost, setGhost] = useState(false);
   useEffect(() => {
@@ -83,7 +83,7 @@ function RomajiLine({ text, fill }: { text: string; fill: number }) {
   );
 }
 
-/** Cómo entra una línea: en un renglón, partida en dos (letra algo menor) o desplazándose (RF-31). */
+/** Cómo entra una línea: en un renglón, partida en dos (letra algo menor) o desplazándose. */
 type LineFit = 'single' | 'wrap' | 'scroll';
 const WRAP_FONT_RATIO = 16 / 18;
 

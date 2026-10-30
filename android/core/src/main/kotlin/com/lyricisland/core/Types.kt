@@ -1,6 +1,6 @@
 package com.lyricisland.core
 
-// Tipos del núcleo (sección 7.2). Equivalentes a desktop/src/core/types.ts.
+// Tipos del núcleo. Equivalentes a desktop/src/core/types.ts.
 
 enum class PlaybackStatus(val wire: String) {
     PLAYING("playing"), PAUSED("paused"), STOPPED("stopped"), UNKNOWN("unknown");

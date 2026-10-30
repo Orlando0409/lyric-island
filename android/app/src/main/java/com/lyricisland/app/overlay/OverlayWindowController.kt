@@ -8,7 +8,7 @@ import android.view.View
 import android.view.WindowManager
 
 /**
- * Ventana overlay (12.5). Mide SOLO lo que mide la isla (WRAP_CONTENT en ambos ejes), así no tapa nada más:
+ * Ventana overlay. Mide SOLO lo que mide la isla (WRAP_CONTENT en ambos ejes), así no tapa nada más:
  * cuando Compose cambia el tamaño de la isla, WindowManager re-dimensiona la ventana.
  * En modo burbuja la ventana se mueve libremente (gravity START/END + x, y).
  */

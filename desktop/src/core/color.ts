@@ -1,4 +1,4 @@
-// ColorEngine (sección 9): paleta a partir de los swatches de la carátula, en OKLCH, con contraste WCAG garantizado.
+// ColorEngine: paleta a partir de los swatches de la carátula, en OKLCH, con contraste WCAG garantizado.
 import type { Palette } from './types';
 
 export type SwatchName = 'Vibrant' | 'DarkVibrant' | 'Muted' | 'DarkMuted' | 'LightVibrant' | 'LightMuted' | 'Dominant';

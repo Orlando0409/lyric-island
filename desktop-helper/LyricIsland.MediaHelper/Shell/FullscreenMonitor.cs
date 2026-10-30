@@ -4,7 +4,7 @@ using LyricIsland.MediaHelper.Protocol;
 namespace LyricIsland.MediaHelper.Shell;
 
 /// <summary>
-/// Cada 2 s consulta SHQueryUserNotificationState (11.2, paso 6) y emite "fullscreen" solo cuando cambia.
+/// Cada 2 s consulta SHQueryUserNotificationState y emite "fullscreen" solo cuando cambia.
 /// </summary>
 public sealed partial class FullscreenMonitor : IDisposable
 {

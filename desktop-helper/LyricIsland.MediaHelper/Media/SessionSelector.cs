@@ -14,7 +14,7 @@ public sealed record AppFilter(bool AllowMode, IReadOnlyList<string> Apps)
 }
 
 /// <summary>
-/// Elige la sesión "activa" (11.2, paso 3; RF-10): aplica el filtro y prioriza la que esté reproduciendo;
+/// Elige la sesión "activa": aplica el filtro y prioriza la que esté reproduciendo;
 /// si hay varias, la última que pasó a Playing. Sin ninguna reproduciendo: la última que reprodujo,
 /// y si no, la que Windows considera actual.
 /// </summary>

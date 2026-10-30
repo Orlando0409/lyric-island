@@ -28,7 +28,7 @@ describe('isAppAllowed', () => {
   });
 });
 
-describe('decideMode (figura 10.1)', () => {
+describe('decideMode', () => {
   it('HIDDEN: sin sesión, detenida, filtro, usuario, pantalla completa', () => {
     expect(decideMode(facts({ track: null }), B()).mode).toBe('hidden');
     expect(decideMode(facts({ status: 'stopped' }), B()).mode).toBe('hidden');

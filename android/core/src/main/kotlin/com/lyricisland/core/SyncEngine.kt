@@ -2,7 +2,7 @@ package com.lyricisland.core
 
 import kotlin.math.abs
 
-// Motor de sincronización (sección 8.5). Puerto de sync.ts. Las posiciones se calculan en Double (como en JS).
+// Motor de sincronización. Puerto de sync.ts. Las posiciones se calculan en Double (como en JS).
 
 fun interface Clock {
     fun now(): Long
@@ -83,7 +83,7 @@ data class SyncFrame(
 
 enum class TimelineChange { INIT, DRIFT, SEEK, STATUS }
 
-/** Sigue la posición y suaviza las correcciones pequeñas (8.5.2). */
+/** Sigue la posición y suaviza las correcciones pequeñas. */
 class PositionTracker(private val clock: Clock) {
     var timeline: Timeline? = null
         private set

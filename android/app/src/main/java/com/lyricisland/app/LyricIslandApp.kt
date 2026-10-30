@@ -51,7 +51,7 @@ class AppGraph(context: Context) {
     }
 }
 
-/** Logs locales en memoria. Sin telemetría: solo se exportan si el usuario lo pide (RF-44). */
+/** Logs locales en memoria. Sin telemetría: solo se exportan si el usuario lo pide. */
 object AppLog {
     private const val MAX = 1000
     private val ring = ArrayDeque<String>()

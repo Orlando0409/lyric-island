@@ -3,7 +3,7 @@ package com.lyricisland.core
 import java.text.Normalizer
 import kotlin.math.abs
 
-// TrackMatcher (sección 8.2). Puerto de matcher.ts.
+// TrackMatcher. Puerto de matcher.ts.
 
 data class QueryTrack(val title: String, val artist: String, val album: String?, val durationMs: Long?)
 

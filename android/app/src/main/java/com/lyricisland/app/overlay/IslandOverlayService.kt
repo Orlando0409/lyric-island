@@ -62,7 +62,7 @@ import kotlinx.coroutines.withContext
 import kotlin.math.hypot
 
 /**
- * Foreground service (tipo specialUse) que mantiene viva la isla (12.8): crea la ventana overlay,
+ * Foreground service (tipo specialUse) que mantiene viva la isla: crea la ventana overlay,
  * conecta SessionTracker → IslandController y publica la notificación persistente con acciones.
  */
 class IslandOverlayService : LifecycleService() {

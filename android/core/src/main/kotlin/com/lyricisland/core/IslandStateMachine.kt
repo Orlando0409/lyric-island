@@ -1,6 +1,6 @@
 package com.lyricisland.core
 
-// IslandStateMachine (sección 10.1). Puerto de stateMachine.ts.
+// IslandStateMachine. Puerto de stateMachine.ts.
 
 enum class PauseBehavior { DIM, COMPACT, HIDE }
 enum class NoLyricsBehavior { TITLE, COMPACT, HIDE }

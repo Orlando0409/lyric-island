@@ -1,4 +1,4 @@
-// Caché de letras en JSON (sección 8.4): LRU de 5 000 entradas + offsets del usuario sin TTL.
+// Caché de letras en JSON: LRU de 5 000 entradas + offsets del usuario sin TTL.
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import type { CacheEntry, LyricsCache } from '../core/lyricsRepo';

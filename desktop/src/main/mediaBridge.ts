@@ -1,4 +1,4 @@
-// MediaBridge (11.3): lanza el helper C#, lee NDJSON línea por línea, valida con zod y reenvía eventos.
+// MediaBridge: lanza el helper C#, lee NDJSON línea por línea, valida con zod y reenvía eventos.
 // Si el helper muere, se reinicia con backoff exponencial (1 s, 2 s, 4 s… tope 30 s).
 // Con LYRICISLAND_FAKE_HELPER=<sesión.ndjson> reproduce una sesión grabada (E2E y desarrollo sin .NET).
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';

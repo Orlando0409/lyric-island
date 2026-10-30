@@ -144,7 +144,7 @@ export class LyricsRepository {
     return c ? documentFromCandidate(c, durationMs, 'lrclib') : NONE;
   }
 
-  /** Búsqueda libre (para "no es esta letra", RF-21). */
+  /** Búsqueda libre (para "no es esta letra"). */
   async search(track: QueryTrack): Promise<Candidate[]> {
     const q = normalizeQuery(track);
     const data = await this.request('/search', { track_name: q.title, artist_name: q.artist });
@@ -184,7 +184,7 @@ export class LyricsRepository {
       found = pickBest({ ...q, durationMs: track.durationMs, album: track.album }, candidates)?.candidate ?? null;
     } else if (found && !found.hasWordSync && gets === 1 && q.title) {
       // /api/get devuelve una sola versión: si otra subida de la misma canción trae tiempos por palabra,
-      // se prefiere (como mucho 2 peticiones por pista nueva, RNF-16). Un error aquí no afecta a la letra ya encontrada.
+      // se prefiere (como mucho 2 peticiones por pista nueva). Un error aquí no afecta a la letra ya encontrada.
       try {
         const withWords = (await this.search(track)).filter(
           (c) => c.hasWordSync && c.syncedLyrics !== null && withinMs(c, track.durationMs, WORD_SYNC_MAX_DELTA_MS),

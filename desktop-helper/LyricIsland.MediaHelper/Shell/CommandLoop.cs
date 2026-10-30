@@ -3,7 +3,7 @@ using LyricIsland.MediaHelper.Protocol;
 
 namespace LyricIsland.MediaHelper.Shell;
 
-/// <summary>Lee comandos de stdin (un JSON por línea) en un hilo aparte (11.2, paso 7).</summary>
+/// <summary>Lee comandos de stdin (un JSON por línea) en un hilo aparte.</summary>
 public sealed class CommandLoop
 {
     private readonly MediaTracker _tracker;

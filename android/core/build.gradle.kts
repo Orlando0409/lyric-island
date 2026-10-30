@@ -19,7 +19,7 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-    // Los golden files compartidos con TypeScript (sección 13.2).
+    // Los golden files compartidos con TypeScript.
     systemProperty("fixtures.dir", rootProject.projectDir.resolve("../shared/fixtures").canonicalPath)
     testLogging { events("failed"); exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL }
 }

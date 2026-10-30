@@ -1,4 +1,4 @@
-// App auxiliar (15.4): crea una MediaSession controlable para probar la isla sin depender de Spotify.
+// App auxiliar: crea una MediaSession controlable para probar la isla sin depender de Spotify.
 plugins {
     alias(libs.plugins.android.application)
 }

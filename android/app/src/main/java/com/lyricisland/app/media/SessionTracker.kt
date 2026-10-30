@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import java.nio.ByteBuffer
 import java.security.MessageDigest
 
-// SessionTracker (12.4): MediaSessionManager + MediaController.Callback → eventos de NowPlaying / Timeline.
+// SessionTracker: MediaSessionManager + MediaController.Callback → eventos de NowPlaying / Timeline.
 
 sealed interface MediaEvent {
     data class Track(val track: NowPlaying, val artwork: Bitmap?) : MediaEvent
@@ -32,7 +32,7 @@ sealed interface MediaEvent {
     data object Cleared : MediaEvent
 }
 
-/** Lógica pura de selección de sesión (RF-10): reproduciendo y más reciente; si no, la última que reprodujo. */
+/** Lógica pura de selección de sesión: reproduciendo y más reciente; si no, la última que reprodujo. */
 object SessionSelection {
     fun <T> select(sessions: List<T>, pkg: (T) -> String, playing: (T) -> Boolean, lastPlaying: (T) -> Long, filter: PlayerFilter): T? {
         val allowed = sessions.filter { filter.allows(pkg(it)) }

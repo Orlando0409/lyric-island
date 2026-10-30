@@ -19,7 +19,7 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 
-// Caché de letras (8.4) en Room: LRU de 5 000 entradas + offsets del usuario sin TTL.
+// Caché de letras en Room: LRU de 5 000 entradas + offsets del usuario sin TTL.
 
 @Entity(tableName = "lyrics_cache")
 data class CachedLyricsEntity(

@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import com.lyricisland.app.media.MediaListenerService
 
-/** Permisos que la isla necesita, en el orden en que se piden (RF-42). */
+/** Permisos que la isla necesita, en el orden en que se piden. */
 enum class Perm(val title: Int, val why: Int) {
     OVERLAY(R.string.perm_overlay, R.string.perm_overlay_why),
     LISTENER(R.string.perm_listener, R.string.perm_listener_why),

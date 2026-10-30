@@ -1,4 +1,4 @@
-// Tipos del núcleo (sección 7.1 de la especificación). Iguales en ambas plataformas.
+// Tipos del núcleo. Iguales en ambas plataformas.
 
 export type PlaybackStatus = 'playing' | 'paused' | 'stopped' | 'unknown';
 

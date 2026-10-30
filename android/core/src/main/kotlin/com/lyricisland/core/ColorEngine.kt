@@ -7,7 +7,7 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-// ColorEngine (sección 9). Puerto de color.ts. La extracción de swatches la hace androidx.palette en la app.
+// ColorEngine. Puerto de color.ts. La extracción de swatches la hace androidx.palette en la app.
 
 enum class SwatchName { Vibrant, DarkVibrant, Muted, DarkMuted, LightVibrant, LightMuted, Dominant }
 

@@ -1,4 +1,4 @@
-// Orquestador (sección 6.3): une sesión multimedia, letras, sincronía, color y estados.
+// Orquestador: une sesión multimedia, letras, sincronía, color y estados.
 // Puro: el reloj, los temporizadores y la obtención de letras se inyectan.
 import { NEUTRAL_PALETTE } from './color';
 import { estimatePlainLines } from './lrc';
@@ -146,7 +146,7 @@ export class IslandController {
     }
     if (gen !== this.generation) return; // la pista cambió mientras se buscaba
     if (failed && attempt === 0) {
-      // Timeout o error de red: modo título y un único reintento a los 10 s (8.1).
+      // Timeout o error de red: modo título y un único reintento a los 10 s.
       this.deps.scheduler.setTimeout(() => {
         if (gen === this.generation) void this.load(t, gen, 1);
       }, LYRICS_RETRY_MS);

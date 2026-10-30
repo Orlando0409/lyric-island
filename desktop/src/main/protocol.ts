@@ -1,4 +1,4 @@
-// Protocolo Helper C# → Electron (sección 7.3), validado con zod. Mensajes inválidos se descartan sin crash.
+// Protocolo Helper C# → Electron, validado con zod. Mensajes inválidos se descartan sin crash.
 import { z } from 'zod';
 
 export const PROTOCOL_VERSION = 1;

@@ -7,7 +7,7 @@ import androidx.core.app.NotificationManagerCompat
 
 /**
  * NotificationListenerService vacío: NO lee las notificaciones. Es solo el "pase" que Android exige para que
- * MediaSessionManager.getActiveSessions() devuelva las sesiones de otras apps (12.1).
+ * MediaSessionManager.getActiveSessions() devuelva las sesiones de otras apps.
  */
 class MediaListenerService : NotificationListenerService() {
     override fun onListenerConnected() {

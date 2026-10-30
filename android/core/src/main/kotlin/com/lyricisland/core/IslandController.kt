@@ -1,6 +1,6 @@
 package com.lyricisland.core
 
-// Orquestador (sección 6.3). Puerto de controller.ts. Puro: reloj, temporizadores y lanzamiento de corrutinas inyectados.
+// Orquestador. Puerto de controller.ts. Puro: reloj, temporizadores y lanzamiento de corrutinas inyectados.
 
 interface Scheduler {
     fun setTimeout(ms: Long, fn: () -> Unit): Any

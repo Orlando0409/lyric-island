@@ -1,4 +1,4 @@
-// Logs locales en memoria (anillo). Sin telemetría: solo se exportan si el usuario lo pide (RF-44).
+// Logs locales en memoria (anillo). Sin telemetría: solo se exportan si el usuario lo pide.
 export type Level = 'debug' | 'info' | 'warn' | 'error';
 
 const MAX = 2000;

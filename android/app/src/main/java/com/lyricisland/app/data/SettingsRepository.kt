@@ -17,7 +17,7 @@ import com.lyricisland.core.PlayerFilter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-// Ajustes (sección 10.7) en DataStore (Preferences).
+// Ajustes en DataStore (Preferences).
 
 enum class BgStyle { SOLID, GRADIENT, LIVE, BLUR }
 
@@ -47,7 +47,7 @@ data class AppSettings(
     val alignCutout: Boolean = false,
     val topMarginDp: Int = 30,
     val hideInLandscape: Boolean = true,
-    /** Por defecto se permiten las apps de música; navegadores y YouTube (video) quedan opcionales (R12, HU-09). */
+    /** Por defecto se permiten las apps de música; navegadores y YouTube (video) quedan opcionales. */
     val blockedApps: List<String> = DEFAULT_BLOCKED,
     val detectedApps: List<String> = emptyList(),
     val experimentalPlain: Boolean = false,

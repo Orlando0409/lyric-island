@@ -1,4 +1,4 @@
-// E2E (15.5): la app real con un helper falso (sesión grabada) y un LRCLIB falso local.
+// E2E: la app real con un helper falso (sesión grabada) y un LRCLIB falso local.
 import { _electron as electron, expect, test, type ElectronApplication, type Page } from '@playwright/test';
 import { existsSync, mkdtempSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -62,7 +62,7 @@ test('flujo completo: aparece, karaoke, color, pausa, pantalla completa y cleare
     // Se expande con la letra y la línea activa coincide en el instante esperado (posición 4.0–8.5 s).
     await expect.poll(() => mode(page), { timeout: 8000 }).toBe('expanded');
     await expect(page.getByTestId('current-line')).toContainText('la primera línea', { timeout: 6000 });
-    expect(await app.evaluate(({ app: a }) => a.getVersion())).toBe('0.1.0');
+    expect(await app.evaluate(({ app: a }) => a.getVersion())).toBe(JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version);
     await expect(page.getByTestId('next-line')).toHaveText('La isla cambia de color');
 
     // El fondo tomó el color de la carátula (ya no es el neutro #1C1C1E).

@@ -1,4 +1,4 @@
-// Publica el helper C# en resources/helper. Intenta Native AOT (11.2) y, si falta el linker de C++,
+// Publica el helper C# en resources/helper. Intenta Native AOT y, si falta el linker de C++,
 // cae a self-contained + trimmed + single-file.
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
